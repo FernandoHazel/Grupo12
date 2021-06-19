@@ -47,3 +47,5 @@ https://www.ebay.com/
 
 * **Amazon** por la confianza que le genera a los usuarios.\
 http://www.amazon.com.mx/
+
+link al trello: https://trello.com/b/CfXlOwNx/technoshop
