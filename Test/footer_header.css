@@ -1,0 +1,101 @@
+* { /* Normalizacion*/
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img{
+    width: 100%;
+}
+
+header{
+    background-color: rgb(42, 123, 216);
+}
+
+#logo{ /*Imagen de logo*/
+    width: 200px;
+    height: 80px;
+}
+
+/*Barra de búsqueda*/
+.search-bar{  
+    margin: auto;
+    text-align: center;
+    width: 350px;
+}
+.search-bar #search-i{
+    font-size: 90%;
+    color: black;
+    background-color: white;
+    padding: 4px;
+    height: 100%;
+}
+
+.search-bar input{
+    font-size: 90%;
+    color: black;
+    padding: 2px;
+}
+/*Menu para smartphones*/
+#menu{
+    font-size: 100%;
+    color: black;
+    background-color: white;
+    padding: 4px;
+    width: 40px;
+    height: 100%;
+    margin-left: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.main-img{
+    text-align: center;
+}
+
+/*Menu pra tablets y pc*/
+.menu-options{
+    display: none;
+}
+.menu-options ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.menu-options a{
+    text-decoration: none;
+    color: #222222;
+
+    display: inline-block;
+    padding: 5px 0;
+    font-size: 17px;
+}
+/**********   Media queries            *********/
+/* Version de Tablet ó Smartphone acostado*/
+@media(min-width: 768px){
+    .head-conteiner{
+        display: flex;
+        justify-content: space-between;
+    }
+    #menu{
+        display: none;
+    }
+    .main-img img{
+        width: 400px;
+        max-width: 450;
+    }
+    .search-bar {
+        width: 300px;
+        max-width: 500px;
+    }
+    .menu-options{
+        display: flex;
+        justify-content: space-between;
+    }
+    .menu-options ul{
+        display: flex;
+    }
+    .menu-options li{
+        margin: 0 2vw;
+    }
+}
