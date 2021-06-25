@@ -22,7 +22,7 @@ Me gusta aprender cosas nuevas costantemente.
 **Rodrigo López**
 
 Soy del estado de México, tengo 27 años; me gustan los retos, siempre estar en movimiento aprendiendo nuevas cosas,
-la programación, la musica, bailar, etc.
+la programación,adoro la musica, bailar, etc.
 Estudie ingeniería electrónica.
 <br>
 <br>
