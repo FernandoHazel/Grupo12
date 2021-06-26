@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Detalles</title>
     <!-- Importar iconos -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 
@@ -45,10 +45,84 @@
         <br>
     </header>
     <br>
-    <section class="detalles">
-        
+    <section class="vistas">
+        <div class="columna_vistas">
+            <img src="/images/detalles de producto/c1.jpg" alt="vista1">
+            <img src="/images/detalles de producto/c2.jpg" alt="vista2">
+            <img src="/images/detalles de producto/c3.jpg" alt="vista3">
+        </div>
+        <div class="vista_principal">
+            <img src="/images/detalles de producto/caldera.jpg" alt="Producto">
+        </div>
+    </section>
+    <section class="info_compra">
+        <div class="info_compra_header">
+            <h2>NOMBRE DEL PRODUCTO</h2>
+            <img src="/images/detalles de producto/calif.PNG" alt="calificación">
+            
+        </div>
+        <br>
+        <div class="info_pago">
+            <div class="info_pago_izq">
+                <form>
+                    <select name="método_de_pago" id="">
+                        <option name="método_de_pago" value="tarjeta_débito">Tarjeta de débito</option>
+                        <option name="método_de_pago" value="tarjeta_crédito">Tarjeta de crédito</option>
+                        <option name="método_de_pago" value="tarjeta_puntos">Tarjeta de puntos</option>
+                        <option name="método_de_pago" value="tarjeta_PayPal">PayPal</option>
+                    </select>
+                    <br>
+                    <br>
+                    <Label for="cantidad">Cantidad de artículos</Label>
+                    <input type="text" name="cantidad" id="cantidad">
+                </form>
+            </div>
+            <div class="info_pago_der">
+                <h1>$XXX MXN</h1>
+                <div class="botones">
+                    <button type="submit">Añadir al carrito</button>
+                    <button type="submit">Comprar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <h2 class="Subt_relacionados">Relacionados</h2>
+    <section class="relacionados">
+        <article>
+            <img src="/images/detalles de producto/caldera.jpg" alt="Producto">
+            <h3>NOMBRE DEL PRODUCTO</h3>
+            <h4>$XXX MXN</h4>
+        </article>
+        <article>
+            <img src="/images/detalles de producto/caldera.jpg" alt="Producto">
+            <h3>NOMBRE DEL PRODUCTO</h3>
+            <h4>$XXX MXN</h4>
+        </article>
+        <article>
+            <img src="/images/detalles de producto/caldera.jpg" alt="Producto">
+            <h3>NOMBRE DEL PRODUCTO</h3>
+            <h4>$XXX MXN</h4>
+        </article>
+        <article>
+            <img src="/images/detalles de producto/caldera.jpg" alt="Producto">
+            <h3>NOMBRE DEL PRODUCTO</h3>
+            <h4>$XXX MXN</h4>
+        </article>
     </section>
     <br>
+    <section class="descripción">
+        <div class="desc_derecha">
+            <h2 class="subt_detalles_del_producto">DETALLES DEL PRODUCTO</h2>
+            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit ratione repudiandae vero eveniet fugiat nesciunt, quod eaque nisi? Labore modi alias eius optio odio tenetur, quod debitis sunt asperiores quidem!</h4>
+            <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam eveniet, laboriosam, soluta temporibus deserunt error hic dolorum consequuntur sint voluptates minima, distinctio expedita quo. Quidem odio cupiditate tenetur aperiam est?</h4>
+        </div>
+        <div class="desc_izquierda">
+            <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime amet, quidem adipisci deleniti velit quos officiis quae eum recusandae, sed optio laudantium nihil eveniet soluta illo exercitationem saepe laborum cupiditate!</h4>
+            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit consequuntur suscipit, molestias dolor recusandae impedit beatae aspernatur quos numquam repellendus dolorem odio blanditiis molestiae. Itaque quibusdam error ipsa non odio.</h4>
+        </div>
+        
+
+    </section>
     <!-- pie de página -->
     <footer>
         <h3>MarcaTienda</h3>
