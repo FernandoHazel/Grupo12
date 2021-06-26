@@ -11,8 +11,6 @@ app.listen(PORT, ()=>{
 
 //creando una dirección estática
 app.use('/static', express.static(__dirname +'/Public'))
-app.use('/test', express.static(__dirname +'/Test'))
-app.use('/images', express.static(__dirname +'/Images'))
 
 // pagina de inicio
 app.get('/', (req, res)=>{

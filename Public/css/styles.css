@@ -38,7 +38,6 @@ header{
     width: 220px
 }
 
-
 /*Menu para smartphones*/
 #menu{
     font-size: 100%;
@@ -127,6 +126,7 @@ img{
 /****************** Conteido Principal ******************/
 body{
     background-color: #aab6adb4;
+    font-family: 'Roboto Mono', monospace;
 }
 .content-instalations{
     padding: 25px;
