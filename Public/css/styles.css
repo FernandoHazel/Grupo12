@@ -238,6 +238,68 @@ h2,h3,h4{
 .descripción{
     display: flex;
 }
+
+/*** Formulario de registro **/
+#register-form{
+    background-color: white;
+}
+
+#register-form{
+    padding-left: 10%;
+    margin-top: 25px;
+    padding-top: 30px;
+}
+#register-form input{
+    margin-bottom: 10px;
+}
+
+#register-form label{
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+}
+
+#register-form .email input, .first-name input, .last-name-pat input, .last-name-mat input{
+    padding: 7px 10px;
+    width: 40%;
+}
+
+#register-form .fecha-nac input{
+    padding:  7px 10px;
+}
+#register-form .address {
+    margin-bottom: 10px;
+}
+#register-form .address textarea{
+    width: 40%;
+}
+
+#register-form .profile {
+    margin-bottom: 10px;
+}
+
+#register-form .password input{
+    padding: 7px 10px;
+    width: 40%;
+}
+
+#register-form .password {
+    margin-bottom: 20px;
+}
+
+#register-form .btts input{
+    width: 150px;
+    margin-right: 25px;
+    border-radius: 3px;
+    background-color: rgb(0, 105, 153);
+    color: white;
+    padding: 6px 6px;
+    border-radius: 5px;
+}
+#register-form  input:focus{ 
+    background-color: rgb(223, 223, 223);
+    color: black;
+}
 /**********   Media queries            *********/
 /* Version de Tablet ó Smartphone acostado*/
 @media(min-width: 768px){
