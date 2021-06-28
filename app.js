@@ -16,15 +16,21 @@ app.use('/static', express.static(__dirname +'/Public'))
 app.get('/', (req, res)=>{
     res.sendFile(__dirname + '/Views/home.html')
 })
-
+// carrito
 app.get('/carrito', (req, res)=>{
     res.sendFile(__dirname + '/Views/carrito.html')
 })
-
+// detalles producto
 app.get('/detalles', (req, res)=>{
     res.sendFile(__dirname + '/Views/detalles.html')
 })
 
+// formulario de registro
+app.get('/registro', (req, res)=>{
+    res.sendFile(__dirname + '/Views/registro.html')
+})
+
+// para pruebas
 app.get('/test', (req, res)=>{
     res.sendFile(__dirname + '/Test/footer_header.html')
 })
