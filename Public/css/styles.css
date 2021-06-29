@@ -300,6 +300,35 @@ h2,h3,h4{
     background-color: rgb(223, 223, 223);
     color: black;
 }
+
+/*** Carrito **/
+.productoDeCarrito{
+    background-color:yellow;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.carritoImagen,.carritoDetalles,.carritoPrecio{
+    display: inline-block;
+    width: 32%;
+}
+.nombreProducto{
+    font-weight: bold;
+}
+ .detallesProducto{
+text-decoration: underline;
+ }
+.cantidadProducto{
+
+}
+.precioProducto{
+color:red;
+}
+.eliminarProducto{
+    background-color: red;
+}
+
+
 /**********   Media queries            *********/
 /* Version de Tablet ó Smartphone acostado*/
 @media(min-width: 768px){
