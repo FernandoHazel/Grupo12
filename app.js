@@ -11,6 +11,7 @@ app.listen(PORT, ()=>{
 
 //creando una dirección estática
 app.use('/static', express.static(__dirname +'/Public'))
+app.use('/static_Views', express.static(__dirname +'/Views'))
 
 // pagina de inicio
 app.get('/', (req, res)=>{
@@ -28,6 +29,11 @@ app.get('/detalles', (req, res)=>{
 // formulario de registro
 app.get('/registro', (req, res)=>{
     res.sendFile(__dirname + '/Views/registro.html')
+})
+
+// formulario de Log in
+app.get('/ingreso', (req, res)=>{
+    res.sendFile(__dirname + '/Views/ingreso.html')
 })
 
 // para pruebas
