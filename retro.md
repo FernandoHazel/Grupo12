@@ -1,9 +1,9 @@
-1.Comenzar a hacer: Definir la estructura del html, definir roles para evitar que el trabajo de uno choque con el de otro, definir fechas de entrega equipo, Pedir feedback a los profes o gente externa sobre nuestra página.
+1.Comenzar a hacer: Definir bien los productos y las secciones que va a tener la página, actualizar las referencias, pedir retro con terceros.
 
-2.Hacer más: Utilizar más el trello para que todo el equipo tenga información actualizada de como va en proyecto, ponerle más atención a los sprints del proyecto integrador.
+2.Hacer más: No solo entregar nuestra parte sino revisar que toda la página sea funcional y coherente, checar los redireccionamientos, hacer pruebas etc.
 
-3.Continuar haciendo: Reuniones de equipo, las prácticas y las ejercitaciones y mantener la comunicación del equipo.
+3.Continuar haciendo: Reuniones de equipo, las prácticas y las ejercitaciones y mantener la comunicación del equipo, continuar al corriente con los sprints.
 
-4.Hacer menos: Procrastinar
+4.Hacer menos:
 
-5.Dejar de hacer: Dejar el proyecto tán al final.
+5.Dejar de hacer: perder dias de sprint.
