@@ -160,8 +160,8 @@ h2,h3,h4{
     display: flex;
     position: relative;
 }
-.columna_vistas{
-    display: flex;
+.columna_vistas{ /*cambiar a display flex en otro breakpoint*/
+    display: none; 
     flex-direction: column;
     width: 10vh;
     height: 30vh;
@@ -171,12 +171,21 @@ h2,h3,h4{
     height: 30%;
     margin-bottom: 10px;
 }
+.vista_principal {
+    display: flex;
+}
 .vista_principal img{
-    position: absolute;
+    margin: auto;
     width: 70%;
     height: 80%;
     top: 15px;
     right: 15px;
+}
+.stars{
+    padding-left: 5px;
+}
+.stars i{
+    margin-left: -5px;
 }
 .info_compra{
     display: flex;
@@ -207,12 +216,17 @@ h2,h3,h4{
     display: flex;
     flex-direction: column;
 }
+.Subt_relacionados{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 .relacionados{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     display: flex;
     width: 100vw;
+    height: 200px;
     justify-content: space-around;
 }
 .relacionados article{
@@ -222,7 +236,7 @@ h2,h3,h4{
 }
 .relacionados article h3{
     padding: 0;
-    font-size: 7px;
+    font-size: 11px;
     text-align: left;
 }
 .relacionados article img{
@@ -231,9 +245,9 @@ h2,h3,h4{
 }
 .relacionados article h4{
     color: red;
-    font-size: 7px;
+    font-size: 20px;
     text-align: right;
-    margin-top: 20%;
+    margin-top: 17%;
 }
 .descripción{
     display: flex;
@@ -401,6 +415,60 @@ color:red;
 
 /***** Desktop ****/
 @media(min-width: 998px){
+    /***** Detalles del producto ****/
+    .vistas{
+        margin: 0;
+        display: flex;
+        position: relative;
+    }
+    .columna_vistas{ 
+        display: flex;
+        flex-direction: column;
+        width: 20vh;
+        height: 40vh;
+        margin-left: 2%;
+    }
+    .columna_vistas img{
+        height: 30%;
+        margin-bottom: 10px;
+    }
+    .vista_principal {
+        display: flex;
+    }
+    .vista_principal img{
+        width: 70%;
+        height: 80%;
+        top: 15px;
+        right: 15px;
+    }
+    .relacionados{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        width: 100vw;
+        justify-content: space-around;
+    }
+    .relacionados article{
+        box-sizing: border-box;
+        width: 25%;
+        background-color: #3A5683;
+    }
+    .relacionados article h3{
+        padding: 0;
+        font-size: 7px;
+        text-align: left;
+    }
+    .relacionados article img{
+        height: 50%;
+        padding: 1px;
+    }
+    .relacionados article h4{
+        color: red;
+        font-size: 7px;
+        text-align: right;
+        margin-top: 20%;
+    }
     .content-instalations{
         width: 22%;
     }
