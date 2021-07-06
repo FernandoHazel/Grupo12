@@ -316,15 +316,39 @@ h2,h3,h4{
 }
 
 /*** Carrito **/
+
+.flexCarrito{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.tituloCarrito{
+    font-size: 30px;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
 .productoDeCarrito{
-    background-color:yellow;
+    background-color:aquamarine;
     text-align: center;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    
+    flex-wrap: wrap;
 }
 
-.carritoImagen,.carritoDetalles,.carritoPrecio{
+.productoDeCarrito:hover{
+    background-color: #3A5683;
+}
+.carritoImagen{
     display: inline-block;
-    width: 32%;
+    width: 100%;
+}
+.carritoDetalles,.carritoPrecio{
+    display: inline-block;
+    width: 50%;
 }
 .nombreProducto{
     font-weight: bold;
@@ -342,7 +366,25 @@ color:red;
     background-color: red;
 }
 
+.comprarCarrito{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: blueviolet;
+    padding-bottom: 15px;
+}
 
+.comprarCarrito section{
+    width: 50%;
+}
+
+.comprar{
+    background-color: black;
+    color:blanchedalmond;
+}
+.eliminar{
+    background-color: red;
+}
 /**********   Media queries            *********/
 /* Version de Tablet ó Smartphone acostado*/
 @media(min-width: 768px){
@@ -409,7 +451,16 @@ color:red;
     .search-bar{
         margin-left: 20px;
     }
-
+    
+    /* Carrito */
+    .carritoImagen{
+        display: inline-block;
+        width: 33%;
+    }
+    .carritoDetalles,.carritoPrecio{
+        display: inline-block;
+        width: 33%;
+    }
 
 }
 
