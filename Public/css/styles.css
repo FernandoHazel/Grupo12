@@ -123,35 +123,60 @@ img{
 /*********** Fin Footer ************/
 
 
-/****************** Conteido Principal ******************/
+/****************** Conteido Principal Home ******************/
 body{
     background-color: #aab6adb4;
     font-family: 'Roboto Mono', monospace;
 }
-.content-instalations{
+.content-offers{
     padding: 25px;
     background-color: white;
     margin: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
-.content-instalations img{
+.offer-img{
     width: 100%;
+    height: 70%;
 }
 
-
+.offer-img img{
+    width: 100%;
+    height: 100%;
+}
+.offer-details{
+    margin-top: 25px;
+}
 .content-product{
     padding: 25px;
     background-color: white;
     margin:10px;
-    border-radius: 5px;
+    border-radius: 20px;
 }
-.content-product img{
+.product-img{
     width: 100%;
+    height: 70%
+}
+.product-img img{
+    width: 100%;
+    height: 100%;
+}
+.product-details{
+    margin-top: 25px;
 }
 
 h2,h3,h4{
     padding-left: 20px;
+}
+
+#section-products{
+    padding: 25px;
+    background-color: #3A5683;
+}
+
+#section-offers{
+    background-color: #3A5683;
+    padding: 25px;
 }
 
 /*detalles del producto*/
@@ -420,17 +445,17 @@ color:red;
         display: block;
     }
     /** Instalaciones **/
-    #section-instalations{
+    #section-offers{
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
     }
-    .content-instalations{
+    .content-offers{
         width: 45%;
     }
 
     /*** Products ***/
-    #sections-products{
+    #section-products{
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
@@ -520,7 +545,7 @@ color:red;
         text-align: right;
         margin-top: 20%;
     }
-    .content-instalations{
+    .content-offers{
         width: 22%;
     }
     .content-product{
