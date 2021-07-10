@@ -48,39 +48,42 @@
         <br>
     </header>
 
-    <main>
+    <main id="register-main">
+        
         <form id="register-form">
-            <label>Registro</label>
-            <br>
+            <p id="form-title">Registro</p>
+            <p>Nombre</p>
             <div class="first-name">
                 <input type="text" id="name" name="name" placeholder="Nombre(s)" required>
             </div>
             <div class="last-name-pat">
                 <input type="text" id="last-p" name="last-p" placeholder="Apellido paterno" required>
             </div>
-    
             <div class="last-name-mat">
                 <input type="text" id="last-m" name="last-m" placeholder="Apellido materno" required>
             </div>
-    
+            <br>
+
+            <p>Email</p>
             <div class="email">
                 <input type="email" name="email" placeholder="Correo electrónico" required >
             </div>
-    
+            <br>
+
             <div class="fecha-nac">
-                <label for="fecha-nac">Ingresa tu fecha de nacimiento</label>
-                <br>
+                <p>Fecha de nacimiento</p>
                 <input type="date" placeholder="Fecha de nacimiento" name="fecha-nac" required>
             </div>
-    
+            <br>
+
             <div class="address">
-                <label for="domicilio">Domicilio</label>
-                <br>
+                <p>Domicilio</p>
                <textarea rows="3" placeholder="Dirección" name="domicilio" required></textarea>
             </div>
-    
+            <br>
+
             <div class="profile">
-                <label for="profile">Elige un perfil</label>
+                <p>Elige un perfil</p>
                 <div class="prof-1">
                     <input type="radio" name="profile" required> Vendedor
                 </div>
@@ -89,22 +92,30 @@
                     <input type="radio" name="profile" required> Cliente
                 </div>
              </div>
-    
+             <br>
+
+             <div class="password">
+                <p>Foto de perfil</p>
+                 <div class="foto">
+                     <input type="file" placeholder="Selecciona una foto" accept=".jpg, .png, .PNG">
+                 </div>
+             </div>
+             <br>
              
              <div class="password">
+                <p>Contraseña</p>
                  <div class="input-pass">
                      <input type="password" placeholder="Contraseña" required>
                  </div>
-    
                  <div class="confirm-pass">
                     <input type="password" placeholder="Confirma tu contraseña" required>
                 </div>
              </div>
+             <br>
     
-            
              <div class="btts">
                 <input type="submit" value="Enviar" id="submit">
-                <input type="reset" value="Borrar">
+                <input type="reset" value="Borrar" id="clear">
            </div>
         </form>
     </main>
