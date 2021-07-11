@@ -1,52 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles</title>
-    <!-- Importar iconos -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
+
+<!-- Vista parcial del head -->
+<%- include('../partials/head.ejs') %>
 <body>
-    <header>
-        <!-- Contenedor de elementos del header  -->
-        <div class="head-conteiner">
-            <!--Contiene el logo-->
-            <div class="main-img">
-                <img src="/images/BigCommerce-logo-dark.svg" id="logo"> 
-            </div>
-            <!-- contiene la barra de búsqueda  -->
-            <div class= "search-bar">
-                <input type="text" placeholder="Buscar productos, marcas o categorias...">
-                <i class="fas fa-search" id="search-i"></i>
-            </div>
+   
 
-            <p class="acc-cart-icon">
-                <i class="fas fa-user"></i>
-                <i class="fas fa-shopping-cart"></i>
-            </p>
-        <!-- Mennu lateral  -->
-        <i class="fas fa-bars" id="menu"></i>
-        </div>
-        <!-- Opciones de categoria -->
-        <div class="menu-options">
-            <ul>
-                <li><a href="#">TV</a></li>
-                <li><a href="#">Audio</a></li>
-                <li><a href="#">Cables</a></li>
-                <li><a href="#">Herramientas</a></li>
-                <li><a href="#">Smartphones y Tablets</a></li>
-                <li><a href="#">Computadoras</a></li>
-            </ul>
-        </div>
-        <br>
-    </header>
+<!-- Vista parcial del header -->
+<%- include('../partials/header.ejs') %>
+
+
+
     <br>
     <section class="vistas">
         <div class="columna_vistas">
@@ -132,30 +97,9 @@
         
 
     </section>
-    <!-- pie de página -->
-    <footer>
-        <h3>MarcaTienda</h3>
-        <br>
-        <!-- Opciones del footer-->
-        <div class="options-footer">
-            <ul>
-                <h4>¿Quiénes Somos?</h4>
-                <br>
-                <li><a href="#">Sobre nosostros</a></li>
-                <li><a href="#">Términos y condiciones</a></li>
-                <li><a href="#">Políticas</a></li>
-                <li><a href="#">Formas de pago</a></li>
-            </ul>
-            <ul>
-                <h4>Contacto</h4>
-                <br>
-                <li><a href="#">55 555 555</a></li>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Instagram</a></li>
-            </ul>
-        </div>
-        <br>
-        <div class="rights-reserve">@Todos los derechos reservados</div>
-    </footer>
+
+    <!-- Vista parcial del footer -->
+    <%- include('../partials/footer.ejs') %>
+    
 </body>
 </html>
