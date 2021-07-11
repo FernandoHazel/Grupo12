@@ -2,23 +2,20 @@ const express = require("express")
 const app = express()
 
 const rutaMain =require('./routes/main.js')
-
-
-
-
-
+const rutaProductos = require("./routes/productos")
+const path = require("path")
 
 
 // creando una dirección estática
-//app.use(express.static('./public'))
 app.use("/", express.static(__dirname+'/../public'))
 
 //Configurar ejs como el template engine de la app
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs')
 
-
+// Recursos
 app.use('/',rutaMain);
-
+app.use("/productos", rutaProductos);
 
 
 // Puerto

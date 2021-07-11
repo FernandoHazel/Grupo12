@@ -7,11 +7,6 @@ const mainController={
   carrito: function(req, res){    
       return      res.render('../src/views/carrito');
   },
-
-    detalles: function(req, res){    
-      return      res.render('../src/views/products/detalles');
-    },
-
     ingreso: function(req, res){    
       return      res.render('../src/views/users/ingreso');
     },

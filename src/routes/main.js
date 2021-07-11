@@ -6,8 +6,6 @@ router.get('/', mainController.home)
 
 router.get('/carrito',mainController.carrito)
 
-router.get('/detalles',mainController.detalles)
-
 router.get('/ingreso',mainController.ingreso)
 
 router.get('/registro',mainController.registro)

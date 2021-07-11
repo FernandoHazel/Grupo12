@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <form id="crea-edit-product">
+            <p>Añade un nuevo producto</p>
+            <div>
+                <p>Nombre</p>
+                <input name="name" id="name" placeholder="Nombre del producto">
+            </div>
+            <br>
+
+            <div>
+                <p>Detalles</p>
+                <textarea placeholder="Menciona las principales características del producto"></textarea>
+            </div>
+            <br>
+
+            <div>
+                <p>Imagen</p>
+                <input type="file" accept=".jpg, .png, .PNG">
+            </div>
+            <br>
+
+            <div>
+                <p>Precio Unitario $MXN</p>
+                <input type="number" min="0">
+            </div>
+            <br>
+
+            <div>
+                <p>Cantidad</p>
+                <input type="number" min="1">
+            </div>
+
+            <div>
+                <input type="submit" value="Añadir">
+                <input type="reset" value="Limpiar">
+            </div>
+
+        </form>
+    </main>
+</body>
+</html>
