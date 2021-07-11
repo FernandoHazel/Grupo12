@@ -1,6 +1,26 @@
 const express = require("express")
 const app = express()
 
+const rutaMain =require('./routes/main.js')
+
+
+
+
+
+
+
+// creando una dirección estática
+//app.use(express.static('./public'))
+app.use("/", express.static(__dirname+'/../public'))
+
+//Configurar ejs como el template engine de la app
+app.set('view engine', 'ejs')
+
+
+app.use('/',rutaMain);
+
+
+
 // Puerto
 const PORT = 3031
 
@@ -8,30 +28,3 @@ const PORT = 3031
 app.listen(PORT, ()=>{
     console.log(`server running on http://localhost:${PORT}`)
 })
-
-// creando una dirección estática
-app.use("/", express.static(__dirname+'/../public'))
-
-// pagina de inicio
-app.get('/', (req, res)=>{
-    res.sendFile(__dirname + '/views/home.html')
-})
-// carrito
-app.get('/carrito', (req, res)=>{
-    res.sendFile(__dirname + '/views/carrito.html')
-})
-// detalles producto
-app.get('/detalles', (req, res)=>{
-    res.sendFile(__dirname + '/views/detalles.html')
-})
-
-// formulario de registro
-app.get('/registro', (req, res)=>{
-    res.sendFile(__dirname + '/views/registro.html')
-})
-
-// formulario de Log in
-app.get('/ingreso', (req, res)=>{
-    res.sendFile(__dirname + '/views/ingreso.html')
-})
-
