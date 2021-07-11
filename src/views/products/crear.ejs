@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<%- include("../partials/head") %>
 <body>
+    <%- include("../partials/header") %>
     <main>
         <form id="crea-edit-product">
-            <p>Añade un nuevo producto</p>
-            <div>
+            <p id="pro-title">Añade un nuevo producto</p>
+            <div class="name">
                 <p>Nombre</p>
-                <input name="name" id="name" placeholder="Nombre del producto">
+                <input name="name" id="name" placeholder="Nombre del producto" required>
             </div>
             <br>
 
-            <div>
+            <div class="description">
                 <p>Detalles</p>
-                <textarea placeholder="Menciona las principales características del producto"></textarea>
+                <textarea placeholder="Características del producto" required></textarea>
             </div>
             <br>
 
-            <div>
+            <div class="pro-img">
                 <p>Imagen</p>
                 <input type="file" accept=".jpg, .png, .PNG">
             </div>
             <br>
 
-            <div>
-                <p>Precio Unitario $MXN</p>
-                <input type="number" min="0">
+            <div class="price">
+                <p>Precio Unitario</p>
+                <input type="number" min="0.1" required> <span>$ MXN</span>
             </div>
             <br>
 
-            <div>
+            <div class="quantity">
                 <p>Cantidad</p>
-                <input type="number" min="1">
+                <input type="number" min="1" required>
             </div>
 
-            <div>
-                <input type="submit" value="Añadir">
-                <input type="reset" value="Limpiar">
+            <div class="btts">
+                <input type="submit" value="Añadir" id="submit">
+                <input type="reset" value="Limpiar" id="clear">
             </div>
 
         </form>
     </main>
+
+    <%- include("../partials/footer") %>
 </body>
 </html>

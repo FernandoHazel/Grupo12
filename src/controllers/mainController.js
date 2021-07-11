@@ -1,18 +1,18 @@
 const mainController={
 
   home: function(req, res){    
-    return      res.render('../src/views/home');
+    res.render('home');
   },
 
   carrito: function(req, res){    
-      return      res.render('../src/views/carrito');
+      res.render('carrito');
   },
     ingreso: function(req, res){    
-      return      res.render('../src/views/users/ingreso');
+      res.render('users/ingreso');
     },
 
     registro: function(req, res){    
-      return      res.render('../src/views/users/registro');
+      res.render('users/registro');
     }
 
   

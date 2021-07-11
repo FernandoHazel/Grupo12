@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head") %>
+<body>
+    <%- include("../partials/header") %>
+    <main>
+        <form id="crea-edit-product">
+            <p id="pro-title">Editar Producto</p>
+            <div class="name">
+                <p>Nombre</p>
+                <input name="name" id="name" placeholder="Nombre del producto" value="<%= product.name %>"">
+            </div>
+            <br>
+
+            <div class="description">
+                <p>Detalles</p>
+                <textarea placeholder="Características del producto" ><%= product.description%></textarea>
+            </div>
+            <br>
+
+            <% if(product.hasOwnProperty('img')) {%>
+                <p>Imagen Actual</p>
+                <img src="<%= product.img %>" height="150px">
+
+                <div class="pro-img">
+                    <p>Cambiar Imagen</p>
+                    <input type="file" accept=".jpg, .png, .PNG" value="c:\">
+                </div>
+            <% } else{ %>
+                <div class="pro-img">
+                    <p>Imagen</p>
+                    <input type="file" accept=".jpg, .png, .PNG" value="c:\">
+                </div>
+            <% } %>
+            
+            <br>
+
+            <div class="price">
+                <p>Precio Unitario</p>
+                <input type="number" min="0" value="<%= product.price %>"> <span>$ MXN</span>
+            </div>
+            <br>
+
+            <div class="quantity">
+                <p>Cantidad</p>
+                <input type="number" min="1" value="<%= product.quantity %>">
+            </div>
+
+            <div class="btts">
+                <input type="submit" value="Editar" id="submit">
+                <input type="reset" value="Limpiar" id="clear">
+            </div>
+
+        </form>
+    </main>
+
+    <%- include("../partials/footer") %>
+</body>
+</html>
