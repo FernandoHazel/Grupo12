@@ -12,6 +12,73 @@
             </div>
             <br>
 
+            <div class="category">
+                <p>Categoria</p>
+                <% if(product.category == "TV"){%>
+                    <input name="category" id="category" type="radio" value="TV" checked><span>TV</span> <br>
+                    <input name="category" id="category" type="radio" value="Audio"><span>Audio</span><br>
+                    <input name="category" id="category" type="radio" value="Cables"><span>Cables</span><br>
+                    <input name="category" id="category" type="radio" value="Herramienta"><span>Herramientas</span><br>
+                    <input name="category" id="category" type="radio" value="Smartphone"><span>Smartphones</span><br>
+                    <input name="category" id="category" type="radio" value="Tablet"><span>Tablet</span><br>
+                    <input name="category" id="category" type="radio" value="Computadora"><span>Computadora</span>
+                <% }else if(product.category == "Audio") {%>
+                    <input name="category" id="category" type="radio" value="TV"><span>TV</span> <br>
+                    <input name="category" id="category" type="radio" value="Audio" checked><span>Audio</span><br>
+                    <input name="category" id="category" type="radio" value="Cables"><span>Cables</span><br>
+                    <input name="category" id="category" type="radio" value="Herramienta"><span>Herramientas</span><br>
+                    <input name="category" id="category" type="radio" value="Smartphone"><span>Smartphones</span><br>
+                    <input name="category" id="category" type="radio" value="Tablet"><span>Tablet</span><br>
+                    <input name="category" id="category" type="radio" value="Computadora"><span>Computadora</span>
+            
+                <% }else if(product.category == "Cables") {%>
+                    <input name="category" id="category" type="radio" value="TV"><span>TV</span> <br>
+                    <input name="category" id="category" type="radio" value="Audio"><span>Audio</span><br>
+                    <input name="category" id="category" type="radio" value="Cables" checked><span>Cables</span><br>
+                    <input name="category" id="category" type="radio" value="Herramienta"><span>Herramientas</span><br>
+                    <input name="category" id="category" type="radio" value="Smartphone"><span>Smartphones</span><br>
+                    <input name="category" id="category" type="radio" value="Tablet"><span>Tablet</span><br>
+                    <input name="category" id="category" type="radio" value="Computadora"><span>Computadora</span>
+               
+                <% }else if(product.category == "Herramientas"){ %>
+                    <input name="category" id="category" type="radio" value="TV"><span>TV</span> <br>
+                    <input name="category" id="category" type="radio" value="Audio"><span>Audio</span><br>
+                    <input name="category" id="category" type="radio" value="Cables"><span>Cables</span><br>
+                    <input name="category" id="category" type="radio" value="Herramienta" checked><span>Herramientas</span><br>
+                    <input name="category" id="category" type="radio" value="Smartphone"><span>Smartphones</span><br>
+                    <input name="category" id="category" type="radio" value="Tablet"><span>Tablet</span><br>
+                    <input name="category" id="category" type="radio" value="Computadora"><span>Computadora</span>
+
+                <% }else if(product.category == "Smartphones"){ %>
+                    <input name="category" id="category" type="radio" value="TV"><span>TV</span> <br>
+                    <input name="category" id="category" type="radio" value="Audio"><span>Audio</span><br>
+                    <input name="category" id="category" type="radio" value="Cables"><span>Cables</span><br>
+                    <input name="category" id="category" type="radio" value="Herramienta"><span>Herramientas</span><br>
+                    <input name="category" id="category" type="radio" value="Smartphone" checked><span>Smartphones</span><br>
+                    <input name="category" id="category" type="radio" value="Tablet"><span>Tablet</span><br>
+                    <input name="category" id="category" type="radio" value="Computadora"><span>Computadora</span>
+                <% }else if(product.category == "Tablet"){%>
+                    <input name="category" id="category" type="radio" value="TV"><span>TV</span> <br>
+                    <input name="category" id="category" type="radio" value="Audio"><span>Audio</span><br>
+                    <input name="category" id="category" type="radio" value="Cables"><span>Cables</span><br>
+                    <input name="category" id="category" type="radio" value="Herramienta"><span>Herramientas</span><br>
+                    <input name="category" id="category" type="radio" value="Smartphone"><span>Smartphones</span><br>
+                    <input name="category" id="category" type="radio" value="Tablet" checked><span>Tablet</span><br>
+                    <input name="category" id="category" type="radio" value="Computadora"><span>Computadora</span>
+                <% }else if(product.category == "Computadora") {%>
+                    <input name="category" id="category" type="radio" value="TV"><span>TV</span> <br>
+                    <input name="category" id="category" type="radio" value="Audio"><span>Audio</span><br>
+                    <input name="category" id="category" type="radio" value="Cables"><span>Cables</span><br>
+                    <input name="category" id="category" type="radio" value="Herramienta"><span>Herramientas</span><br>
+                    <input name="category" id="category" type="radio" value="Smartphone"><span>Smartphones</span><br>
+                    <input name="category" id="category" type="radio" value="Tablet"><span>Tablet</span><br>
+                    <input name="category" id="category" type="radio" value="Computadora" checked><span>Computadora</span>
+                <% } %>
+                
+                
+            </div>
+            <br>
+
             <div class="description">
                 <p>Detalles</p>
                 <textarea placeholder="Características del producto" ><%= product.description%></textarea>

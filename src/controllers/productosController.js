@@ -16,6 +16,7 @@ let productosController = {
                 price: 3500,
                 description: "Television de alta resolucion que soporta 3 entradas HDMI",
                 quantity: 124,
+                category: "TV",
                 img: "/images/productos/1.png"
             }
         }
