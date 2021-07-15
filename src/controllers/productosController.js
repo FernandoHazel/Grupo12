@@ -1,3 +1,12 @@
+const fs = require('fs');
+const path = require("path")
+let dataDirection= path.join(__dirname + "../../../public/data/products.json")
+
+let rawdata = fs.readFileSync(dataDirection);
+let products = JSON.parse(rawdata);
+
+
+
 let productosController = {
     detalles: (req, res)=>{
         res.render("products/detalles")
@@ -18,9 +27,16 @@ let productosController = {
                 quantity: 124,
                 category: "TV",
                 img: "/images/productos/1.png"
-            }
+            },
         }
-    )}
+    )},
+    categoria: (req, res,) => {
+        let id = req.params.id
+          let filtro = products.filter(product => {
+              return product.category == id
+          })
+        res.render('products/categoria', {productos: filtro})
+    }
 }
 
 module.exports = productosController

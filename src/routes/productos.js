@@ -10,5 +10,6 @@ router.get("/", (req, res)=>{
 router.get("/crear", productosController.crear)
 router.get("/detalles", productosController.detalles)
 router.get("/editar/:id?", productosController.editar)
+router.get("/categoria/:id?", productosController.categoria)
 
 module.exports = router
