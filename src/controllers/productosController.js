@@ -35,7 +35,10 @@ let productosController = {
           let filtro = products.filter(product => {
               return product.category == id
           })
-        res.render('products/categoria', {productos: filtro})
+        res.render('products/listaProductos', {productos: filtro, options: id})
+    },
+    all: (req, res)=>{
+        res.render('products/listaProductos', {productos: products, options: "all"})
     }
 }
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Vista parcial del head -->
+<%- include('../partials/head.ejs') %>
+<body>
+    
+    <!-- Vista parcial del header -->
+    <%- include('../partials/header.ejs') %>
+
+    <!-- Mostrar listado de productos -->
+    <main>
+        <section id="options-header">
+            <div>
+                <a href="/productos/all">Mostar Todos</a>
+            </div>
+        </section>
+
+        <section id="products-section">
+            <div id="products-header-topic">
+                <% if(options == "all"){%>
+                    <span class="category">Todos los productos.</span> <span class="results"><%= productos.length%> Resultado(s)</span>
+                <% }else{%> 
+                    <span class="category">productos > categoría > <%= options %> </span> <span class="results"><%= productos.length%> Resultados</span>
+                <% }%>
+            </div>
+            <br>
+            <br>
+            <% productos.forEach(product => { %>
+                <div class="product-conteiner">
+                    <img src="<%= product.img %>">
+                    <p class="products-sold">
+                        500 vendidos
+                    </p>
+                    <p class="title"><%= product.title %></p>
+                    <p class="description"><%= product.description %></p>
+                    <p class="price">
+                        $ <%= product.price %> MXN
+                    </p>
+                </div>
+            <% }) %>
+        </section>
+    </main>
+    <br>
+     <!-- Vista parcial del footer -->
+     <%- include('../partials/footer.ejs') %>
+</body>
+</html>
