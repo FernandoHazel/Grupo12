@@ -12,29 +12,44 @@
     <br>
     <!-- Contenido principal -->
     <main>
-        <section id="options-header">
-            <div>
-                <a href="/productos/all">Productos disponibles</a>
-            </div>
-        </section>
         <br>
         <h2>Ofertas</h2>
         <section id="section-offers">
             <% offerts.forEach(offert =>{ %>
                 <article class="content-offers">
-                    <div class="offer-img">
+                    <!-- Redirecionamiento  -->
+                    <a href="/productos/all">
                         <img src="<%= offert.img %>">
+                    <!--Nombre del producto (acotado si es muy largo)-->
+                    <% if(offert.product_title.length > 17){%>
+                        <span class="title">
+                            <%= offert.product_title.substring(0, 17) %>..
+                        </span>
+                    <% }else{%>
+                        <span class="title">
+                            <%= offert.product_title %>
+                        </span>
+                    <%  } %>
+                    <!-- Descuento -->
+                    <div class="discount">
+                        -<%= offert.offert %>% OFF
                     </div>
-                    
-                    <div class="offer-details">
-                    <h3><%= offert.product_title%></h3>
-                    <p class="descount">-<%= offert.offert %> % </p>
+                    <!-- Precio original y final-->
+                    <div class="price">
+                        <span class="old-price">$1956</span><span class="new-price">$1450</span>
                     </div>
-                </article>
+                </a>
+            </article>
             <% }) %>
-            <div class="offers-see-more">
-                <div>Ver Más Ofertas</div>
-            </div>
+
+            <article class="content-offers" id="more-offers">
+                <a href="/productos/all">
+                    <div>
+                        <span id="see-more-offers"><span id="underline">Ver Más</span> Ofertas</span>
+                    </div>
+                </a>
+            </article>
+
         </section>
         <br>
         <!-- Lo más productos más vendidos -->
@@ -43,16 +58,42 @@
 
             <% mostSales.forEach(sale => { %>
                 <article class="content-product">
-                    <div class="product-img">
+                    <!-- Redirecionamiento  -->
+                    <a href="/productos/all">
                         <img src="<%= sale.img %>">
+                    <!--Nombre del producto (acotado si es muy largo)-->
+                    <% if(sale.name.length > 17){%>
+                        <div class="title">
+                            <%= sale.name.substring(0, 17) %>..
+                        </div>
+                    <% }else{%>
+                        <div class="title">
+                            <%= sale.name %>
+                        </div>
+                    <%  } %>
+                    <!-- Descuento -->
+                    <div class="sales">
+                        -<%= sale.price %>% 
+                    </div> <apan class="vendidos">Vendidos</apan>
+                    <!-- Precio original y final-->
+                    <div class="price">
+                        <span class="new-price">$1450</span>
                     </div>
-    
-                    <div class="product-details">
-                        <h3><%= sale.name %></h3>
-                        <p><%= sale.price  %></p>
-                    </div>
+                </a>
                 </article>
             <% }) %>
+            <br>
+
+            
+            <article class="content-product" id="more-products">
+                <a href="/productos/all">
+                    <div>
+                        <span id="see-more-offers"><span id="underline">Ver Más</span>  Productos</span>
+                    </div>
+                </a>
+            </article>
+           
+
         </section>
     </main>
     <br>
