@@ -21,7 +21,7 @@
         <h2>Ofertas</h2>
         <section id="section-offers">
             <% offerts.forEach(offert =>{ %>
-                <div class="content-offers">
+                <article class="content-offers">
                     <div class="offer-img">
                         <img src="<%= offert.img %>">
                     </div>
@@ -30,8 +30,11 @@
                     <h3><%= offert.product_title%></h3>
                     <p class="descount">-<%= offert.offert %> % </p>
                     </div>
-                </div>
+                </article>
             <% }) %>
+            <div class="offers-see-more">
+                <div>Ver Más Ofertas</div>
+            </div>
         </section>
         <br>
         <!-- Lo más productos más vendidos -->
@@ -39,7 +42,7 @@
         <section id="section-products">
 
             <% mostSales.forEach(sale => { %>
-                <div class="content-product">
+                <article class="content-product">
                     <div class="product-img">
                         <img src="<%= sale.img %>">
                     </div>
@@ -48,7 +51,7 @@
                         <h3><%= sale.name %></h3>
                         <p><%= sale.price  %></p>
                     </div>
-                </div>
+                </article>
             <% }) %>
         </section>
     </main>

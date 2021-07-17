@@ -1,30 +1,42 @@
 [
     {
+        "id": 1,
         "img": "/images/productos/audio/Apple EarPods con conector Lightning - Blanco.png",
         "title": "Apple Earpods",
         "description": "De muy alta calidad",
         "category": "audio",
-        "price": 1500
+        "price": 1500,
+        "discount": 0,
+        "sold": 200
     },
     {
+        "id": 2,
         "img": "/images/productos/cables/Cable elite USB tipo A 3.0 a micro USB tipo B 3.0 de 1,8 m.PNG",
         "title": "Cable Elite USB",
         "description": "Tipo 3.0",
         "category": "cables",
-        "price": 349.50
+        "price": 349.50,
+        "discount": 10,
+        "sold": 500
     },
     {
+        "id": 1,
         "img": "/images/productos/computadoras/Alienware M15 R4 Gaming Laptop I7-10870h 16gb Rtx 3070 512gb.PNG",
         "title": "Alienwere M15",
         "description": "Laptop Gamming",
         "category": "computadoras",
-        "price": 35999
+        "price": 35999,
+        "discount": 25,
+        "sold": 15
     },
     {
+        "id": 1,
         "img": "/images/productos/herramientas/Multímetro profesional auto rango.PNG",
         "title": "Multilímetro profesional",
         "description": "Gran calidad",
         "category": "herramientas",
-        "price": 6300
+        "price": 6300,
+        "discount": 35,
+        "sold": 55
     }
 ]
