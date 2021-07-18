@@ -12,17 +12,17 @@
     <br>
     <section class="vistas">
         <div class="columna_vistas">
-            <img src="/images/detalles de producto/c1.jpg" alt="vista1">
-            <img src="/images/detalles de producto/c2.jpg" alt="vista2">
-            <img src="/images/detalles de producto/c3.jpg" alt="vista3">
+            <img src="<%= article.img %>" alt="vista1">
+            <img src="<%= article.img %>" alt="vista2">
+            <img src="<%= article.img %>" alt="vista3">
         </div>
         <div class="vista_principal">
-            <img src="/images/detalles de producto/caldera.jpg" alt="Producto">
+            <img src="<%= article.img %>" alt="Producto">
         </div>
     </section>
     <section class="info_compra">
         <div class="info_compra_header">
-            <h2>NOMBRE DEL PRODUCTO</h2>
+            <h2><%= article.title %></h2>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -49,7 +49,7 @@
                 </form>
             </div>
             <div class="info_pago_der">
-                <h1>$XXX MXN</h1>
+                <h1>$<%= article.price %> MXN</h1>
                 <div class="botones">
                     <button type="submit">Añadir al carrito</button>
                     <button type="submit">Comprar</button>
@@ -60,37 +60,33 @@
     <h2 class="Subt_relacionados">Relacionados</h2>
     <section class="relacionados">
         <article>
-            <img src="/images/detalles de producto/caldera.jpg" alt="Producto">
-            <h3>NOMBRE DEL PRODUCTO</h3>
-            <h4>$XXX MXN</h4>
+            <img src="<%= category[0].img %>" alt="Producto">
+            <h3><%= category[0].title %></h3>
+            <h4>$<%= category[0].price %> MXN</h4>
         </article>
         <article>
-            <img src="/images/detalles de producto/caldera.jpg" alt="Producto">
-            <h3>NOMBRE DEL PRODUCTO</h3>
-            <h4>$XXX MXN</h4>
+            <img src="<%= category[1].img %>" alt="Producto">
+            <h3><%= category[1].title %></h3>
+            <h4>$<%= category[1].price %> MXN</h4>
         </article>
         <article>
-            <img src="/images/detalles de producto/caldera.jpg" alt="Producto">
-            <h3>NOMBRE DEL PRODUCTO</h3>
-            <h4>$XXX MXN</h4>
+            <img src="<%= category[2].img %>" alt="Producto">
+            <h3><%= category[2].title %></h3>
+            <h4>$<%= category[2].price %> MXN</h4>
         </article>
         <article>
-            <img src="/images/detalles de producto/caldera.jpg" alt="Producto">
-            <h3>NOMBRE DEL PRODUCTO</h3>
-            <h4>$XXX MXN</h4>
+            <img src="<%= category[3].img %>" alt="Producto">
+            <h3><%= category[3].title %></h3>
+            <h4>$<%= category[3].price %> MXN</h4>
         </article>
     </section>
     <br>
     <section class="descripción">
         <div class="desc_derecha">
             <h2 class="subt_detalles_del_producto">DETALLES DEL PRODUCTO</h2>
-            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit ratione repudiandae vero eveniet fugiat nesciunt, quod eaque nisi? Labore modi alias eius optio odio tenetur, quod debitis sunt asperiores quidem!</h4>
-            <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam eveniet, laboriosam, soluta temporibus deserunt error hic dolorum consequuntur sint voluptates minima, distinctio expedita quo. Quidem odio cupiditate tenetur aperiam est?</h4>
+            <h4><%= article.detailedDescription %></h4>
         </div>
-        <div class="desc_izquierda">
-            <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime amet, quidem adipisci deleniti velit quos officiis quae eum recusandae, sed optio laudantium nihil eveniet soluta illo exercitationem saepe laborum cupiditate!</h4>
-            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit consequuntur suscipit, molestias dolor recusandae impedit beatae aspernatur quos numquam repellendus dolorem odio blanditiis molestiae. Itaque quibusdam error ipsa non odio.</h4>
-        </div>
+        
     </section>
 
     <!-- Vista parcial del footer -->

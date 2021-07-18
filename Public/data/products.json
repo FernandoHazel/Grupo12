@@ -8,7 +8,8 @@
         "price": 1500,
         "discount": 0,
         "sold": 200,
-        "stock": 25
+        "stock": 25,
+        "detailedDescription": "A diferencia de los audífonos circulares tradicionales, el diseño de los EarPods se basa en la geometría del oído, por eso son más cómodos que cualquier otro audífono de este tipo. Las bocinas del interior de los EarPods han sido diseñadas para mejorar la calidad del sonido y minimizar su pérdida. ¿El resultado? Un audio de alta calidad. Los EarPods con conector Lightning también incluyen un control remoto integrado en el cable que te permite ajustar el volumen, controlar la reproducción de música y video, y responder o finalizar llamadas. Avisos Legales Funcionan con todos los dispositivos que tienen un conector Lightning y que son compatibles con iOS 10 o posterior, como el iPod touch, el iPad y el iPhone. También funcionan con los modelos de iPad con iPadOS."
     },
     {
         "id": 2,
@@ -19,7 +20,8 @@
         "price": 349.50,
         "discount": 10,
         "sold": 500,
-        "stock": 65
+        "stock": 65,
+        "detailedDescription": "Cable arnés de la línea Elite con conectores macho (plug) USB tipo 'A' versión 3.0 a macho (plug) micro USB tipo “B” versión 3.0, de 1,8 m, ideal para la interconexión de equipos que requieren una alta capacidad para la transmisión de datos (como discos duros externos). Permite velocidades de hasta 5Gbps en puertos 3.0 y de 480Mbps en puertos 2.0. Sus conectores están moldeados, por lo que  reducen la tensión al fijarse perfectamente a la cubierta del PVC asegurando la perfecta conexión y la transmisión de datos"
     },
     {
         "id": 3,
@@ -30,7 +32,8 @@
         "price": 6300,
         "discount": 35,
         "sold": 55,
-        "stock": 36
+        "stock": 36,
+        "detailedDescription": "Este multímetro digital profesional permite medir con gran precisión, sin la necesidad de escoger escalas, gracias a su función de auto rango. Mide resistencia, voltaje de corriente alterna o directa, intensidad de corriente, capacitancia y continuidad audible. Además, su función “hold” te permite fijar alguna lectura en el display, mientras haces anotaciones o cambias de posición, sin perder la medición realizada. Tiene cubierta plástica para protegerlo en caso de caídas o golpes accidentales. También cuenta con función de ahorro de batería, así que si no lo estás utilizando se apagará automáticamente después de cierto tiempo. Gracias a la calidad profesional que tiene este multímetro, es recomendable para técnicos, ingenieros o cualquier persona que realice reparaciones o instalaciones eléctricas o electrónicas. En Steren encontrarás una gran variedad de multímetros digitales, entre otros accesorios que te serán de gran utilidad en tus proyectos. ¡Compra ya este multímetro profesional con auto rango! Puedes adquirirlo desde nuestra Tienda en Línea de manera fácil y segura. Recuerda que realizamos envíos a todo México y, si ordenas desde el DF o área metropolitana, paga al recibir tu producto."
     },
     {
         "id": 4,
@@ -41,7 +44,8 @@
         "price": 1149,
         "discount": 0,
         "sold": 200,
-        "stock": 24
+        "stock": 24,
+        "detailedDescription": "¡Experimenta la adrenalina de sumergirte en la escena de otra manera! Tener auriculares específicos para jugar cambia completamente tu experiencia en cada partida. Con los Onikuma K2 Pro no te pierdes ningún detalle y escuchas el audio tal y como fue diseñado por los creadores. El formato perfecto para ti. Al ser headset podrás escuchar tu música preferida, mantener llamadas telefónicas y jugar en línea desde tu PC sin perderte ningún detalle."
     },
     {
         "id": 5,
@@ -52,7 +56,8 @@
         "price": 359.59,
         "discount": 15,
         "sold": 440,
-        "stock": 85
+        "stock": 85,
+        "detailedDescription": "La tecnología BT 5.0 proporciona una velocidad de transferencia de datos rápida, un rendimiento estable y un bajo consumo de energía. Gracias a la tecnología TWS, puede usar los auriculares exclusivamente o usarlos como un par. Equipado con cargador de 250mAh para cargar los auriculares. El micrófono incorporado proporciona un sonido más claro y realista. Te brindará una experiencia de usuario perfecta. Auriculares inalámbricos Lenovo LP1S True Auriculares BT 5.0 Auriculares estéreo TWS con diafragmas dobles Hosts dobles Auriculares TWS impermeables IPX4 Auriculares deportivos con tecnología de reducción de ruido Llamada HD Auriculares con micrófono incorporado. El asistente de voz solo admite chino."
     },
     {
         "id": 6,
@@ -63,7 +68,8 @@
         "price": 780.50,
         "discount": 10,
         "sold": 45,
-        "stock": 65
+        "stock": 65,
+        "detailedDescription": "Somos TEDGE – En Tedge nos propusimos crear productos de alta tecnología sin resignar diseño y calidad con los mejores precios del mercado. Audífonos Para Jugador Gamer Diadema Tedge"
     },
     {
         "id": 7,
@@ -71,10 +77,11 @@
         "title": "Bocina Portátil Amlificada",
         "description": "8 pulgadas portátil y de muy buen sonido",
         "category": "audio",
-        "price": 499,
+        "price": 359,
         "discount": 0,
         "sold": 355,
-        "stock": 38
+        "stock": 38,
+        "detailedDescription": "Bocina de 8 pulgadas con diseño moderno portátil. Funcionamiento vía bluetooth compatible con cualquier dispositivo de reproducción. Integrada con batería recargable. La bocina ofrece un sonido natural, una gran claridad y precisión que se dispersa uniformemente por toda la habitación. Asegura potencia y calidad por igual en la reproducción de contenidos multimedia."
     },
     {
         "id": 8,
@@ -82,10 +89,11 @@
         "title": "Bocina Link Bits VA626TP",
         "description": "Bocina negra portátil con Bluethooth",
         "category": "audio",
-        "price": 599,
+        "price": 454,
         "discount": 5,
         "sold": 75,
-        "stock": 12
+        "stock": 12,
+        "detailedDescription": "Link Bits VA626TP ofrece un sonido natural, con una gran claridad y precisión, que se dispersa de manera uniforme. Una bocina que asegura potencia y calidad por igual en la reproducción de contenidos multimedia. Olvídate del amplificador. Al ser activa solo necesitarás conectarla a la fuente de sonido y el mismo equipo se encargará de amplificar y reproducir: ganarás practicidad y espacio, ya que además requiere menos cableado que una pasiva. Es la solución más conveniente si quieres producir música en tu casa o en un estudio, y también para DJs. Apta para aire libre. Úsala en donde quieras, esta diseñada para que tengas el mejor sonido siempre, tanto en interiores como en exteriores."
     },
     {
         "id": 9,
@@ -93,10 +101,11 @@
         "title": "Bocina Moreka GT-113",
         "description": "Bocina color rojo. Cuenta con Bluethooth",
         "category": "audio",
-        "price": 280,
+        "price": 164,
         "discount": 0,
         "sold": 750,
-        "stock": 43
+        "stock": 43,
+        "detailedDescription": "Moreka GT-113 ofrece un sonido natural, con una gran claridad y precisión, que se dispersa de manera uniforme. Una bocina que asegura potencia y calidad por igual en la reproducción de contenidos multimedia. Olvídate del amplificador. Al ser activa solo necesitarás conectarla a la fuente de sonido y el mismo equipo se encargará de amplificar y reproducir: ganarás practicidad y espacio, ya que además requiere menos cableado que una pasiva. Es la solución más conveniente si quieres producir música en tu casa o en un estudio, y también para DJs. Apta para aire libre. Úsala en donde quieras, esta diseñada para que tengas el mejor sonido siempre, tanto en interiores como en exteriores."
     },
     {
         "id": 10,
@@ -107,7 +116,8 @@
         "price": 440,
         "discount": 25,
         "sold": 311,
-        "stock": 31
+        "stock": 31,
+        "detailedDescription": "Bocina portátil a prueba de salpicaduras CON 2 Buffer incluidos, nuestra bocino tiene un sonido de alta definición, su batería tiene una duración aproximada de 12 horas en uso ya que su batería es de 6000 mAH y cuenta con cargador de entrada USB. Con nuestra bocina también puedes incluso atender tus llamadas ya que cuenta con altavoz, además cuenta con una correa de alta calidad para que puedas llevarla a dónde desees. Nuestra bocina cuenta con conexión Bluetooth por lo que puedes conectarla a cualquier dispositivo que cuente con Bluetooth, desde tu teléfono celular, hasta tus consolas de videojuegos, laptop, etc. Además, nuestra bocina cuenta con entrada MicroSD, por lo cual no importa que no tengas un dispositivo a la mano, simplemente insertando la memoria con tu música favorita es suficiente para escuchar tus canciones con la más alta calidad y definición. Nuestros productos son de la mejor calidad, nuestra bocina cuenta con distintos tipos de acabados, lo cual da una imagen excelente que va acorde con la calidad de nuestros productos. Contamos con el mejor precio del mercado, recuerda que estamos disponibles para resolver cualquier duda. Función única de conexión en serie TWS. Conecte dos productos a través de Bluetooth para reproducir música juntos y formar un efecto de sonido estéreo súper 3D"
     },
     {
         "id": 11,
@@ -118,7 +128,8 @@
         "price": 50,
         "discount": 0,
         "sold": 520,
-        "stock": 54
+        "stock": 54,
+        "detailedDescription": "Utiliza este cable auxiliar para reemplazar el cable dañado de tus audífonos que tienen conexión 3,5 mm o conviértelos en manos libres. Incorpora un módulo con micrófono y botón multifunción, así puedes conectarlo a tu celular para contestar llamadas o incluso controlar la reproducción de música1 sin tener que sacarlo de la bolsa. Es compatible con la mayoría de las marcas de audífonos en el mercado que incorporan jack 3,5 mm como Beats, Skullcandy, Bose, Sony y más."
     },
     {
         "id": 12,
@@ -129,7 +140,8 @@
         "price": 150,
         "discount": 0,
         "sold": 170,
-        "stock": 75
+        "stock": 75,
+        "detailedDescription": "Cable de video (coaxial RG59) con 2 conectores tipo 'F' de rosca, de 1,8 m de largo."
     },
     {
         "id": 13,
@@ -140,7 +152,8 @@
         "price": 210,
         "discount": 0,
         "sold": 431,
-        "stock": 45
+        "stock": 45,
+        "detailedDescription": "Cable arnés de la línea Elite con conectores macho (plug) USB tipo 'A' versión 3.0 a macho (plug) micro USB tipo “B” versión 3.0, de 1,8 m, ideal para la interconexión de equipos que requieren una alta capacidad para la transmisión de datos (como discos duros externos). Permite velocidades de hasta 5Gbps en puertos 3.0 y de 480Mbps en puertos 2.0. Sus conectores están moldeados, por lo que  reducen la tensión al fijarse perfectamente a la cubierta del PVC asegurando la perfecta conexión y la transmisión de datos."
     },
     {
         "id": 14,
@@ -151,7 +164,8 @@
         "price": 99,
         "discount": 0,
         "sold": 650,
-        "stock": 45
+        "stock": 45,
+        "detailedDescription": "Este cable de red tiene 90 centímetros de longitud, por lo que podrás conectar a tu módem equipos como, computadoras de escritorio, laptops, Smart TV, Blu-ray o consolas de videojuegos y disfrutar de una señal de Internet más estable. Cumple con el estándar de transmisión de Categoría 5 (CAT 5e). Transmite voz y datos con una velocidad de hasta 1 000 Mbps."
     },
     {
         "id": 15,
@@ -162,7 +176,8 @@
         "price": 115,
         "discount": 5,
         "sold": 130,
-        "stock": 14
+        "stock": 14,
+        "detailedDescription": "Transmite la señal digital desde tus dispositivos HDMI hasta tu pantalla y disfruta tus películas, videojuegos y programas preferidos con gran calidad en imagen y sonido. Soporta resolución en alta definición 1080p así como formato 3D, además puede transmitir contenido Ethernet, por lo que si utilizas equipos que tengan conexión alámbrica a Internet, ya no necesitarás conectar un cable adicional. Está fabricado de forma robusta, con recubrimiento de PVC que le da fuerza y resistencia. Sus conectores son niquelados que los hacen altamente resistentes a la corrosión y posibles golpes accidentales. Continúa navegando en nuestro catálogo y descubre todos los accesorios HDMI que te ayudarán a realizar una instalación impecable. Recuerda que llevamos los productos hasta la puerta de tu casa."
     },
     {
         "id": 16,
@@ -173,7 +188,8 @@
         "price": 45,
         "discount": 0,
         "sold": 620,
-        "stock": 96
+        "stock": 96,
+        "detailedDescription": "¡Dale mayor conectividad a tu Android con este adaptador! Funciona para conectar dispositivos como memorias USB y compartir archivos, ya sea desde el celular a la memoria o viceversa, también puedes conectar teclados y mouse para facilitar la entrada de datos y tener funciones parecidas a las de una PC. Además tienes la posibilidad de conectar HUB´s para aumentar el número de puertos USB. Es compatible con tecnología USB OTG (On The Go), así que asegúrate que tu smartphone o tablet cuenten con ella. En uno de los extremos tiene plug micro USB y en el otro jack USB. Algunas marcas compatibles con tecnología OTG son: Motorola, Samsung, Huawei, Asus, LG, Sony, HTC. Nota: La compatibilidad dependerá del modelo de tu celular."
     },
     {
         "id": 17,
@@ -184,7 +200,8 @@
         "price": 250,
         "discount": 20,
         "sold": 220,
-        "stock": 21
+        "stock": 21,
+        "detailedDescription": "Con este cable, conecta dispositivos USB C a equipos de conexión estándar USB y transfiere datos con gran velocidad, o recarga de forma rápida y segura equipos como laptops o smartphones. Por su longitud (2 m) te brinda comodidad de movimiento para utilizar tu dispositivo, sin desconectarlo. Los conectores son niquelados y el cable tiene forro tipo cordón que le brinda mayor resistencia a estirones o jalones accidentales."
     },
     {
         "id": 18,
@@ -195,7 +212,8 @@
         "price": 130,
         "discount": 10,
         "sold": 400,
-        "stock": 31
+        "stock": 31,
+        "detailedDescription": "¡Lleva el control de la iluminación a otro nivel en presentaciones, conciertos y más! Con este cable y tu computadora realiza secuencias y escenas de iluminación, de forma profesional, para crear el ambiente o la atmósfera perfecta en el evento que necesites. En un extremo incorpora plug USB, que conectas a tu computadora, y en el otro tiene plug Cannon, que conectas al equipo de iluminación DMX que desees controlar. Es compatible con Windows en programas de control de iluminación, por ejemplo, FreeStyler o algún otro de tu preferencia. La longitud del cable es de 1,15 metros."
     },
     {
         "id": 19,
@@ -206,7 +224,8 @@
         "price": 35999,
         "discount": 25,
         "sold": 15,
-        "stock": 91
+        "stock": 91,
+        "detailedDescription": "Actualización gratuita a Windows 11¹ (si está disponible, consulte a continuación Sistema operativo Windows 10 Windows 10 recupera el menú Inicio de Windows 7 e introduce nuevas funciones, como el navegador web Edge que le permite marcar páginas web en su pantalla. Pantalla Full HD de 300 Hz de 15,6. La resolución de 1920 x 1080 muestra sus juegos y películas HD con colores y claridad impresionantes. Para los jugadores que priorizan los juegos ultrarrápidos e ininterrumpidos, el Alienware m17 ofrece un panel de 300 Hz y 3 ms con una gama de colores 100% sRGB de 300 nits. Intel® Core ™ i7-10870H de décima generación. Potente rendimiento de procesamiento de 8 núcleos y 16 vías. La tecnología Intel Turbo Boost brinda potencia adicional dinámica cuando la necesita, al tiempo que aumenta la eficiencia energética cuando no la necesita. Memoria de 16 GB para multitarea y juegos avanzados. Gran cantidad de RAM DDR4 de alto ancho de banda para ejecutar sin problemas sus juegos de PC con muchos gráficos y aplicaciones de edición de video, así como numerosos programas y pestañas del navegador a la vez."
     },
     {
         "id": 20,
@@ -217,7 +236,8 @@
         "price": 8999,
         "discount": 0,
         "sold": 67,
-        "stock": 57
+        "stock": 57,
+        "detailedDescription": "La laptop HP 240 G7 es una solución tanto para trabajar y estudiar como para entretenerte. Al ser portátil, el escritorio dejará de ser tu único espacio de uso para abrirte las puertas a otros ambientes ya sea en tu casa o en la oficina. Pantalla con gran impacto visual. Su pantalla LED de 14 y 1366x768 px de resolución te brindará colores más vivos y definidos. Tus películas y series preferidas cobrarán vida, ya que ganarán calidad y definición en cada detalle. Eficiencia a tu alcance. Con su procesador Intel Celeron de 2 núcleos, lograrás el desempeño que necesitas para navegar y trabajar. Podrás usar los programas más esenciales, llevar a cabo tus tareas y organizar tu vida diaria. Un procesador exclusivo para los gráficos. Su tarjeta gráfica Intel UHD Graphics 600 convierte a este dispositivo en una gran herramienta de trabajo para cualquier profesional del diseño. Te permitirá lograr una gran performance en todos tus juegos y en otras tareas cotidianas que impliquen procesamiento gráfico. Una batería de larga duración. La batería de este equipo tiene una autonomía de alrededor de 12 horas. La duración varía según el uso, la configuración y otros factores, pero es ideal para quienes necesitan extender su jornada y seguir trabajando o estudiando con comodidad y sin cables."
     },
     {
         "id": 21,
@@ -239,7 +259,8 @@
         "price": 18429,
         "discount": 0,
         "sold": 65,
-        "stock": 56
+        "stock": 56,
+        "detailedDescription": "La laptop Huawei MateBook D15 es una solución tanto para trabajar y estudiar como para entretenerte. Al ser portátil, el escritorio dejará de ser tu único espacio de uso para abrirte las puertas a otros ambientes ya sea en tu casa o en la oficina. Pantalla con gran impacto visual Su pantalla LCD de 15.6 y 1920x1080 px de resolución te brindará colores más vivos y definidos. Tus películas y series preferidas cobrarán vida, ya que ganarán calidad y definición en cada detalle. Eficiencia a tu alcance. Su procesador Intel Core i5 de 4 núcleos, está pensado para aquellas personas generadoras y consumidoras de contenidos. Con esta unidad central, la máquina llevará a cabo varios procesos de forma simultánea, desde edición de videos hasta retoques fotográficos con programas profesionales. Potente disco sólido. El disco sólido de 512 GB hace que el equipo funcione a gran velocidad y por lo tanto te brinda mayor agilidad para operar con diversos programas. Un procesador exclusivo para los gráficos. Su tarjeta gráfica Gráficos Intel Iris Xe G7 80EUs convierte a este dispositivo en una gran herramienta de trabajo para cualquier profesional del diseño. Te permitirá lograr una gran performance en todos tus juegos y en otras tareas cotidianas que impliquen procesamiento gráfico."
     },
     {
         "id": 23,
@@ -250,7 +271,8 @@
         "price": 12199,
         "discount": 0,
         "sold": 511,
-        "stock": 98
+        "stock": 98,
+        "detailedDescription": "La laptop Lenovo IdeaPad 3 fue pensada para hacer tu vida más sencilla. Su diseño elegante e innovador y su comodidad para transportarla, la convertirá en tu PC favorita. Cualquier tarea que te propongas, ya sea en casa o en la oficina, la harás con facilidad gracias a su poderoso rendimiento. Pantalla con gran impacto visual. Su pantalla de 14 y 1920x1080 px de resolución te brindará colores más vivos y definidos. Tus películas y series preferidas cobrarán vida, ya que ganarán calidad y definición en cada detalle. Eficiencia a tu alcance. Su procesador Intel Core i5 de 4 núcleos, está pensado para aquellas personas generadoras y consumidoras de contenidos. Con esta unidad central, la máquina llevará a cabo varios procesos de forma simultánea, desde edición de videos hasta retoques fotográficos con programas profesionales. Potente disco sólido. El disco sólido de 512 GB hace que el equipo funcione a gran velocidad y por lo tanto te brinda mayor agilidad para operar con diversos programas. Un procesador exclusivo para los gráficos. Su tarjeta gráfica Intel UHD Graphics convierte a este dispositivo en una gran herramienta de trabajo para cualquier profesional del diseño. Te permitirá lograr una gran performance en todos tus juegos y en otras tareas cotidianas que impliquen procesamiento gráfico. Una batería que acompaña tu jornada. La batería de este equipo tiene una autonomía de alrededor de 7.7 horas. La duración varía según el uso, la configuración y otros factores, pero podrás usarla durante varias horas sin depender de los enchufes."
     },
     {
         "id": 24,
@@ -261,7 +283,8 @@
         "price": 7890,
         "discount": 0,
         "sold": 529,
-        "stock": 45
+        "stock": 45,
+        "detailedDescription": "Alta versatilidad para distintas aplicaciones. Esta estación para soldar de nueva generación, de un solo canal, está pensada para satisfacer todas tus necesidades. Tiene control digital por medio de botones para seleccionar la temperatura, y display LCD que permite observar el aumento o disminución gradual de la temperatura hasta llegar al valor establecido, así siempre estarás seguro de trabajar con el calor adecuado. El rango de selección es de 50 a 450 °C (150 °F a 850 °F). También permite hacer ajustes de tiempo de espera automático (standby), rango de regulación automático, y bloqueo antimanipulación para evitar cambiar la temperatura accidentalmente. Incluye unidad con descanso de seguridad para colocar el cautín, con depósito para esponja y fibra limpiadora."
     },
     {
         "id": 25,
@@ -272,7 +295,8 @@
         "price": 970,
         "discount": 30,
         "sold": 12,
-        "stock": 35
+        "stock": 35,
+        "detailedDescription": "Este multímetro digital profesional permite medir con gran precisión, sin la necesidad de escoger escalas, gracias a su función de auto rango. Mide resistencia, voltaje de corriente alterna o directa, intensidad de corriente, capacitancia y continuidad audible. Además, su función “hold” te permite fijar alguna lectura en el display, mientras haces anotaciones o cambias de posición, sin perder la medición realizada. Tiene cubierta plástica para protegerlo en caso de caídas o golpes accidentales. También cuenta con función de ahorro de batería, así que si no lo estás utilizando se apagará automáticamente después de cierto tiempo. Gracias a la calidad profesional que tiene este multímetro, es recomendable para técnicos, ingenieros o cualquier persona que realice reparaciones o instalaciones eléctricas o electrónicas. En Steren encontrarás una gran variedad de multímetros digitales, entre otros accesorios que te serán de gran utilidad en tus proyectos. ¡Compra ya este multímetro profesional con auto rango! Puedes adquirirlo desde nuestra Tienda en Línea de manera fácil y segura. Recuerda que realizamos envíos a todo México y, si ordenas desde el DF o área metropolitana, paga al recibir tu producto."
     },
     {
         "id": 26,
@@ -283,7 +307,8 @@
         "price": 295,
         "discount": 30,
         "sold": 358,
-        "stock": 45
+        "stock": 45,
+        "detailedDescription": "Pinza telefónica de metal para conectores de 8 contactos RJ45 (crimpadora RJ45), con adaptador para corte y armado de conectores. ideal para armar cables Ethernet."
     },
     {
         "id": 27,
@@ -294,7 +319,8 @@
         "price": 395,
         "discount": 60,
         "sold": 336,
-        "stock": 78
+        "stock": 78,
+        "detailedDescription": "Portafolio de herramientas para mantenimiento de computadoras"
     },
     {
         "id": 28,
@@ -305,7 +331,8 @@
         "price": 1490,
         "discount": 20,
         "sold": 58,
-        "stock": 665
+        "stock": 665,
+        "detailedDescription": "Este tacómetro mide las revoluciones por minuto o número de vueltas de equipos como motores, poleas o aspas, con la máxima precisión. Es totalmente seguro de usar, ya que la medición se realiza con un haz de luz láser que se refleja en una etiqueta colocada en el objeto en movimiento, evitando así el contacto. En su pantalla digital iluminada, muestra la medición de las revoluciones por minuto (RPM), con una exactitud de 0.1, o solo las revoluciones (vueltas). Incluso, tiene una memoria para dar la lectura de RPM máxima, mínima y la última medición. Es versátil en su alimentación, ya que puede usarse con una batería o un eliminador (de venta por separado)."
     },
     {
         "id": 29,
@@ -316,7 +343,8 @@
         "price": 2858,
         "discount": 15,
         "sold": 52,
-        "stock": 64
+        "stock": 64,
+        "detailedDescription": "Características técnicas Galaxy A11 Pantalla: Tamaño: 6,4 pulgadas con resolución HD+ (1560 x 720). Tipo: TFT Infinity-O. Procesador: 8 núcleos a una velocidad de 1,8 GHz. Memoria: 2/3 GB de RAM. Almacenamiento: 32 GB (Ampliables con microSD). Cámara trasera: Sensor principal: 13 Mpx f/1.8. Gran angular: 5 Mpx f/2.2. Sensor profundidad: 2 Mpx f/2.4 Cámara frontal: 8 Mpx f/2.0 Batería: 4.000 mAh. Carga rápida 15W. Puertos: USB-C Otros: sensor de huellas trasero, reconocimiento facial. Dimensiones: 161.4 x 76.3 x 8 mm. Peso: 177 gramos."
     },
     {
         "id": 30,
@@ -327,7 +355,8 @@
         "price": 3939,
         "discount": 65,
         "sold": 32,
-        "stock": 58
+        "stock": 58,
+        "detailedDescription": "Diagonal de pantalla visible 7' / 17 cm"
     },
     {
         "id": 31,
@@ -338,7 +367,8 @@
         "price": 2194,
         "discount": 50,
         "sold": 36,
-        "stock": 25
+        "stock": 25,
+        "detailedDescription": "El Xiaomi Redmi 9A cuenta con una pantalla HD+ inmersiva de 6.53” que te permitirá sumergirte en una experiencia virtual, cuanta con un certificado de protección de luz azul baja de esta manera tus ojos estarán tranquilos incluso después de pasar largas horas frente al teléfono. Haz que tus recuerdos perduren con la cámara IA de 13 MP, captura tus momentos favoritos con colores vivos. Hazte selfies con total facilidad utilizando la palma de tu mano, simplemente muestra la palma de tu mano a la cámara para sacar la foto, que podrás almacenar en la memoria interna de 32GB sin preocuparte ya que es expandible con una MicroSD. Con el desbloqueo facial ahora será más fácil acceder a tu teléfono y tu serás el único con esa clave, de esta manera tu información siempre estará protegida. Un teléfono potente requiere de una batería de larga duración, con los 5000 mAh siempre estarás comunicado, estarás jugando, escucharas tu música preferida y todo esto lo harás sin preocuparte por la batería."
     },
     {
         "id": 32,
@@ -349,7 +379,8 @@
         "price": 3590,
         "discount": 30,
         "sold": 354,
-        "stock": 54
+        "stock": 54,
+        "detailedDescription": "Aspecto y tacto premium con cubierta trasera de metal y bisel delgado y estrecho. Disfruta de tus vídeos favoritos en el 10. visualización FHD de 3 con tecnología TDDI. Rápido y potente procesador Octa-Core con hasta 2. Frecuencia principal de 3 GHz para un rendimiento rápido. No te pierdas ni un momento con cámaras traseras de 8 MP + 5 MP delanteras, micrófonos duales y 2 altavoces laterales sintonizados con Dolby Atmos. El modo infantil incluye contenido dedicado para niños, con control de padres y protección visual especializada. Alertas de postura y entorno accidentado también disponibles. Manténgase conectado con WiFi 802. 11 a/b/g/n/ac, 2. 4 GHz y 5 GHz Dual Band, y Bluetooth 5. 0"
     },
     {
         "id": 33,
@@ -360,7 +391,8 @@
         "price": 4331,
         "discount": 0,
         "sold": 56,
-        "stock": 21
+        "stock": 21,
+        "detailedDescription": "Diseño delgado y elegante: transmite y navega en una visualización ultra ancha de 10,4' (1) diseñada para dar vida a tu contenido sin tener que pesarte. La cámara frontal orientada al paisaje te permite pasar entre entretenimiento y videollamadas sin problemas. Sonido envolvente de DOLBY ATMOS DOLBY: Con un sistema de cuatro altavoces mejorado que reproduce todo lo que aparece en el sonido envolvente Dolby Atmos, siempre sentirás como si estuvieras escuchando desde la primera fila. ENTRETENIMIENTO PREMIUM EN NOSOTROS: Con la compra de Galaxy Tab A7, obtén dos meses de gratis YouTube Premium (2) y seis meses de Spotify Premium. (3). Haz más de lo que te gusta: las potentes velocidades de procesamiento y la memoria mejorada (4) te permiten hacer más, y mantener más cosas que te gustan: aplicaciones, vídeos, listas de reproducción y mucho más."
     },
     {
         "id": 34,
@@ -371,7 +403,8 @@
         "price": 2899,
         "discount": 0,
         "sold": 63,
-        "stock": 45
+        "stock": 45,
+        "detailedDescription": "TABLET SAMSUNG GALAXY TAB A 8P ANDROID 32 GB RAM 2 GB COLOR PLATA SM-T290NZSAMXO"
     },
     {
         "id": 35,
@@ -382,7 +415,8 @@
         "price": 7368,
         "discount": 0,
         "sold": 69,
-        "stock": 24
+        "stock": 24,
+        "detailedDescription": "Este modelo está pensado para que puedas despejar tu campo visual. El sector donde coloques el televisor se verá mucho más prolijo porque los cables estarán ocultos, ordenados y organizados, ¡notarás la diferencia!"
     },
     {
         "id": 36,
@@ -393,7 +427,8 @@
         "price": 8799,
         "discount": 0,
         "sold": 55,
-        "stock": 65
+        "stock": 65,
+        "detailedDescription": "HDR Dolby Vision y HDR10. transforma tu televisión en un centro de entretenimiento. La tecnología de imagen para cine brinda un realismo asombroso. 4K Ultra HD, Motion Rate 120. Con más de 8.3 millones de pixeles, cuenta con una potente luz LED que crea una imagen más nítida y colorida. Con la tecnología Motion Rate, la serie A6 te brinda una máxima emoción al suavizar las escenas de acción en movimiento rápido. DTS Virtual: X. Esta tecnología crea una experiencia de audio inmersiva al virtualizar el contenido. TUV Low Blue Light, las pantallas con esta tecnología ayudan a prevenir la fatiga visual, la irritación o la tensión, de forma que los usuarios puedan trabajar, jugar o ver contenido durante horas y horas. Android TV. Ten al alcance más de 400,000 contenidos. Disfruta películas, series de TV, música y videojuegos. También puedes transmitir fotos, videos y música desde tu teléfono inteligente a tu gran pantalla. Control de Voz: la interacción con tu Smart TV será más fácil e intuitiva. Abre o busca aplicaciones, controla el volumen y las entradas, o busca tus series y películas favoritas con el poder de tu voz."
     },
     {
         "id": 37,
@@ -404,7 +439,8 @@
         "price": 2799,
         "discount": 0,
         "sold": 95,
-        "stock": 24
+        "stock": 24,
+        "detailedDescription": "Pasa momentos de entretenimiento con la pantalla Blux modelo 32BXHD, la espectacular definición HD que implementa permitirá visualizar tus programas, películas y series favoritas con una gran calidad de imagen. Cuenta con un panel LED de 32 pulgadas, de esta manera no te perderás de ningún detalle. Conecta tus dispositivos a través de las 3 entradas HDMI y una entrada USB que incorpora y proyecta el contenido multimedia que se encuentra almacenado en ellos. Este producto es completamente nuevo y viene con su garantía de fábrica según aplique para cada marca. Si tienes dudas de cómo aplicarla puedes escribirnos por medio de tu compra."
     },
     {
         "id": 38,
@@ -415,7 +451,8 @@
         "price": 6499,
         "discount": 10,
         "sold": 46,
-        "stock": 58
+        "stock": 58,
+        "detailedDescription": "Con el Smart TV G50DUHDS8-Q accederás a las aplicaciones donde se encuentran tus contenidos favoritos. Además, podrás navegar por Internet, interactuar en redes sociales y divertirte con videojuegos. Vive en 4K. La cantidad de pixeles que ofrece es 4 veces mayor que la Full HD, ¿el resultado? Escenas mucho más realistas y con un nivel de detalle increíble. Ahora vas a conocer una aventura de inmersión que no va a dejar de sorprenderte. Más allá de ver televisión. Su función Screen Share permite duplicar la pantalla de tu smartphone, tablet o PC para que aparezca en la TV. De esta forma, visualizarás todo tipo de contenido: material audiovisual, documentos de trabajo, correos electrónicos, etc."
     },
     {
         "id": 39,
@@ -426,7 +463,8 @@
         "price": 4763,
         "discount": 15,
         "sold": 69,
-        "stock": 47
+        "stock": 47,
+        "detailedDescription": "Hisense es la marca n.º1 de Televisores en China y la 3.ª en electrodomésticos en el mundo. Fue reconocida con diferentes premios por sus altos estándares en innovación, tecnología, diseño y gestión de calidad. ¡Vive la experiencia Hisense! Con el Smart TV 32H5500F accederás a las aplicaciones donde se encuentran tus contenidos favoritos. Además, podrás navegar por Internet, interactuar en redes sociales y divertirte con videojuegos. Sumérgete en la pantalla. Su resolución HD te presentará imágenes con gran detalle y alta definición. Ahora todo lo que veas cobrará vida con brillo y colores más reales. Un sonido que te envuelve. Vas a sentir que proviene desde todas las direcciones posibles, lo cual enriquece la percepción del mismo. Los diálogos de tus series de fin de semana o la música de tus cantantes preferidos cobrarán otro significado. Más allá de ver televisión. Su función Screen Share permite duplicar la pantalla de tu smartphone, tablet o PC para que aparezca en la TV. De esta forma, visualizarás todo tipo de contenido: material audiovisual, documentos de trabajo, correos electrónicos, etc."
     },
     {
         "id": 40,
@@ -437,7 +475,8 @@
         "price": 10699,
         "discount": 15,
         "sold": 75,
-        "stock": 54
+        "stock": 54,
+        "detailedDescription": "Samsung es reconocida a nivel mundial como una empresa líder en la industria tecnológica. Todos sus productos son diseñados con una calidad superior y pensados para contribuir a un futuro mejor. Por eso, hará que disfrutes de una experiencia incomparable. Con el Smart TV UN50TU8000 accederás a las aplicaciones donde se encuentran tus contenidos favoritos. Además, podrás navegar por Internet, interactuar en redes sociales y divertirte con videojuegos. Vive en 4K. La cantidad de pixeles que ofrece es 4 veces mayor que la Full HD, ¿el resultado? Escenas mucho más realistas y con un nivel de detalle increíble. Ahora vas a conocer una aventura de inmersión que no va a dejar de sorprenderte. Un sonido que te envuelve. Vas a sentir que proviene desde todas las direcciones posibles, lo cual enriquece la percepción del mismo. Los diálogos de tus series de fin de semana o la música de tus cantantes preferidos cobrarán otro significado. Más allá de ver televisión. Su función Screen Share permite duplicar la pantalla de tu smartphone, tablet o PC para que aparezca en la TV. De esta forma, visualizarás todo tipo de contenido: material audiovisual, documentos de trabajo, correos electrónicos, etc. Conexión invisible. Este modelo está pensado para que puedas despejar tu campo visual. El sector donde coloques el televisor se verá mucho más prolijo porque los cables estarán ocultos, ordenados y organizados, ¡notarás la diferencia!"
     },
     {
         "id": 40,
@@ -448,7 +487,8 @@
         "price": 4699,
         "discount": 25,
         "sold": 32,
-        "stock": 87
+        "stock": 87,
+        "detailedDescription": "TCL es una de las empresas líderes en la industria global de televisores, dedicada a la investigación y desarrollo de productos electrónicos. Orientada a la satisfacción de sus clientes, se distingue por proveer una excelente experiencia a quienes adquieran y usen sus diferentes líneas de electrodomésticos. Con el Smart TV 32S331-MX accederás a las aplicaciones donde se encuentran tus contenidos favoritos. Además, podrás navegar por Internet, interactuar en redes sociales y divertirte con videojuegos. Sumérgete en la pantalla. Su resolución HD te presentará imágenes con gran detalle y alta definición. Ahora todo lo que veas cobrará vida con brillo y colores más reales."
     },
     {
         "id": 40,
@@ -459,6 +499,7 @@
         "price": 9499,
         "discount": 0,
         "sold": 35,
-        "stock": 97
+        "stock": 97,
+        "detailedDescription": "Televisor SCEPTRE U650CV-U 65 / Color inigualable y el brillo nítido de 4K (3840 x 2160 o más de ocho millones de píxeles) stes más nítidos de luz y oscuridad, la pantalla LED ofrece una amplia gama de colores ricos, lo que garantiza que las imágenes en movimiento nunca hayan sido tan agradables a la vista. La pantalla LED ofrece una imagen realista, completa con colores brillantes e imágenes nítidas. MHL permiSceptre 4K ofrece una imagen superior con 8 millones de píxeles, cuatro veces más que un Full HDTV 1080P.te la transmisión de contenido desde su teléfono inteligente o tableta compatible a Scepter TV, que capitaliza la calidad de imagen visualmente mejorada. Conecta tus consolas como Xbox, PlayStation, Switch o cable de tu preferencia para sacar el máximo provecho a tus videojuegos o películas. Frecuencia de actualización efectiva 60Hz con Alto rango dinámico (HDR). Conectividad: Componente/Vídeo compuesto: 1 | HDMI: 4 | Auriculares: 1 | Salida automática SPDIF: 1 | USB 2.0: 1"
     }
 ]
