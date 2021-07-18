@@ -20,7 +20,7 @@
         "sold": 500
     },
     {
-        "id": 1,
+        "id": 3,
         "img": "/images/productos/computadoras/Alienware M15 R4 Gaming Laptop I7-10870h 16gb Rtx 3070 512gb.PNG",
         "title": "Alienwere M15",
         "description": "Laptop Gamming",
@@ -30,7 +30,7 @@
         "sold": 15
     },
     {
-        "id": 1,
+        "id": 4,
         "img": "/images/productos/herramientas/Multímetro profesional auto rango.PNG",
         "title": "Multilímetro profesional",
         "description": "Gran calidad",
@@ -38,5 +38,155 @@
         "price": 6300,
         "discount": 35,
         "sold": 55
+    },
+    {
+        "id": 5,
+        "img": "/images/productos/audio/Audífonos gamer Onikuma K2 Pro negro y rojo con luz LED.PNG",
+        "title": "Audífonos Onikuma K2 Pro",
+        "description": "Color negro y rojo con luz LED",
+        "category": "audio",
+        "price": 1149,
+        "discount": 0,
+        "sold": 200
+    },
+    {
+        "id": 6,
+        "img": "/images/productos/audio/Audífonos Inalámbricos Sports Lenovo Lp1s Tws Con Bluetooth.PNG",
+        "title": "Audífonos Inalámbricos Lenovo",
+        "description": "Viene con caja de carga. Audífonos bluethoot",
+        "category": "audio",
+        "price": 359.59,
+        "discount": 15,
+        "sold": 440
+    },
+    {
+        "id": 7,
+        "img": "/images/productos/audio/Audífonos Para Jugador Gamer Diadema Tedge.PNG",
+        "title": "Audífonos Tedge Diadema",
+        "description": "Color negro. Tipo diadema. Viene con micrófono integrado",
+        "category": "audio",
+        "price": 780.50,
+        "discount": 10,
+        "sold": 45
+    },
+    {
+        "id": 8,
+        "img": "/images/productos/audio/Bocina Bluetooth Amplificada 8 Pulgadas Portátil Sonido Pro.PNG",
+        "title": "Bocina Portátil Amlificada",
+        "description": "8 pulgadas portátil y de muy buen sonido",
+        "category": "audio",
+        "price": 499,
+        "discount": 0,
+        "sold": 355
+    },
+    {
+        "id": 9,
+        "img": "/images/productos/audio/Bocina Link Bits VA626TP portátil con bluetooth negra.PNG",
+        "title": "Bocina Link Bits VA626TP",
+        "description": "Bocina negra portátil con Bluethooth",
+        "category": "audio",
+        "price": 599,
+        "discount": 5,
+        "sold": 75
+    },
+    {
+        "id": 10,
+        "img": "/images/productos/audio/Bocina Moreka GT-113 portátil con bluetooth roja.PNG",
+        "title": "Bocina Moreka GT-113",
+        "description": "Bocina color rojo. Cuenta con Bluethooth",
+        "category": "audio",
+        "price": 280,
+        "discount": 0,
+        "sold": 750
+    },
+    {
+        "id": 11,
+        "img": "/images/productos/audio/Bocina Moreka Inalámbrica, Larga Duración Charge Mini 4+.PNG",
+        "title": "Bocina Moreka Inalámbrica",
+        "description": "Bocina con laga duracion de batería",
+        "category": "audio",
+        "price": 440,
+        "discount": 25,
+        "sold": 311
+    },
+    {
+        "id": 12,
+        "img": "/images/productos/cables/Cable auxiliar 3,5 mm con manos libres, de 1,2 m.PNG",
+        "title": "Cable Auxiliar 3.4 mm",
+        "description": "Cable auxiliar 3.5 mm de 1,2 metros",
+        "category": "cables",
+        "price": 50,
+        "discount": 0,
+        "sold": 520
+    },
+    {
+        "id": 13,
+        "img": "/images/productos/cables/Cable coaxial RG59 con conectores tipo “F” de rosca, de 1,8 m.PNG",
+        "title": "Cable Coaxial RG59",
+        "description": "Tiene conectores tipo 'F' de rosca. Cuenta con una longitud de 1.8 metros",
+        "category": "cables",
+        "price": 150,
+        "discount": 0,
+        "sold": 170
+    },
+    {
+        "id": 14,
+        "img": "/images/productos/cables/Cable elite USB tipo A 3.0 a micro USB tipo B 3.0 de 1,8 m.PNG",
+        "title": "Cable USB Elite",
+        "description": "Conexion de USB tipo A 3.0 a conexion tipo B 3.0. Cuenta con 1.8 metros de longitud",
+        "category": "cables",
+        "price": 210,
+        "discount": 0,
+        "sold": 431
+    },
+    {
+        "id": 15,
+        "img": "/images/productos/cables/Cable Ethernet UTP CAT 5e, de 90 cm, azul.PNG",
+        "title": "Cable Ethernet UTP CAT 5e",
+        "description": "Cable de red RJ45 de 90 cm de longitud. olor azul",
+        "category": "cables",
+        "price": 99,
+        "discount": 0,
+        "sold": 650
+    },
+    {
+        "id": 16,
+        "img": "/images/productos/cables/Cable HDMI® con conectores niquelados, de 1,8 m.PNG",
+        "title": "Cable HDMI Genérico",
+        "description": "Cuenta con una longitud de 1.8 metros. Color negro",
+        "category": "cables",
+        "price": 115,
+        "discount": 5,
+        "sold": 130
+    },
+    {
+        "id": 17,
+        "img": "/images/productos/cables/Cable OTG para celulares Android.PNG",
+        "title": "Cable OTG",
+        "description": "Cable OTG para conectar pendrives a celulares Android",
+        "category": "cables",
+        "price": 45,
+        "discount": 0,
+        "sold": 620
+    },
+    {
+        "id": 18,
+        "img": "/images/productos/cables/Cable USB A a USB C, de 2 m.PNG",
+        "title": "Cable USB A a USB C",
+        "description": "Cuenta con un largo de 2 metros",
+        "category": "cables",
+        "price": 250,
+        "discount": 20,
+        "sold": 220
+    },
+    {
+        "id": 19,
+        "img": "/images/productos/cables/Cable USB a DMX 512 para control de iluminación.PNG",
+        "title": "Cable USB a DMX",
+        "description": "Cable modelo 512. Sirve para control dde iluminación",
+        "category": "cables",
+        "price": 130,
+        "discount": 10,
+        "sold": 400
     }
 ]
