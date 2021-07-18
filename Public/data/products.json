@@ -7,7 +7,8 @@
         "category": "audio",
         "price": 1500,
         "discount": 0,
-        "sold": 200
+        "sold": 200,
+        "stock": 25
     },
     {
         "id": 2,
@@ -17,176 +18,447 @@
         "category": "cables",
         "price": 349.50,
         "discount": 10,
-        "sold": 500
+        "sold": 500,
+        "stock": 65
     },
     {
         "id": 3,
-        "img": "/images/productos/computadoras/Alienware M15 R4 Gaming Laptop I7-10870h 16gb Rtx 3070 512gb.PNG",
-        "title": "Alienwere M15",
-        "description": "Laptop Gamming",
-        "category": "computadoras",
-        "price": 35999,
-        "discount": 25,
-        "sold": 15
-    },
-    {
-        "id": 4,
         "img": "/images/productos/herramientas/Multímetro profesional auto rango.PNG",
         "title": "Multilímetro profesional",
         "description": "Gran calidad",
         "category": "herramientas",
         "price": 6300,
         "discount": 35,
-        "sold": 55
+        "sold": 55,
+        "stock": 36
     },
     {
-        "id": 5,
+        "id": 4,
         "img": "/images/productos/audio/Audífonos gamer Onikuma K2 Pro negro y rojo con luz LED.PNG",
         "title": "Audífonos Onikuma K2 Pro",
         "description": "Color negro y rojo con luz LED",
         "category": "audio",
         "price": 1149,
         "discount": 0,
-        "sold": 200
+        "sold": 200,
+        "stock": 24
     },
     {
-        "id": 6,
+        "id": 5,
         "img": "/images/productos/audio/Audífonos Inalámbricos Sports Lenovo Lp1s Tws Con Bluetooth.PNG",
         "title": "Audífonos Inalámbricos Lenovo",
         "description": "Viene con caja de carga. Audífonos bluethoot",
         "category": "audio",
         "price": 359.59,
         "discount": 15,
-        "sold": 440
+        "sold": 440,
+        "stock": 85
     },
     {
-        "id": 7,
+        "id": 6,
         "img": "/images/productos/audio/Audífonos Para Jugador Gamer Diadema Tedge.PNG",
         "title": "Audífonos Tedge Diadema",
         "description": "Color negro. Tipo diadema. Viene con micrófono integrado",
         "category": "audio",
         "price": 780.50,
         "discount": 10,
-        "sold": 45
+        "sold": 45,
+        "stock": 65
     },
     {
-        "id": 8,
+        "id": 7,
         "img": "/images/productos/audio/Bocina Bluetooth Amplificada 8 Pulgadas Portátil Sonido Pro.PNG",
         "title": "Bocina Portátil Amlificada",
         "description": "8 pulgadas portátil y de muy buen sonido",
         "category": "audio",
         "price": 499,
         "discount": 0,
-        "sold": 355
+        "sold": 355,
+        "stock": 38
     },
     {
-        "id": 9,
+        "id": 8,
         "img": "/images/productos/audio/Bocina Link Bits VA626TP portátil con bluetooth negra.PNG",
         "title": "Bocina Link Bits VA626TP",
         "description": "Bocina negra portátil con Bluethooth",
         "category": "audio",
         "price": 599,
         "discount": 5,
-        "sold": 75
+        "sold": 75,
+        "stock": 12
     },
     {
-        "id": 10,
+        "id": 9,
         "img": "/images/productos/audio/Bocina Moreka GT-113 portátil con bluetooth roja.PNG",
         "title": "Bocina Moreka GT-113",
         "description": "Bocina color rojo. Cuenta con Bluethooth",
         "category": "audio",
         "price": 280,
         "discount": 0,
-        "sold": 750
+        "sold": 750,
+        "stock": 43
     },
     {
-        "id": 11,
+        "id": 10,
         "img": "/images/productos/audio/Bocina Moreka Inalámbrica, Larga Duración Charge Mini 4+.PNG",
         "title": "Bocina Moreka Inalámbrica",
         "description": "Bocina con laga duracion de batería",
         "category": "audio",
         "price": 440,
         "discount": 25,
-        "sold": 311
+        "sold": 311,
+        "stock": 31
     },
     {
-        "id": 12,
+        "id": 11,
         "img": "/images/productos/cables/Cable auxiliar 3,5 mm con manos libres, de 1,2 m.PNG",
         "title": "Cable Auxiliar 3.4 mm",
         "description": "Cable auxiliar 3.5 mm de 1,2 metros",
         "category": "cables",
         "price": 50,
         "discount": 0,
-        "sold": 520
+        "sold": 520,
+        "stock": 54
     },
     {
-        "id": 13,
+        "id": 12,
         "img": "/images/productos/cables/Cable coaxial RG59 con conectores tipo “F” de rosca, de 1,8 m.PNG",
         "title": "Cable Coaxial RG59",
         "description": "Tiene conectores tipo 'F' de rosca. Cuenta con una longitud de 1.8 metros",
         "category": "cables",
         "price": 150,
         "discount": 0,
-        "sold": 170
+        "sold": 170,
+        "stock": 75
     },
     {
-        "id": 14,
+        "id": 13,
         "img": "/images/productos/cables/Cable elite USB tipo A 3.0 a micro USB tipo B 3.0 de 1,8 m.PNG",
         "title": "Cable USB Elite",
         "description": "Conexion de USB tipo A 3.0 a conexion tipo B 3.0. Cuenta con 1.8 metros de longitud",
         "category": "cables",
         "price": 210,
         "discount": 0,
-        "sold": 431
+        "sold": 431,
+        "stock": 45
     },
     {
-        "id": 15,
+        "id": 14,
         "img": "/images/productos/cables/Cable Ethernet UTP CAT 5e, de 90 cm, azul.PNG",
         "title": "Cable Ethernet UTP CAT 5e",
         "description": "Cable de red RJ45 de 90 cm de longitud. olor azul",
         "category": "cables",
         "price": 99,
         "discount": 0,
-        "sold": 650
+        "sold": 650,
+        "stock": 45
     },
     {
-        "id": 16,
+        "id": 15,
         "img": "/images/productos/cables/Cable HDMI® con conectores niquelados, de 1,8 m.PNG",
         "title": "Cable HDMI Genérico",
         "description": "Cuenta con una longitud de 1.8 metros. Color negro",
         "category": "cables",
         "price": 115,
         "discount": 5,
-        "sold": 130
+        "sold": 130,
+        "stock": 14
     },
     {
-        "id": 17,
+        "id": 16,
         "img": "/images/productos/cables/Cable OTG para celulares Android.PNG",
         "title": "Cable OTG",
         "description": "Cable OTG para conectar pendrives a celulares Android",
         "category": "cables",
         "price": 45,
         "discount": 0,
-        "sold": 620
+        "sold": 620,
+        "stock": 96
     },
     {
-        "id": 18,
+        "id": 17,
         "img": "/images/productos/cables/Cable USB A a USB C, de 2 m.PNG",
         "title": "Cable USB A a USB C",
         "description": "Cuenta con un largo de 2 metros",
         "category": "cables",
         "price": 250,
         "discount": 20,
-        "sold": 220
+        "sold": 220,
+        "stock": 21
     },
     {
-        "id": 19,
+        "id": 18,
         "img": "/images/productos/cables/Cable USB a DMX 512 para control de iluminación.PNG",
         "title": "Cable USB a DMX",
         "description": "Cable modelo 512. Sirve para control dde iluminación",
         "category": "cables",
         "price": 130,
         "discount": 10,
-        "sold": 400
+        "sold": 400,
+        "stock": 31
+    },
+    {
+        "id": 19,
+        "img": "/images/productos/computadoras/Alienware M15 R4 Gaming Laptop I7-10870h 16gb Rtx 3070 512gb.PNG",
+        "title": "Alienwere M15",
+        "description": "Laptop Gamming",
+        "category": "computadoras",
+        "price": 35999,
+        "discount": 25,
+        "sold": 15,
+        "stock": 91
+    },
+    {
+        "id": 20,
+        "img": "/images/productos/computadoras/Laptop 14 Hp 64gb 4gb Rosa Office Y Antivirus Permanente.PNG",
+        "title": "Laptop 14 Hp",
+        "description": "Es una solución tanto para trabajar y estudiar como para entretenerte",
+        "category": "computadoras",
+        "price": 8999,
+        "discount": 0,
+        "sold": 67,
+        "stock": 57
+    },
+    {
+        "id": 21,
+        "img": "/images/productos/computadoras/Laptop HP 240 G7 plateado ceniza oscuro 14, Intel Celeron N4020 4GB de RAM 500GB HDD, Intel UHD Graphics 600 1366x768px Windows 10 Home.PNG",
+        "title": "Laptop HP 240 G7",
+        "description": "pensada para hacer tu vida más sencilla",
+        "category": "computadoras",
+        "price": 8699,
+        "discount": 10,
+        "sold": 34,
+        "stock": 56
+    },
+    {
+        "id": 22,
+        "img": "/images/productos/computadoras/Laptop Huawei MateBook D15 space gray 15.6, Intel Core i5 1135G7 16GB de RAM 512GB SSD, Gráficos Intel Iris Xe G7 80EUs 1920x1080px Windows 10 Home.PNG",
+        "title": "Laptop Huawei MateBook D15 ",
+        "description": "Solución tanto para trabajar y estudiar como para entretenerte",
+        "category": "computadoras",
+        "price": 18429,
+        "discount": 0,
+        "sold": 65,
+        "stock": 56
+    },
+    {
+        "id": 23,
+        "img": "/images/productos/computadoras/Laptop Lenovo IdeaPad 14IIL05 platinum gray 14, Intel Core i5 1035G1 8GB de RAM 512GB SSD, Intel UHD Graphics 1920x1080px Windows 10 Home.PNG",
+        "title": "Laptop Lenovo IdeaPad 14IIL05",
+        "description": "Solución tanto para trabajar y estudiar como para entretenerte",
+        "category": "computadoras",
+        "price": 12199,
+        "discount": 0,
+        "sold": 511,
+        "stock": 98
+    },
+    {
+        "id": 24,
+        "img": "/images/productos/herramientas/Cautín de estación Weller de 95 W, con control de temperatura y display.PNG",
+        "title": "Cautín de estación Weller de 95 W",
+        "description": "Alta versatilidad para distintas aplicaciones.",
+        "category": "herramientas",
+        "price": 7890,
+        "discount": 0,
+        "sold": 529,
+        "stock": 45
+    },
+    {
+        "id": 25,
+        "img": "/images/productos/herramientas/Multímetro profesional auto rango.PNG",
+        "title": "Multímetro profesional auto rango",
+        "description": "Mide resistencia, voltaje de corriente alterna o directa, intensidad de corriente, capacitancia y continuidad audible. ",
+        "category": "herramientas",
+        "price": 970,
+        "discount": 30,
+        "sold": 12,
+        "stock": 35
+    },
+    {
+        "id": 26,
+        "img": "/images/productos/herramientas/Pinza ponchadora de plug RJ45.PNG",
+        "title": "Pinza ponchadora de plug RJ45",
+        "description": "Pinza telefónica de metal para conectores de 8 contactos RJ45 ",
+        "category": "herramientas",
+        "price": 295,
+        "discount": 30,
+        "sold": 358,
+        "stock": 45
+    },
+    {
+        "id": 27,
+        "img": "/images/productos/herramientas/Portafolio de herramientas para mantenimiento de computadoras.PNG",
+        "title": "Portafolio de herramientas para mantenimiento de computadoras",
+        "description": "Portafolio de herramientas para mantenimiento de computadoras",
+        "category": "herramientas",
+        "price": 395,
+        "discount": 60,
+        "sold": 336,
+        "stock": 78
+    },
+    {
+        "id": 28,
+        "img": "/images/productos/herramientas/Tacómetro digital láser.PNG",
+        "title": "Tacómetro digital láser",
+        "description": "Este tacómetro mide las revoluciones por minuto o número de vueltas de equipos como motores, poleas o aspas, con la máxima precisión.",
+        "category": "herramientas",
+        "price": 1490,
+        "discount": 20,
+        "sold": 58,
+        "stock": 665
+    },
+    {
+        "id": 29,
+        "img": "/images/productos/smartphones/SAMSUNG Smartphone A11 Blanco 64GB.PNG",
+        "title": "SAMSUNG Smartphone A11 Blanco 64GB",
+        "description": "Tamaño: 6,4 pulgadas con resolución HD+ (1560 x 720).",
+        "category": "smartphones",
+        "price": 2858,
+        "discount": 15,
+        "sold": 52,
+        "stock": 64
+    },
+    {
+        "id": 30,
+        "img": "/images/productos/smartphones/Xiaomi Poco M3 Pro 5G 64GB 4GB RAM Power Black.PNG",
+        "title": "Xiaomi Poco M3 Pro 5G",
+        "description": "Diagonal de pantalla visible.",
+        "category": "smartphones",
+        "price": 3939,
+        "discount": 65,
+        "sold": 32,
+        "stock": 58
+    },
+    {
+        "id": 31,
+        "img": "/images/productos/smartphones/XIAOMI REDMI 9A 2GB 32GB GRIS.PNG",
+        "title": "XIAOMI REDMI 9A",
+        "description": "El Xiaomi Redmi 9A cuenta con una pantalla HD+ inmersiva de 6.53",
+        "category": "smartphones",
+        "price": 2194,
+        "discount": 50,
+        "sold": 36,
+        "stock": 25
+    },
+    {
+        "id": 32,
+        "img": "/images/productos/tablets/Lenovo Tab M10 Plus, Tablet Android FHD de 10.3, 32 GB de Almacenamiento y 2 GB de RAM, Gris.PNG",
+        "title": "Lenovo Tab M10 Plus",
+        "description": "Aspecto y tacto premium con cubierta trasera de metal y bisel delgado y estrecho.",
+        "category": "tablets",
+        "price": 3590,
+        "discount": 30,
+        "sold": 354,
+        "stock": 54
+    },
+    {
+        "id": 33,
+        "img": "/images/productos/tablets/SAMSUNG A7 Tablet 10.4 WiFi 32GB Gris.PNG",
+        "title": "SAMSUNG A7 Tablet 10.4 WiFi 32GB Gris",
+        "description": "Diseño delgado y elegante: transmite y navega en una visualización ultra ancha de 10,4 diseñada para dar vida a tu contenido sin tener que pesarte.",
+        "category": "tablets",
+        "price": 4331,
+        "discount": 0,
+        "sold": 56,
+        "stock": 21
+    },
+    {
+        "id": 34,
+        "img": "/images/productos/tablets/SAMSUNG Galaxy Tab A T290 Tablet Galaxy Tab A 8 Plata, Plata.PNG",
+        "title": "SAMSUNG Galaxy Tab A T290 Tablet Galaxy Tab A 8 Plata, Plata",
+        "description": "TABLET SAMSUNG GALAXY TAB A 8P ANDROID 32 GB RAM 2 GB COLOR PLATA SM-T290NZSAMXO",
+        "category": "tablets",
+        "price": 2899,
+        "discount": 0,
+        "sold": 63,
+        "stock": 45
+    },
+    {
+        "id": 35,
+        "img": "/images/productos/tv/Electriq 43 pulgadas Android Smart HDR 4K Ultra HD LED TV TDT HD 3 Hdmi.PNG",
+        "title": "Electriq 43 pulgadas Android Smart HDR 4K",
+        "description": "Wi-Fi Enabled, HDR TV",
+        "category": "tv",
+        "price": 7368,
+        "discount": 0,
+        "sold": 69,
+        "stock": 24
+    },
+    {
+        "id": 36,
+        "img": "/images/productos/tv/Hisense 43 A6G 4K UHD Android TV con Control de Voz, HDR Dolby Vision (43A6G, 2021).PNG",
+        "title": "Hisense 43 A6G 4K",
+        "description": "HDR Dolby Vision y HDR10. transforma tu televisión en un centro de entretenimiento.",
+        "category": "tv",
+        "price": 8799,
+        "discount": 0,
+        "sold": 55,
+        "stock": 65
+    },
+    {
+        "id": 37,
+        "img": "/images/productos/tv/Pantalla 32 Pulgadas Led Blux 32bxhd Hd 2 Años De Garantia.PNG",
+        "title": "Pantalla 32 Pulgadas Led Blux 32bxhd Hd",
+        "description": "Pasa momentos de entretenimiento con la pantalla Blux modelo 32BXHD",
+        "category": "tv",
+        "price": 2799,
+        "discount": 0,
+        "sold": 95,
+        "stock": 24
+    },
+    {
+        "id": 38,
+        "img": "/images/productos/tv/Smart TV Ghia G50DUHDS8-Q LED 4K 50 100V240V.PNG",
+        "title": "Smart TV Ghia G50DUHDS8-Q LED 4K",
+        "description": "Con el Smart TV G50DUHDS8-Q accederás a las aplicaciones donde se encuentran tus contenidos favoritos.",
+        "category": "tv",
+        "price": 6499,
+        "discount": 10,
+        "sold": 46,
+        "stock": 58
+    },
+    {
+        "id": 39,
+        "img": "/images/productos/tv/Smart TV Hisense H55 Series 32H5500F LCD HD 32 120V.PNG",
+        "title": "Smart TV Hisense H55 Series 32H5500F LCD HD 32 120V",
+        "description": "Hisense es la marca n.º1 de Televisores en China y la 3.ª en electrodomésticos en el mundo. Fue reconocida con diferentes premios por sus altos estándares en innovación, tecnología, diseño y gestión de calidad.",
+        "category": "tv",
+        "price": 4763,
+        "discount": 15,
+        "sold": 69,
+        "stock": 47
+    },
+    {
+        "id": 40,
+        "img": "/images/productos/tv/Smart TV Samsung Series 8 UN50TU8000FXZX LED 4K 50 110V - 127V.PNG",
+        "title": "Smart TV Samsung Series 8 UN50TU8000FXZX LED 4K 50 110V - 127V",
+        "description": "Con el Smart TV UN50TU8000 accederás a las aplicaciones donde se encuentran tus contenidos favoritos.",
+        "category": "tv",
+        "price": 10699,
+        "discount": 15,
+        "sold": 75,
+        "stock": 54
+    },
+    {
+        "id": 40,
+        "img": "/images/productos/tv/Smart TV TCL 32S331-MX LED HD 32 110V.PNG",
+        "title": "Smart TV TCL 32S331-MX LED HD 32 110V",
+        "description": "Con el Smart TV 32S331-MX accederás a las aplicaciones donde se encuentran tus contenidos favoritos. ",
+        "category": "tv",
+        "price": 4699,
+        "discount": 25,
+        "sold": 32,
+        "stock": 87
+    },
+    {
+        "id": 40,
+        "img": "/images/productos/tv/Televisión Sceptre de 65 LED con HDR Ultra HD 4K (U650CV-U) (Renewed).JPG",
+        "title": "Televisión Sceptre de 65 LED con HDR Ultra HD 4K (U650CV-U) (Renewed)",
+        "description": "MHL permiSceptre 4K ofrece una imagen superior con 8 millones de píxeles, cuatro veces más que un Full HDTV 1080P.",
+        "category": "tv",
+        "price": 9499,
+        "discount": 0,
+        "sold": 35,
+        "stock": 97
     }
 ]
