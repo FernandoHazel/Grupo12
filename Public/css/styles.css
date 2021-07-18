@@ -173,8 +173,7 @@ body{
     font-weight: bold;
 }
 .content-offers a{
-    height: 100%;
-    width: 100%;
+    display: block;
     color:rgb(42, 123, 216);
     text-decoration: none;
 }
@@ -223,8 +222,7 @@ body{
     color: #222222;
 }
 .content-product a{
-    height: 100%;
-    width: 100%;
+    display: block;
     color:rgb(42, 123, 216);
     text-decoration: none;
 }
@@ -301,6 +299,7 @@ h2,h3,h4{
     width: 100%;
     text-decoration: none;
 }
+
 #underline{
     text-decoration: underline; 
     font-size: 26px; 
@@ -677,7 +676,7 @@ main #products-section{
 
 .product-conteiner .title{
     font-weight: bold;
-    font-size: 14px;
+    font-size: 1rem;
 }
 
 .product-conteiner .description{
@@ -686,18 +685,67 @@ main #products-section{
 
 .product-conteiner .products-sold{
     bottom: 10px;
-    height: 25px;
-    width: 100px;
+    height: 30px;
+    width: 140px;
+    text-align: center;
     background-color: #aab6adb4;
     font-size: 12px;
     padding: 3px;
+    padding-top: 2px ;
     border-radius: 5px;
+    margin-top: 10px;
+}
+.product-conteiner .old-price{
+    margin-right: 5px;
+    font-size: 1rem;
+    color: #222222;
+    text-decoration: line-through;
+    font-weight: bold;
+}
+.product-conteiner .final-price{
+    font-size: 2rem;
+    color: black;
+    font-weight: bold;
+}
+.product-conteiner .price{
+    text-align: right;
 }
 
-.product-conteiner .price{
+.product-conteiner .final-price{
+    margin-top: 5%;
     font-weight: bold;
 }
 
+.product-conteiner .discount{
+    text-align: center;
+    background-color: rgb(12, 184, 12);
+    width: 90px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 7px;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+
+    margin-top: 2%;
+
+}
+.product-conteiner a{
+    display: block;
+
+    color:rgb(42, 123, 216);
+    text-decoration: none;
+}
+.product-conteiner .products-sold{
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.product-conteiner .description{
+    color: black;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
 #options-header div{
     width: 150px;
     margin-left: 30px;
@@ -829,26 +877,32 @@ main #products-section{
     }
     .product-conteiner .description{
         position: absolute;
-        top: 70px;
+        top: 80px;
         left: 200px;
         font-size: 12px;
     }
     .product-conteiner .products-sold{
         position: absolute;
-        bottom: 30px;
+        top: 40px;
         left: 200px;
         height: 25px;
-        width: 100px;
+        width: 150px;
+        margin-top: 0;
         background-color: #aab6adb4;
-        font-size: 12px;
+        font-size: 1rem;
         padding: 3px;
         border-radius: 5px;
     }
     .product-conteiner .price{
         position: absolute;
-        top: 40px;
+        bottom: 30px;
         right: 50px;
         font-weight: bold;
+    }
+    .product-conteiner .discount{
+        position: absolute;
+        bottom: 30px;
+        left: 200px;
     }
     
     
@@ -862,7 +916,20 @@ main #products-section{
         height: 350px;
         max-height: 350px;
     }
-     
+    .content-offers .old-price{
+        margin-right: 7px;
+        font-size: 0.8rem;
+    }
+    .content-offers .new-price{
+        font-size: 1.3rem;
+    }
+    .content-product .old-price{
+        margin-right: 7px;
+        font-size: 0.8rem;
+    }
+    .content-product .new-price{
+        font-size: 1.3rem;
+    }
     /***** Detalles del producto ****/
     .vistas{
         margin: 0;
@@ -974,14 +1041,11 @@ main #products-section{
         position: absolute;
         top: 10px;
         left: 170px;
-        font-weight: bold;
-        font-size: 14px;
     }
     .product-conteiner .description{
         position: absolute;
         top: 70px;
         left: 170px;
-        font-size: 12px;
     }
     .product-conteiner .products-sold{
         position: absolute;
@@ -996,8 +1060,13 @@ main #products-section{
     }
     .product-conteiner .price{
         position: absolute;
-        top: 40px;
+        bottom: 20px;
         right: 50px;
         font-weight: bold;
+    }
+    .product-conteiner .discount{
+        position: absolute;
+        left: 170px;
+        bottom: 20px;
     }
 }

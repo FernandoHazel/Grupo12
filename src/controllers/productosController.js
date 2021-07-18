@@ -5,8 +5,6 @@ let dataDirection= path.join(__dirname + "../../../public/data/products.json")
 let rawdata = fs.readFileSync(dataDirection);
 let products = JSON.parse(rawdata);
 
-
-
 let productosController = {
     detalles: (req, res)=>{
         res.render("products/detalles")
@@ -38,7 +36,24 @@ let productosController = {
         res.render('products/listaProductos', {productos: filtro, options: id})
     },
     all: (req, res)=>{
+        /* Verifica si tiene descuento y calcula su precio final */
+        products.forEach(element => {
+            if(element.discount > 0){
+                /* Crea una propiedad de final price */
+                element.final_price = element.price - (element.price * element.discount / 100)
+            }
+        });
+        /* Renderizamos la vista */
         res.render('products/listaProductos', {productos: products, options: "all"})
+    },
+    offerts: (req, res)=>{
+        /* Filtramos los productos que tienen ofertas  */
+        let offerts = products.filter(p => p.discount > 0)
+        /* Calculamos el precio final */
+        offerts.forEach(e =>{
+            e.final_price = e.price - (e.price * e.discount / 100)
+        })
+        res.render('products/listaProductos', {productos: offerts, options: "offerts"})
     }
 }
 

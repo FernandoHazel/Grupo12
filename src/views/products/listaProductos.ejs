@@ -20,23 +20,53 @@
             <div id="products-header-topic">
                 <% if(options == "all"){%>
                     <span class="category">Todos los productos.</span> <span class="results"><%= productos.length%> Resultado(s)</span>
-                <% }else{%> 
-                    <span class="category">productos > categoría > <%= options %> </span> <span class="results"><%= productos.length%> Resultados</span>
-                <% }%>
+                <% }else if(options=="offerts") {%> 
+                    <span class="category">Productos > Ofertas </span> <span class="results"><%= productos.length%> Resultado(s)</span>
+                <% }else{%>
+                    <span class="category">Productos > Categoría > <%=  options.charAt(0).toUpperCase() + options.slice(1).toLowerCase() %> </span> <span class="results"><%= productos.length%> Resultado(s)</span>
+                <% } %>
             </div>
             <br>
             <br>
             <% productos.forEach(product => { %>
                 <div class="product-conteiner">
+                    <a href="/productos/detalles/<%= product.id %>">
+                    <!-- Imagen -->
                     <img src="<%= product.img %>">
+                    <!-- Vendidos -->
                     <p class="products-sold">
-                        500 vendidos
+                        <%= product.sold %> Vendidos
                     </p>
-                    <p class="title"><%= product.title %></p>
-                    <p class="description"><%= product.description %></p>
-                    <p class="price">
-                        $ <%= product.price %> MXN
-                    </p>
+                    <!--Titulo-->
+                    <% if( product.title.length > 50 ){%>
+                        <p class="title"><%= product.title.substring(0, 50) %>..</p>
+                    <% }else{%>
+                        <p class="title"><%= product.title %></p>
+                    <% } %>
+                    
+                    <!-- Descripcion -->
+                    <% if( product.description.length > 80 ){%>
+                        <p class="description"><%= product.description.substring(0, 80) %>..</p>
+                    <%}else{%>
+                        <p class="description"><%= product.description %></p>
+                    <% }%>
+                    
+                    <!--Descuento-->
+                    <% if(product.discount > 0){%>
+                        <p class="discount"> -<%= product.discount %>% OFF</p>
+                    <% } %>
+                    <!--Calculo de precio fial dependiendo del descuento-->
+                    <% if(product.discount > 0){%>
+                        <p class="price">
+                            <span class="old-price">$<%= product.price %></span> <span class="final-price">$<%= product.final_price %></span>  
+                        </p>
+                    <% }else{%>
+                        <p class="price">
+                            <span class="final-price">$<%= product.price %></span> 
+                        </p>
+                        
+                    <% } %>
+                </a>
                 </div>
             <% }) %>
         </section>

@@ -12,5 +12,5 @@ router.get("/detalles", productosController.detalles)
 router.get("/editar/:id?", productosController.editar)
 router.get("/categoria/:id?", productosController.categoria)
 router.get("/all", productosController.all)
-
+router.get("/offerts", productosController.offerts)
 module.exports = router
