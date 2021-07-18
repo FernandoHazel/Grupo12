@@ -9,7 +9,9 @@ let products = JSON.parse(rawdata);
 
 let productosController = {
     detalles: (req, res)=>{
-        res.render("products/detalles")
+        const idUser = req.params.id;
+        const article = products.find(elem => {return elem.id.toString() == idUser})
+        res.render("products/detalles", {article: article})
     },
     crear: (req, res)=>{
         res.render("products/crear")
