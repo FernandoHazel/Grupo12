@@ -18,25 +18,25 @@
             <% offerts.forEach(offert =>{ %>
                 <article class="content-offers">
                     <!-- Redirecionamiento  -->
-                    <a href="/productos/all">
+                    <a href="/productos/<%= offert.id %>">
                         <img src="<%= offert.img %>">
                     <!--Nombre del producto (acotado si es muy largo)-->
-                    <% if(offert.product_title.length > 17){%>
+                    <% if(offert.title.length > 17){%>
                         <span class="title">
-                            <%= offert.product_title.substring(0, 17) %>..
+                            <%= offert.title.substring(0, 17) %>..
                         </span>
                     <% }else{%>
                         <span class="title">
-                            <%= offert.product_title %>
+                            <%= offert.title %>
                         </span>
                     <%  } %>
                     <!-- Descuento -->
                     <div class="discount">
-                        -<%= offert.offert %>% OFF
+                        -<%= offert.discount %>% OFF
                     </div>
                     <!-- Precio original y final-->
                     <div class="price">
-                        <span class="old-price">$1956</span><span class="new-price">$1450</span>
+                        <span class="old-price">$<%= offert.price %></span><span class="new-price">$<%= offert.final_price %></span>
                     </div>
                 </a>
             </article>
@@ -59,25 +59,25 @@
             <% mostSales.forEach(sale => { %>
                 <article class="content-product">
                     <!-- Redirecionamiento  -->
-                    <a href="/productos/all">
+                    <a href="/productos/<%= sale.id %>">
                         <img src="<%= sale.img %>">
                     <!--Nombre del producto (acotado si es muy largo)-->
-                    <% if(sale.name.length > 17){%>
+                    <% if(sale.title.length > 17){%>
                         <div class="title">
-                            <%= sale.name.substring(0, 17) %>..
+                            <%= sale.title.substring(0, 17) %>..
                         </div>
                     <% }else{%>
                         <div class="title">
-                            <%= sale.name %>
+                            <%= sale.title %>
                         </div>
                     <%  } %>
-                    <!-- Descuento -->
+                    <!-- Vendidos -->
                     <div class="sales">
-                        -<%= sale.price %>% 
+                        <%= sale.sold %>
                     </div> <apan class="vendidos">Vendidos</apan>
-                    <!-- Precio original y final-->
+                    <!-- Precio-->
                     <div class="price">
-                        <span class="new-price">$1450</span>
+                        <span class="new-price">$<%= sale.price %></span>
                     </div>
                 </a>
                 </article>
