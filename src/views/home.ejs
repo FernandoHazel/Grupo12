@@ -18,7 +18,7 @@
             <% offerts.forEach(offert =>{ %>
                 <article class="content-offers">
                     <!-- Redirecionamiento  -->
-                    <a href="/productos/<%= offert.id %>">
+                    <a href="/productos/detalles/<%= offert.id %>">
                         <img src="<%= offert.img %>">
                     <!--Nombre del producto (acotado si es muy largo)-->
                     <% if(offert.title.length > 17){%>
@@ -59,7 +59,7 @@
             <% mostSales.forEach(sale => { %>
                 <article class="content-product">
                     <!-- Redirecionamiento  -->
-                    <a href="/productos/<%= sale.id %>">
+                    <a href="/productos/detalles/<%= sale.id %>">
                         <img src="<%= sale.img %>">
                     <!--Nombre del producto (acotado si es muy largo)-->
                     <% if(sale.title.length > 17){%>
