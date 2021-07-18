@@ -1,61 +1,35 @@
+const fs = require('fs');
+const path = require("path")
+
+/* Obtenemos los datos de productos*/
+let dataDirection= path.join(__dirname + "../../../public/data/products.json")
+let rawdata = fs.readFileSync(dataDirection);
+let products = JSON.parse(rawdata);
 
 const mainController={
 
-  home: function(req, res){   
-    let offerts = [
-      {
-        img: "/images/productos/audio/Apple EarPods con conector Lightning - Blanco.png",
-        product_title: "Apple Earpods",
-        description: "De muy alta calidad",
-        offert: 25
-      },
-      {
-        img: "/images/productos/cables/Cable elite USB tipo A 3.0 a micro USB tipo B 3.0 de 1,8 m.PNG",
-        product_title: "Cable Elite USB",
-        description: "Tipo 3.0",
-        offert: 35
-      },
-      {
-        img: "/images/productos/computadoras/Alienware M15 R4 Gaming Laptop I7-10870h 16gb Rtx 3070 512gb.PNG",
-        product_title: "Alienwere M15",
-        description: "Laptop Gamming",
-        offert: 40
-      },
-      {
-        img: "/images/productos/herramientas/Multímetro profesional auto rango.PNG",
-        product_title: "Multilímetro profesional",
-        description: "Gran calidad",
-        offert: 15
-      }
-    ] 
+  home: function(req, res){  
+    
+    /* Obtenemos todos los productos con descuento*/ 
+    let offerts = products.filter(product => product.discount > 0).splice(0, 11)
+    // agregamos el atributo "precio final" porque tienen descuento
+    offerts.forEach(element => {
+      element.final_price = element.price - (element.price * element.discount / 100)
+    });
 
-    let mostSales = [
-      {
-        img: "/images/productos/audio/Apple EarPods con conector Lightning - Blanco.png",
-        name: "Produto 1",
-        price: 450
-      },
-      {
-        img: "/images/productos/cables/Cable elite USB tipo A 3.0 a micro USB tipo B 3.0 de 1,8 m.PNG",
-        name: "Produto 2",
-        price: 4500
-      },
-      {
-        img: "/images/productos/herramientas/Multímetro profesional auto rango.PNG",
-        name: "Produto 3",
-        price: 1000
-      },
-      {
-        img: "/images/productos/computadoras/Alienware M15 R4 Gaming Laptop I7-10870h 16gb Rtx 3070 512gb.PNG",
-        name: "Produto 4",
-        price: 500
-      },
-      {
-        img: "/images/productos/2.jpg",
-        name: "Produto 5",
-        price: 100
+    /*Ordenamos por más vendidos*/
+    let mostSales= products.sort(function(a, b){
+       /* Prdenamos de forma descendente */
+      if(a.sold > b.sold){
+        return -1
       }
-    ]
+      if(a.sold < b.sold) {
+        return 1
+      }
+      return 0
+    }).splice(0, 11);
+
+    /* Renderizamos la vista */    
     res.render('home', {offerts: offerts, mostSales: mostSales});
   },
 
