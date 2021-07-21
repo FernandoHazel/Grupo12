@@ -7,3 +7,15 @@
 4.Hacer menos:
 
 5.Dejar de hacer: perder dias de sprint.
+
+21/07/2021
+
+1.Comenzar a hacer: Añadir el CRUD al proyecto y el Json de usuarios
+
+2.Hacer más: Mejorar el diseño y la funcionalidad de la página
+
+3.Continuar haciendo: Continuar con la organización y el trabajo que llevamos
+
+4.Hacer menos: 
+
+5.Dejar de hacer: Hacer el trabajo en una sola rama
