@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "nombre": "Mario",
+        "apellido": "Hurtado",
+        "email": "marioh@gmail.com",
+        "contraseña": "LaDeTecnoshop01",
+        "categoria": "usuario",
+        "imagen": "/images/usuarios/Mario.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "Sandra",
+        "apellido": "Biner",
+        "email": "sandrabin@gmail.com",
+        "contraseña": "micontraseña123",
+        "categoria": "usuario",
+        "imagen": "/images/usuarios/Sandra.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "Lety",
+        "apellido": "García",
+        "email": "letgar@gmail.com",
+        "contraseña": "lacontraseña0123+",
+        "categoria": "usuario",
+        "imagen": "/images/usuarios/Lety.jpg"
+    }
+]
