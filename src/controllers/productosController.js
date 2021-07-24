@@ -15,7 +15,23 @@ let productosController = {
     crear: (req, res)=>{
         res.render("products/crear")
     },
-    editar: (req, res)=>{
+    store: (req, res)=>{
+        const newProduct = req.body
+        console.log('producto agregado', newProduct)
+
+        const category = req.body.category
+        const img = req.body.img
+
+        newProduct.id = Date.now(),
+        newProduct.img = "/images/productos/" + category + "/";
+
+        products.push(newProduct)
+        const productsJSON = JSON.stringify(products, null, 2)
+		fs.writeFileSync(dataDirection, productsJSON)
+
+        res.redirect("/")
+    },
+    editor: (req, res)=>{
         let productId = req.params.id
         console.log("Product ID: ", productId)
 
@@ -31,6 +47,14 @@ let productosController = {
             },
         }
     )},
+    editar: (req, res)=>{
+        //agregar lógica para editar
+        res.redirect('/')
+    },
+    borrar: (req, res)=>{
+        //agregar lógica para borrar
+        res.redirect('/')
+    },
     categoria: (req, res,) => {
         let id = req.params.id
           let filtro = products.filter(product => {

@@ -12,10 +12,14 @@ app.use("/", express.static(__dirname+'/../public'))
 //Configurar ejs como el template engine de la app
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs')
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 
 // Recursos
 app.use('/',rutaMain);
 app.use("/productos", rutaProductos);
+
 
 
 // Puerto

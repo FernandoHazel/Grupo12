@@ -4,47 +4,47 @@
 <body>
     <%- include("../partials/header") %>
     <main>
-        <form id="crea-edit-product">
+        <form id="crea-edit-product" action="/productos/crear" method="POST" enctype="multipart/form-data">
             <p id="pro-title">Añade un nuevo producto</p>
             <div class="name">
                 <p>Nombre</p>
-                <input name="name" id="name" placeholder="Nombre del producto" required>
+                <input name="title" id="title" placeholder="Nombre del producto" required>
             </div>
             <br>
 
             <div class="category">
                 <p>Categoria</p>
-                <input name="category" id="category" type="radio" value="TV"><span>TV</span> <br>
-                <input name="category" id="category" type="radio" value="Audio" checked><span>Audio</span><br>
-                <input name="category" id="category" type="radio" value="Cables"><span>Cables</span><br>
-                <input name="category" id="category" type="radio" value="Herramienta"><span>Herramientas</span><br>
-                <input name="category" id="category" type="radio" value="Smartphone"><span>Smartphones</span><br>
-                <input name="category" id="category" type="radio" value="Tablet"><span>Tablet</span><br>
-                <input name="category" id="category" type="radio" value="Computadora"><span>Computadora</span>
+                <input name="category" id="category" type="radio" value="tv"><span>TV</span> <br>
+                <input name="category" id="category" type="radio" value="audio" checked><span>Audio</span><br>
+                <input name="category" id="category" type="radio" value="cables"><span>Cables</span><br>
+                <input name="category" id="category" type="radio" value="herramientas"><span>Herramientas</span><br>
+                <input name="category" id="category" type="radio" value="smartphones"><span>Smartphones</span><br>
+                <input name="category" id="category" type="radio" value="tablets"><span>Tablet</span><br>
+                <input name="category" id="category" type="radio" value="computadoras"><span>Computadora</span>
             </div>
             <br>
 
             <div class="description">
                 <p>Detalles</p>
-                <textarea placeholder="Características del producto" required></textarea>
+                <textarea placeholder="Características del producto" name="description" required></textarea>
             </div>
             <br>
 
             <div class="pro-img">
                 <p>Imagen</p>
-                <input type="file" accept=".jpg, .png, .PNG">
+                <input type="file" accept=".jpg, .png, .PNG" name="img">
             </div>
             <br>
 
             <div class="price">
                 <p>Precio Unitario</p>
-                <input type="number" min="0.1" required> <span>$ MXN</span>
+                <input type="number" min="0" name="price" required> <span>$ MXN</span>
             </div>
             <br>
 
             <div class="quantity">
                 <p>Cantidad</p>
-                <input type="number" min="1" required>
+                <input type="number" min="1" name="stock" required>
             </div>
 
             <div class="btts">
