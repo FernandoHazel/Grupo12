@@ -6,9 +6,9 @@ router.get('/', mainController.home)
 
 router.get('/carrito',mainController.carrito)
 
-router.get('/ingreso',mainController.ingreso)
+router.get('/login',mainController.ingreso)
 
-router.get('/registro',mainController.registro)
+router.get('/signup',mainController.registro)
 
 
 module.exports=router

@@ -1,27 +1,31 @@
 <header>
     <!-- Contenedor de elementos del header  -->
     <div class="head-conteiner">
-        <!--Contiene el logo-->
-        <div class="main-img">
-            <img src="/images/BigCommerce-logo-dark.svg" id="logo"> 
-        </div>
-        <!-- contiene la barra de búsqueda  -->
-        <div class= "search-bar">
-            <input type="text" placeholder="Buscar productos, marcas o categorias...">
-            <i class="fas fa-search" id="search-i"></i>
-        </div>
+    <div class="upper-objects">
+        <a href="/"><img src="/images/BigCommerce-logo-dark.svg" id="company-logo"> </a>
+        <form class="search-p-bar">
+            <div class="search-conteiner">
+                <input type="text" id="search" name="search" placeholder="Buscar productos, categorias, etc."><i class="fas fa-search" id="search-i"></i>
+            </div>
+        </form>
 
-        <p class="acc-cart-icon">
-            <i class="fas fa-user"></i>
-            <i class="fas fa-shopping-cart"></i>
-        </p>
+        <ul class="user">
+            <li><a href="/login">Ingresa <i class="fas fa-sign-in-alt"></i></a></li>
+            <li><a href="/signup">Crear <i class="fas fa-user"></i></a></li>
+            <li><a href="/carrito">Carrito <i class="fas fa-shopping-cart"></i></a></li>
+        </ul>
+    </div>
+
     <!-- Mennu lateral  -->
     <i class="fas fa-bars" id="menu"></i>
     </div>
     <!-- Opciones de categoria -->
     <div class="menu-options">
+        <ul class="main-p">
+            <li><a href="/">Home <i class="fas fa-home"></i></a></li>
+            <li><a href="/productos/offerts">Ofertas <i class="fab fa-hotjar"></i></i></a></li>
+        </ul>
         <ul>
-            <li><a href="/">Home</a></li>
             <li><a href="/productos/categoria/tv">TV</a></li>
             <li><a href="/productos/categoria/audio">Audio</a></li>
             <li><a href="/productos/categoria/cables">Cables</a></li>

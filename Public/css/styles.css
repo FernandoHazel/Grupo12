@@ -96,7 +96,80 @@ header{
     color: white;
     margin-right: 15px;
 }
-/*********** Header ************/
+/* Logo */
+#company-logo{
+    width: 35vw;
+    height: 80px;
+}
+.upper-objects{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+/* Seacrh Bar */
+.search-conteiner{
+    margin-top: 20px;
+    display: inline-block;
+    position: relative;
+    width: 60vw;
+}
+
+.search-conteiner i{
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 10px;
+    font-size: 1.2rem;
+}
+.search-p-bar input{
+    font-size: 0.8rem;
+    border-radius: 30px;
+    padding-top: 8px;
+    padding-left: 10px;
+    padding-bottom: 8px;
+    padding-right: 30px;
+    width: 100%;
+    color: black;
+}
+/* / Search Bar */
+ /* hover Links*/
+
+.upper-objects li:hover i{
+     color: rgba(109, 0, 128, 1)
+}
+.upper-objects li:hover a{
+    color: rgba(109, 0, 128, 0.3);
+}
+.menu-options li:hover i{
+    color: rgba(109, 0, 128, 1)
+}
+.menu-options li:hover a{
+   color: rgba(109, 0, 128, 0.3)
+}
+/* User Options */
+.upper-objects ul{
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.upper-objects a{
+    text-decoration: none;
+    font-size: 0.8rem;
+    color:#000000;
+    font-weight: bold;
+}
+.upper-objects i{
+    color:#000000;
+}
+.upper-objects li{
+    margin-right: 5vw;
+}
+/* /User Options  */
+
+/*********** /Header ************/
 
 
 /*********** Footer ************/
@@ -304,8 +377,6 @@ h2,h3,h4{
     text-decoration: underline; 
     font-size: 26px; 
 }
-
-
 
 /*detalles del producto*/
 .vistas{
@@ -774,10 +845,75 @@ main #products-section{
 /**********   Media queries            *********/
 /* Version de Tablet ó Smartphone acostado*/
 @media(min-width: 768px){
-    .head-conteiner{
+
+    /* */
+    #company-logo{
+        height: 65px;
+        width: 150px;
+    }
+    /* User Options */
+    .upper-objects  ul{
         display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        text-decoration: none;
+    }
+    .upper-objects li{
+        margin-right: 0;
+        color: #000000;
+     }
+     .upper-objects a{
+        color: #000000;
+        font-weight: bold;
+        font-size: 0.8rem;
+     }
+    .upper-objects .user i{
+        color: black;
+        font-size: 16px;
+        margin-right: 10px;  
+    }
+    .upper-objects .user {
+      margin-top: 20px;
+
+    }
+    /* first menu options conteiner */
+    .upper-objects{
+        display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
     }
+    /*/first menu*/
+    /* /User options */
+
+    /* Seacrh Bar */
+    .search-conteiner{
+        width: 320px;
+        margin-top: 15px;
+    }
+    .search-conteiner i{
+        right: 15px;
+        font-size: 1.3rem;
+    }
+    .search-p-bar input{
+        font-size: 1rem;
+        padding-top: 7px;
+        padding-left: 30px;
+        padding-bottom: 7px;
+        padding-right: 40px;
+    }
+    .upper-objects{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .upper-objects a{
+        text-decoration: none;
+    }
+    /*/seaech bar*/
+
+    
+    
+    /* header */
+    
     #menu{
         display: none;
     }
@@ -785,25 +921,43 @@ main #products-section{
         width: 400px;
         max-width: 450;
     }
-    .search-bar {
-        
-        max-width: 250px;
-    }
+     /* Menu Options */
     .menu-options{
+        padding: 0 20px;
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
     }
     .menu-options ul{
+        text-decoration: none;
         display: flex;
+       
     }
+    
     .menu-options li{
-        margin: 0 2vw;
+       margin-right: 10px;
+    }
+    .menu-options a{
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+    .menu-options .user i{
+        color: black;
+        font-size: 24px;
+        margin-right: 10px;
+    }
+    .menu-options .first{
+        margin-right: 20px;
     }
     #logo{
         max-width: 200;
     }
     .acc-cart-icon{
         display: block;
+    }
+    .acc-cart-icon i{
+        color: black;
+        font-size: 24px;
     }
     /** Ofertas **/
     #section-offers{
@@ -911,6 +1065,47 @@ main #products-section{
 
 /***** Desktop ****/
 @media(min-width: 998px){
+
+    /* User options  */
+    .upper-objects li{
+        margin-right: 10px;
+     }
+     .upper-objects a{
+        font-size: 1rem;
+     }
+     .upper-objects ul{
+         padding-right: 20px;
+     }
+     .upper-objects{
+        margin: auto;
+        max-width: 1281px;
+    }
+    /* /User Options */
+
+    /*  Search Bar */
+    .search-conteiner{
+        width: 450px;
+    }
+    /* /Search Bar */
+    
+    .menu-options{
+        margin: auto;
+        max-width: 1281px;
+    }
+    .menu-options li{
+        margin-right: 20px;
+     }
+     .menu-options a{
+         font-size: 1.1rem;
+         font-weight: bold;
+     }
+     .menu-options .user i{
+        color: black;
+        font-size: 28px;
+
+        margin-right: 10px;
+     }
+     
     /* Altura de cada articulo del home */
     #section-products article, #section-offers article{
         height: 350px;
@@ -990,18 +1185,7 @@ main #products-section{
     .content-product{
         width: 22%;
     }
-   .head-conteiner{
-       display: inline-flex;
-   }
-   /*** Search bar***/
-   .search-bar{
-       width: 500px;
-       max-width: 550px;
-       text-align: left;
-   }
-   .search-bar input{
-        width: 300px;
-    }
+   
     /**** Register form *****/
     #register-form{
         max-width: 815px;
