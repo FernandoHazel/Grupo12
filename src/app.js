@@ -20,7 +20,10 @@ app.use(express.json());
 app.use('/',rutaMain);
 app.use("/productos", rutaProductos);
 
-
+// Error 404
+app.use(function(req, res, next) {
+    res.status(404).render("errors/404")
+});
 
 // Puerto
 const PORT = 3031

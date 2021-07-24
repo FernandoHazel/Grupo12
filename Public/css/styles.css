@@ -133,8 +133,8 @@ header{
     color: black;
 }
 /* / Search Bar */
- /* hover Links*/
 
+ /* hover Links*/
 .upper-objects li:hover i{
      color: rgba(109, 0, 128, 1)
 }
@@ -146,6 +146,25 @@ header{
 }
 .menu-options li:hover a{
    color: rgba(109, 0, 128, 0.3)
+}
+/* /hover links */
+.err-404-conteiner{
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #8a8a8ab4;
+}
+.err-404-conteiner  h1{
+    font-size: 250px;
+    font-weight: bold;
+}
+.err-404-conteiner .main-text{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 /* User Options */
 .upper-objects ul{
