@@ -135,6 +135,7 @@ header{
 /* / Search Bar */
 
  /* hover Links*/
+ /* Header */
 .upper-objects li:hover i{
      color: rgba(109, 0, 128, 1)
 }
@@ -147,6 +148,15 @@ header{
 .menu-options li:hover a{
    color: rgba(109, 0, 128, 0.3)
 }
+/* Home */
+#section-offers a:hover .title{
+    color: #000000;
+}
+
+#section-products a:hover .title{
+    color: #000000;
+}
+/*/Home*/
 /* /hover links */
 .err-404-conteiner{
     width: 100vw;
@@ -929,10 +939,7 @@ main #products-section{
     }
     /*/seaech bar*/
 
-    
-    
     /* header */
-    
     #menu{
         display: none;
     }
@@ -954,7 +961,7 @@ main #products-section{
     }
     
     .menu-options li{
-       margin-right: 10px;
+       margin-right: 11px;
     }
     .menu-options a{
         font-size: 0.9rem;
@@ -967,9 +974,6 @@ main #products-section{
     }
     .menu-options .first{
         margin-right: 20px;
-    }
-    #logo{
-        max-width: 200;
     }
     .acc-cart-icon{
         display: block;
@@ -1004,7 +1008,6 @@ main #products-section{
     .content-product{
         width: 45%;
     }
-
 
     /*** Search Bar ****/
     .search-bar{
@@ -1272,4 +1275,54 @@ main #products-section{
         left: 170px;
         bottom: 20px;
     }
+}
+/* Desktop v2 */
+@media(min-width: 1200px){
+    #company-logo{
+        height: 80px;
+        width: 200px;
+    }
+    /* User options  */
+    .upper-objects li{
+        margin-right: 20px;
+     }
+     .upper-objects a{
+        font-size: 1.4rem;
+     }
+     .upper-objects ul{
+        padding-right: 20px;
+     }
+     .upper-objects{
+        margin: auto;
+        max-width: 1400px;
+    }
+    /* /User Options */
+
+    /*  Search Bar */
+    .search-conteiner{
+        width: 550px;
+        margin-top: 15px;
+    }
+    .search-conteiner input{
+       font-size: 1.3rem;
+    }
+    /* /Search Bar */
+    
+    .menu-options{
+        margin: auto;
+        max-width: 1400px;
+    }
+    .menu-options li{
+        margin-right: 33px;
+     }
+     .menu-options a{
+         font-size: 1.4rem;
+         font-weight: bold;
+     }
+     .menu-options .user i{
+        color: black;
+        font-size: 30px;
+
+        margin-right: 10px;
+     }
 }
