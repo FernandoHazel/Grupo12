@@ -680,6 +680,20 @@ h2,h3,h4{
     margin-bottom: 5px;
     width: 50px;
 }
+#crea-edit-product select{
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+#crea-edit-product .discount input{
+    width: 50%;
+    border: 2px green solid;
+}
+#crea-edit-product .discount span{
+    font-size: 18px;
+    font-weight: bold;
+}
+
 /*** Carrito **/
 
 .flexCarrito{
@@ -1223,6 +1237,10 @@ main #products-section{
     #crea-edit-product .price input{
         width: 30%;
     }
+    #crea-edit-product .discount input{
+        width: 30%;
+    
+    }
     #crea-edit-product .quantity input{
         width: 30%;
     }
@@ -1325,4 +1343,8 @@ main #products-section{
 
         margin-right: 10px;
      }
+
+   
+
+     
 }

@@ -4,120 +4,76 @@
 <body>
     <%- include("../partials/header") %>
     <main>
-        <form id="crea-edit-product">
+        <form id="crea-edit-product" action="/productos/editar/<%=product.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
             <p id="pro-title">Editar Producto</p>
-            <div class="name">
-                <p>Nombre</p>
-                <input name="name" id="name" placeholder="Nombre del producto" value="<%= product.name %>"">
-            </div>
-            <br>
-
-            <div class="category">
-                <p>Categoria</p>
-                <% if(product.category == "TV"){%>
-                    <input name="category" id="category" type="radio" value="TV" checked><span>TV</span> <br>
-                    <input name="category" id="category" type="radio" value="Audio"><span>Audio</span><br>
-                    <input name="category" id="category" type="radio" value="Cables"><span>Cables</span><br>
-                    <input name="category" id="category" type="radio" value="Herramienta"><span>Herramientas</span><br>
-                    <input name="category" id="category" type="radio" value="Smartphone"><span>Smartphones</span><br>
-                    <input name="category" id="category" type="radio" value="Tablet"><span>Tablet</span><br>
-                    <input name="category" id="category" type="radio" value="Computadora"><span>Computadora</span>
-                <% }else if(product.category == "Audio") {%>
-                    <input name="category" id="category" type="radio" value="TV"><span>TV</span> <br>
-                    <input name="category" id="category" type="radio" value="Audio" checked><span>Audio</span><br>
-                    <input name="category" id="category" type="radio" value="Cables"><span>Cables</span><br>
-                    <input name="category" id="category" type="radio" value="Herramienta"><span>Herramientas</span><br>
-                    <input name="category" id="category" type="radio" value="Smartphone"><span>Smartphones</span><br>
-                    <input name="category" id="category" type="radio" value="Tablet"><span>Tablet</span><br>
-                    <input name="category" id="category" type="radio" value="Computadora"><span>Computadora</span>
             
-                <% }else if(product.category == "Cables") {%>
-                    <input name="category" id="category" type="radio" value="TV"><span>TV</span> <br>
-                    <input name="category" id="category" type="radio" value="Audio"><span>Audio</span><br>
-                    <input name="category" id="category" type="radio" value="Cables" checked><span>Cables</span><br>
-                    <input name="category" id="category" type="radio" value="Herramienta"><span>Herramientas</span><br>
-                    <input name="category" id="category" type="radio" value="Smartphone"><span>Smartphones</span><br>
-                    <input name="category" id="category" type="radio" value="Tablet"><span>Tablet</span><br>
-                    <input name="category" id="category" type="radio" value="Computadora"><span>Computadora</span>
-               
-                <% }else if(product.category == "Herramientas"){ %>
-                    <input name="category" id="category" type="radio" value="TV"><span>TV</span> <br>
-                    <input name="category" id="category" type="radio" value="Audio"><span>Audio</span><br>
-                    <input name="category" id="category" type="radio" value="Cables"><span>Cables</span><br>
-                    <input name="category" id="category" type="radio" value="Herramienta" checked><span>Herramientas</span><br>
-                    <input name="category" id="category" type="radio" value="Smartphone"><span>Smartphones</span><br>
-                    <input name="category" id="category" type="radio" value="Tablet"><span>Tablet</span><br>
-                    <input name="category" id="category" type="radio" value="Computadora"><span>Computadora</span>
+            <div class="conteiner">
+                <div class="name">
+                    <p>Nombre</p>
+                    <input name="title" id="name" placeholder="Nombre del producto" value="<%= product.title %>"">
+                </div>
+            
+                
+                <div class="category">
+                    <p>Categoria</p>
+                <select name="category">
+                    <option value="tv" <%=product.category === "tv"? "selected": ""%>>Tv</option>
+                    <option value="audio" <%=product.category === "audio"? "selected": ""%>>Audio</option>
+                    <option value="cables" <%=product.category === "cables"? "selected": ""%>>Cables</option>
+                    <option value="herramientas" <%=product.category === "herramientas"? "selected": ""%>>Herramienta</option>
+                    <option value="smartphones" <%=product.category === "smartphones"? "selected": ""%>>Smartphone</option>
+                    <option value="tablets" <%=product.category === "tablets"? "selected": ""%>>Tablet</option>
+                    <option value="computadoras" <%=product.category === "computadoras"? "selected": ""%>>Laptop / PC</option>
+                </select>
+                </div>
 
-                <% }else if(product.category == "Smartphones"){ %>
-                    <input name="category" id="category" type="radio" value="TV"><span>TV</span> <br>
-                    <input name="category" id="category" type="radio" value="Audio"><span>Audio</span><br>
-                    <input name="category" id="category" type="radio" value="Cables"><span>Cables</span><br>
-                    <input name="category" id="category" type="radio" value="Herramienta"><span>Herramientas</span><br>
-                    <input name="category" id="category" type="radio" value="Smartphone" checked><span>Smartphones</span><br>
-                    <input name="category" id="category" type="radio" value="Tablet"><span>Tablet</span><br>
-                    <input name="category" id="category" type="radio" value="Computadora"><span>Computadora</span>
-                <% }else if(product.category == "Tablet"){%>
-                    <input name="category" id="category" type="radio" value="TV"><span>TV</span> <br>
-                    <input name="category" id="category" type="radio" value="Audio"><span>Audio</span><br>
-                    <input name="category" id="category" type="radio" value="Cables"><span>Cables</span><br>
-                    <input name="category" id="category" type="radio" value="Herramienta"><span>Herramientas</span><br>
-                    <input name="category" id="category" type="radio" value="Smartphone"><span>Smartphones</span><br>
-                    <input name="category" id="category" type="radio" value="Tablet" checked><span>Tablet</span><br>
-                    <input name="category" id="category" type="radio" value="Computadora"><span>Computadora</span>
-                <% }else if(product.category == "Computadora") {%>
-                    <input name="category" id="category" type="radio" value="TV"><span>TV</span> <br>
-                    <input name="category" id="category" type="radio" value="Audio"><span>Audio</span><br>
-                    <input name="category" id="category" type="radio" value="Cables"><span>Cables</span><br>
-                    <input name="category" id="category" type="radio" value="Herramienta"><span>Herramientas</span><br>
-                    <input name="category" id="category" type="radio" value="Smartphone"><span>Smartphones</span><br>
-                    <input name="category" id="category" type="radio" value="Tablet"><span>Tablet</span><br>
-                    <input name="category" id="category" type="radio" value="Computadora" checked><span>Computadora</span>
+                <% if(product.hasOwnProperty('img')) {%>
+                    <div>
+                        <p>Imagen Actual</p>
+                    <img src="<%= product.img %>" height="150px">
+    
+                    <div class="pro-img">
+                        <p>Cambiar Imagen</p>
+                        <input name="img" type="file" accept=".jpg, .png, .PNG" >
+                    </div>
+                    </div>
+                    
+                <% } else{ %>
+                    <div class="pro-img">
+                        <p>Imagen</p>
+                        <input name="img" type="file" accept=".jpg, .png, .PNG" >
+                    </div>
                 <% } %>
-                
-                
-            </div>
-            <br>
-
-            <div class="description">
-                <p>Detalles</p>
-                <textarea placeholder="Características del producto" ><%= product.description%></textarea>
-            </div>
-            <br>
-
-            <% if(product.hasOwnProperty('img')) {%>
-                <p>Imagen Actual</p>
-                <img src="<%= product.img %>" height="150px">
-
-                <div class="pro-img">
-                    <p>Cambiar Imagen</p>
-                    <input type="file" accept=".jpg, .png, .PNG" value="c:\">
+    
+                <div class="description">
+                    <p>Detalles</p>
+                    <textarea name="description" placeholder="Características del producto" ><%= product.description%></textarea>
                 </div>
-            <% } else{ %>
-                <div class="pro-img">
-                    <p>Imagen</p>
-                    <input type="file" accept=".jpg, .png, .PNG" value="c:\">
+    
+    
+                <div class="price">
+                    <p>Precio Unitario</p>
+                    <input type="number" name="price" tep='0.01'  value="<%= product.price  %>"> <span>$ MXN</span>
                 </div>
-            <% } %>
             
-            <br>
-
-            <div class="price">
-                <p>Precio Unitario</p>
-                <input type="number" min="0" value="<%= product.price %>"> <span>$ MXN</span>
+    
+                <div class="discount">
+                    <p>Descuento</p>
+                    <input type="number" min="0" name="discount" max="100" value="<%= product.discount || 0 %>"> <span>%</span>
+                </div>
+              
+    
+                <div class="quantity">
+                    <p>Cantidad</p>
+                    <input type="number" min="1" name="stock" value="<%= product.stock %>">
+                </div>
+    
+                <div class="btts">
+                    <input type="submit" value="Editar" id="submit">
+                    <input type="reset" value="Limpiar" id="clear">
+                </div>
             </div>
-            <br>
-
-            <div class="quantity">
-                <p>Cantidad</p>
-                <input type="number" min="1" value="<%= product.quantity %>">
-            </div>
-
-            <div class="btts">
-                <input type="submit" value="Editar" id="submit">
-                <input type="reset" value="Limpiar" id="clear">
-            </div>
-
+            
         </form>
     </main>
 

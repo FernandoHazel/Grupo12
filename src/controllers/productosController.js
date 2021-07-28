@@ -2,8 +2,24 @@ const fs = require('fs');
 const path = require("path")
 let dataDirection= path.join(__dirname + "../../../public/data/products.json")
 
+/* Data */
 let rawdata = fs.readFileSync(dataDirection);
 let products = JSON.parse(rawdata);
+
+function equalProducts(a, b){
+    console.log(a)
+    console.log(b)
+    /* Funcion que compara dos productos */
+
+    if(a.title !== b.title){return false}
+    if(a.description !== b.description){return false}
+    if(a.category !== b.category){return false}
+    if(a.price !== b.price){return false}
+    if(a.discount !== b.discount){return false}
+    if(a.stock !== b.stock){return false}
+    
+    return true
+}
 
 let productosController = {
     detalles: (req, res)=>{
@@ -16,7 +32,9 @@ let productosController = {
         res.render("products/crear")
     },
     store: (req, res)=>{
+
         const newProduct = req.body
+        console.log("FILE::", req.file)
         console.log('producto agregado', newProduct)
 
         const category = req.body.category
@@ -31,25 +49,94 @@ let productosController = {
 
         res.redirect("/")
     },
-    editor: (req, res)=>{
-        let productId = req.params.id
-        console.log("Product ID: ", productId)
+    editForm: (req, res)=>{             
+        /* Obtenemos el ID */
+        let productId = parseInt(req.params.id, 10);
 
-        res.render("products/editar", 
-        {
-            product: {
-                name: "TV Samsung 19''",
-                price: 3500,
-                description: "Television de alta resolucion que soporta 3 entradas HDMI",
-                quantity: 124,
-                category: "TV",
-                img: "/images/productos/1.png"
-            },
-        }
-    )},
-    editar: (req, res)=>{
-        //agregar lógica para editar
-        res.redirect('/')
+        /* Buca el indice del producto en el array*/
+        let index = products.findIndex(p => p.id === productId)
+
+        /* Renderizar vista segun el indice */
+        index === -1 ? res.render("errors/404") : res.render("products/editar", {product: products[index]})  
+    },
+    actualizar: (req, res)=>{
+
+        /* Obtenemos el ID */
+       let productID = parseInt(req.params.id, 10)
+
+       /* Buscamos el índice del producto */
+       let index = products.findIndex( p  => p.id === productID)
+
+       /* Si por algo el producto ya no existe */
+       if(index === -1){
+           res.render("errors/404")
+       }
+       /* Producto editado */
+       let updatedProduct = req.body
+
+       /* Cambiamos el tipo de dato a numericos*/
+       updatedProduct.price = parseFloat(updatedProduct.price)
+       updatedProduct.discount = parseFloat(updatedProduct.discount)
+       updatedProduct.stock = parseInt(updatedProduct.stock)
+
+       /* Hacemos unas validaciones */
+       if(equalProducts(updatedProduct, products[index]) && !req.file ){
+           /* SI NO HA MODIFICADO NINGÚN CAMPO*/
+           console.log("NO has modificado el producto ID: '", productID, "'")
+           res.render("products/editar/"+productID)
+
+       }else{
+           /* SI ha modificado algun campo */
+           
+           // imagen final del producto
+           let imgSrc = products[index].img   
+
+           if(req.file){
+                /* Si ha modificado la imagen del producto */
+
+                /* Eliminar la imagen previa del producto */
+                let imgToDelete = imgSrc
+
+                /* Elimina la imagen anterior */
+                if(imgToDelete){
+                    /* verificamos si no es la imagen default.png   */
+                    let subDirectories = imgToDelete.split("/")
+
+                    if(subDirectories[subDirectories.length - 1] !== "default.png"){
+                        /* Path para eliminar*/
+                        let imgDir = path.join(__dirname + "../../../public"+imgToDelete)
+                        /* Eliminamos */
+                        try {
+                            fs.unlinkSync(imgDir)
+                            console.log("Imagen anterior eliminada\n")
+                            //file removed
+                          } catch(err) {
+                            console.log(err)
+                          }
+                    }
+                }
+                /* Asignamos la nueva imagen */
+                imgSrc = "/images/productos/"+updatedProduct.category+"/"+req.file.filename
+                console.log("Nueva Imagen Asignada\n")
+            }
+
+            /* Guardamos el producto a actualizar */
+            updatedProduct.id = productID
+
+            if(products[index].sold){ // vendidos
+                updatedProduct.sold = products[index].sold
+            }
+            updatedProduct.img = imgSrc
+            
+            console.log("Producto Actualizado Correctamente:\n", updatedProduct)
+            /* Guardar en disco*/
+            products[index] = updatedProduct
+
+            const productsJSON = JSON.stringify(products, null, 2)
+		    fs.writeFileSync(dataDirection, productsJSON)
+            res.redirect("product/detalles/"+productID)
+       }
+
     },
     borrar: (req, res)=>{
         //agregar lógica para borrar

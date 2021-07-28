@@ -4,7 +4,10 @@ const app = express()
 const rutaMain =require('./routes/main.js')
 const rutaProductos = require("./routes/productos")
 const path = require("path")
+const override = require("method-override")
 
+// Method override
+app.use(override("_method"))
 
 // creando una dirección estática
 app.use("/", express.static(__dirname+'/../public'))
@@ -12,8 +15,9 @@ app.use("/", express.static(__dirname+'/../public'))
 //Configurar ejs como el template engine de la app
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs')
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 
 
 // Recursos

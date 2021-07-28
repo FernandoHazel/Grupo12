@@ -12,17 +12,15 @@
     "detailedDescription": "A diferencia de los audífonos circulares tradicionales, el diseño de los EarPods se basa en la geometría del oído, por eso son más cómodos que cualquier otro audífono de este tipo. Las bocinas del interior de los EarPods han sido diseñadas para mejorar la calidad del sonido y minimizar su pérdida. ¿El resultado? Un audio de alta calidad. Los EarPods con conector Lightning también incluyen un control remoto integrado en el cable que te permite ajustar el volumen, controlar la reproducción de música y video, y responder o finalizar llamadas. Avisos Legales Funcionan con todos los dispositivos que tienen un conector Lightning y que son compatibles con iOS 10 o posterior, como el iPod touch, el iPad y el iPhone. También funcionan con los modelos de iPad con iPadOS."
   },
   {
-    "id": 2,
-    "img": "/images/productos/cables/Cable elite USB tipo A 3.0 a micro USB tipo B 3.0 de 1,8 m.PNG",
     "title": "Cable Elite USB",
-    "description": "Tipo 3.0",
     "category": "cables",
+    "description": "Tipo 3.0",
     "price": 349.5,
     "discount": 10,
-    "sold": 500,
     "stock": 65,
-    "detailedDescription": "Cable arnés de la línea Elite con conectores macho (plug) USB tipo 'A' versión 3.0 a macho (plug) micro USB tipo “B” versión 3.0, de 1,8 m, ideal para la interconexión de equipos que requieren una alta capacidad para la transmisión de datos (como discos duros externos). Permite velocidades de hasta 5Gbps en puertos 3.0 y de 480Mbps en puertos 2.0. Sus conectores están moldeados, por lo que  reducen la tensión al fijarse perfectamente a la cubierta del PVC asegurando la perfecta conexión y la transmisión de datos",
-    "final_price": 314.55
+    "id": 2,
+    "sold": 500,
+    "img": "/images/productos/cables/img-1627514929871.jpg"
   },
   {
     "id": 3,
