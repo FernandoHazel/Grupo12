@@ -33,16 +33,24 @@ let productosController = {
     },
     store: (req, res)=>{
 
+        /* Imagen por defecto */
+        let img = "/images/productos/default.png"
         const newProduct = req.body
-        console.log("FILE::", req.file)
-        console.log('producto agregado', newProduct)
+        
+        /* Si subio una imagen */
+        if(req.file){
+            img = "/images/productos/" + newProduct.category + "/" +req.file.filename
+        }
+    
+        /*vendidos  */
+        newProduct.sold = 0
+        /* Imagen */
+        newProduct.img = img
 
-        const category = req.body.category
-        const img = req.body.img
-
+        /* Id */
         newProduct.id = Date.now(),
-        newProduct.img = "/images/productos/" + category + "/";
-
+    
+        /* Guarda en disco */
         products.push(newProduct)
         const productsJSON = JSON.stringify(products, null, 2)
 		fs.writeFileSync(dataDirection, productsJSON)
@@ -127,14 +135,14 @@ let productosController = {
                 updatedProduct.sold = products[index].sold
             }
             updatedProduct.img = imgSrc
-            
+
             console.log("Producto Actualizado Correctamente:\n", updatedProduct)
             /* Guardar en disco*/
             products[index] = updatedProduct
-
             const productsJSON = JSON.stringify(products, null, 2)
 		    fs.writeFileSync(dataDirection, productsJSON)
-            res.redirect("product/detalles/"+productID)
+            /* Redirecciona */
+            res.redirect("/productos/detalles/"+productID)
        }
 
     },

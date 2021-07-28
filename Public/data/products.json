@@ -510,5 +510,26 @@
     "stock": 87,
     "detailedDescription": "TCL es una de las empresas líderes en la industria global de televisores, dedicada a la investigación y desarrollo de productos electrónicos. Orientada a la satisfacción de sus clientes, se distingue por proveer una excelente experiencia a quienes adquieran y usen sus diferentes líneas de electrodomésticos. Con el Smart TV 32S331-MX accederás a las aplicaciones donde se encuentran tus contenidos favoritos. Además, podrás navegar por Internet, interactuar en redes sociales y divertirte con videojuegos. Sumérgete en la pantalla. Su resolución HD te presentará imágenes con gran detalle y alta definición. Ahora todo lo que veas cobrará vida con brillo y colores más reales.",
     "final_price": 3524.25
+  },
+  {
+    "title": "Tablet Samsung Galaxy Tab E Lite 7 ",
+    "category": "tablets",
+    "description": "Tablet Samsung Galaxy Tab E Lite 7 \", 8GB, 1024 x 600 Pixeles, Android 4.4, Bluetooth 4.0, Blanco",
+    "price": 2700,
+    "discount": 0,
+    "stock": 5,
+    "id": 1627515798067,
+    "img": "/images/productos/audio/img-1627515798046.jpg"
+  },
+  {
+    "title": "Tablet Lenovo Tab M7 7\"",
+    "category": "tablets",
+    "description": "Tablet Lenovo Tab M7 7\", 16GB, 1024 x 600 Pixeles, Android 9 Go Edition, Bluetooth 4.2, Gris ",
+    "price": "3198",
+    "discount": "0",
+    "stock": "5",
+    "sold": 0,
+    "img": "/images/productos/default.png",
+    "id": 1627516018377
   }
 ]
