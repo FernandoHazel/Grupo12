@@ -501,16 +501,13 @@
     "final_price": 9094.15
   },
   {
-    "id": 40,
-    "img": "/images/productos/tv/Smart TV TCL 32S331-MX LED HD 32 110V.PNG",
-    "title": "Smart TV TCL 32S331-MX LED HD 32 110V",
-    "description": "Con el Smart TV 32S331-MX accederás a las aplicaciones donde se encuentran tus contenidos favoritos. ",
+    "title": "Azúl 3",
     "category": "tv",
-    "price": 4699,
-    "discount": 25,
-    "sold": 32,
-    "stock": 87,
-    "detailedDescription": "TCL es una de las empresas líderes en la industria global de televisores, dedicada a la investigación y desarrollo de productos electrónicos. Orientada a la satisfacción de sus clientes, se distingue por proveer una excelente experiencia a quienes adquieran y usen sus diferentes líneas de electrodomésticos. Con el Smart TV 32S331-MX accederás a las aplicaciones donde se encuentran tus contenidos favoritos. Además, podrás navegar por Internet, interactuar en redes sociales y divertirte con videojuegos. Sumérgete en la pantalla. Su resolución HD te presentará imágenes con gran detalle y alta definición. Ahora todo lo que veas cobrará vida con brillo y colores más reales.",
-    "final_price": 3524.25
+    "description": "nuevo",
+    "detailedDescription": "Asegurarse de filtrar solo con los que instalaron en ese rango de fecha.\r\n\r\n\"For each distinct app that you create, you’ll need to acquire a unique Flurry API Key. I.e., you’ll need two API keys if you are going to release on both Android and iOS platforms.\"\r\n\r\nPS C:\\Users\\Fhazel\\Desktop\\1SG\\Vaciado Unity\\Automatizado-de-analiticos\\Analytics>\r\n\r\nMetrics API endpoint is https://api-metrics.flurry.com/public/v1/data/\r\n\r\nendPoint/table/timeGrain/dimension1/dimension2;show=all/dimension3{…}?metrics=[comma-separated-metrics]&dateTime=[..]&filters=[…]&topN=[..]&sort=[..]&having=[..]&format=[..]&timeZone=[..]\r\n\r\nRequisitos: \r\n-Ser programmatic user\r\n-Ser administrador\r\n\r\nConsola de prueba de request\r\nhttps://querybuilder.flurry.com/\r\n\r\nCódigo de ejemplo:\r\nhttps://github.com/flurry/unity-flurry-sdk/blob/master/example/FlurryStart.cs\r\n\r\nhttps://api-metrics.flurry.com/public/v1/data/retention/day?metrics=returnRate,rollingRate&dateTime=2021-06-14/2021-06-27&filters=app%7CapiKey-in[THN59RP57GSGPJBKHYTT,4ZV86XKRS468CJF2KQ9D]&token=eyJhbGciOiJIUzI1NiIsImtpZCI6ImZsdXJyeS56dXVsLnByb2Qua2V5c3RvcmUua2V5LjIifQ.eyJpc3MiOiJodHRwczovL3p1dWwuZmx1cnJ5LmNvbTo0NDMvdG9rZW4iLCJpYXQiOjE2MjY5NzMwNDksImV4cCI6MzMxODM4ODE4NDksInN1YiI6IjQ3ODc2MSIsImF1ZCI6IjQiLCJ0eXBlIjo0LCJqdGkiOiIxMjUwOCJ9.49Q2l6l0KwVYxkxxDp16HO5r_U1LD8YZWrqA3t1qne4\r\n\r\nAcces token:\r\neyJhbGciOiJIUzI1NiIsImtpZCI6ImZsdXJyeS56dXVsLnByb2Qua2V5c3RvcmUua2V5LjIifQ.eyJpc3MiOiJodHRwczovL3p1dWwuZmx1cnJ5LmNvbTo0NDMvdG9rZW4iLCJpYXQiOjE1NDEwODcxNzIsImV4cCI6MzMwOTc5OTU5NzIsInN1YiI6IjQzMDkwNSIsImF1ZCI6IjQiLCJ0eXBlIjo0LCJqdGkiOiI3MDQ2In0.LkDMf0ieCfm_42BG5DJMUc-Y2d006RLvU_PMXK1SGGs\r\n\r\nMuchoTacoA    (Android)                    4ZV86XKRS468CJF2KQ9D\r\nMuchoTacoOs  (IOS)                             THN59RP57GSGPJBKHYTT\r\n\r\nBitácora:\r\n\r\nInstalls: Usamos la tabla \"appUsage\" con la métrica \"newDevice\"\r\n\r\nFTUE s: Usamos la tabla \"appEvent\" con la dimensión \"event\" y el campo \"event|name\" o cómo se quiera filtrar\r\n\r\nRestaurants: Usamos la tabla \"appEvent\" con la dimensión \"event\" y el campo \"event|name\" con el valor {_V3_RESTAURANT_PURCHASED}\r\n\r\nRetention D1, D3...: Usamos la tabla \"appUsage\" **No he encontrado la opción para filtrar estos datos\r\n\r\n1 Firts Purchase: **Tiene un evento que se llama como tal**\r\n\r\nPurchases:  Usamos la tabla \"iapRevenue\"  Con las dimensiones que deemos y la métrica \"purchases\"\r\n\r\nProblemas:\r\n-En el código está complicado armar el link puesto que hay muchos queries opcionales y que cambian conforme cada query padre\r\n\r\n-Me cuesta encontrar la manera de filtrar por región, aunque filtre por un solo país regresa varios resultados en base al time grain\r\n\r\n-Ahorita estabamos pensando en un programa que armara el URI con todos los filtros y métricas para descargar un archivo pero eso no arroja los datos que queremos puesto que solo buscamos analizar a los usuarios que instalaron recientemente, para eso necesitamos la información del explorer pero no encontramos forma de acceder a él desde la API.\r\n",
+    "price": "1000",
+    "stock": "1",
+    "id": 1627602901704,
+    "img": "/images/productos/tv/error 500.PNG"
   }
 ]

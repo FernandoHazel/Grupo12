@@ -1,3 +1,4 @@
+const { fileLoader } = require('ejs');
 const fs = require('fs');
 const path = require("path")
 let dataDirection= path.join(__dirname + "../../../public/data/products.json")
@@ -15,18 +16,19 @@ let productosController = {
     crear: (req, res)=>{
         res.render("products/crear")
     },
-    store: (req, res)=>{
+    store: function (req, res) {
         const newProduct = req.body
         console.log('producto agregado', newProduct)
 
         const category = req.body.category
-        const img = req.body.img
+        const img = req.file
 
-        newProduct.id = Date.now(),
-        newProduct.img = "/images/productos/" + category + "/";
+        newProduct.id = Date.now()
+
+        newProduct.img = img.destination.replace('public', '') + img.originalname;
 
         products.push(newProduct)
-        const productsJSON = JSON.stringify(products, null, 2)
+        let productsJSON = JSON.stringify(products, null, 2)
 		fs.writeFileSync(dataDirection, productsJSON)
 
         res.redirect("/")
@@ -51,8 +53,11 @@ let productosController = {
         //agregar lógica para editar
         res.redirect('/')
     },
-    borrar: (req, res)=>{
-        //agregar lógica para borrar
+    borrar: (id)=>{
+        
+        let newList = products.filter(element => element.id != id)
+        let productsJSON = JSON.stringify(newList, null, 2)
+        fs.writeFileSync(dataDirection, productsJSON)
         res.redirect('/')
     },
     categoria: (req, res,) => {
