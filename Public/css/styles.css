@@ -1305,7 +1305,7 @@ main #products-section{
         margin-right: 20px;
      }
      .upper-objects a{
-        font-size: 1.4rem;
+        font-size: 1.3rem;
      }
      .upper-objects ul{
         padding-right: 20px;
@@ -1322,7 +1322,7 @@ main #products-section{
         margin-top: 15px;
     }
     .search-conteiner input{
-       font-size: 1.3rem;
+       font-size: 1.1rem;
     }
     /* /Search Bar */
     
@@ -1331,15 +1331,15 @@ main #products-section{
         max-width: 1400px;
     }
     .menu-options li{
-        margin-right: 33px;
+        margin-right: 20px;
      }
      .menu-options a{
-         font-size: 1.4rem;
+         font-size: 1.3rem;
          font-weight: bold;
      }
      .menu-options .user i{
         color: black;
-        font-size: 30px;
+        font-size: 20px;
 
         margin-right: 10px;
      }

@@ -12,7 +12,7 @@ const mainController={
     
     /* Obtenemos todos los productos con descuento*/ 
     let offerts = products.filter(product => product.discount > 0)
-    offerts = offerts.slice(0, 11)
+    offerts = offerts.slice(0, 7)
 
     // agregamos el atributo "precio final" porque tienen descuento
     offerts.forEach(element => {
@@ -25,7 +25,7 @@ const mainController={
       return b.sold - a.sold;
     });
     let mostSalesFew = [...mostSales]
-    mostSalesFew = mostSalesFew.slice(0, 11)
+    mostSalesFew = mostSalesFew.slice(0, 7)
   
     /* Renderizamos la vista */    
     res.render('home', {offerts: offerts, mostSales: mostSalesFew});

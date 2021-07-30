@@ -122,6 +122,9 @@ let productosController = {
                             console.log(err)
                           }
                     }
+                    else{
+                        console.log("Es la imagen DEFAULT")
+                    }
                 }
                 /* Asignamos la nueva imagen */
                 imgSrc = "/images/productos/"+updatedProduct.category+"/"+req.file.filename

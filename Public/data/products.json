@@ -20,19 +20,19 @@
     "stock": 65,
     "id": 2,
     "sold": 500,
-    "img": "/images/productos/cables/img-1627514929871.jpg"
+    "img": "/images/productos/cables/img-1627514929871.jpg",
+    "final_price": 314.55
   },
   {
-    "id": 3,
-    "img": "/images/productos/herramientas/Multímetro profesional auto rango.PNG",
     "title": "Multilímetro profesional",
-    "description": "Gran calidad",
     "category": "herramientas",
+    "description": "Gran calidad",
     "price": 6300,
     "discount": 35,
-    "sold": 55,
     "stock": 36,
-    "detailedDescription": "Este multímetro digital profesional permite medir con gran precisión, sin la necesidad de escoger escalas, gracias a su función de auto rango. Mide resistencia, voltaje de corriente alterna o directa, intensidad de corriente, capacitancia y continuidad audible. Además, su función “hold” te permite fijar alguna lectura en el display, mientras haces anotaciones o cambias de posición, sin perder la medición realizada. Tiene cubierta plástica para protegerlo en caso de caídas o golpes accidentales. También cuenta con función de ahorro de batería, así que si no lo estás utilizando se apagará automáticamente después de cierto tiempo. Gracias a la calidad profesional que tiene este multímetro, es recomendable para técnicos, ingenieros o cualquier persona que realice reparaciones o instalaciones eléctricas o electrónicas. En Steren encontrarás una gran variedad de multímetros digitales, entre otros accesorios que te serán de gran utilidad en tus proyectos. ¡Compra ya este multímetro profesional con auto rango! Puedes adquirirlo desde nuestra Tienda en Línea de manera fácil y segura. Recuerda que realizamos envíos a todo México y, si ordenas desde el DF o área metropolitana, paga al recibir tu producto.",
+    "id": 3,
+    "sold": 55,
+    "img": "/images/productos/herramientas/img-1627663944198.jpg",
     "final_price": 4095
   },
   {
@@ -148,16 +148,15 @@
     "detailedDescription": "Cable de video (coaxial RG59) con 2 conectores tipo 'F' de rosca, de 1,8 m de largo."
   },
   {
-    "id": 13,
-    "img": "/images/productos/cables/Cable elite USB tipo A 3.0 a micro USB tipo B 3.0 de 1,8 m.PNG",
     "title": "Cable USB Elite",
-    "description": "Conexion de USB tipo A 3.0 a conexion tipo B 3.0. Cuenta con 1.8 metros de longitud",
     "category": "cables",
+    "description": "Conexion de USB tipo A 3.0 a conexion tipo B 3.0. Cuenta con 1.8 metros de longitud",
     "price": 210,
     "discount": 0,
-    "sold": 431,
     "stock": 45,
-    "detailedDescription": "Cable arnés de la línea Elite con conectores macho (plug) USB tipo 'A' versión 3.0 a macho (plug) micro USB tipo “B” versión 3.0, de 1,8 m, ideal para la interconexión de equipos que requieren una alta capacidad para la transmisión de datos (como discos duros externos). Permite velocidades de hasta 5Gbps en puertos 3.0 y de 480Mbps en puertos 2.0. Sus conectores están moldeados, por lo que  reducen la tensión al fijarse perfectamente a la cubierta del PVC asegurando la perfecta conexión y la transmisión de datos."
+    "id": 13,
+    "sold": 431,
+    "img": "/images/productos/cables/img-1627664126627.jpg"
   },
   {
     "id": 14,
@@ -296,17 +295,15 @@
     "detailedDescription": "Alta versatilidad para distintas aplicaciones. Esta estación para soldar de nueva generación, de un solo canal, está pensada para satisfacer todas tus necesidades. Tiene control digital por medio de botones para seleccionar la temperatura, y display LCD que permite observar el aumento o disminución gradual de la temperatura hasta llegar al valor establecido, así siempre estarás seguro de trabajar con el calor adecuado. El rango de selección es de 50 a 450 °C (150 °F a 850 °F). También permite hacer ajustes de tiempo de espera automático (standby), rango de regulación automático, y bloqueo antimanipulación para evitar cambiar la temperatura accidentalmente. Incluye unidad con descanso de seguridad para colocar el cautín, con depósito para esponja y fibra limpiadora."
   },
   {
-    "id": 25,
-    "img": "/images/productos/herramientas/Multímetro profesional auto rango.PNG",
     "title": "Multímetro profesional auto rango",
-    "description": "Mide resistencia, voltaje de corriente alterna o directa, intensidad de corriente, capacitancia y continuidad audible. ",
     "category": "herramientas",
+    "description": "Mide resistencia, voltaje de corriente alterna o directa, intensidad de corriente, capacitancia y continuidad audible. ",
     "price": 970,
     "discount": 30,
-    "sold": 12,
     "stock": 35,
-    "detailedDescription": "Este multímetro digital profesional permite medir con gran precisión, sin la necesidad de escoger escalas, gracias a su función de auto rango. Mide resistencia, voltaje de corriente alterna o directa, intensidad de corriente, capacitancia y continuidad audible. Además, su función “hold” te permite fijar alguna lectura en el display, mientras haces anotaciones o cambias de posición, sin perder la medición realizada. Tiene cubierta plástica para protegerlo en caso de caídas o golpes accidentales. También cuenta con función de ahorro de batería, así que si no lo estás utilizando se apagará automáticamente después de cierto tiempo. Gracias a la calidad profesional que tiene este multímetro, es recomendable para técnicos, ingenieros o cualquier persona que realice reparaciones o instalaciones eléctricas o electrónicas. En Steren encontrarás una gran variedad de multímetros digitales, entre otros accesorios que te serán de gran utilidad en tus proyectos. ¡Compra ya este multímetro profesional con auto rango! Puedes adquirirlo desde nuestra Tienda en Línea de manera fácil y segura. Recuerda que realizamos envíos a todo México y, si ordenas desde el DF o área metropolitana, paga al recibir tu producto.",
-    "final_price": 679
+    "id": 25,
+    "sold": 12,
+    "img": "/images/productos/herramientas/img-1627664219264.jpg"
   },
   {
     "id": 26,
@@ -525,11 +522,21 @@
     "title": "Tablet Lenovo Tab M7 7\"",
     "category": "tablets",
     "description": "Tablet Lenovo Tab M7 7\", 16GB, 1024 x 600 Pixeles, Android 9 Go Edition, Bluetooth 4.2, Gris ",
-    "price": "3198",
-    "discount": "0",
+    "price": 3198,
+    "discount": 0,
+    "stock": 5,
+    "id": 1627516018377,
+    "img": "/images/productos/tablets/img-1627666349158.jpg"
+  },
+  {
+    "title": "Asus Laptop L410",
+    "category": "computadoras",
+    "description": "Asus Laptop L410 Ultra Thin Laptop, 14 Pulgadas FHD, procesador Intel Celeron N4020, 4 GB RAM, 64 GB de Almacenamiento, NumberPad, Windows 10 Home en Modo S, Star Black, L410MA-DB02",
+    "price": "25000",
+    "discount": "15",
     "stock": "5",
     "sold": 0,
     "img": "/images/productos/default.png",
-    "id": 1627516018377
+    "id": 1627666821504
   }
 ]
