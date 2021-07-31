@@ -6,58 +6,67 @@
     <main>
         <form id="crea-edit-product" action="/productos/crear" method="POST" enctype="multipart/form-data">
             <p id="pro-title">Añade un nuevo producto</p>
-            <div class="name">
-                <p>Nombre</p>
-                <input name="title" id="title" placeholder="Nombre del producto" required>
-            </div>
-            <br>
 
-            <div class="category">
-                <p>Categoria</p>
-            <select name="category">
-                <option value="" disabled selected>Selecciona una</option>
-                <option value="tv">Tv</option>
-                <option value="audio" >Audio</option>
-                <option value="cables" >Cables</option>
-                <option value="herramientas">Herramienta</option>
-                <option value="smartphones">Smartphone</option>
-                <option value="tablets" >Tablet</option>
-                <option value="computadoras">Laptop / PC</option>
-            </select>
+            <div class="main">
+                <div class="name">
+                    <p>Nombre</p>
+                    <input name="title" id="title" placeholder="Nombre del producto" required>
+                </div>
+                <br>
+    
+                <div class="category">
+                    <p>Categoria</p>
+                <select name="category">
+                    <option value="" disabled selected>Selecciona una</option>
+                    <option value="tv">Tv</option>
+                    <option value="audio" >Audio</option>
+                    <option value="cables" >Cables</option>
+                    <option value="herramientas">Herramienta</option>
+                    <option value="smartphones">Smartphone</option>
+                    <option value="tablets" >Tablet</option>
+                    <option value="computadoras">Laptop / PC</option>
+                </select>
+                </div>
             </div>
-            <br>
+    
+            
+                <div class="description">
+                    <p>Detalles</p>
+                    <textarea placeholder="Menciona los detalles y/o características que consideres relevantes de cara a la venta al público" name="description" required></textarea>
+                </div>
+               
 
-            <div class="description">
-                <p>Detalles</p>
-                <textarea placeholder="Características del producto" name="description" required></textarea>
-            </div>
-            <br>
-
-            <div class="pro-img">
-                <p>Imagen</p>
-                <input type="file" accept=".jpg, .png, .PNG" name="img">
-            </div>
-            <br>
-
-            <div class="price">
-                <p>Precio Unitario</p>
-                <input type="number" min="0" name="price" required> <span>$ MXN</span>
-            </div>
-            <br>
-            <div class="discount">
-                <p>Descuento</p>
-                <input type="number" min="0" name="discount" max="100" value="0" required> <span>%</span>
-            </div>
-
-            <div class="quantity">
-                <p>Cantidad</p>
-                <input type="number" min="1" name="stock" required>
-            </div>
-
-            <div class="btts">
-                <input type="submit" value="Añadir" id="submit">
-                <input type="reset" value="Limpiar" id="clear">
-            </div>
+                <div class="main2">
+                    <div class="price">
+                        <p>Precio Unitario</p>
+                        <input type="number" min="0" name="price" required> <span>$MXN</span>
+                    </div>
+                  
+                    <div class="discount">
+                        <p>Descuento</p>
+                        <input type="number" min="0" name="discount" max="100" value="0" required> <span>%</span>
+                    </div>
+        
+                    <div class="quantity">
+                        <p>Cantidad</p>
+                        <input type="number" min="1" name="stock" required>
+                    </div>
+                </div>
+    
+                <div class="pro-img">
+                    <p>Sube una imagen de tu producto </p>
+                    <input type="file" accept=".jpg, .png, .PNG" name="img">
+                </div>
+                <br>
+    
+                
+    
+                <div class="btts">
+                    <input type="submit" value="Añadir" id="submit">
+                    <input type="reset" value="Limpiar" id="clear">
+                </div>
+            
+            
 
         </form>
     </main>

@@ -510,7 +510,11 @@ h2,h3,h4{
 #register-form{
     padding: 60px;
     padding-bottom: 0px;
-    background-color: white;
+    background-color: #c2c2c2;
+    border-radius: 25px;
+    border: solid 4px rgba(255, 255, 255, 0.3);
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
+   box-shadow: 5px 5px 7px 7px rgba(255, 255, 255, 0.5);
     margin: 40px auto;
     width: 80%;
 }
@@ -518,6 +522,7 @@ h2,h3,h4{
     text-align: center;
     font-size: 28px;
     margin-bottom: 20px;
+    margin-bottom: 75px;
 }
 
 #register-form input{
@@ -527,6 +532,10 @@ h2,h3,h4{
     border-radius: 15px;
 }
 
+#register-form .profile select{
+    height: 40px;
+}
+
 #register-form p{
     font-size: 18px;
     color: black;
@@ -534,22 +543,11 @@ h2,h3,h4{
     margin-bottom: 10px;
 }
 
-#register-form .address {
-    margin-bottom: 20px;
-}
-#register-form .address textarea{
-    width: 100%;
-    padding: 10px 15px;
-    border-radius: 15px;
-}
-#register-form input, textarea{
+#register-form input{
     border: 2px solid black;
 }
 #register-form .profile {
     margin-bottom: 10px;
-}
-#register-form .profile input{
-    width: 5%;
 }
 
 #register-form .btts input{
@@ -576,24 +574,7 @@ h2,h3,h4{
 #register-form #clear:hover{
     background-color: #44ad64;
 }
-#register-form #text-o{
-    text-align: center;
-}
-#register-form #btt-google{
-    background-color: white;
-    width: 40%;
-}
 
-#register-form .bttn-google{
-    text-align: center;
-    width: 100%;
-    padding-bottom: 30px;
-}
-#register-form #btt-g{
-    padding: 20px;
-    width: 50%;
-    border-radius: 20px;
-}
 
 #register-form #redirect{
     padding-bottom: 20px;
@@ -604,18 +585,100 @@ h2,h3,h4{
 #register-form #redirect p{
     font-size: 20px;
 }
+#register-form .main, .main2, .main3{
+    margin-bottom: 30px;
+}
+
+/* Login form */
+#login-form{
+    padding: 60px;
+    padding-bottom: 0px;
+    background-color: #c2c2c2;
+    border-radius: 25px;
+    border: solid 4px rgba(255, 255, 255, 0.3);
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
+    box-shadow: 5px 5px 7px 7px rgba(255, 255, 255, 0.5);
+    margin: 40px auto;
+    width: 60%;
+}
+#login-form #form-title{
+    font-size: 22px;
+    margin-bottom: 75px;
+}
+#login-form div p{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+#login-form input{
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 15px;
+}
+
+#login-form .btts{
+    text-align: center;
+}
+#login-form .btts input{
+    width: 40%;
+    height: 40px;
+    font-size: 18px;
+    margin-top: 30px;
+    background-color: #24a0ed ;
+    color: white;
+    padding: 6px 6px;
+    border-radius: 30px;
+    border: 0px;
+}
+
+#login-form-form input:hover, textarea:hover{
+    background-color: rgb(223, 223, 223);
+}
+#login-form #submit:hover, #clear:hover{
+    background-color: #44ad64;
+}
+#login-form #clear:hover{
+    background-color: #44ad64;
+}
+#login-form #text-o{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+#login-form #btt-google{
+    background-color: white;
+    width: 40%;
+}
+
+#login-form .bttn-google{
+    text-align: center;
+    width: 100%;
+    padding-bottom: 30px;
+}
+#login-form #btt-g{
+    padding: 20px;
+    width: 50%;
+    border-radius: 20px;
+}
+/* Fin login */
 
 /* Formulario para crear-editar Productos*/
 #crea-edit-product{
     padding: 60px;
-    background-color: white;
+    background-color: #c2c2c2;
     margin: 40px auto;
     width: 80%;
+    border-radius: 25px;
+    border: solid 4px rgba(255, 255, 255, 0.3);
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
+   box-shadow: 5px 5px 7px 7px rgba(255, 255, 255, 0.5);
 }
 #crea-edit-product #pro-title{
     text-align: center;
     font-size: 28px;
-    margin-bottom: 20px;
+    margin-bottom: 75px;
 }
 #crea-edit-product input{
     margin-bottom: 10px;
@@ -1345,6 +1408,163 @@ main #products-section{
      }
 
    
+     /* Formulario crear producto */
 
+     #crea-edit-product input{
+         width: 170px;
+     }
+     #crea-edit-product .name{
+        width: 275px;
+    }
+    #crea-edit-product .name input{
+        width: 100%;
+    }
+    #crea-edit-product .category{
+        width: 170px;
+    }
+    #crea-edit-product select{
+        width: 100%;
+    }
+    #crea-edit-product .price{
+        margin: 0;
+    }
+
+    #crea-edit-product .price input{
+        width: 140px;
+    }
+    #crea-edit-product .discount input{
+        width: 140px;
+    }
+    #crea-edit-product .quantity input{
+        width: 140px;
+    }
+    #crea-edit-product .description{
+        width: 100%;
+    }
+    #crea-edit-product .main{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    #crea-edit-product .main2{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #crea-edit-product textarea{
+        height: 150px;
+    }
+
+    #crea-edit-product .pro-img{
+        margin-top: 20px;
+    }
+    #crea-edit-product .pro-img input{
+        width: 350px;
+    }
+
+    #crea-edit-product .main, .main2{
+        margin-bottom: 30px;
+    }
+
+    #crea-edit-product .description{
+        margin-bottom: 30px;
+    }
+    #crea-edit-product div p{
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-bottom: 4px;
+    }
+    /* Fin formulario producto*/
+
+    /* Formulario de registro usuarios */
+    
+    #register-form div input{
+        width: 100px;
+    }
+    #register-form .first-name, .last-name-pat{
+        width: 210px;
+    }
+    #register-form .first-name input{
+        width: 100%;
+    }
+
+    #register-form .email{
+        width: 280px;
+    }
+    #register-form .email input{
+        width: 100%;
+    }
+
+    #register-form  .last-name-pat input{
+        width: 100%;  
+    }
+    #register-form  .age {
+        width: 150px;  
+    }
+    #register-form  .age input {
+        width: 100%;  
+    }
+
+    #register-form .profile-photo{
+        width: 350px;
+    }
+    #register-form .profile-photo input{
+        width: 100%;
+    }
+
+    #register-form .password{
+        width: 280px;
+    }
+    #register-form .password input{
+        width: 100%;
+    }
+
+    #register-form .main, .main2, .main3{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #register-form .main, .main2, .main3{
+        margin-bottom: 10px;
+    }
+    #register-form #redirect p{
+        font-size: 1rem;
+    }
+    #register-form .btts{
+        margin-top: 50px;
+    }
+
+    #register-form div p{
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-bottom: 4px;
+    }
+    /* Fin formulario registro*/
+    /* Login */
+
+    #login-form{
+        max-width: 750px;
+    }
+    #login-form div input{
+        width: 450px;
+    }
+    #login-form #form-title{
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    #login-form .email{
+        padding-left: 80px;
+    }
+    #login-form .password{
+        padding-left: 80px;
+    }
+    #login-form div p{
+        font-weight: bold;
+        text-align: left;
+        font-size: 0.9rem;
+    }
      
 }

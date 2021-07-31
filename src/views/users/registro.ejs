@@ -11,67 +11,65 @@
         
         <form id="register-form">
             <p id="form-title">Registro</p>
-            <p>Nombre</p>
-            <div class="first-name">
-                <input type="text" id="name" name="name" placeholder="Nombre(s)" required>
-            </div>
-            <div class="last-name-pat">
-                <input type="text" id="last-p" name="last-p" placeholder="Apellido paterno" required>
-            </div>
-            <div class="last-name-mat">
-                <input type="text" id="last-m" name="last-m" placeholder="Apellido materno" required>
-            </div>
-            <br>
 
-            <p>Email</p>
-            <div class="email">
-                <input type="email" name="email" placeholder="Correo electrónico" required >
-            </div>
-            <br>
-
-            <div class="fecha-nac">
-                <p>Fecha de nacimiento</p>
-                <input type="date" placeholder="Fecha de nacimiento" name="fecha-nac" required>
-            </div>
-            <br>
-
-            <div class="address">
-                <p>Domicilio</p>
-               <textarea rows="3" placeholder="Dirección" name="domicilio" required></textarea>
-            </div>
-            <br>
-
-            <div class="profile">
-                <p>Elige un perfil</p>
-                <div class="prof-1">
-                    <input type="radio" name="profile" required> Vendedor
+            <div class="main">
+                
+                <div class="first-name">
+                    <p>Nombre</p>
+                    <input type="text" id="name" name="name" placeholder="Nombre(s)" required>
                 </div>
-               
-                <div class="prof-2">
-                    <input type="radio" name="profile" required> Cliente
+                <div class="last-name-pat">
+                    <p>Apellido</p>
+                    <input type="text" id="last-p" name="last-p" placeholder="Apellido" required>
                 </div>
-             </div>
-             <br>
 
-             <div class="password">
+                <div class="age">
+                    <p>Edad</p>
+                    <input type="number" id="age" name="edad" placeholder="Tu edad" required>
+                </div>
+
+            </div>
+
+            <div class="main2">
+                <div class="email">
+                    <p>Email</p>
+                    <input type="email" name="email" placeholder="Correo electrónico" required >
+                </div>
+
+                <div class="profile">
+                    <p>Tipo de cuenta</p>
+                    <select name="profile" id="profile">
+                        <option disabled selected>Selecciona un perfil</option>
+                        <option value="user">Usuario </option>
+                        <option value="seller">Vendedor</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="main3">
+                <div class="password">
+                    <p>Contraseña</p>
+                     <div class="input-pass">
+                         <input type="password" placeholder="Contraseña" required>
+                     </div>
+                 </div>
+
+                 <div class="password">
+                    <p>Confirma</p>
+                     <div class="input-pass">
+                         <input type="password" placeholder="Repite la contraseña" required>
+                     </div>
+                 </div>
+            </div>
+
+            <div class="profile-photo">
                 <p>Foto de perfil</p>
-                 <div class="foto">
-                     <input type="file" placeholder="Selecciona una foto" accept=".jpg, .png, .PNG">
-                 </div>
-             </div>
-             <br>
+                <input type="file" placeholder="Selecciona una foto" accept=".jpg, .png, .PNG">
+            </div>
+
+            
              
-             <div class="password">
-                <p>Contraseña</p>
-                 <div class="input-pass">
-                     <input type="password" placeholder="Contraseña" required>
-                 </div>
-                 <div class="confirm-pass">
-                    <input type="password" placeholder="Confirma tu contraseña" required>
-                </div>
-             </div>
-             <br>
-    
+          
              <div class="btts">
                 <input type="submit" value="Enviar" id="submit">
                 <input type="reset" value="Borrar" id="clear">

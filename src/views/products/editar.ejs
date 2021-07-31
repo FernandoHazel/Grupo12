@@ -5,27 +5,52 @@
     <%- include("../partials/header") %>
     <main>
         <form id="crea-edit-product" action="/productos/editar/<%=product.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
-            <p id="pro-title">Editar Producto</p>
+            <p id="pro-title">ID Producto: <%=product.id%></p>
             
-            <div class="conteiner">
-                <div class="name">
-                    <p>Nombre</p>
-                    <input name="title" id="name" placeholder="Nombre del producto" value="<%= product.title %>"">
-                </div>
-            
+            <div class="main">
+                    <div class="name">
+                        <p>Nombre</p>
+                        <input name="title" id="name" placeholder="Nombre del producto" value="<%= product.title %>"">
+                    </div>
                 
-                <div class="category">
-                    <p>Categoria</p>
-                <select name="category">
-                    <option value="tv" <%=product.category === "tv"? "selected": ""%>>Tv</option>
-                    <option value="audio" <%=product.category === "audio"? "selected": ""%>>Audio</option>
-                    <option value="cables" <%=product.category === "cables"? "selected": ""%>>Cables</option>
-                    <option value="herramientas" <%=product.category === "herramientas"? "selected": ""%>>Herramienta</option>
-                    <option value="smartphones" <%=product.category === "smartphones"? "selected": ""%>>Smartphone</option>
-                    <option value="tablets" <%=product.category === "tablets"? "selected": ""%>>Tablet</option>
-                    <option value="computadoras" <%=product.category === "computadoras"? "selected": ""%>>Laptop / PC</option>
-                </select>
+                    
+                    <div class="category">
+                        <p>Categoria</p>
+                    <select name="category">
+                        <option value="tv" <%=product.category === "tv"? "selected": ""%>>Tv</option>
+                        <option value="audio" <%=product.category === "audio"? "selected": ""%>>Audio</option>
+                        <option value="cables" <%=product.category === "cables"? "selected": ""%>>Cables</option>
+                        <option value="herramientas" <%=product.category === "herramientas"? "selected": ""%>>Herramienta</option>
+                        <option value="smartphones" <%=product.category === "smartphones"? "selected": ""%>>Smartphone</option>
+                        <option value="tablets" <%=product.category === "tablets"? "selected": ""%>>Tablet</option>
+                        <option value="computadoras" <%=product.category === "computadoras"? "selected": ""%>>Laptop / PC</option>
+                    </select>
+                    </div>
+            </div>
+
+            <div class="main2">
+                <div class="price">
+                    <p>Precio Unitario</p>
+                    <input type="number" name="price" tep='0.01'  value="<%= product.price  %>"> <span>$ MXN</span>
                 </div>
+            
+    
+                <div class="discount">
+                    <p>Descuento</p>
+                    <input type="number" min="0" name="discount" max="100" value="<%= product.discount || 0 %>"> <span>%</span>
+                </div>
+              
+    
+                <div class="quantity">
+                    <p>Cantidad</p>
+                    <input type="number" min="1" name="stock" value="<%= product.stock %>">
+                </div>
+            </div>
+            <div class="description">
+                <p>Detalles</p>
+                <textarea name="description" placeholder="Características del producto" ><%= product.description%></textarea>
+            </div>
+
 
                 <% if(product.hasOwnProperty('img')) {%>
                     <div>
@@ -45,34 +70,15 @@
                     </div>
                 <% } %>
     
-                <div class="description">
-                    <p>Detalles</p>
-                    <textarea name="description" placeholder="Características del producto" ><%= product.description%></textarea>
-                </div>
+                
     
-    
-                <div class="price">
-                    <p>Precio Unitario</p>
-                    <input type="number" name="price" tep='0.01'  value="<%= product.price  %>"> <span>$ MXN</span>
-                </div>
-            
-    
-                <div class="discount">
-                    <p>Descuento</p>
-                    <input type="number" min="0" name="discount" max="100" value="<%= product.discount || 0 %>"> <span>%</span>
-                </div>
-              
-    
-                <div class="quantity">
-                    <p>Cantidad</p>
-                    <input type="number" min="1" name="stock" value="<%= product.stock %>">
-                </div>
+               
     
                 <div class="btts">
                     <input type="submit" value="Editar" id="submit">
                     <input type="reset" value="Limpiar" id="clear">
                 </div>
-            </div>
+
             
         </form>
     </main>
