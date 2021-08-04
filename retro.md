@@ -19,3 +19,15 @@
 4.Hacer menos: 
 
 5.Dejar de hacer: Hacer el trabajo en una sola rama
+
+04/08/2021
+
+1.Comenzar a hacer: Session y cookies
+
+2.Hacer más: Mejorar la apariencia del sitio
+
+3.Continuar haciendo: ir al corriente con los sprints
+
+4.Hacer menos: Mezclar idiomas
+
+5.Dejar de hacer: No actualizar siempre el trello
