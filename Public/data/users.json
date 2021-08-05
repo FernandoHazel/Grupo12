@@ -1,29 +1,39 @@
 [
-    {
-        "id": 1,
-        "nombre": "Mario",
-        "apellido": "Hurtado",
-        "email": "marioh@gmail.com",
-        "contraseña": "LaDeTecnoshop01",
-        "categoria": "usuario",
-        "imagen": "/images/usuarios/Mario.jpg"
-    },
-    {
-        "id": 2,
-        "nombre": "Sandra",
-        "apellido": "Biner",
-        "email": "sandrabin@gmail.com",
-        "contraseña": "micontraseña123",
-        "categoria": "usuario",
-        "imagen": "/images/usuarios/Sandra.jpg"
-    },
-    {
-        "id": 3,
-        "nombre": "Lety",
-        "apellido": "García",
-        "email": "letgar@gmail.com",
-        "contraseña": "lacontraseña0123+",
-        "categoria": "usuario",
-        "imagen": "/images/usuarios/Lety.jpg"
-    }
+  {
+    "id": 1,
+    "nombre": "Mario",
+    "apellido": "Hurtado",
+    "email": "marioh@gmail.com",
+    "contraseña": "LaDeTecnoshop01",
+    "categoria": "usuario",
+    "imagen": "/images/usuarios/Mario.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Sandra",
+    "apellido": "Biner",
+    "email": "sandrabin@gmail.com",
+    "contraseña": "micontraseña123",
+    "categoria": "usuario",
+    "imagen": "/images/usuarios/Sandra.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Lety",
+    "apellido": "García",
+    "email": "letgar@gmail.com",
+    "contraseña": "lacontraseña0123+",
+    "categoria": "usuario",
+    "imagen": "/images/usuarios/Lety.jpg"
+  },
+  {
+    "name": "Fernando Hazel",
+    "apellido": "Baumgarten",
+    "edad": "22",
+    "email": "fernandohazel1@gmail.com",
+    "profile": "user",
+    "password": "$2b$10$gclN5QLBnj0uHDoVI4FoleRmfia9HhGrF4PwVmbiNGgC/.FV2OFMO",
+    "img": "/images/usuarios/img-1628127454031.PNG",
+    "id": 1628127454045
+  }
 ]

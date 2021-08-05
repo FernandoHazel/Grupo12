@@ -9,7 +9,7 @@
 
     <main id="register-main">
         
-        <form id="register-form">
+        <form id="register-form" action="/users/agregar" method="POST" enctype="multipart/form-data">
             <p id="form-title">Registro</p>
 
             <div class="main">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="last-name-pat">
                     <p>Apellido</p>
-                    <input type="text" id="last-p" name="last-p" placeholder="Apellido" required>
+                    <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
                 </div>
 
                 <div class="age">
@@ -40,8 +40,8 @@
                     <p>Tipo de cuenta</p>
                     <select name="profile" id="profile">
                         <option disabled selected>Selecciona un perfil</option>
-                        <option value="user">Usuario </option>
-                        <option value="seller">Vendedor</option>
+                        <option value="user" name="user">Usuario </option>
+                        <option value="seller" name="seller">Vendedor</option>
                     </select>
                 </div>
             </div>
@@ -50,21 +50,21 @@
                 <div class="password">
                     <p>Contraseña</p>
                      <div class="input-pass">
-                         <input type="password" placeholder="Contraseña" required>
+                         <input type="password" name="password" placeholder="Contraseña" required>
                      </div>
                  </div>
 
                  <div class="password">
                     <p>Confirma</p>
                      <div class="input-pass">
-                         <input type="password" placeholder="Repite la contraseña" required>
+                         <input type="password" name="password2" placeholder="Repite la contraseña" required>
                      </div>
                  </div>
             </div>
 
             <div class="profile-photo">
                 <p>Foto de perfil</p>
-                <input type="file" placeholder="Selecciona una foto" accept=".jpg, .png, .PNG">
+                <input type="file" placeholder="Selecciona una foto" name="img" accept=".jpg, .png, .PNG">
             </div>
 
             
