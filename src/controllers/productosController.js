@@ -6,6 +6,9 @@ let dataDirection= path.join(__dirname + "../../../public/data/products.json")
 let rawdata = fs.readFileSync(dataDirection);
 let products = JSON.parse(rawdata);
 
+/* No. productos por página*/ 
+const numberProducts = 10
+
 function equalProducts(a, b){
     console.log(a)
     console.log(b)
@@ -154,11 +157,30 @@ let productosController = {
         res.redirect('/')
     },
     categoria: (req, res,) => {
+        /* Obtiene los datos para la paginacion */
+        const pagginationParam = req.query
+        let start = 0
+        if(pagginationParam && pagginationParam.min){
+            try {
+                 start = parseInt(pagginationParam.min);
+              } catch (error){
+                console.log(error)
+              }
+        }
+        /* Filtramos los productos por una determinada categoria */
         let id = req.params.id
-          let filtro = products.filter(product => {
-              return product.category == id
+        let filtro = products.filter(product => {
+              return product.category === id
           })
-        res.render('products/listaProductos', {productos: filtro, options: id})
+
+        /* Paginacion */
+        let paggination = getPaggination(req, filtro)
+
+        /* Recupera solo los productos de una determinada página */
+        let page = filtro.slice(paggination.min, paggination.min + paggination.step)
+    
+        /* Renderiza la página */
+        res.render('products/listaProductos', {productos: page, options: id, paggination: paggination})
     },
     all: (req, res)=>{
         /* Verifica si tiene descuento y calcula su precio final */
@@ -168,18 +190,98 @@ let productosController = {
                 element.final_price = element.price - (element.price * element.discount / 100)
             }
         });
+
+        /* Paginacion */
+        let paggination = getPaggination(req, products)
+
+        /* Obtiene la pagina actual corrspondiente */
+        let page = products.slice(paggination.min, paggination.min + paggination.step)
+
         /* Renderizamos la vista */
-        res.render('products/listaProductos', {productos: products, options: "all"})
+        res.render('products/listaProductos', {productos: page, options: "all", paggination: paggination})
     },
     offerts: (req, res)=>{
+         
         /* Filtramos los productos que tienen ofertas  */
         let offerts = products.filter(p => p.discount > 0)
         /* Calculamos el precio final */
         offerts.forEach(e =>{
             e.final_price = e.price - (e.price * e.discount / 100)
         })
-        res.render('products/listaProductos', {productos: offerts, options: "offerts"})
+
+        /* Obtien los datos relacionados con la paginacion */
+        let paggination = getPaggination(req, offerts)
+        
+        /* Recupera solo los productos de una determinada página */
+        let page = offerts.slice(paggination.min, paggination.min + paggination.step)
+
+        res.render('products/listaProductos', {productos: page, options: "offerts", paggination: paggination})
     }
+}
+
+function getPaggination(req, productsView){
+    /*
+        Funcion que controla los parametros necesarios para mostrar
+        una parte del arreglo de productos para simular "paginacion"
+    */
+
+    /* Objeto de paginacion */
+    let paggination = {}
+
+    /* Obtiene los datos para la paginacion */
+    const pagginationParam = req.query
+
+    /* Valida el indice de inicio */
+    let start = 0  // indice de inicio
+    if(pagginationParam && pagginationParam.min){ 
+        /* obtiene el dato de inicio obtenido en el query string */
+        try {
+            /* Lo convierte a entero */
+             start = parseInt(pagginationParam.min);
+             if(start < 0){
+                 start = 0
+             }
+             else if(start > productsView.length){
+                 start = productsView.length
+             }
+          } catch (error){ 
+              /*Ha ocurrido un error*/ 
+            console.log(error)
+          }
+    }
+
+    /* Datos de paginacion */
+    paggination.path = req.path
+    paggination.min = start
+    paggination.step = numberProducts // cantidad total de productos por página
+    paggination.totalProducts = productsView.length
+
+    /* Paginas totales */
+    paggination.totalPages = Math.ceil(productsView.length/numberProducts)
+    
+    /* Pagina actual */
+    
+    let page = 1
+    /* Valida la página actual*/
+    if(pagginationParam && pagginationParam.page){
+        /* obtiene la página actual en el query string */
+        try {
+            /* Lo convierte a entero */
+             page = parseInt(pagginationParam.page);
+             if(page < 1){
+                 page = 1
+             }
+             else if(page > paggination.totalPages){
+                 page = paggination.totalPages
+             }
+          } catch (error){ 
+              /*Ha ocurrido un error*/ 
+            console.log(error)
+          }
+    }
+    paggination.actualPage = page
+    
+    return paggination
 }
 
 module.exports = productosController

@@ -19,13 +19,24 @@
         <section id="products-section">
             <div id="products-header-topic">
                 <% if(options == "all"){%>
-                    <span class="category">Todos los productos.</span> <span class="results"><%= productos.length%> Resultado(s)</span>
+                    <span class="category">Todos los productos.</span> <span class="results"> Total de Resultado(s): <%= paggination.totalProducts %></span>
                 <% }else if(options=="offerts") {%> 
-                    <span class="category">Productos > Ofertas </span> <span class="results"><%= productos.length%> Resultado(s)</span>
+                    <span class="category">Productos > Ofertas </span> <span class="results"> Total de Resultado(s): <%= paggination.totalProducts %></span>
                 <% }else{%>
-                    <span class="category">Productos > Categoría > <%=  options.charAt(0).toUpperCase() + options.slice(1).toLowerCase() %> </span> <span class="results"><%= productos.length%> Resultado(s)</span>
+                    <span class="category">Productos > Categoría > <%=  options.charAt(0).toUpperCase() + options.slice(1).toLowerCase() %> </span> <span class="results"> Total de Resultado(s): <%= paggination.totalProducts %></span>
                 <% } %>
             </div>
+            <br>
+            
+            <!-- Paginacion -->
+        <div class="paggination">
+            <div class="title">
+                Página <strong><%= paggination.actualPage %></strong> de <strong><%= paggination.totalPages %></strong> <span>(<%=paggination.step%>)resultados por página</span>
+            </div>
+            <a href="/productos<%= paggination.path %>?min=<%=  paggination.min - paggination.step%>&page=<%=  paggination.actualPage - 1%>"><input <%= (paggination.min - paggination.step) < 0 ? "disabled":"" %>  type="submit" name="min" value="Anterior" /></a>
+       
+            <a href="/productos<%= paggination.path %>?min=<%= paggination.min + paggination.step%>&page=<%=  paggination.actualPage + 1%>"><input <%= (paggination.min + paggination.step - 1) < (paggination.totalProducts) ? "": "disabled" %> type="submit" name="min" value="Siguiente" /></a>
+        </div>
             <br>
             <br>
             <% productos.forEach(product => { %>
@@ -70,6 +81,7 @@
                 </div>
             <% }) %>
         </section>
+        
     </main>
     <br>
      <!-- Vista parcial del footer -->
