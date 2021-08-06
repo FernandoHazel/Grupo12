@@ -640,6 +640,7 @@ h2,h3,h4{
 #login-form #clear:hover{
     background-color: #44ad64;
 }
+
 #login-form #text-o{
     text-align: center;
     font-weight: bold;
@@ -734,6 +735,9 @@ h2,h3,h4{
 }
 #crea-edit-product #clear:hover{
     background-color: #44ad64;
+}
+#delete:hover{
+    background-color: #F5340B;
 }
 #crea-edit-product img{
     width: 150px;

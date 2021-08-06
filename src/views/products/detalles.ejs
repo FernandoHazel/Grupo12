@@ -53,6 +53,9 @@
                 <div class="botones">
                     <button type="submit">Añadir al carrito</button>
                     <button type="submit">Comprar</button>
+                    <form action="/productos/borrar/<%= article.id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btts" id="delete">ELIMINAR</button>
+                    </form>
                 </div>
             </div>
         </div>

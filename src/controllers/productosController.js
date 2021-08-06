@@ -153,7 +153,22 @@ let productosController = {
 
     },
     borrar: (req, res)=>{
-        //agregar lógica para borrar
+        //Eliminamos la imágen
+        let idProduct = req.params.id
+        let elementToErase = products.find(elem => elem.id == parseInt(idProduct, 10))
+        let imgDir = path.join(__dirname + "../../../public"+elementToErase.img)
+        try{
+            fs.unlinkSync(imgDir)
+        }catch(error){
+            console.log(error)
+        }
+        
+
+        //Sobreescribimos el disco
+        let index = products.findIndex(elem => elem.id == parseInt(idProduct, 10))
+        products.splice(index, 1)
+        fs.writeFileSync(dataDirection, JSON.stringify(products, null, 2))
+        console.log()
         res.redirect('/')
     },
     categoria: (req, res,) => {

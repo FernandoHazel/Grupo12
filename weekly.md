@@ -12,3 +12,10 @@
 -Dividimos la sección de smartphones y tablets en 2
 -Le añadimos estilo al home
 -añadimos categorías como "ofertas" y "más vendidos"
+
+04/08/2021
+-Creamos los formularios de creación y edición de productos
+-Creamos una ruta para agregar producto
+-Creamos las rutas para editar
+-Creamos una ruta para eliminar
+-Añadimos estilos al sitio

@@ -19,7 +19,7 @@ router.get("/editar/:id", productosController.editForm)
 router.put("/editar/:id", multerIMG.single('img'), productosController.actualizar)
 
 //*******borrar producto ********/
-router.delete("/borrar/:id?", productosController.borrar)
+router.delete("/borrar/:id", productosController.borrar)
 
 router.get("/categoria/:id?", productosController.categoria)
 router.get("/all", productosController.all)

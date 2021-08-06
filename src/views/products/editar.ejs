@@ -50,6 +50,10 @@
                 <p>Detalles</p>
                 <textarea name="description" placeholder="Características del producto" ><%= product.description%></textarea>
             </div>
+            <div class="description">
+                <p>Descripción detallada</p>
+                <textarea name="detailedDescription"><%= product.detailedDescription%></textarea>
+            </div>
 
 
                 <% if(product.hasOwnProperty('img')) {%>
@@ -78,9 +82,8 @@
                     <input type="submit" value="Editar" id="submit">
                     <input type="reset" value="Limpiar" id="clear">
                 </div>
-
-            
         </form>
+        
     </main>
 
     <%- include("../partials/footer") %>
