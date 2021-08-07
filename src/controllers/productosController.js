@@ -231,6 +231,26 @@ let productosController = {
         let page = offerts.slice(paggination.min, paggination.min + paggination.step)
 
         res.render('products/listaProductos', {productos: page, options: "offerts", paggination: paggination})
+    },
+    search: (req, res)=>{
+        /* Obtiene el texto a buscar */
+        let searchTxt = req.query.search
+        if(searchTxt){
+            searchTxt = searchTxt.toUpperCase()
+        }
+        /* Filtra los resultados */
+        let productsSearch = products.filter(product =>{
+            return product.title.toUpperCase().includes(searchTxt) || 
+            product.description.toUpperCase().includes(searchTxt) || 
+            product.category.toUpperCase().includes(searchTxt) 
+        })
+        /* Paginacion */
+        let paggination = getPaggination(req, productsSearch)
+        /* Página */
+        let page = productsSearch.slice(paggination.min, paggination.min + paggination.step)
+
+        /* Renderiza la vista con los productos que cuimplen con la busqueda*/
+        res.render('products/listaProductos', {productos: page, options: "search", search_value: req.query.search, paggination: paggination})
     }
 }
 
