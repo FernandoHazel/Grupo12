@@ -20,17 +20,24 @@ const userController = {
 
         //añadir verificaciones de express validator
         //verificar que ambas contraseñas sean iguales
+        if(req.body.password == req.body.password2){
+            let password = req.body.password
+            delete newUser.password2
+            let hash = bcrypt.hashSync(password, 10)
+            newUser.password = hash
 
-        let password = req.body.password
-        delete newUser.password2
+            //guardar en el disco
+            users.push(newUser)
+            fs.writeFileSync(dataDirection, JSON.stringify(users, null, 2))
 
-        let hash = bcrypt.hashSync(password, 10)
-        newUser.password = hash
+            //iniciar session del usuario
+            req.session.userLogged = newUser
+            return res.redirect('/')
+        }else{
+            return res.render('users/registro', {passwordError: 'las contraseñas deben de ser iguales'})
+        }
 
-        //guardar en el disco
-        users.push(newUser)
-        fs.writeFileSync(dataDirection, JSON.stringify(users, null, 2))
-        res.redirect('/')
+        
     },
     login: function (req, res) {
 
@@ -40,17 +47,20 @@ const userController = {
         let index = users.findIndex(user => user.email == correo)
         if(index != -1){
             if(bcrypt.compareSync(req.body.password, users[index].password)){
-                req.session = users[index]
-                delete req.session.password
-                delete req.session.id
+                req.session.userLogged = users[index]
+                delete req.session.userLogged.password
+                delete req.session.userLogged.id
                 console.log('sesión creada')
+                return res.redirect('/')
+            }else{
+                //señalar al usuario que la contraseña es incorrecta
+                return res.render('users/ingreso', {passwordError: 'este correo no está registrado'})
             }
             
+        }else{
+            //señalar al usuario que el correo no está registrado
+            return res.render('users/ingreso', {emailError: 'este correo no está registrado'})
         }
-        
-        //verificar si la contraseña de ese usuario es correcta
-
-        res.send('Usuario logueado')
     }
 }
 

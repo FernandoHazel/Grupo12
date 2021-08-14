@@ -8,6 +8,7 @@ const path = require("path")
 const override = require("method-override")
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
+const loggedMidleware = require('./middlewares/loggedMiddleware')
 
 // Method override
 app.use(override("_method"))
@@ -26,6 +27,7 @@ app.use(session({
     saveUninitialized: true,
 }))
 app.use(cookieParser())
+app.use(loggedMidleware)
 
 
 

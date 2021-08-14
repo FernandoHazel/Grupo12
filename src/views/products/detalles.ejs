@@ -51,11 +51,15 @@
             <div class="info_pago_der">
                 <h1>$<%= article.price %> MXN</h1>
                 <div class="botones">
-                    <button type="submit">Añadir al carrito</button>
-                    <button type="submit">Comprar</button>
-                    <form action="/productos/borrar/<%= article.id %>?_method=DELETE" method="POST">
-                        <button type="submit" class="btts" id="delete">ELIMINAR</button>
-                    </form>
+                    <%if(locals.user && locals.user.profile == "user"){%>
+                        <button type="submit">Añadir al carrito</button>
+                        <button type="submit">Comprar</button>
+                    <%}else if(locals.user && locals.user.profile == "seller"){%>
+                        <form action="/productos/borrar/<%= article.id %>?_method=DELETE" method="POST">
+                            <button type="submit" class="btts" id="delete">ELIMINAR</button>
+                            <a href="/productos/editar/<%= article.id%>">EDITAR</a>
+                        </form>
+                    <%}%>
                 </div>
             </div>
         </div>

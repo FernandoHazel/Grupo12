@@ -1,39 +1,32 @@
 [
   {
-    "id": 1,
-    "nombre": "Mario",
-    "apellido": "Hurtado",
-    "email": "marioh@gmail.com",
-    "contraseña": "LaDeTecnoshop01",
-    "categoria": "usuario",
-    "imagen": "/images/usuarios/Mario.jpg"
-  },
-  {
-    "id": 2,
-    "nombre": "Sandra",
-    "apellido": "Biner",
-    "email": "sandrabin@gmail.com",
-    "contraseña": "micontraseña123",
-    "categoria": "usuario",
-    "imagen": "/images/usuarios/Sandra.jpg"
-  },
-  {
-    "id": 3,
-    "nombre": "Lety",
-    "apellido": "García",
-    "email": "letgar@gmail.com",
-    "contraseña": "lacontraseña0123+",
-    "categoria": "usuario",
-    "imagen": "/images/usuarios/Lety.jpg"
-  },
-  {
     "name": "Fernando Hazel",
     "apellido": "Baumgarten",
     "edad": "22",
     "email": "fernandohazel1@gmail.com",
     "profile": "user",
-    "password": "$2b$10$gclN5QLBnj0uHDoVI4FoleRmfia9HhGrF4PwVmbiNGgC/.FV2OFMO",
-    "img": "/images/usuarios/img-1628127454031.PNG",
-    "id": 1628127454045
+    "password": "$2b$10$XP6vmtIBVmFvtWm98mR5Yu/Ad5x70QxxMjgb0Ffegoi00alrSeW9m",
+    "img": "/images/usuarios/img-1628968662039.PNG",
+    "id": 1628968662048
+  },
+  {
+    "name": "Fernando Hazel",
+    "apellido": "Baumgarten",
+    "edad": "22",
+    "email": "A01229544@itesm.mx",
+    "profile": "seller",
+    "password": "$2b$10$ioImfHWwrLqEckQNaEK8EuKAWXSRMksfRlr0yeH9RlKmoeMBedqWG",
+    "img": "/images/usuarios/img-1628969635081.PNG",
+    "id": 1628969635106
+  },
+  {
+    "name": "Edgar ",
+    "apellido": "Iván",
+    "edad": "23",
+    "email": "edgar@gmail.com",
+    "profile": "user",
+    "password": "$2b$10$.j20pvBV/61gGBLC9la1SuANboSHCf5bj0jXkGAh7/uXFDpF0IhVu",
+    "img": "/images/usuarios/img-1628969997474.PNG",
+    "id": 1628969997485
   }
 ]

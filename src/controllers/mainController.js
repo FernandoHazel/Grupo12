@@ -32,7 +32,7 @@ const mainController={
   },
 
   carrito: function(req, res){    
-      res.render('carrito');
+      res.render('carrito', {user: req.session.userLogged});
   },
     ingreso: function(req, res){    
       res.render('users/ingreso');
