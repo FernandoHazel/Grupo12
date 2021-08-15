@@ -4,11 +4,20 @@ let dataDirection= path.join(__dirname + "../../../public/data/users.json")
 let bcrypt = require('bcrypt')
 
 /* Data */
-let rawdata = fs.readFileSync(dataDirection);
+let rawdata = fs.readFileSync(dataDirection, 'utf-8');
 let users = JSON.parse(rawdata);
 
 const userController = {
-    add: function (req,res) {
+    registroForm: (req, res)=>{
+        res.render("./users/registro")
+    },
+    loginForm: (req, res)=>{
+        res.render("./users/ingreso")
+    },
+    carrito: function(req, res){    
+        res.render('carrito', {user: req.session.userLogged});
+    },
+    add: function (req, res) {
         let img = "/images/productos/default.png"
         let newUser = req.body
 
@@ -32,35 +41,28 @@ const userController = {
             users.push(newUser)
             fs.writeFileSync(dataDirection, JSON.stringify(users, null, 2))
 
-            //iniciar session del usuario
-            req.session.userLogged = newUser
-            console.log("Usuario Logeado: ", req.session.userLogged)
-            return res.redirect('/')
+            /* Redirige al login */
+            res.redirect('/users/login')
         }else{
-            return res.render('users/registro', {passwordError: 'las contraseñas deben de ser iguales'})
+            res.render('users/registro', {passwordError: 'las contraseñas deben de ser iguales'})
         }
-
-        
     },
     login: function (req, res) {
-        console.log("BODY", req.body)
-        if(req.body.email && req.body.password){
-            console.log("BODY", req.body)
-        }
-        else{
-            console.log("NO HAY BODY")
-        }
-        // lógica para loguear usuario
+        
         // verificar si el correo está en la base de datos
         let correo = req.body.email
         let index = users.findIndex(user => user.email === correo)
-
+        
         if(index != -1){
+            /* Si existe, entonces compara las contraseñas*/
             if(bcrypt.compareSync(req.body.password, users[index].password)){
-                req.session.userLogged = users[index]
+
+                /* Si las credenciales son correctas, entonces crea la session*/
+                req.session.userLogged = {...users[index]}  // hace una copia del objeto
                 delete req.session.userLogged.password
                 delete req.session.userLogged.id
-                console.log('sesión creada: ', req.session.userLogged)
+                
+                /* Redirije al home*/
                 res.redirect('/')
             }else{
                 //señalar al usuario que la contraseña es incorrecta
@@ -73,7 +75,8 @@ const userController = {
         }
     },
     logout: (req, res)=>{
-        delete req.session.userLogged
+        /* Elimina la sesion */
+        req.session.destroy()
         res.redirect("/")
     }
 }

@@ -1,16 +1,23 @@
 const express = require("express")
 const usersController = require("../controllers/usersController")
 const multerUsuario = require('../config/multerUsuario')
-let mainController=require('../controllers/mainController.js')
-
 const router = express.Router()
+const guestMiddleware = require("../middlewares/guestMiddleware")
+const authUserMiddleware = require("../middlewares/authUserMiddleware")
 
+/* Registro */
+router.get('/signup', guestMiddleware, usersController.registroForm)
 router.post('/signup',  multerUsuario.single('img') , usersController.add)
 
+/* Login */
+router.get('/login', guestMiddleware,  usersController.loginForm)
 router.post('/login', usersController.login)
 
-router.get('/logout', usersController.logout)
+/* Logout */
+router.get('/logout', authUserMiddleware, usersController.logout)
 
-router.get('/carrito', mainController.carrito)
+/* Carrtito */
+router.get('/carrito', usersController.carrito)
+
 
 module.exports = router

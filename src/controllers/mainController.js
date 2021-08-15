@@ -29,18 +29,7 @@ const mainController={
   
     /* Renderizamos la vista */    
     res.render('home', {offerts: offerts, mostSales: mostSalesFew});
-  },
-
-  carrito: function(req, res){    
-      res.render('carrito', {user: req.session.userLogged});
-  },
-    ingreso: function(req, res){    
-      res.render('users/ingreso');
-    },
-
-    registro: function(req, res){    
-      res.render('users/registro');
-    }
+  }
 }
 
 module.exports=mainController;

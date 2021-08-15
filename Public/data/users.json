@@ -18,25 +18,5 @@
     "password": "$2b$10$ioImfHWwrLqEckQNaEK8EuKAWXSRMksfRlr0yeH9RlKmoeMBedqWG",
     "img": "/images/usuarios/img-1628969635081.PNG",
     "id": 1628969635106
-  },
-  {
-    "name": "edgar ",
-    "apellido": "pepe",
-    "edad": "3",
-    "email": "edgar@gmail.com",
-    "profile": "user",
-    "password": "$2b$10$GFPsnL2JAS1OxgLc8qQQ.uLjEJ4h1JHig4hSO2B2sceJvk4r1NbmO",
-    "img": "/images/usuarios/default.png",
-    "id": 1628994151368
-  },
-  {
-    "name": "ivan",
-    "apellido": "san",
-    "edad": "21",
-    "email": "edgar@gmail.com",
-    "profile": "seller",
-    "password": "$2b$10$tGF4qzpzPcLhJRP2H46nw.HR/YflRqwZsw71oFexkD06I0n1SQP0K",
-    "img": "/images/usuarios/img-1628998623591.png",
-    "id": 1628998623598
   }
 ]

@@ -30,7 +30,6 @@ app.use(cookieParser())
 app.use(loggedMidleware)
 
 
-
 // Recursos
 app.use('/',rutaMain);
 app.use("/productos", rutaProductos);

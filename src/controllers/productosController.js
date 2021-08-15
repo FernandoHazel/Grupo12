@@ -216,7 +216,7 @@ let productosController = {
         res.render('products/listaProductos', {productos: page, options: "all", paggination: paggination})
     },
     offerts: (req, res)=>{
-         
+        
         /* Filtramos los productos que tienen ofertas  */
         let offerts = products.filter(p => p.discount > 0)
         /* Calculamos el precio final */
@@ -292,10 +292,10 @@ function getPaggination(req, productsView){
     paggination.totalProducts = productsView.length
 
     /* Paginas totales */
-    paggination.totalPages = Math.ceil(productsView.length/numberProducts)
+    let calculatePages = Math.ceil(productsView.length/numberProducts)
+    calculatePages <= 0 ? paggination.totalPages = 1 : paggination.totalPages = calculatePages
     
     /* Pagina actual */
-    
     let page = 1
     /* Valida la página actual*/
     if(pagginationParam && pagginationParam.page){
