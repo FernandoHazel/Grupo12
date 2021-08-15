@@ -196,6 +196,26 @@ header{
 .upper-objects li{
     margin-right: 5vw;
 }
+
+
+/*User logged info */
+.user-div-info{
+    width: 100px;
+    height: 20px;
+    position: relative;
+}
+.user-div-info img{
+    width: 30px;
+    height: 100%;
+    margin-right: 10px;
+}
+.user-div-info span{
+    font-size: 0.8rem;
+    font-weight: bold;
+    position: absolute;
+    top: 5px;
+}
+/* /User logged */
 /* /User Options  */
 
 /*********** /Header ************/
@@ -1186,6 +1206,21 @@ main #products-section{
         bottom: 30px;
         left: 200px;
     }
+
+    /*User logged info */
+.user-div-info{
+    width: 130px;
+    height: 20px;
+    position: relative;
+}
+
+.user-div-info span{
+    font-size: 0.9rem;
+    font-weight: bold;
+    position: absolute;
+    top: 2px;
+}
+/* /User logged */
     
     
 
@@ -1595,5 +1630,24 @@ main #products-section{
         text-align: left;
         font-size: 0.9rem;
     }
+
+    /*User logged info */
+.user-div-info{
+    width: 150px;
+    height: 30px;
+    position: relative;
+    margin-right: 10px;
+}
+.user-div-info img{
+    width: 30px;
+    height: 100%;
+}
+.user-div-info span{
+    font-size: 1.3rem;
+    font-weight: bold;
+    position: absolute;
+    top: 1px;
+}
+/* /User logged */
      
 }

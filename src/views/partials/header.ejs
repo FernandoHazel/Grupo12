@@ -10,15 +10,28 @@
         </form>
         <div class="avatar"></div>
         <ul class="user">
-            <%if(locals.user && locals.user.profile == "user"){%>
-                <li><a href="/carrito">Carrito <i class="fas fa-shopping-cart"></i></a></li>
-            <%}else if (!locals.user){%>
+            <%if(locals.user && locals.user.profile === "user"){%>
+                <% if(locals.user.name.length > 10){%>
+                    <li><a href="#"><div class="user-div-info"><img src="<%=locals.user.img%>"> <span><%=locals.user.name.substring(0, 10)%>..</span></div></a></li>
+                <%}else{%>
+                    <li><a href="#"><div class="user-div-info"><img src="<%=locals.user.img%>"> <span><%=locals.user.name%></span></div></a></li>
+                <%}%>
+                <li><a href="/users/logout">Salir <i class="fas fa-sign-out-alt"></i></a></li>
+                <li><a href="/users/carrito">Carrito <i class="fas fa-shopping-cart"></i></a></li>
+
+            <%}else if(locals.user && locals.user.profile === "seller"){%>
+                <% if(locals.user.name.length > 10){%>
+                    <li><a href="#"><div class="user-div-info"><img src="<%=locals.user.img%>"> <span><%=locals.user.name.substring(0, 10)%>..</span></div></a></li>
+                <%}else{%>
+                    <li><a href="#"><div class="user-div-info"><img src="<%=locals.user.img%>"> <span><%=locals.user.name%></span></div></a></li>
+                <%}%>
+                <li><a href="/users/logout">Salir <i class="fas fa-sign-out-alt"></i></a></li>
+                <li><a href="/productos/crear">Crear producto <i class="fas fa-shopping-cart"></i></a></li>
+            <%}else{%>
             <li><a href="/login">Ingresa <i class="fas fa-sign-in-alt"></i></a></li>
             <li><a href="/signup">Crear <i class="fas fa-user"></i></a></li>
             <%}%>
-            <%if(locals.user && locals.user.profile == "seller"){%>
-                <li><a href="/productos/crear">Crear producto <i class="fas fa-shopping-cart"></i></a></li>
-            <%}%>
+            
         </ul>
     </div>
 

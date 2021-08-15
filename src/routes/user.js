@@ -9,6 +9,8 @@ router.post('/signup',  multerUsuario.single('img') , usersController.add)
 
 router.post('/login', usersController.login)
 
+router.get('/logout', usersController.logout)
+
 router.get('/carrito', mainController.carrito)
 
 module.exports = router
