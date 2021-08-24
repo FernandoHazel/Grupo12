@@ -18,5 +18,15 @@
     "password": "$2b$10$ioImfHWwrLqEckQNaEK8EuKAWXSRMksfRlr0yeH9RlKmoeMBedqWG",
     "img": "/images/usuarios/img-1628969635081.PNG",
     "id": 1628969635106
+  },
+  {
+    "name": "Roman",
+    "apellido": "LG",
+    "edad": "27",
+    "email": "skyblue722@hotmail.com",
+    "profile": "user",
+    "password": "$2b$10$xAzspbueX8MGq4e/es1aBeR3YvQIBMjOHCsGKbsxT..cu5v9h0Sny",
+    "img": "/images/usuarios/default.png",
+    "id": 1629568407616
   }
 ]

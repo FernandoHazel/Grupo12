@@ -1,5 +1,6 @@
 const express = require("express")
 const productosController = require("../controllers/productosController")
+
 const multerIMG = require('../config/multerIMG')
 
 const router = express.Router()
@@ -11,6 +12,9 @@ router.get("/", (req, res)=>{
 
 //******* detalles ********/
 router.get("/detalles/:id?", productosController.detalles)
+
+
+
 
 //******* crear producto ********/
 router.get("/crear", productosController.crear)

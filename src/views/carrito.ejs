@@ -19,22 +19,24 @@
             
         </section>
 
-        <% for (let i=0 ; i<5 ; i++ ) { %>
+        <% for (let i=0 ; i < array.length ; i++ ) { %>
+        
         <section class="productoDeCarrito">
 
             <section class="carritoImagen">
-            <img src="/Images\productos\computadoras\Alienware M15 R4 Gaming Laptop I7-10870h 16gb Rtx 3070 512gb.PNG" id="logo">
+            <img src="<%= array[i].img %>" id="logo">
             </section>
 
             <section class="carritoDetalles">
-            <p class="nombreProducto">NOMBRE DEL PRODUCTO</p>
-            <P class="detallesProducto">DETALLES DEL PRODUCTO</P>
+            <p class="nombreProducto"> <%= array[i].title %> </p>
+            <P class="detallesProducto"> <%= array[i].description %> </P>
             <p class="cantidadProducto">CANTIDAD</p>
             </section>
 
             <section class="carritoPrecio">
-            <p class="precioProducto"> $5,999MXN</p>
-            <span class="eliminarProducto">Eliminar</span> 
+            <p class="precioProducto"> $<%= array[i].price %> MXN</p>
+            <span class="eliminarProducto"><a href="/users/borrarProductoCarrito/<%= array[i].id %>">Eliminar</a></span> 
+            
             </section>
         </section>
         <% }  %>

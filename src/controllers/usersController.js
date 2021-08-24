@@ -14,9 +14,6 @@ const userController = {
     loginForm: (req, res)=>{
         res.render("./users/ingreso")
     },
-    carrito: function(req, res){    
-        res.render('carrito', {user: req.session.userLogged});
-    },
     add: function (req, res) {
         let img = "/images/productos/default.png"
         let newUser = req.body

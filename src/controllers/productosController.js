@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require("path")
 let dataDirection= path.join(__dirname + "../../../public/data/products.json")
 
+
+
 /* Data */
 let rawdata = fs.readFileSync(dataDirection);
 let products = JSON.parse(rawdata);
@@ -30,7 +32,8 @@ let productosController = {
         const article = products.find(elem =>  elem.id.toString() == idUser)
         const category = products.filter(elem =>  {return article.category == elem.category})
         res.render("products/detalles", {article: article, idUser: idUser, category: category})
-    },
+       },
+   
     crear: (req, res)=>{
         res.render("products/crear")
     },

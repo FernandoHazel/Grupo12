@@ -52,8 +52,12 @@
                 <h1>$<%= article.price %> MXN</h1>
                 <div class="botones">
                     <%if(locals.user && locals.user.profile == "user"){%>
+                        <form action="/users/AnadirCarrito/<%= article.id%>" method="POST">
                         <button type="submit">Añadir al carrito</button>
+                        </form>
+                        <form action="/productos/Comprar" method="POST"></form>
                         <button type="submit">Comprar</button>
+                        </form>
                     <%}else if(locals.user && locals.user.profile == "seller"){%>
                         <form action="/productos/borrar/<%= article.id %>?_method=DELETE" method="POST">
                             <button type="submit" class="btts" id="delete">ELIMINAR</button>
