@@ -26,8 +26,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
 }))
-app.use(cookieParser())
-app.use(loggedMidleware)
+app.use(cookieParser())   // uso de cookies
+app.use(loggedMidleware)   // verifica si existe una session iniciada
 
 
 // Recursos

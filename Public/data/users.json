@@ -28,5 +28,15 @@
     "password": "$2b$10$xAzspbueX8MGq4e/es1aBeR3YvQIBMjOHCsGKbsxT..cu5v9h0Sny",
     "img": "/images/usuarios/default.png",
     "id": 1629568407616
+  },
+  {
+    "name": "Edgar",
+    "apellido": "Sanchez",
+    "edad": "22",
+    "email": "edgar@gmail.com",
+    "profile": "user",
+    "password": "$2b$10$35W8svpGAd2d.vU8e81jKuj37MT31sbRWAp1tRfgYUzZqcu74lSSi",
+    "img": "/images/usuarios/default.png",
+    "id": 1629767178207
   }
 ]

@@ -686,6 +686,20 @@ h2,h3,h4{
     width: 50%;
     border-radius: 20px;
 }
+
+#login-form .remember{
+    margin-top: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+#login-form .remember input{
+    padding: 0;
+    width: 20px;
+    border-radius: 0;
+}
+
+
 /* Fin login */
 
 /* Formulario para crear-editar Productos*/

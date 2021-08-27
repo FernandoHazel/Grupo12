@@ -45,7 +45,7 @@ const userController = {
         }
     },
     login: function (req, res) {
-        
+     
         // verificar si el correo está en la base de datos
         let correo = req.body.email
         let index = users.findIndex(user => user.email === correo)
@@ -53,6 +53,12 @@ const userController = {
         if(index != -1){
             /* Si existe, entonces compara las contraseñas*/
             if(bcrypt.compareSync(req.body.password, users[index].password)){
+
+                /*Verifica si elijio la opcion de recordar*/
+                if(req.body.remember){
+                    /* creamos la cookie para el usuario*/
+                    res.cookie("tcnShop", correo, {maxAge: (1000 * 60 * 60 * 24)})  // 24 hr
+                }
 
                 /* Si las credenciales son correctas, entonces crea la session*/
                 req.session.userLogged = {...users[index]}  // hace una copia del objeto
@@ -72,6 +78,8 @@ const userController = {
         }
     },
     logout: (req, res)=>{
+        /* Elimina la cookie */
+        res.clearCookie("tcnShop")
         /* Elimina la sesion */
         req.session.destroy()
         res.redirect("/")
