@@ -5,6 +5,7 @@ const router = express.Router()
 const guestMiddleware = require("../middlewares/guestMiddleware")
 const authUserMiddleware = require("../middlewares/authUserMiddleware")
 const carritoController = require("../controllers/carritoController")
+
 /* Registro */
 router.get('/signup', guestMiddleware, usersController.registroForm)
 router.post('/signup',  multerUsuario.single('img') , usersController.add)
@@ -12,6 +13,9 @@ router.post('/signup',  multerUsuario.single('img') , usersController.add)
 /* Login */
 router.get('/login', guestMiddleware,  usersController.loginForm)
 router.post('/login', usersController.login)
+
+/* Perfil */
+router.get('/perfil', authUserMiddleware,  usersController.perfil)
 
 /* Logout */
 router.get('/logout', authUserMiddleware, usersController.logout)

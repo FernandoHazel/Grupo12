@@ -1,25 +1,5 @@
 [
   {
-    "name": "Fernando Hazel",
-    "apellido": "Baumgarten",
-    "edad": "22",
-    "email": "fernandohazel1@gmail.com",
-    "profile": "user",
-    "password": "$2b$10$XP6vmtIBVmFvtWm98mR5Yu/Ad5x70QxxMjgb0Ffegoi00alrSeW9m",
-    "img": "/images/usuarios/img-1628968662039.PNG",
-    "id": 1628968662048
-  },
-  {
-    "name": "Fernando Hazel",
-    "apellido": "Baumgarten",
-    "edad": "22",
-    "email": "A01229544@itesm.mx",
-    "profile": "seller",
-    "password": "$2b$10$ioImfHWwrLqEckQNaEK8EuKAWXSRMksfRlr0yeH9RlKmoeMBedqWG",
-    "img": "/images/usuarios/img-1628969635081.PNG",
-    "id": 1628969635106
-  },
-  {
     "name": "Roman",
     "apellido": "LG",
     "edad": "27",
@@ -38,5 +18,15 @@
     "password": "$2b$10$35W8svpGAd2d.vU8e81jKuj37MT31sbRWAp1tRfgYUzZqcu74lSSi",
     "img": "/images/usuarios/default.png",
     "id": 1629767178207
+  },
+  {
+    "name": "Fernando Hazel",
+    "apellido": "Baumgarten",
+    "edad": "22",
+    "email": "fernandohazel1@gmail.com",
+    "profile": "user",
+    "password": "$2b$10$J7yjGmn/1zWsV3ibnwqope8HN6fFYdxtP4lnMcM6r13Iy1FH8um1q",
+    "img": "/images/usuarios/img-1630286460860.PNG",
+    "id": 1630286460881
   }
 ]

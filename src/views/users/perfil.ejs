@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Vista parcial del head -->
+    <%- include('../partials/head.ejs') %>
+</head>
+<body>
+    <!-- Vista parcial del header -->
+    <%- include('../partials/header.ejs') %>
+
+    <!--Perfil de usuario-->
+    <main class='profile_container'>
+        <img src="<%= user.img %>" alt="imágen de usuario" class='profile_img'>
+        <section class='profile_info'>
+            <p>Hola <%= user.name%>! </p>
+        </section>
+        
+    </main>
+
+    <!-- Vista parcial del footer -->
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>

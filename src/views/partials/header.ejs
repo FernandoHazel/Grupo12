@@ -13,9 +13,9 @@
             <% if(locals.isLogged){%>
 
                 <% if(locals.user.name.length > 10){%>
-                    <li><a href="#"><div class="user-div-info"><img src="<%=locals.user.img%>"> <span><%=locals.user.name.substring(0, 10)%>..</span></div></a></li>
+                    <li><a href="/users/perfil"><div class="user-div-info"><img src="<%=locals.user.img%>" class='profile_img'> <span><%=locals.user.name.substring(0, 10)%>..</span></div></a></li>
                 <%}else{%>
-                    <li><a href="#"><div class="user-div-info"><img src="<%=locals.user.img%>"> <span><%=locals.user.name%></span></div></a></li>
+                    <li><a href="/users/perfil"><div class="user-div-info"><img src="<%=locals.user.img%>"> <span><%=locals.user.name%></span></div></a></li>
                 <%}%>
                 <li><a href="/users/logout">Salir <i class="fas fa-sign-out-alt"></i></a></li>
 

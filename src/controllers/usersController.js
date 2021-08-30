@@ -54,7 +54,7 @@ const userController = {
             /* Si existe, entonces compara las contraseñas*/
             if(bcrypt.compareSync(req.body.password, users[index].password)){
 
-                /*Verifica si elijio la opcion de recordar*/
+                /*Verifica si elijió la opcion de recordar*/
                 if(req.body.remember){
                     /* creamos la cookie para el usuario*/
                     res.cookie("tcnShop", correo, {maxAge: (1000 * 60 * 60 * 24)})  // 24 hr
@@ -65,8 +65,8 @@ const userController = {
                 delete req.session.userLogged.password
                 delete req.session.userLogged.id
                 
-                /* Redirije al home*/
-                res.redirect('/')
+                /* Redirije al perfil*/
+                res.redirect('/users/perfil')
             }else{
                 //señalar al usuario que la contraseña es incorrecta
                 res.render('users/ingreso', {passwordError: 'Correo o contraseña incorrectos'})
@@ -76,6 +76,12 @@ const userController = {
             // señalar al usuario que el correo no está registrado
             res.render('users/ingreso', {emailError: 'Correo o contraseña incorrectos'})
         }
+    },
+    perfil: (req, res)=>{
+        //mandamos al usuario loggeado a la vista de perfil
+        const user =  req.session.userLogged
+
+        res.render('users/perfil', {user})
     },
     logout: (req, res)=>{
         /* Elimina la cookie */
