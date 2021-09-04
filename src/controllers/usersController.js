@@ -63,8 +63,7 @@ const userController = {
                 /* Si las credenciales son correctas, entonces crea la session*/
                 req.session.userLogged = {...users[index]}  // hace una copia del objeto
                 delete req.session.userLogged.password
-                delete req.session.userLogged.id
-                
+              
                 /* Redirije al perfil*/
                 res.redirect('/users/perfil')
             }else{
@@ -89,7 +88,16 @@ const userController = {
         /* Elimina la sesion */
         req.session.destroy()
         res.redirect("/")
+    },
+    getAllSellerSales: (req, res)=>{
+        /* Devuelve los productos de un determinado usuario vendedor */
+        const sellerId = req.params.sellerID
+        console.log("Get ALL SALES ")
+        res.json({"seller_id": sellerId})
+        /* Falta renderizar una vista con las ventas del vendedor*/
     }
+
+
 }
 
 module.exports = userController

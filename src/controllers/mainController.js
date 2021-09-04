@@ -5,7 +5,7 @@ const path = require("path")
 let dataDirection= path.join(__dirname + "../../../public/data/products.json")
 let rawdata = fs.readFileSync(dataDirection);
 const products = JSON.parse(rawdata);
-
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 const mainController={
 
   home: function(req, res){  
@@ -28,7 +28,7 @@ const mainController={
     mostSalesFew = mostSalesFew.slice(0, 7)
   
     /* Renderizamos la vista */    
-    res.render('home', {offerts: offerts, mostSales: mostSalesFew});
+    res.render('home', {offerts: offerts, mostSales: mostSalesFew, toThousand});
   }
 }
 

@@ -49,7 +49,7 @@
                 </form>
             </div>
             <div class="info_pago_der">
-                <h1>$<%= article.price %> MXN</h1>
+                <h1>$<%=toThousand( article.price)%> MXN</h1>
                 <div class="botones">
                     <%if(locals.user && locals.user.profile == "user"){%>
                         <form action="/users/AnadirCarrito/<%= article.id%>" method="POST">
@@ -83,12 +83,12 @@
         <article>
             <img src="<%= category[2].img %>" alt="Producto">
             <h3><%= category[2].title %></h3>
-            <h4>$<%= category[2].price %> MXN</h4>
+            <h4>$<%= toThousand(category[2].price) %> MXN</h4>
         </article>
         <article>
             <img src="<%= category[3].img %>" alt="Producto">
             <h3><%= category[3].title %></h3>
-            <h4>$<%= category[3].price %> MXN</h4>
+            <h4>$<%= toThousand(category[3].price) %> MXN</h4>
         </article>
     </section>
     <br>

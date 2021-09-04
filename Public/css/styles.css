@@ -947,8 +947,8 @@ main #products-section{
     font-weight: bold;
 }
 .product-conteiner .final-price{
-    font-size: 2rem;
-    color: black;
+    font-size: 1.5rem;
+    color: rgba(29, 146, 14, 0.918);
     font-weight: bold;
 }
 .product-conteiner .price{

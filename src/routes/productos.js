@@ -10,12 +10,24 @@ router.get("/", (req, res)=>{
    res.redirect("/productos/all")
 })
 
+/* GUEST o USUARIOS CLIENTES */
 //******* detalles ********/
 router.get("/detalles/:id?", productosController.detalles)
 
+//******* productos por categoria ********/
+router.get("/categoria/:id?", productosController.categoria)
+
+//******* todos los productos ********/
+router.get("/all", productosController.all)
+
+//******* ofertas ********/
+router.get("/offerts", productosController.offerts)
+
+//******* buscar productos ********/
+router.get("/search-products", productosController.search)
 
 
-
+/* VENDEDOR: requiere un middleware de autenticación */
 //******* crear producto ********/
 router.get("/crear", productosController.crear)
 router.post("/crear", multerIMG.single('img'), productosController.store)
@@ -27,16 +39,7 @@ router.put("/editar/:id", multerIMG.single('img'), productosController.actualiza
 //******* borrar producto ********/
 router.delete("/borrar/:id", productosController.borrar)
 
-//******* productos por categoria ********/
-router.get("/categoria/:id?", productosController.categoria)
+/* productos del vendedor */
+router.get("/seller/:sellerID", productosController.getSellerProducts)
 
-//******* todos los productos ********/
-router.get("/all", productosController.all)
-
-//******* ofertas ********/
-router.get("/offerts", productosController.offerts)
-
-
-//******* buscar productos ********/
-router.get("/search-products", productosController.search)
 module.exports = router

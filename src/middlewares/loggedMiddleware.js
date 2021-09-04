@@ -28,7 +28,7 @@ const loggedMiddleware = (req, res, next) => {
         /* Si existe ese usuario */
         if(userLogged){
             delete userLogged.password
-            delete userLogged.id
+            
             /* creamos la sesion */
             req.session.userLogged = userLogged
         }

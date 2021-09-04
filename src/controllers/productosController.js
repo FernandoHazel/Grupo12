@@ -3,6 +3,7 @@ const path = require("path")
 let dataDirection= path.join(__dirname + "../../../public/data/products.json")
 
 
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 /* Data */
 let rawdata = fs.readFileSync(dataDirection);
@@ -12,10 +13,7 @@ let products = JSON.parse(rawdata);
 const numberProducts = 10
 
 function equalProducts(a, b){
-    console.log(a)
-    console.log(b)
     /* Funcion que compara dos productos */
-
     if(a.title !== b.title){return false}
     if(a.description !== b.description){return false}
     if(a.category !== b.category){return false}
@@ -31,7 +29,7 @@ let productosController = {
         const idUser = req.params.id;
         const article = products.find(elem =>  elem.id.toString() == idUser)
         const category = products.filter(elem =>  {return article.category == elem.category})
-        res.render("products/detalles", {article: article, idUser: idUser, category: category})
+        res.render("products/detalles", {article: article, idUser: idUser, category: category, toThousand})
        },
    
     crear: (req, res)=>{
@@ -198,7 +196,7 @@ let productosController = {
         let page = filtro.slice(paggination.min, paggination.min + paggination.step)
     
         /* Renderiza la página */
-        res.render('products/listaProductos', {productos: page, options: id, paggination: paggination})
+        res.render('products/listaProductos', {productos: page, options: id, paggination: paggination, toThousand})
     },
     all: (req, res)=>{
         /* Verifica si tiene descuento y calcula su precio final */
@@ -216,7 +214,7 @@ let productosController = {
         let page = products.slice(paggination.min, paggination.min + paggination.step)
 
         /* Renderizamos la vista */
-        res.render('products/listaProductos', {productos: page, options: "all", paggination: paggination})
+        res.render('products/listaProductos', {productos: page, options: "all", paggination: paggination, toThousand})
     },
     offerts: (req, res)=>{
         
@@ -233,7 +231,7 @@ let productosController = {
         /* Recupera solo los productos de una determinada página */
         let page = offerts.slice(paggination.min, paggination.min + paggination.step)
 
-        res.render('products/listaProductos', {productos: page, options: "offerts", paggination: paggination})
+        res.render('products/listaProductos', {productos: page, options: "offerts", paggination: paggination, toThousand})
     },
     search: (req, res)=>{
         /* Obtiene el texto a buscar */
@@ -253,7 +251,17 @@ let productosController = {
         let page = productsSearch.slice(paggination.min, paggination.min + paggination.step)
 
         /* Renderiza la vista con los productos que cuimplen con la busqueda*/
-        res.render('products/listaProductos', {productos: page, options: "search", search_value: req.query.search, paggination: paggination})
+        res.render('products/listaProductos', {productos: page, options: "search", search_value: req.query.search, paggination: paggination, toThousand})
+    },
+    getSellerProducts: (req, res)=>{
+        /* Devuelve los productos de un determinado usuario vendedor */
+        const sellerId = req.params.sellerID
+        console.log("Get ALL SELLER PRODUCTS ")
+        res.json({"seller_id": sellerId})
+
+
+        /* Falta renderizar una vista con los productos filtrados por seller_id */
+
     }
 }
 

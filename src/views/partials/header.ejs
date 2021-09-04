@@ -1,8 +1,16 @@
 <header>
-    <!-- Contenedor de elementos del header  -->
-    <div class="head-conteiner">
-    <div class="upper-objects">
-        <a href="/"><img src="/images/BigCommerce-logo-dark.svg" id="company-logo"> </a>
+
+<!-- Barra de navegacion -->
+<nav class="nav-bar">
+<!-- Contenedor de elementos del header  -->
+<div class="head-conteiner">
+    <menu class="upper-objects">
+        <% if(locals.isLogged || locals.isLogged && locals.user.profile === "user") {%>
+            <a href="/"><img src="/images/BigCommerce-logo-dark.svg" id="company-logo"> </a>
+        <% } else {%>
+            <img src="/images/BigCommerce-logo-dark.svg" id="company-logo">
+        <% } %>
+        
         <form class="search-p-bar" action="/productos/search-products" method="GET">
             <div class="search-conteiner">
                 <input type="text" id="search" name="search" placeholder="Buscar productos por título, categoria o descripción."><i class="fas fa-search" id="search-i"></i>
@@ -30,26 +38,36 @@
                 <li><a href="/users/signup">Crear <i class="fas fa-user"></i></a></li>
             <% } %>
         </ul>
-    </div>
+    </menu>
 
     <!-- Mennu lateral  -->
     <i class="fas fa-bars" id="menu"></i>
     </div>
     <!-- Opciones de categoria -->
-    <div class="menu-options">
-        <ul class="main-p">
-            <li><a href="/">Home <i class="fas fa-home"></i></a></li>
-            <li><a href="/productos/offerts">Ofertas <i class="fab fa-hotjar"></i></i></a></li>
-        </ul>
-        <ul>
-            <li><a href="/productos/categoria/tv">TV</a></li>
-            <li><a href="/productos/categoria/audio">Audio</a></li>
-            <li><a href="/productos/categoria/cables">Cables</a></li>
-            <li><a href="/productos/categoria/herramientas">Herramientas</a></li>
-            <li><a href="/productos/categoria/smartphones">Smartphones</a></li>
-            <li><a href="/productos/categoria/tablets">Tablets</a></li>
-            <li><a href="/productos/categoria/computadoras">Computadoras</a></li>
-        </ul>
-    </div>
-    <br>
+    <menu class="menu-options">
+
+        <% if(!locals.isLogged || locals.isLogged && locals.user.profile === "user"){%>
+            <ul class="main-p">
+                <li><a href="/">Home <i class="fas fa-home"></i></a></li>
+                <li><a href="/productos/offerts">Ofertas <i class="fab fa-hotjar"></i></i></a></li>
+            </ul>
+            <ul>
+                <li><a href="/productos/categoria/tv">TV</a></li>
+                <li><a href="/productos/categoria/audio">Audio</a></li>
+                <li><a href="/productos/categoria/cables">Cables</a></li>
+                <li><a href="/productos/categoria/herramientas">Herramientas</a></li>
+                <li><a href="/productos/categoria/smartphones">Smartphones</a></li>
+                <li><a href="/productos/categoria/tablets">Tablets</a></li>
+                <li><a href="/productos/categoria/computadoras">Computadoras</a></li>
+            </ul>
+        <% }else if(locals.isLogged && locals.user.profile === "seller"){%>
+                <ul>
+                    <li><a href="/productos/seller/<%= locals.user.id%>">Mis productos <i class="fas fa-shopping-cart"></i></a></li>
+                    <li><a href="/users/seller/sales/<%= locals.user.id%>">Ventas <i class="fas fa-chart-bar"></i></a></li>
+                </ul>
+        <% } %>
+        
+    </menu>
+</nav>
+<br>
 </header>

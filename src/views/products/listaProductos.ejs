@@ -17,7 +17,7 @@
         </section>
 
         <section id="products-section">
-            <div id="products-header-topic">
+            <section id="products-header-topic">
                 <% if(options == "all"){%>
                     <span class="category">Todos los productos.</span> <span class="results"> Total de Resultado(s): <%= paggination.totalProducts %></span>
                 <% }else if(options=="offerts") {%> 
@@ -27,11 +27,11 @@
                 <% }else{%>
                     <span class="category">Productos > Categoría > <%=  options.charAt(0).toUpperCase() + options.slice(1).toLowerCase() %> </span> <span class="results"> Total de Resultado(s): <%= paggination.totalProducts %></span>
                 <% } %>
-            </div>
+                </section>
             <br>
             
             <!-- Paginacion -->
-        <div class="paggination">
+        <section class="paggination">
             <div class="title">
                 Página <strong><%= paggination.actualPage %></strong> de <strong><%= paggination.totalPages %></strong> <span>(<%=paggination.step%>)resultados por página</span>
             </div>
@@ -44,51 +44,59 @@
        
                 <a href="/productos<%= paggination.path %>?min=<%= paggination.min + paggination.step%>&page=<%=  paggination.actualPage + 1%>"><input <%= (paggination.min + paggination.step - 1) < (paggination.totalProducts) ? "": "disabled" %> type="submit" name="min" value="Siguiente" /></a>
             <%}%>
-            
-        </div>
+        </section>
+
             <br>
             <br>
-            <% productos.forEach(product => { %>
-                <div class="product-conteiner">
-                    <a href="/productos/detalles/<%= product.id %>">
-                    <!-- Imagen -->
-                    <img src="<%= product.img %>">
-                    <!-- Vendidos -->
-                    <p class="products-sold">
-                        <%= product.sold %> Vendidos
-                    </p>
-                    <!--Titulo-->
-                    <% if( product.title.length > 50 ){%>
-                        <p class="title"><%= product.title.substring(0, 50) %>..</p>
-                    <% }else{%>
-                        <p class="title"><%= product.title %></p>
-                    <% } %>
-                    
-                    <!-- Descripcion -->
-                    <% if( product.description.length > 80 ){%>
-                        <p class="description"><%= product.description.substring(0, 80) %>..</p>
-                    <%}else{%>
-                        <p class="description"><%= product.description %></p>
-                    <% }%>
-                    
-                    <!--Descuento-->
-                    <% if(product.discount > 0){%>
-                        <p class="discount"> -<%= product.discount %>% OFF</p>
-                    <% } %>
-                    <!--Calculo de precio fial dependiendo del descuento-->
-                    <% if(product.discount > 0){%>
-                        <p class="price">
-                            <span class="old-price">$<%= product.price %></span> <span class="final-price">$<%= product.final_price %></span>  
+
+            <section class="all-products">
+                <% productos.forEach(product => { %>
+                    <article class="product-conteiner">
+                        <a href="/productos/detalles/<%= product.id %>">
+                        <!-- Imagen -->
+                        <img src="<%= product.img %>" alt="<%= product.title %>">
+                        <!-- Vendidos -->
+                        <p class="products-sold">
+                            <%= product.sold %> Vendidos
                         </p>
-                    <% }else{%>
-                        <p class="price">
-                            <span class="final-price">$<%= product.price %></span> 
-                        </p>
+                        <!--Titulo-->
+                        <% if( product.title.length > 50 ){%>
+                            <p class="title"><%= product.title.substring(0, 50) %>..</p>
+                        <% }else{%>
+                            <p class="title"><%= product.title %></p>
+                        <% } %>
                         
-                    <% } %>
-                </a>
-                </div>
-            <% }) %>
+                        <!-- Descripcion -->
+                        <% if( product.description.length > 80 ){%>
+                            <p class="description"><%= product.description.substring(0, 80) %>..</p>
+                        <%}else{%>
+                            <p class="description"><%= product.description %></p>
+                        <% }%>
+                        
+                        <!--Descuento-->
+                        <% if(product.discount > 0){%>
+                            <p class="discount"> -<%= product.discount %>% OFF</p>
+                        <% } %>
+                        <!--Calculo de precio fial dependiendo del descuento-->
+                        <% if(product.discount > 0){%>
+                            <p class="price">
+                                <% if(product.price && product.final_price) {%>
+                                    <span class="old-price">$<%= toThousand(product.price)%></span> <span class="final-price">$<%=toThousand(product.final_price) %></span>  
+                                <% } %>
+                               
+                            </p>
+                        <% }else{%>
+                            <p class="price">
+                                <% if(product.price) {%>
+                                    <span class="final-price">$<%= toThousand(product.price) %></span> 
+                                <% } %>
+                            </p>
+                        <% } %>
+                    </a>
+                </article>
+                <% }) %>
+            </section>
+            
         </section>
         
     </main>

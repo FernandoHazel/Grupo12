@@ -9,8 +9,6 @@
     <br>
     <br>
 
-   
-     
     <!-- Contenido principal -->
     <main class="flexCarrito">
         
@@ -19,38 +17,29 @@
             
         </section>
 
+        <section class="productoDeCarrito"></section>
         <% for (let i=0 ; i < array.length ; i++ ) { %>
+            <article>
+                <div class="carritoImagen">
+                    <img src="<%= array[i].img %>" id="logo">
+                </div>
         
-        <section class="productoDeCarrito">
-
-            <section class="carritoImagen">
-            <img src="<%= array[i].img %>" id="logo">
-            </section>
-
-            <section class="carritoDetalles">
-            <p class="nombreProducto"> <%= array[i].title %> </p>
-            <P class="detallesProducto"> <%= array[i].description %> </P>
-            <p class="cantidadProducto">CANTIDAD</p>
-            </section>
-
-            <section class="carritoPrecio">
-            <p class="precioProducto"> $<%= array[i].price %> MXN</p>
-            <span class="eliminarProducto"><a href="/users/borrarProductoCarrito/<%= array[i].id %>">Eliminar</a></span> 
-            
-            </section>
-        </section>
+                    <div class="carritoDetalles">
+                        <p class="nombreProducto"> <%= array[i].title %> </p>
+                        <P class="detallesProducto"> <%= array[i].description %> </P>
+                        <p class="cantidadProducto">CANTIDAD</p>
+                    </div>
+        
+                    <div class="carritoPrecio">
+                        <p class="precioProducto"> $<%= array[i].price %> MXN</p>
+                        <span class="eliminarProducto"><a href="/users/borrarProductoCarrito/<%= array[i].id %>">Eliminar</a></span> 
+                    </div>
+            </article>
         <% }  %>
+    </section>
 
-        
-
-        
-
-     
-
-        
-        
         <section class="comprarCarrito">
-            <section>
+            <div>
                 <form action="">
                     <label for="opciones">Método de pago</label>
                     <br>
@@ -61,29 +50,22 @@
                         <option value="3">Opción 3</option>
                     </select>
                 </form>
-            </section>
-            <section>
+            </div>
+            <div>
                 TOTAL: $9,460 MXN
-            </section>
+            </div>
 
-            <section >
+            <div >
                 <button class="eliminar">ELIMINAR TODO EL CARRITO</button>
-            </section>
+            </div>
 
-            <section>
+            <div>
                 <button class="comprar">COMPRAR</button>
-            </section>
+            </div>
         </section>
 
-
-
-
     </main>
-
-
-
     <br>
-
 
      <!-- Vista parcial del footer -->
      <%- include('./partials/footer.ejs') %>
