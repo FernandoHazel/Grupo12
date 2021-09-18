@@ -18,6 +18,10 @@
                     <p>Categoria</p>
                 <select name="category">
                     <option value="" disabled selected>Selecciona una</option>
+                    <% categories.forEach(c =>{%>
+                        <option value=<%=c.id%> ><%= c.name %></option>
+                    <% }) %>
+                    <!-- 
                     <option value="tv">Tv</option>
                     <option value="audio" >Audio</option>
                     <option value="cables" >Cables</option>
@@ -25,6 +29,8 @@
                     <option value="smartphones">Smartphone</option>
                     <option value="tablets" >Tablet</option>
                     <option value="computadoras">Laptop / PC</option>
+                    OLD version
+                -->
                 </select>
                 </div>
             </div>
@@ -34,11 +40,6 @@
                     <p>Detalles</p>
                     <textarea placeholder="Menciona los detalles y/o características que consideres relevantes de cara a la venta al público" name="description" required></textarea>
                 </div>
-                <div class="description">
-                    <p>Descripción detallada</p>
-                    <textarea placeholder="Menciona de manera detallada todo a cerca del producto " name="detailedDescription"></textarea>
-                </div>
-               
 
                 <div class="main2">
                     <div class="price">

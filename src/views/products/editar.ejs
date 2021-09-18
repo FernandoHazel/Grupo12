@@ -17,13 +17,18 @@
                     <div class="category">
                         <p>Categoria</p>
                     <select name="category">
+                        <% categories.forEach(c =>{%>
+                            <option value=<%=c.id%>  <%=product.category.id === c.id ? "selected": ""%> ><%= c.name %></option>
+                        <% }) %>
+
+                        <!-- OLD
                         <option value="tv" <%=product.category === "tv"? "selected": ""%>>Tv</option>
                         <option value="audio" <%=product.category === "audio"? "selected": ""%>>Audio</option>
                         <option value="cables" <%=product.category === "cables"? "selected": ""%>>Cables</option>
                         <option value="herramientas" <%=product.category === "herramientas"? "selected": ""%>>Herramienta</option>
                         <option value="smartphones" <%=product.category === "smartphones"? "selected": ""%>>Smartphone</option>
                         <option value="tablets" <%=product.category === "tablets"? "selected": ""%>>Tablet</option>
-                        <option value="computadoras" <%=product.category === "computadoras"? "selected": ""%>>Laptop / PC</option>
+                        <option value="computadoras" <%=product.category === "computadoras"? "selected": ""%>>Laptop / PC</option>-->
                     </select>
                     </div>
             </div>

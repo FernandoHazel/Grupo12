@@ -31,11 +31,11 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.INTEGER //en la base dice smallint(2)
         },
         active: {
-            type: DataTypes.BOOLEAN
+            type: DataTypes.INTEGER
         },
         sold_units: {
             type: DataTypes.INTEGER
-        },
+        }
         
     }
     const config = {
@@ -44,5 +44,14 @@ module.exports = function(sequelize, DataTypes){
     }
 
     const Product = sequelize.define(alias, cols, config);
+
+
+    Product.associate = function(models){
+        Product.belongsTo(models.Category, {
+            as: 'category',
+            foreignKey: 'category_id',
+            targetKey: 'id'
+        })
+    }
     return Product
 }

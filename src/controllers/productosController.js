@@ -1,7 +1,8 @@
 const fs = require('fs');
-const path = require("path")
+const path = require("path");
+const { title } = require('process');
 let dataDirection= path.join(__dirname + "../../../public/data/products.json")
-
+const db = require("../../database/models")
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
@@ -33,43 +34,89 @@ let productosController = {
        },
    
     crear: (req, res)=>{
-        res.render("products/crear")
+        /* Primero busca las categorias de los productos*/
+        db.Category.findAll()
+        .then(function(categories){
+            if(categories.length){
+                res.render("products/crear", {categories})
+            }
+            else{
+                console.log("No existen categorias")
+                res.send({"message": "error"})
+            }
+        })
+        .catch(function(e){
+            console.log(e)
+        })
+        
     },
     store: (req, res)=>{
 
         /* Imagen por defecto */
         let img = "/images/productos/default.png"
-        const newProduct = req.body
+        /* Obtenemos los datos del body */
+        let {title, description, price, stock, category, discount} = req.body
         
         /* Si subio una imagen */
         if(req.file){
             img = "/images/productos/" + newProduct.category + "/" +req.file.filename
         }
-    
-        /*vendidos  */
-        newProduct.sold = 0
-        /* Imagen */
-        newProduct.img = img
-
-        /* Id */
-        newProduct.id = Date.now(),
-    
-        /* Guarda en disco */
-        products.push(newProduct)
-        const productsJSON = JSON.stringify(products, null, 2)
-		fs.writeFileSync(dataDirection, productsJSON)
-
-        res.redirect("/")
+        /* creamos el ofjeto en la base de datos*/
+        db.Product.create(
+            {
+                category_id: parseInt(category, 10),
+                seller_id: 2, // debe ser el id del vendedor
+                title,
+                description,
+                price,
+                stock,
+                img,
+                discount
+            }
+        )
+        .then(function(result){
+            if(result){
+                res.redirect("/")
+                console.log("Producto creado exitosamente con ID: {"+result.dataValues.id+"}")
+            }
+            else{
+                console.log("Ha ocurrido un error")
+                res.send({"message": "No se pudo crear el producto"})
+            }
+        })
     },
-    editForm: (req, res)=>{             
+    editForm: (req, res)=>{  
+
         /* Obtenemos el ID */
         let productId = parseInt(req.params.id, 10);
+        
+        /* Busca el producto en la base de datos */
+        db.Product.findOne({
+            include: [{association: "category"}],
+            where: {
+                id: productId
+            }
+        })
+        .then(function(product){
+            if(product){
+                /* Buscamos las categorias */
+                db.Category.findAll()
+                .then(function(categories){
+                    res.render("products/editar", {product: product.dataValues, categories})  
+                })
+                .catch(function(e){
+                    console.log("Error: ", e)
+                })
+            }
+            else{
+                console.log("No se encontró el producto")
+                res.render("errors/404")
+            }
+        })
+        .catch(function(e){
+            console.log("Ha ocurrido un error\n", e)
+        })
 
-        /* Buca el indice del producto en el array*/
-        let index = products.findIndex(p => p.id === productId)
-
-        /* Renderizar vista segun el indice */
-        index === -1 ? res.render("errors/404") : res.render("products/editar", {product: products[index]})  
     },
     actualizar: (req, res)=>{
 

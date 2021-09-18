@@ -1,9 +1,10 @@
+
 module.exports = {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "tecnosp_db",
-    "host": "127.0.0.1",
+    "username": process.env.DB_USERNAME,
+  "password": process.env.DB_PASSWORD? process.env.DB_PASSWORD:null,
+    "database": process.env.DB_NAME,
+    "host": process.env.DB_SERVER,
     "dialect": "mysql"
   },
   "test": {

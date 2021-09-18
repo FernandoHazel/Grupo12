@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 const express = require("express")
 const app = express()
 
@@ -25,13 +27,12 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session({
-    secret: 'tecnoshop',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
 }))
 app.use(cookieParser())   // uso de cookies
 app.use(loggedMidleware)   // verifica si existe una session iniciada
-
 
 // Recursos
 app.use('/',rutaMain);
@@ -46,6 +47,7 @@ app.use(function(req, res, next) {
 
 // Puerto
 const PORT = 3031
+
 
 // levantar servidor
 app.listen(PORT, ()=>{
