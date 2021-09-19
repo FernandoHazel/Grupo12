@@ -16,7 +16,8 @@ module.exports = function(sequelize, DataTypes){
     }
 
     const UserRole = sequelize.define(alias, cols, config);
-
+    
+    //Un rol tiene muchos usuarios
     UserRole.associate = function(modelos){
         UserRole.hasMany(modelos.User, {
             as: 'users',

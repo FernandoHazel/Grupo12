@@ -25,5 +25,8 @@ module.exports = function(sequelize, DataTypes){
     }
 
     const CartProduct = sequelize.define(alias, cols, config);
+
+    
+
     return CartProduct
 }

@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING
         },
         age: {
-            type: DataTypes.INTEGER //en la base dice smallint(2)
+            type: DataTypes.INTEGER 
         },
         profile_img: {
             type: DataTypes.STRING(500)
@@ -28,5 +28,14 @@ module.exports = function(sequelize, DataTypes){
     }
 
     const UserInfo = sequelize.define(alias, cols, config);
+    
+    //Una info pertenece a un usuario
+    UserInfo.associate = function(modelos){
+        UserInfo.belongsTo(modelos.User, {
+            as: 'user',
+            foreingKey: 'user_id'
+        })
+    }
+
     return UserInfo
 }

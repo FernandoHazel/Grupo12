@@ -26,5 +26,8 @@ module.exports = function(sequelize, DataTypes){
     }
 
     const Purchase = sequelize.define(alias, cols, config);
+
+    
+
     return Purchase
 }

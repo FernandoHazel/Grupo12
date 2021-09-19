@@ -1,5 +1,6 @@
 const fs = require('fs');
-const path = require("path")
+const path = require("path");
+const { Association } = require('sequelize/types');
 
 /* Obtenemos los datos de productos*/
 let productsDataDirection= path.join(__dirname + "../../../../public/data/products.json")
@@ -23,12 +24,10 @@ const apiPruebaController = {
         })
         
     }, 
-    modify: function(req, res){
+    show: function(req, res){
 
-        db.User.update(
-            req.body
-        ,{
-            where: {id: req.params.id}
+        db.UserRole.findAll({
+            include: [{association: 'users'}]
         })
         .then(function(result){
             res.json(result)
