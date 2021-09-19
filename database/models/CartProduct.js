@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes){
         date_added: {
             type: DataTypes.DATE
         },
-        date_added: {
+        product_quantity: {
             type: DataTypes.INTEGER
         }
     }
@@ -25,8 +25,6 @@ module.exports = function(sequelize, DataTypes){
     }
 
     const CartProduct = sequelize.define(alias, cols, config);
-
-    
 
     return CartProduct
 }

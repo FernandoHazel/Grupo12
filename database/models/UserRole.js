@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes){
     const alias = 'UserRole'
     const cols = {
         id: {
-            type: DataTypes.INTEGER, //En la base es smallint(2)
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
@@ -17,12 +17,15 @@ module.exports = function(sequelize, DataTypes){
 
     const UserRole = sequelize.define(alias, cols, config);
     
-    //Un rol tiene muchos usuarios
-    UserRole.associate = function(modelos){
-        UserRole.hasMany(modelos.User, {
+    
+    UserRole.associate = function(models){
+        //Un rol tiene muchos usuarios
+        UserRole.hasMany(models.User, {
             as: 'users',
-            foreingKey: 'user_role_id'
+            foreignKey: 'user_role_id',
+            sourceKey: 'id'
         })
+
     }
     return UserRole
 }

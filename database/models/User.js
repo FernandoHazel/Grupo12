@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING
         },
         user_role_id: {
-            type: DataTypes.INTEGER //en la base dice smallint(2)
+            type: DataTypes.INTEGER
         },
         active: {
             type: DataTypes.BOOLEAN
@@ -25,43 +25,40 @@ module.exports = function(sequelize, DataTypes){
     }
 
     const User = sequelize.define(alias, cols, config);
+    
+    User.associate = function(models){
 
-    //Un usuario tiene un rol
-    User.associate = function(modelos){
-        User.belongsTo(modelos.UserRole, {
+        //Un usuario tiene un rol
+        User.belongsTo(models.UserRole, {
             as: 'role',
-            foreingKey: 'user_role_id'
-        })
-    }
-    //Un usuario tiene una información
-    User.associate = function(modelos){
-        User.belongsTo(modelos.UserInfo, {
+            foreignKey: 'user_role_id',
+            targetKey: 'id'
+        }),
+        //Un usuario tiene una información
+        User.hasOne(models.UserInfo, {
             as: 'user_info',
-            foreingKey: 'user_id'
-        })
-    }
-    //Un usuario puede tener varios tickets
-    User.associate = function(modelos){
-        User.hasMany(modelos.Ticket, {
+            foreignKey: 'user_id',
+            sourceKey: 'id'
+        }),
+        //Un usuario puede tener varios tickets
+        User.hasMany(models.Ticket, {
             as: 'tickets',
-            foreingKey: 'user_id'
-        })
-    }
-    //Un usuario tiene un carrito de compras
-    User.associate = function(modelos){
-        User.belongsTo(modelos.CartUser, {
+            foreignKey: 'user_id',
+            sourceKey: 'id'
+        }),
+        //Un usuario tiene un carrito de compras
+        User.hasOne(models.CartUser, {
             as: 'cart_user',
-            foreingKey: 'user_id'
-        })
-    }
-
-    //Un usuario "seller" tiene muchos productos para vender
-    User.associate = function(modelos){
-        User.hasMany(modelos.Product, {
+            foreignKey: 'user_id',
+            sourceKey: 'id'
+        }),
+        //Un usuario "seller" tiene muchos productos para vender
+        User.hasMany(models.Product, {
             as: 'products_to_sell',
-            foreingKey: 'seller_id'
+            foreignKey: 'seller_id',
+            sourceKey: 'id'
         })
     }
-
+    
     return User
 }

@@ -30,11 +30,14 @@ module.exports = function(sequelize, DataTypes){
     const UserInfo = sequelize.define(alias, cols, config);
     
     //Una info pertenece a un usuario
-    UserInfo.associate = function(modelos){
-        UserInfo.belongsTo(modelos.User, {
+    UserInfo.associate = function(models){
+
+        UserInfo.belongsTo(models.User, {
             as: 'user',
-            foreingKey: 'user_id'
+            foreignKey: 'user_id',
+            targetKey: 'id'
         })
+
     }
 
     return UserInfo

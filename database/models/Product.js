@@ -45,8 +45,31 @@ module.exports = function(sequelize, DataTypes){
 
     const Product = sequelize.define(alias, cols, config);
 
-    //Un producto pertenece a una categoría
     Product.associate = function(models){
+
+        //Un producto puede estar en muchos carritos (N:M) a travéz de cart_product
+        Product.belongsToMany(models.CartUser, {
+            as: 'cart_users',
+            through: 'cart_product',
+            foreignKey: 'product_id',
+            otherKey: 'cart_user_id',
+            timestamps: false
+        }),
+        //Un producto puede estar en muchos tickets (N:M) a traves de purchases
+        Product.belongsToMany(models.Ticket, {
+            as: 'product_tickets',
+            through: 'purchases',
+            foreignKey: 'product_id',
+            otherKey: 'ticket_id',
+            timestamps: false
+        }),
+        //Un producto a vender pertenece a un vendedor
+        Product.belongsTo(models.User, {
+            as: 'seller',
+            foreignKey: 'seller_id',
+            targetKey: 'id'
+        }),
+        //Un producto pertenece a una categoría
         Product.belongsTo(models.Category, {
             as: 'category',
             foreignKey: 'category_id',
@@ -54,34 +77,5 @@ module.exports = function(sequelize, DataTypes){
         })
     }
 
-    //Un producto a vender pertenece a un vendedor
-    Product.associate = function(models){
-        Product.belongsTo(models.User, {
-            as: 'seller',
-            foreignKey: 'seller_id',
-            targetKey: 'id'
-        })
-    }
-
-    //Un producto puede estar en muchos carritos (N:M) a travéz de cart_product
-    Product.associate = function(models){
-        Product.belongsToMany(models.CartUser, {
-            as: 'cart_users',
-            through: 'cart_product',
-            foreignKey: 'product_id',
-            otherKey: 'cart_user_id'
-        })
-    }
-
-    //Un producto puede estar en muchos tickets (N:M) a traves de purchases
-    Product.associate = function(models){
-        Product.belongsToMany(models.Ticket, {
-            as: 'product_tickets',
-            through: 'purchases',
-            foreignKey: 'product_id',
-            otherKey: 'ticket_id'
-        })
-    }
-    
     return Product
 }

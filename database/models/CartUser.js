@@ -17,21 +17,21 @@ module.exports = function(sequelize, DataTypes){
 
     const CartUser = sequelize.define(alias, cols, config);
 
-    //Un cart user pertenece a un usuario
-    CartUser.associate = function(modelos){
-        CartUser.belongsTo(modelos.User, {
-            as: 'user_of_cart',
-            foreingKey: 'user_id'
-        })
-    }
+    CartUser.associate = function(models){
 
-    //Un carrito puede tener muchos productos (N:M) a travez de cart_product
-    CartUser.associate = function(modelos){
-        CartUser.belongsToMany(modelos.Product, {
+        //Un cart user pertenece a un usuario
+        CartUser.belongsTo(models.User, {
+            as: 'user_of_cart',
+            foreignKey: 'user_id',
+            targetKey: 'id'
+        }),
+        //Un carrito puede tener muchos productos (N:M) a travez de cart_product
+        CartUser.belongsToMany(models.Product, {
             as: 'added_products',
-            through: 'cart_user',
-            foreingKey: 'cart_user_id',
-            otherKey: 'product_id'
+            through: 'cart_product',
+            foreignKey: 'cart_user_id',
+            otherKey: 'product_id',
+            timestamps: false
         })
     }
 
