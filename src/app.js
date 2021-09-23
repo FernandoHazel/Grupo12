@@ -12,8 +12,7 @@ const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const loggedMidleware = require('./middlewares/loggedMiddleware')
 
-//api para prueba de módulos
-const apiPruebaRoutes = require('./routes/apiPrueba/apiPrueba.js')
+
 
 // Method override
 app.use(override("_method"))
@@ -38,7 +37,7 @@ app.use(loggedMidleware)   // verifica si existe una session iniciada
 app.use('/',rutaMain);
 app.use("/productos", rutaProductos);
 app.use('/users', rutaUsers)
-app.use('/api', apiPruebaRoutes)
+
 
 // Error 404
 app.use(function(req, res, next) {

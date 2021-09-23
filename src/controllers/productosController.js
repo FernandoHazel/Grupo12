@@ -170,6 +170,25 @@ let productosController = {
     borrar: (req, res)=>{
         //Eliminamos la imágen
         let idProduct = req.params.id
+
+        /* Busca el producto */
+        db.Product.findOne({
+            where: {
+                if: idProduct
+            }
+        })
+        .then(function(product){
+            if(product){
+                console.log(product)
+            }
+            else{
+                res.render("errors/404")
+            }
+        })
+        .catch(function(e){
+            res.status(500).send({"message": "Hubo un error: "+e})
+        })
+
         let elementToErase = products.find(elem => elem.id == parseInt(idProduct, 10))
         let imgDir = path.join(__dirname + "../../../public"+elementToErase.img)
         try{
