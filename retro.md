@@ -31,3 +31,27 @@
 4.Hacer menos: Mezclar idiomas
 
 5.Dejar de hacer: No actualizar siempre el trello
+
+Sprint 5
+
+1.Comenzar a hacer: Poner colores a las tareas de los sprints para identificarlas mejor
+
+2.Hacer más: estar más al pendiente del trello, poner más comentarios
+
+3.Continuar haciendo: dividir bien las tareas y reportar avances al equipo
+
+4.Hacer menos: 
+
+5.Dejar de hacer: 
+
+Sprint 6
+
+1.Comenzar a hacer: Mostrar avances al equipo semanales
+
+2.Hacer más: Hacer las tareas del sprint y los pendientes
+
+3.Continuar haciendo: resolver los problemas y dudas en equipo
+
+4.Hacer menos: Aplazar reuniones
+
+5.Dejar de hacer: atrazarnos con la retro
