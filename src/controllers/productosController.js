@@ -26,7 +26,8 @@ let productosController = {
 
         db.Product.findOne({
             where: {
-                id: idProduct
+                id: idProduct,
+                active: 1
             }
         })
         .then(function(product){
@@ -34,6 +35,7 @@ let productosController = {
                 db.Product.findAll({
                     where: {
                         category_id: product.category_id,
+                        active: 1,
                         id: {[Op.ne]: product.id}
                     },
                     limit: 10
@@ -119,7 +121,8 @@ let productosController = {
         db.Product.findOne({
             include: [{association: "category"}],
             where: {
-                id: productId
+                id: productId,
+                active: 1
             }
         })
         .then(function(product){
@@ -144,15 +147,14 @@ let productosController = {
 
     },
     actualizar: (req, res)=>{
-        console.log("Actualizar")
-
         /* Obtenemos el ID */
        let productID = parseInt(req.params.id, 10)
 
        /* Buscamos el índice del producto */
        db.Product.findOne({
            where: {
-               id: productID
+               id: productID,
+               active: 1
            }
        })
        .then(function(product){
@@ -170,16 +172,37 @@ let productosController = {
     borrar: (req, res)=>{
         //Eliminamos la imágen
         let idProduct = req.params.id
-
+        
         /* Busca el producto */
         db.Product.findOne({
             where: {
-                if: idProduct
+                id: idProduct,
+                active: 1
             }
         })
         .then(function(product){
             if(product){
-                console.log(product)
+                /* Lo inactivamos */
+                product.active = 0;
+                product.save()
+                .then(function(result){
+                    if(result){
+                        /* Elimina su imagen asociada*/
+                        let imgDir = path.join(__dirname + "../../../public"+result.img)
+                        try{
+                            fs.unlinkSync(imgDir)
+                        }catch(error){
+                            console.log(error)
+                        }
+                        res.redirect('/')
+                    }
+                    else{
+                        res.send({"message": "No pudimos eliminar el producto"})
+                    }
+                })
+                .catch(function(e){
+                    res.status(500).send({"message": "Hubo un error: "+e})
+                })
             }
             else{
                 res.render("errors/404")
@@ -189,21 +212,6 @@ let productosController = {
             res.status(500).send({"message": "Hubo un error: "+e})
         })
 
-        let elementToErase = products.find(elem => elem.id == parseInt(idProduct, 10))
-        let imgDir = path.join(__dirname + "../../../public"+elementToErase.img)
-        try{
-            fs.unlinkSync(imgDir)
-        }catch(error){
-            console.log(error)
-        }
-        
-
-        //Sobreescribimos el disco
-        let index = products.findIndex(elem => elem.id == parseInt(idProduct, 10))
-        products.splice(index, 1)
-        fs.writeFileSync(dataDirection, JSON.stringify(products, null, 2))
-        console.log()
-        res.redirect('/')
     },
     categoria: (req, res,) => {
         /* Obtiene los datos para la paginacion */
@@ -216,20 +224,31 @@ let productosController = {
                 console.log(error)
               }
         }
+
         /* Filtramos los productos por una determinada categoria */
-        let id = req.params.id
-        let filtro = products.filter(product => {
-              return product.category === id
-          })
+        let category = req.params.id
 
-        /* Paginacion */
-        let paggination = getPaggination(req, filtro)
+        /* busca los productos que coincidan con la busqueda */
+        db.Product.findAll({
+            include: [{association: "category"}],
+            where:{
+                category: {name: category},
+                active: 1
+            }
+        })
+        .then(function(filtro){
+            /* Paginacion */
+            let paggination = getPaggination(req, filtro)
 
-        /* Recupera solo los productos de una determinada página */
-        let page = filtro.slice(paggination.min, paggination.min + paggination.step)
+            /* Recupera solo los productos de una determinada página */
+            let page = filtro.slice(paggination.min, paggination.min + paggination.step)
     
-        /* Renderiza la página */
-        res.render('products/listaProductos', {productos: page, options: id, paggination: paggination, toThousand})
+            /* Renderiza la página */
+            res.render('products/listaProductos', {productos: page, options: category, paggination: paggination, toThousand})
+        })
+        .catch(function(e){
+            res.status(500).send({"message": "Hubo un error: "+e})
+        })
     },
     all: (req, res)=>{
         /* Verifica si tiene descuento y calcula su precio final */
