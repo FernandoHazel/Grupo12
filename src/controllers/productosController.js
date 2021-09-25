@@ -230,9 +230,8 @@ let productosController = {
 
         /* busca los productos que coincidan con la busqueda */
         db.Product.findAll({
-            include: [{association: "category"}],
+            include: [{association: "category", where:{name: category}}],
             where:{
-                category: {name: category},
                 active: 1
             }
         })
@@ -251,39 +250,67 @@ let productosController = {
         })
     },
     all: (req, res)=>{
-        /* Verifica si tiene descuento y calcula su precio final */
-        products.forEach(element => {
-            if(element.discount > 0){
-                /* Crea una propiedad de final price */
-                element.final_price = element.price - (element.price * element.discount / 100)
+
+        db.Product.findAll({
+            where: {
+                active: true
             }
-        });
+        })
+        .then(function(products){
+        
+            /* Verifica si tiene descuento y calcula su precio final */
+            products.forEach(element => {
+                 if(element.discount > 0){
+                    /* Crea una propiedad de final price */
+                    element.final_price = element.price - (element.price * element.discount / 100)
+                }
+            });
 
-        /* Paginacion */
-        let paggination = getPaggination(req, products)
+            /* Paginacion */
+            let paggination = getPaggination(req, products)
 
-        /* Obtiene la pagina actual corrspondiente */
-        let page = products.slice(paggination.min, paggination.min + paggination.step)
+            /* Obtiene la pagina actual corrspondiente */
+            let page = products.slice(paggination.min, paggination.min + paggination.step)
 
-        /* Renderizamos la vista */
-        res.render('products/listaProductos', {productos: page, options: "all", paggination: paggination, toThousand})
+            /* Renderizamos la vista */
+            res.render('products/listaProductos', {productos: page, options: "all", paggination: paggination, toThousand})  
+        })
+        .catch(function(e){
+            res.status(500).send({"message": "Hubo un error: "+e})
+
+        })
+    
     },
     offerts: (req, res)=>{
         
         /* Filtramos los productos que tienen ofertas  */
         let offerts = products.filter(p => p.discount > 0)
-        /* Calculamos el precio final */
-        offerts.forEach(e =>{
-            e.final_price = e.price - (e.price * e.discount / 100)
+
+        db.Product.findAll({
+            where: {
+                active: true,
+                discount: {[Op.gt]: 0}
+            }
+        })
+        .then(function(offerts){
+            /* Calculamos el precio final */
+            offerts.forEach(e =>{
+                e.final_price = e.price - (e.price * e.discount / 100)
+            })
+
+            /* Obtien los datos relacionados con la paginacion */
+            let paggination = getPaggination(req, offerts)
+
+            /* Recupera solo los productos de una determinada página */
+            let page = offerts.slice(paggination.min, paggination.min + paggination.step)
+
+            res.render('products/listaProductos', {productos: page, options: "offerts", paggination: paggination, toThousand})
+
+        })
+        .catch(function(e){
+            res.status(500).send({"message": "Hubo un error: "+e})
         })
 
-        /* Obtien los datos relacionados con la paginacion */
-        let paggination = getPaggination(req, offerts)
-        
-        /* Recupera solo los productos de una determinada página */
-        let page = offerts.slice(paggination.min, paggination.min + paggination.step)
-
-        res.render('products/listaProductos', {productos: page, options: "offerts", paggination: paggination, toThousand})
     },
     search: (req, res)=>{
         /* Obtiene el texto a buscar */
@@ -292,18 +319,34 @@ let productosController = {
             searchTxt = searchTxt.toUpperCase()
         }
         /* Filtra los resultados */
-        let productsSearch = products.filter(product =>{
+        /*let productsSearch = products.filter(product =>{
             return product.title.toUpperCase().includes(searchTxt) || 
             product.description.toUpperCase().includes(searchTxt) || 
             product.category.toUpperCase().includes(searchTxt) 
-        })
-        /* Paginacion */
-        let paggination = getPaggination(req, productsSearch)
-        /* Página */
-        let page = productsSearch.slice(paggination.min, paggination.min + paggination.step)
+        })*/
 
-        /* Renderiza la vista con los productos que cuimplen con la busqueda*/
-        res.render('products/listaProductos', {productos: page, options: "search", search_value: req.query.search, paggination: paggination, toThousand})
+        db.Product.findAll({
+            //include: [{association: 'category',  where:{name: {[Op.like]: `%${searchTxt}%`}}}],
+            where: {
+                [Op.or]: {
+                    title: {[Op.like]: `%${searchTxt}%`},
+                    description: {[Op.like]: `%${searchTxt}%`},
+                }
+            }
+        })
+        .then(function(productsSearch){
+            /* Paginacion */
+            let paggination = getPaggination(req, productsSearch)
+            /* Página */
+            let page = productsSearch.slice(paggination.min, paggination.min + paggination.step)
+
+            /* Renderiza la vista con los productos que cuimplen con la busqueda*/
+            res.render('products/listaProductos', {productos: page, options: "search", search_value: req.query.search, paggination: paggination, toThousand})
+
+        })
+        .catch(function(e){
+            res.status(500).send({"message": "Hubo un error: "+e})
+        })
     },
     getSellerProducts: (req, res)=>{
         /* Devuelve los productos de un determinado usuario vendedor */
