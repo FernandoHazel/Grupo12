@@ -24,6 +24,8 @@
                     <span class="category">Productos > Ofertas </span> <span class="results"> Total de Resultado(s): <%= paggination.totalProducts %></span>
                 <% }else if(options=="search") {%> 
                         <span class="category">Resultados de la búsqueda <strong style="font-size: 1rem; color: gray">"<%= search_value %>"</strong> </span> <span class="results"> Total de Resultado(s): <%= paggination.totalProducts %></span>
+                <% }else if(options=="myProducts") {%> 
+                    <span class="category"><span style="font-size: 28px;font-weight: bold;">Mis productos</span> <strong> <span class="results"> Total de Resultado(s): <%= paggination.totalProducts %></span>
                 <% }else{%>
                     <span class="category">Productos > Categoría > <%=  options.charAt(0).toUpperCase() + options.slice(1).toLowerCase() %> </span> <span class="results"> Total de Resultado(s): <%= paggination.totalProducts %></span>
                 <% } %>

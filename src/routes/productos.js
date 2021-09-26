@@ -40,6 +40,6 @@ router.put("/editar/:id", multerIMG.single('img'), productosController.actualiza
 router.get("/borrar/:id", productosController.borrar)
 
 /* productos del vendedor */
-router.get("/seller/:sellerID", productosController.getSellerProducts)
+router.get("/my-products/", productosController.getSellerProducts)
 
 module.exports = router

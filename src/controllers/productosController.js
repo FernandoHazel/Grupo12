@@ -1,19 +1,13 @@
 const fs = require('fs');
 const path = require("path");
-const { title } = require('process');
-let dataDirection= path.join(__dirname + "../../../public/data/products.json")
-const db = require("../../database/models")
-const { Op } = require("sequelize");
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-/* Data */
-let rawdata = fs.readFileSync(dataDirection);
-let products = JSON.parse(rawdata);
+/* Sequelize*/
+const db = require("../../database/models")
+const { Op } = require("sequelize");
 
 /* No. productos por página*/ 
 const numberProducts = 10
-
-
 
 let productosController = {
     detalles: (req, res)=>{
@@ -319,16 +313,11 @@ let productosController = {
             searchTxt = searchTxt.toUpperCase()
         }
         /* Filtra los resultados */
-        /*let productsSearch = products.filter(product =>{
-            return product.title.toUpperCase().includes(searchTxt) || 
-            product.description.toUpperCase().includes(searchTxt) || 
-            product.category.toUpperCase().includes(searchTxt) 
-        })*/
-
         db.Product.findAll({
-            //include: [{association: 'category',  where:{name: {[Op.like]: `%${searchTxt}%`}}}],
+            include: [{association: 'category'}],
             where: {
                 [Op.or]: {
+                    '$Category.name$': {[Op.like]: `%${searchTxt}%`},
                     title: {[Op.like]: `%${searchTxt}%`},
                     description: {[Op.like]: `%${searchTxt}%`},
                 }
@@ -350,14 +339,31 @@ let productosController = {
     },
     getSellerProducts: (req, res)=>{
         /* Devuelve los productos de un determinado usuario vendedor */
-        const sellerId = req.params.sellerID
-        console.log("Get ALL SELLER PRODUCTS ")
-        res.json({"seller_id": sellerId})
+       if(req.session.userLogged){
+            const sellerId = req.session.userLogged
 
+            db.Product.findAll({
+                where: {
+                    active: true,
+                    seller_id: sellerId
+                }
+            })
+            .then(function(products){
+                /* Paginacion */
+                let paggination = getPaggination(req, products)
+                /* Página */
+                let page = products.slice(paggination.min, paggination.min + paggination.step)
 
-        /* Falta renderizar una vista con los productos filtrados por seller_id */
-
+                /* Renderiza la vista con los productos que cuimplen con la busqueda*/
+                res.render('products/listaProductos', {productos: page, options: "myProducts", search_value: req.query.search, paggination: paggination, toThousand})
+            })
+            .catch(function(e){
+                res.status(500).send({"message": "Hubo un error: "+e})
+            })
+    }else{
+        res.status(303).send({"message": "No eres vendedor"})
     }
+  }
 }
 
 function getPaggination(req, productsView){
