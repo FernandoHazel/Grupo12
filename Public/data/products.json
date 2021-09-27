@@ -24,18 +24,6 @@
     "final_price": 314.55
   },
   {
-    "title": "Multilímetro profesional",
-    "category": "herramientas",
-    "description": "Gran calidad",
-    "price": 6300,
-    "discount": 35,
-    "stock": 36,
-    "id": 3,
-    "sold": 55,
-    "img": "/images/productos/herramientas/img-1627663944198.jpg",
-    "final_price": 4095
-  },
-  {
     "id": 4,
     "img": "/images/productos/audio/Audífonos gamer Onikuma K2 Pro negro y rojo con luz LED.PNG",
     "title": "Audífonos Onikuma K2 Pro",
