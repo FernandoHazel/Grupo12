@@ -38,5 +38,23 @@
     "password": "$2b$10$v6nMYTZ.gemqFbwL5zGcaO2E/VUKRjIilUzShMo39pLDt6VFXhS4q",
     "img": "/images/usuarios/default.png",
     "id": 1630781947993
+  },
+  {
+    "name": "quino",
+    "apellido": "López",
+    "edad": "10",
+    "email": "sky@gotmail.com",
+    "password": "$2b$10$7f1mWUymmG0Lsiqe1NIHtO31BJnGW12r2gxxearBCavJm3LEu4V92",
+    "img": "/images/usuarios/default.png",
+    "id": 1632757681581
+  },
+  {
+    "name": "quino7",
+    "apellido": "López",
+    "edad": "10",
+    "email": "sky@gotmail.com",
+    "password": "$2b$10$mceyXuQPy2G3jbQk6tLi9.SdCINC9GAlipaE8wTrP//I1HOzIRXNC",
+    "img": "/images/usuarios/default.png",
+    "id": 1632757738199
   }
 ]
