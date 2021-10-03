@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Vista parcial del head -->
+<%- include('./partials/head.ejs') %>
+<body>
+    
+
+    
+
+
+    <!-- Vista parcial del header -->
+    <%- include('./partials/header.ejs') %>
+
+    <main>
+        <div class="ticket-conteiner">
+            <section class="ticket-info">
+                <h1 style="text-align: center;">Ticket de compra</h1>
+                <p class="ticket-date"><strong>Fecha de compra:</strong> <span><%=ticket.purchase_date%></span></p>
+            </section>
+            <h3 style="padding-left: 0; margin-top: 25px;">Productos:</h3>
+            <section class="purchases">
+                <div class="purchase-header">
+                    <span>Imagen</span>
+                        <span>Producto</span>
+                        <span>Cantidad</span>
+                        <span>Subtotal</span>
+                </div>
+                <hr>
+                <br>
+                
+                <%purchases.forEach(purc =>{%>
+                    <div class="product-purchase">
+                        <img src="<%=purc.product.img%>" alt="purc.product.name">
+                        <span><%= purc.product.title %></span>
+                        <span><%= purc.product_quantity %></span>
+                        <span>$<%= purc.individual_price %></span>
+                    </div>
+                    
+                <%})%>
+
+                <div class="ticket-total-price">TOTAL: $<%=ticket.total_price%> </div>
+            </section>
+           
+        </div>
+
+        
+    </main>
+
+    <br>
+    <br>
+</body>
+</html>

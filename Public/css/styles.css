@@ -502,19 +502,51 @@ h2,h3,h4{
     width: 90px;
     height: 4vh;
 }
-.info_pago{
-    display: flex;
-}
+
 .info_pago_der{
     width: 100%;
 }
 .info_pago_der h1{
     text-align: center;
 }
-.info_pago_der .botones{
-    display: flex;
-    flex-direction: column;
+
+.info_pago {
+    width: 100%;
 }
+
+.info_pago_der {
+    text-align: right;
+}
+
+#btn-buy {
+    width: 300px;
+    height: 40px;
+    border-radius: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #24a0ed;
+}
+#btn-add-cart{
+    width: 300px;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #ed6e24;
+}
+
+#cantidad {
+    width: 150px;
+    height: 30px;
+    margin-left: 5px;
+}
+#metodo_de_pago{
+    width: 150px;
+    height: 30px;
+    margin-left: 5px;
+}
+.botones {
+    margin-right: 10%;
+}
+
 .Subt_relacionados{
     margin-top: 5px;
     margin-bottom: 5px;
@@ -1039,6 +1071,61 @@ main #products-section{
     margin-left: 10px;
     font-weight: bold;
     font-size: 0.8rem;
+}
+
+.ticket-conteiner {
+    padding: 50px;
+    width: 60%;
+    background-color: white;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.ticket-conteiner .purchases {
+    margin-left: 10%;
+    margin-top: 45px;
+}
+
+.ticket-conteiner .purchases img{
+    width: 25px;
+    height: 25px;
+}
+
+.ticket-conteiner .purchases .product-purchase span{
+    font-size: 1rem;
+    font-weight: bold;
+   
+}
+
+.product-purchase {
+    display: flex;
+    justify-content: space-between;
+}
+.purchase-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.purchase-header span{
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+.ticket-total-price{
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 35px;
+    text-align: right;
+}
+.ticket-date {
+    color: #000000;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.purchases {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(173, 173, 173, 0.932);
 }
 /**********   Media queries            *********/
 /* Version de Tablet ó Smartphone acostado*/
