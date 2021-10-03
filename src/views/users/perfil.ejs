@@ -10,9 +10,9 @@
 
     <!--Perfil de usuario-->
     <main class='profile_container'>
-        <img src="<%= user.img %>" alt="imágen de usuario" class='profile_img'>
+        <img src="<%= userInfo.profile_image %>" alt="imágen de usuario" class='profile_img'>
         <section class='profile_info'>
-            <p>Hola <%= user.name%>! </p>
+            <p>Hola <%= userInfo.first_name%> <%= userInfo.last_name%>! </p>
         </section>
         
     </main>

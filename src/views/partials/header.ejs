@@ -5,7 +5,8 @@
 <!-- Contenedor de elementos del header  -->
 <div class="head-conteiner">
     <menu class="upper-objects">
-        <% if(locals.isLogged || locals.isLogged && locals.user.profile === "user") {%>
+        <!-- si el usuario está loggeado y es usuario  -->
+        <% if(locals.isLogged || locals.isLogged && locals.user.user_role_id === 6) {%>
             <a href="/"><img src="/images/BigCommerce-logo-dark.svg" id="company-logo"> </a>
         <% } else {%>
             <img src="/images/BigCommerce-logo-dark.svg" id="company-logo">
@@ -20,17 +21,19 @@
         <ul class="user">
             <% if(locals.isLogged){%>
 
-                <% if(locals.user.name.length > 10){%>
-                    <li><a href="/users/perfil"><div class="user-div-info"><img src="<%=locals.user.img%>" class='profile_img'> <span><%=locals.user.name.substring(0, 10)%>..</span></div></a></li>
+                <% if(locals.user.user_info.first_name.length > 10){%>
+                    <li><a href="/users/perfil"><div class="user-div-info"><img src="<%=locals.user.user_info.profile_img%>" class='profile_img'> <span><%=locals.user.user_info.first_name.substring(0, 10)%>..</span></div></a></li>
                 <%}else{%>
-                    <li><a href="/users/perfil"><div class="user-div-info"><img src="<%=locals.user.img%>"> <span><%=locals.user.name%></span></div></a></li>
+                    <li><a href="/users/perfil"><div class="user-div-info"><img src="<%=locals.user.user_info.profile_img%>"> <span><%=locals.user.user_info.first_name%></span></div></a></li>
                 <%}%>
                 <li><a href="/users/logout">Salir <i class="fas fa-sign-out-alt"></i></a></li>
 
-                <%if(locals.user && locals.user.profile === "user"){%>
+                <!--en caso de ser usuario normal-->
+                <%if(locals.user && locals.user.user_role_id === 6){%>
                     <li><a href="/users/carrito">Carrito <i class="fas fa-shopping-cart"></i></a></li>
-    
-                <%}else if(locals.user && locals.user.profile === "seller"){%>
+                    
+                <!--en caso de ser vendedor-->
+                <%}else if(locals.user && locals.user.user_role_id === 5){%>
                     <li><a href="/productos/crear">Crear producto <i class="fas fa-shopping-cart"></i></a></li>
                 <%}%>
             <% }else{%>
@@ -46,7 +49,8 @@
     <!-- Opciones de categoria -->
     <menu class="menu-options">
 
-        <% if(!locals.isLogged || locals.isLogged && locals.user.profile === "user"){%>
+        <!--en caso de ser usuario normal-->
+        <% if(!locals.isLogged || locals.isLogged && locals.user.user_role_id === 6){%>
             <ul class="main-p">
                 <li><a href="/">Home <i class="fas fa-home"></i></a></li>
                 <li><a href="/productos/offerts">Ofertas <i class="fab fa-hotjar"></i></i></a></li>
@@ -60,7 +64,8 @@
                 <li><a href="/productos/categoria/tablets">Tablets</a></li>
                 <li><a href="/productos/categoria/computadoras">Computadoras</a></li>
             </ul>
-        <% }else if(locals.isLogged && locals.user.profile === "seller"){%>
+        <!--en caso de ser vendedor-->
+        <% }else if(locals.isLogged && locals.user.user_role_id === 5){%>
                 <ul>
                     <li><a href="/productos/seller/<%= locals.user.id%>">Mis productos <i class="fas fa-shopping-cart"></i></a></li>
                     <li><a href="/users/seller/sales/<%= locals.user.id%>">Ventas <i class="fas fa-chart-bar"></i></a></li>

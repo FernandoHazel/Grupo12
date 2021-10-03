@@ -3,8 +3,7 @@ module.exports = function(sequelize, DataTypes){
     const cols = {
         id: {
             type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
+            primaryKey: true
         },
         email: {
             type: DataTypes.STRING
