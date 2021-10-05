@@ -1,19 +1,8 @@
-const fs = require('fs');
-const path = require("path")
-<<<<<<< HEAD
-//let dataDirection= path.join(__dirname + "../../../public/data/users.json")
+
 let bcrypt = require('bcrypt')
 const db = require("../../database/models")
 const { Op } = require("sequelize");
-=======
-let dataDirection= path.join(__dirname + "../../../public/data/users.json")
-let bcrypt = require('bcrypt');
-const db = require('../../database/models');
->>>>>>> cdbf098c286ab46755dd5aff7a4bb323ee0a02a4
 
-/* Data */
-//let rawdata = fs.readFileSync(dataDirection, 'utf-8');
-//let users = JSON.parse(rawdata);
 
 const userController = {
     registroForm: (req, res)=>{
@@ -111,7 +100,6 @@ const userController = {
 
                     /* Redirije al perfil*/
                     res.redirect('/users/perfil')
-                    //res.render("./users/registro")
                 }else{
                     // señalar al usuario que el correo o la contraseña es incorrecta
                     res.render('users/ingreso', {passwordError: 'Correo o contraseña incorrectos'})

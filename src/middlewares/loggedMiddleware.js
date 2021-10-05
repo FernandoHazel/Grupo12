@@ -19,7 +19,8 @@ const loggedMiddleware = (req, res, next) => {
         console.log('esto es lo que viene en la cookie => ' + req.cookies.tcnShop)
 
         db.User.findOne({
-            where: {email: req.cookies.tcnShop} 
+            where: {email: req.cookies.tcnShop},
+            include: [{association: 'user_info'}]
         })
         .then(function(user){
 
