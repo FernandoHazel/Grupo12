@@ -1,9 +1,15 @@
 const fs = require('fs');
 const path = require("path")
+<<<<<<< HEAD
 //let dataDirection= path.join(__dirname + "../../../public/data/users.json")
 let bcrypt = require('bcrypt')
 const db = require("../../database/models")
 const { Op } = require("sequelize");
+=======
+let dataDirection= path.join(__dirname + "../../../public/data/users.json")
+let bcrypt = require('bcrypt');
+const db = require('../../database/models');
+>>>>>>> cdbf098c286ab46755dd5aff7a4bb323ee0a02a4
 
 /* Data */
 //let rawdata = fs.readFileSync(dataDirection, 'utf-8');
@@ -142,6 +148,30 @@ const userController = {
         console.log("Get ALL SALES ")
         res.json({"seller_id": sellerId})
         /* Falta renderizar una vista con las ventas del vendedor*/
+    },
+    getClientTicket: function(req, res){
+        /*  el id de usuario debe ser el que le pasamos por session*/
+        let id = req.params.id
+
+        db.Ticket.findOne({
+            include: [{association: "ticket_purchases", include: [{association: "product"}]}],
+            where: {
+                id: id,
+                user_id: 3 //  el id de usuario debe ser el que le pasamos por session*
+            }
+        })
+        .then(function(ticket){
+            if(ticket){
+                /* renderiza la vista del ticket  */
+                res.render("ticket", {ticket: ticket, purchases: ticket.ticket_purchases})
+            } else {   
+                res.status(404).render("errors/404")
+            }
+        })
+        .catch(function(e){
+            res.status(500).send({"message": "Hubo un error: "+e})
+
+        })
     }
 
 

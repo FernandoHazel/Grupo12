@@ -26,6 +26,21 @@ module.exports = function(sequelize, DataTypes){
     }
 
     const Purchase = sequelize.define(alias, cols, config);
+    Purchase.associate = function(models){
+        //Un ticket pertenece a un usuario
+        Purchase.belongsTo(models.Ticket, {
+            as: 'ticket',
+            foreignKey: 'ticket_id',
+            targetKey: 'id'
+
+        }),
+        //Un ticket puede tener muchos productos (N:M) a traves de purchases
+        Purchase.belongsTo(models.Product, {
+            as: 'product',
+            foreignKey: 'product_id',
+            targetKey: 'id'
+        })
+    }
 
     return Purchase
 }

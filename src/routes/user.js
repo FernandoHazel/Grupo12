@@ -25,6 +25,7 @@ router.get('/carrito', carritoController.carrito)
 //******* Añadir a carrito ********/
 router.post("/AnadirCarrito/:id",carritoController.anadirCarrito)
 router.delete("borrarProductoCarrito/:id", carritoController.borrarProducto)
+router.get("/ticket/:id", usersController.getClientTicket)
 
 /* VENDEDOR: requiere autenticacion  */
 /* ventas del vendedor */

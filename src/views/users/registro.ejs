@@ -16,16 +16,20 @@
                 
                 <div class="first-name">
                     <p>Nombre</p>
-                    <input type="text" id="name" name="name" placeholder="Nombre(s)" required>
+                    <input type="text" id="name" name="name" placeholder="Nombre(s)" >
+                    <p id="arregloDeErrores"></p>
                 </div>
                 <div class="last-name-pat">
                     <p>Apellido</p>
-                    <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
+                    <input type="text" id="apellido" name="apellido" placeholder="Apellido" >
+                    <p id="arregloDeErrores"></p>
                 </div>
 
                 <div class="age">
-                    <p>Edad</p>
-                    <input type="number" id="age" name="edad" placeholder="Tu edad" required>
+                    <p>Fecha de nacimiento</p>
+                    <!-- <input type="number" id="age" name="edad" placeholder="Tu edad"> -->
+                    <input type="date" name="release_date" id="date">
+                    <p id="arregloDeErrores"></p>
                 </div>
 
             </div>
@@ -33,7 +37,8 @@
             <div class="main2">
                 <div class="email">
                     <p>Email</p>
-                    <input type="email" name="email" placeholder="Correo electrónico" required >
+                    <input type="email" id="email" name="email" placeholder="Correo electrónico">
+                    <p id="arregloDeErrores"></p>
                 </div>
 
                 <div class="profile">
@@ -43,6 +48,7 @@
                         <option value="user" name="user">Usuario </option>
                         <option value="seller" name="seller">Vendedor</option>
                     </select>
+                    <p id="arregloDeErrores"></p>
                 </div>
             </div>
 
@@ -50,15 +56,17 @@
                 <div class="password">
                     <p>Contraseña</p>
                      <div class="input-pass">
-                         <input type="password" name="password" placeholder="Contraseña" required>
+                         <input type="text" id="password1" name="password" placeholder="Contraseña" >
                      </div>
+                     <p id="arregloDeErrores"></p>
                  </div>
 
                  <div class="password">
                     <p>Confirma</p>
                      <div class="input-pass">
-                         <input type="password" name="password2" placeholder="Repite la contraseña" required>
+                         <input type="password" id="password2" name="password2" placeholder="Repite la contraseña">
                      </div>
+                     <p id="arregloDeErrores"></p>
                      <%if(locals.passwordError){%>
                         <p class="errors"><%=passwordError%></p>
                     <%}%>
@@ -67,7 +75,9 @@
 
             <div class="profile-photo">
                 <p>Foto de perfil</p>
-                <input type="file" placeholder="Selecciona una foto" name="img" accept=".jpg, .png, .PNG">
+            <!--<input type="file" placeholder="Selecciona una foto" name="img" accept=".jpg, .png, .PNG"> -->
+                <input type="file" id="fotoPerfil" placeholder="Selecciona una foto" name="img">
+                <p id="arregloDeErrores"></p>
             </div>
 
             
@@ -88,5 +98,6 @@
     
     <!-- Vista parcial del footer -->
     <%- include('../partials/footer.ejs') %>
+    <script src="/js/registro.js"></script>
 </body>
 </html>
