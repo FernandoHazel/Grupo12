@@ -72,14 +72,22 @@ const userController = {
         }
     },
     login: function (req, res) {
-     
+        console.log("SIP")
+        console.log(req.body)
         // verificar si el correo está en la base de datos
         db.User.findOne({
-            where: {email: req.body.email},
-            include: [{association: 'user_info'}]
+            where: {
+                email: req.body.email,
+                active: 1
+            },
+            include: [
+                {association: 'user_info'},
+                {association: 'role'}
+            ]
         })
         .then(function(user){  //la variable "user" ya trae los campos de user y user_info
-            if(user != null){
+            
+            if(user){
                 /* Si existe, entonces compara las contraseñas*/
                 if(bcrypt.compareSync(req.body.password, user.pass)){
                     /*Verifica si elijió la opcion de recordar*/
@@ -87,19 +95,21 @@ const userController = {
                         /* creamos la cookie para el usuario*/
                         res.cookie("tcnShop", req.body.email, {maxAge: (1000 * 60 * 60 * 24)})  // 24 hr
                     }
-
+                    let userLogged = {}
+                    if (user.user_info){
+                        user.user_info.first_name? userLogged.first_name = user.user_info.first_name:userLogged.first_name="Unnamed"
+                        user.user_info.last_name? userLogged.last_name = user.user_info.last_name:userLogged.last_name="Unnamed"
+                        user.user_info.profile_img? userLogged.profile_img = user.user_info.profile_img:  userLogged.img="None"
+                    }
+                    userLogged.email = user.email
+                    userLogged.id = user.id
+                    userLogged.user_role_id = user.user_role_id
+                    userLogged.user_role = user.role.user_role
                     /* Si las credenciales son correctas, entonces crea la session*/
-                    req.session.userLogged = {...user}  // hace una copia del objeto
-                    delete req.session.userLogged.pass //borramos su contraseña del session
-                    //activamos isLogged
-                    res.locals.isLogged = true
-                    //mandamos a toda la app esta variable con nombre, apellido, foto etc.
-                    res.locals.user = user 
-                    console.log('----------------USER INFO-----------------')
-                    console.log('esto viene en user = ' + user.user_info.last_name)
-
-                    /* Redirije al perfil*/
-                    res.redirect('/users/perfil')
+                    req.session.userLogged = userLogged// hace una copia del objeto
+                     //borramos su contraseña del session
+                     console.log(req.session.userLogged)                    /* Redirije al perfil*/
+                     res.redirect('/users/perfil')
                 }else{
                     // señalar al usuario que el correo o la contraseña es incorrecta
                     res.render('users/ingreso', {passwordError: 'Correo o contraseña incorrectos'})
@@ -108,21 +118,16 @@ const userController = {
                 // señalar al usuario que el correo o la contraseña es incorrecta
                 res.render('users/ingreso', {emailError: 'Correo o contraseña incorrectos'})
             }
+
         })
-        .catch(function(){
-            res.redirect('/')
+        .catch(function(e){
+            res.status(500).send({"Message": "Hubo un error "+e})
         })
 
     },
-    perfil: (req, res)=>{
-        //mandamos al usuario loggeado a la vista de perfil
-        db.UserInfo.findOne({
-            where: req.session.userLogged.email
-        })
-        .then(function(userInfo){
-            res.render('users/perfil', {userInfo})
-        })
-    },
+    perfil: function(req, res){
+        res.render("users/perfil")
+    }, 
     logout: (req, res)=>{
         /* Elimina la cookie */
         res.clearCookie("tcnShop")
