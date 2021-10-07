@@ -12,8 +12,6 @@ let productos= path.join(__dirname + "../../../public/data/products.json")
 let productosArchivo = fs.readFileSync(productos, 'utf-8');
 let arrayProductos = JSON.parse(productosArchivo);
 
-
-
 let carritoController = {
 
     carrito: function(req, res){    

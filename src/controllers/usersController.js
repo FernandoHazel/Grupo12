@@ -63,7 +63,8 @@ const userController = {
                     profile_img: newUser.img
                 })
             })
-            .catch() //falta definir que hacer en caso de error
+            .catch(function(){
+                res.redirect('/')}) //falta definir que hacer en caso de error
 
             /* Redirige al login */
             res.redirect('/users/login')
@@ -96,21 +97,23 @@ const userController = {
                     //mandamos a toda la app esta variable con nombre, apellido, foto etc.
                     res.locals.user = user 
                     console.log('----------------USER INFO-----------------')
-                    console.log('esto viene en user = ' + user.user_info.last_name)
+                    console.log(user)
 
                     /* Redirije al perfil*/
-                    res.redirect('/users/perfil')
+                    //res.redirect('/users/perfil')
+                    //res.send(`Hola ${user.user_info.last_name}`)
+                    res.json({mensaje: 'logueado'})
                 }else{
                     // señalar al usuario que el correo o la contraseña es incorrecta
-                    res.render('users/ingreso', {passwordError: 'Correo o contraseña incorrectos'})
+                    res.render('users/ingreso', {error: 'Correo o contraseña incorrectos'})
                 }
             }else{
                 // señalar al usuario que el correo o la contraseña es incorrecta
-                res.render('users/ingreso', {emailError: 'Correo o contraseña incorrectos'})
+                res.render('users/ingreso', {error: 'Correo o contraseña incorrectos'})
             }
         })
-        .catch(function(){
-            res.redirect('/')
+        .catch(function(error){
+            res.send(error)
         })
 
     },

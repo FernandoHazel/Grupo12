@@ -26,7 +26,7 @@
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
             </div>
             <br>
-            <%if(locals.passwordError || locals.emailError){%>
+            <%if(locals.error){%>
                 <p class="errors">Correo o contraseña incorrectos</p>
             <%}%>
 
