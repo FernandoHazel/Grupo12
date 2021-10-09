@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require("path")
 let dataDirection= path.join(__dirname + "../../../public/data/users.json")
 let bcrypt = require('bcrypt')
+const {validationResult}=require('express-validator')
+
 
 /* Data */
 let rawdata = fs.readFileSync(dataDirection, 'utf-8');
@@ -9,40 +11,59 @@ let users = JSON.parse(rawdata);
 
 const userController = {
     registroForm: (req, res)=>{
+        
         res.render("./users/registro")
     },
+
     loginForm: (req, res)=>{
         res.render("./users/ingreso")
     },
+
     add: function (req, res) {
-        let img = "/images/productos/default.png"
-        let newUser = req.body
+        const errors=validationResult(req)
+        //Si no hay errores creamos un nuevo usuario 
+        //de lo contrario volvemos al formulario con los errores para el usuario
 
-        img = "/images/usuarios/default.png"
+        if(errors.isEmpty()){
+            //res.send(req.body)
+            
+                let img = "/images/productos/default.png"
+                let newUser = req.body
 
-        if(req.file){
-            img = "/images/usuarios/" +req.file.filename
-        }
-        newUser.img = img
-        newUser.id = Date.now()
+                img = "/images/usuarios/default.png"
 
-        //añadir verificaciones de express validator
-        //verificar que ambas contraseñas sean iguales
-        if(req.body.password === req.body.password2){
-            let password = req.body.password
-            delete newUser.password2
-            let hash = bcrypt.hashSync(password, 10)
-            newUser.password = hash
+                if(req.file){
+                    img = "/images/usuarios/" +req.file.filename
+                }
+                newUser.img = img
+                newUser.id = Date.now()
 
-            //guardar en el disco
-            users.push(newUser)
-            fs.writeFileSync(dataDirection, JSON.stringify(users, null, 2))
+                //añadir verificaciones de express validator
+                //verificar que ambas contraseñas sean iguales
+                if(req.body.password === req.body.password2){
+                    let password = req.body.password
+                    delete newUser.password2
+                    let hash = bcrypt.hashSync(password, 10)
+                    newUser.password = hash
 
-            /* Redirige al login */
-            res.redirect('/users/login')
-        }else{
-            res.render('users/registro', {passwordError: 'las contraseñas deben de ser iguales'})
-        }
+                    //guardar en el disco
+                    users.push(newUser)
+                    fs.writeFileSync(dataDirection, JSON.stringify(users, null, 2))
+
+                    //Redirige al login 
+                    res.redirect('/users/login')
+                }else{
+                    console.log('usando  render compañero')
+                    res.render('users/registro', {passwordError: 'las contraseñas deben de ser iguales'})
+                }
+            } 
+            else{
+                //Hay errores y regresamos al formulario con los errores
+               // console.log(errors)
+                //console.log(req.body)
+                res.render('users/registro',{errors:errors.mapped(),old:req.body})
+
+            }
     },
     login: function (req, res) {
      
