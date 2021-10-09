@@ -8,14 +8,16 @@
     <!-- Vista parcial del header -->
     <%- include('../partials/header.ejs') %>
 
+    <%if(locals.isLogged && locals.isLogged==true){%>
     <!--Perfil de usuario-->
     <main class='profile_container'>
-        <img src="<%= locals.user.user_info.profile_image %>" alt="imágen de usuario" class='profile_img'>
+        <img src="<%= locals.user.profile_image %>" alt="imágen de usuario" class='profile_img'>
         <section class='profile_info'>
-            <p>Hola <%= locals.user.user_info.first_name%> <%= locals.user.user_info.last_name%>! </p>
+            <p>Hola <%= locals.user.first_name%> <%= locals.user.last_name%>! </p>
         </section>
         
     </main>
+    <%}%>
 
     <!-- Vista parcial del footer -->
     <%- include('../partials/footer.ejs') %>

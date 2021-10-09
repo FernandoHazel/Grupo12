@@ -4,7 +4,7 @@ const path = require("path")
 //****subiendo una imágen ******/
 const storage = multer.diskStorage({
     destination: function (req, file, cb){
-        const category = req.body.category
+       // const category = req.body.category
         cb (null, 'public/images/usuarios/')
     },
     filename: function (req, file, cb){

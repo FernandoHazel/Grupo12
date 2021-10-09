@@ -340,7 +340,7 @@ let productosController = {
     getSellerProducts: (req, res)=>{
         /* Devuelve los productos de un determinado usuario vendedor */
        if(req.session.userLogged){
-            const sellerId = req.session.userLogged
+            const sellerId = req.session.userLogged.id
 
             db.Product.findAll({
                 where: {

@@ -1,17 +1,27 @@
 
 let bcrypt = require('bcrypt')
+const {validationResult}=require('express-validator')
 const db = require("../../database/models")
 const { Op } = require("sequelize");
 
-
 const userController = {
     registroForm: (req, res)=>{
+        
         res.render("./users/registro")
     },
+
     loginForm: (req, res)=>{
         res.render("./users/ingreso")
     },
+
     add: function (req, res) {
+        const errors=validationResult(req)
+        //Si no hay errores creamos un nuevo usuario 
+        //de lo contrario volvemos al formulario con los errores para el usuario
+
+        if(errors.isEmpty()){
+            //res.send(req.body)
+            
         /*creamos un objeto con los datos recibidos del formulario y una dónde 
         guardar la imágen si es que se mandó una, sino dejamos una default*/
         let newUser = req.body
@@ -71,25 +81,50 @@ const userController = {
         }else{
             res.render('users/registro', {passwordError: 'las contraseñas deben de ser iguales'})
         }
+            } 
+            else{
+                //Hay errores y regresamos al formulario con los errores
+               // console.log(errors)
+                //console.log(req.body)
+                res.render('users/registro',{errors:errors.mapped(),old:req.body})
+
+            }
     },
     login: function (req, res) {
-     
         // verificar si el correo está en la base de datos
         db.User.findOne({
-            where: {email: req.body.email},
-            include: [{association: 'user_info'}]
+            where: {
+                email: req.body.email,
+                active: 1
+            },
+            include: [
+                {association: 'user_info'},
+                {association: 'role'}
+            ]
         })
         .then(function(user){  //la variable "user" ya trae los campos de user y user_info
-            if(user != null){
+            
+            if(user){
                 /* Si existe, entonces compara las contraseñas*/
                 if(bcrypt.compareSync(req.body.password, user.pass)){
                     /*Verifica si elijió la opcion de recordar*/
                     if(req.body.remember){
+                        console.log(user.email)
                         /* creamos la cookie para el usuario*/
-                        res.cookie("tcnShop", req.body.email, {maxAge: (1000 * 60 * 60 * 24)})  // 24 hr
+                        res.cookie("tcnShop", user.email, {maxAge: (1000 * 60 * 60 * 24)})  // 24 hr
                     }
-
+                    let userLogged = {}
+                    if (user.user_info){
+                        user.user_info.first_name? userLogged.first_name = user.user_info.first_name:userLogged.first_name="Unnamed"
+                        user.user_info.last_name? userLogged.last_name = user.user_info.last_name:userLogged.last_name="Unnamed"
+                        user.user_info.profile_img? userLogged.profile_img = user.user_info.profile_img:  userLogged.img="None"
+                    }
+                    userLogged.email = user.email
+                    userLogged.id = user.id
+                    userLogged.user_role_id = user.user_role_id
+                    userLogged.user_role = user.role.user_role
                     /* Si las credenciales son correctas, entonces crea la session*/
+<<<<<<< HEAD
                     req.session.userLogged = {...user}  // hace una copia del objeto
                     delete req.session.userLogged.pass //borramos su contraseña del session
                     //activamos isLogged
@@ -103,6 +138,12 @@ const userController = {
                     //res.redirect('/users/perfil')
                     //res.send(`Hola ${user.user_info.last_name}`)
                     res.json({mensaje: 'logueado'})
+=======
+                    req.session.userLogged = userLogged// hace una copia del objeto
+                     //borramos su contraseña del session
+                     console.log(req.session.userLogged)                    /* Redirije al perfil*/
+                     res.redirect('/users/perfil')
+>>>>>>> 8835e3ad992694118844b44c80d27d4fe8b9b112
                 }else{
                     // señalar al usuario que el correo o la contraseña es incorrecta
                     res.render('users/ingreso', {error: 'Correo o contraseña incorrectos'})
@@ -111,21 +152,23 @@ const userController = {
                 // señalar al usuario que el correo o la contraseña es incorrecta
                 res.render('users/ingreso', {error: 'Correo o contraseña incorrectos'})
             }
+<<<<<<< HEAD
         })
         .catch(function(error){
             res.send(error)
         })
+=======
+>>>>>>> 8835e3ad992694118844b44c80d27d4fe8b9b112
+
+        })
+        .catch(function(e){
+            res.status(500).send({"Message": "Hubo un error "+e})
+        })
 
     },
-    perfil: (req, res)=>{
-        //mandamos al usuario loggeado a la vista de perfil
-        db.UserInfo.findOne({
-            where: req.session.userLogged.email
-        })
-        .then(function(userInfo){
-            res.render('users/perfil', {userInfo})
-        })
-    },
+    perfil: function(req, res){
+        res.render("users/perfil")
+    }, 
     logout: (req, res)=>{
         /* Elimina la cookie */
         res.clearCookie("tcnShop")
@@ -134,11 +177,24 @@ const userController = {
         res.redirect("/")
     },
     getAllSellerSales: (req, res)=>{
-        /* Devuelve los productos de un determinado usuario vendedor */
-        const sellerId = req.params.sellerID
-        console.log("Get ALL SALES ")
-        res.json({"seller_id": sellerId})
-        /* Falta renderizar una vista con las ventas del vendedor*/
+        console.log("sdf")
+        if(req.session.userLogged){
+            console.log("no")
+            db.Purchase.findAll({
+                include: [
+                    {association: "ticket", include: [{association: "ticket_user"}]},
+                    {association: "product"},
+                ]
+            })
+            .then(function(data){
+                /* rendereizamos una vista*/
+                res.render("users/ticketlist", {tickets:data})
+            })
+            .catch(function(e){
+                console.log(e)
+            })
+        }
+        
     },
     getClientTicket: function(req, res){
         /*  el id de usuario debe ser el que le pasamos por session*/

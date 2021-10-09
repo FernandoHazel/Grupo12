@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Vista parcial del head -->
+<%- include('../partials/head.ejs') %>
+<body>
+    
+    <!-- Vista parcial del header -->
+    <%- include('../partials/header.ejs') %>
+
+    <!-- Mostrar listado de productos -->
+    <main>
+            <section class="all-tickets">
+                <% tickets.forEach(ticket => { %>
+                <article class="ticket-seller-conteiner">
+                    <a href="/users/ticket/<%= ticket.ticket.id %>">
+                        
+                        <p class="ticket-title">Detalles</p>
+                        <div class="ticket-des">
+                            <p class='client'><span class="sub-title">Cliente: </span><%=ticket.ticket.ticket_user.email%> </p>
+                            <p class="purchase-date"><span class="sub-title">Fecha compra: </span><%=ticket.ticket.purchase_date%></p> 
+                            <p class="total-price"><span class="sub-title">Total: </span><%=ticket.individual_price%></p>
+                             <p class="total-products"><span class="sub-title">Cantidad de productos: </span><%=ticket.product_quantity%></p>
+                        </div>
+                    </a>
+                    <hr>
+                </article>
+                <% }) %>
+            </section>
+            
+        </section>
+        
+    </main>
+    <br>
+     <!-- Vista parcial del footer -->
+     <%- include('../partials/footer.ejs') %>
+</body>
+</html>
