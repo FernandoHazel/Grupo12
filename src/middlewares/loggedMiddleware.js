@@ -6,31 +6,28 @@
 
 const db = require('../../database/models');
 
-const loggedMiddleware = (req, res, next) => {
+const loggedMiddleware =  async (req, res, next) => {
 
     /* Verifica si hay un usuario logeado a nivel aplicacion */
     res.locals.isLogged = false
 
     /* Cookies */
-    if(!req.session && req.cookies.tcnShop){
+    if(req.cookies.tcnShop){
+
         /* Verificar si existe la cookie tcnShop en el cliente */
-        //Encontramos al usuario cuyo email venga en la cookie
-        console.log('esto es lo que viene en la cookie => ' + req.cookies.tcnShop)
-
-        db.User.findOne({
-            where: {
-                email: req.cookies.tcnShop,
-                active: 1
-            },
-            include: [
-                {association: 'user_info'},
-                {association: "role"}
-            ]
-        })
-        .then(function(user){
-
+        let user = await db.User.findOne(
+            {
+                where: {
+                    email: req.cookies.tcnShop,
+                    active: 1
+                },
+                include: [
+                    {association: 'user_info'},
+                    {association: "role"}
+                ]
+            })
             /* Si existe ese usuario */
-            if(user){
+            if(user){     
                 let userLogged = {}
                     if (user.user_info){
                         user.user_info.first_name? userLogged.first_name = user.user_info.first_name:userLogged.first_name="Unnamed"
@@ -40,31 +37,19 @@ const loggedMiddleware = (req, res, next) => {
                     userLogged.email = user.email
                     userLogged.id = user.id
                     userLogged.user_role_id = user.user_role_id
-                    userLogged.user_role = user.role.user_role
-                
-                //borramos el password para no meterlo en session
-                delete user.pass 
+
+                    userLogged.user_role = user.role?user.role.user_role:"Undefined"
                 //creamos la session
                 req.session.userLogged = {...userLogged}
-                res.locals.isLogged = true
-                res.locals.user = req.session.userLogged
-                console.log("Session", req.session)
             }
-        })
-        .catch(function(e){
-            res.status(500).send({"message": "Hubo un error", e})
-        })
     }
-
     /* Session*/
     /* si hay una session iniciada activamos isLogged*/
     if(req.session && req.session.userLogged){
         res.locals.isLogged = true
         res.locals.user = req.session.userLogged
     }
-
     /* Avanzamos en la cadena de peticiones  */
     next();
 }
-
 module.exports = loggedMiddleware
