@@ -1,17 +1,27 @@
 
 let bcrypt = require('bcrypt')
+const {validationResult}=require('express-validator')
 const db = require("../../database/models")
 const { Op } = require("sequelize");
 
-
 const userController = {
     registroForm: (req, res)=>{
+        
         res.render("./users/registro")
     },
+
     loginForm: (req, res)=>{
         res.render("./users/ingreso")
     },
+
     add: function (req, res) {
+        const errors=validationResult(req)
+        //Si no hay errores creamos un nuevo usuario 
+        //de lo contrario volvemos al formulario con los errores para el usuario
+
+        if(errors.isEmpty()){
+            //res.send(req.body)
+            
         /*creamos un objeto con los datos recibidos del formulario y una dónde 
         guardar la imágen si es que se mandó una, sino dejamos una default*/
         let newUser = req.body
@@ -70,6 +80,14 @@ const userController = {
         }else{
             res.render('users/registro', {passwordError: 'las contraseñas deben de ser iguales'})
         }
+            } 
+            else{
+                //Hay errores y regresamos al formulario con los errores
+               // console.log(errors)
+                //console.log(req.body)
+                res.render('users/registro',{errors:errors.mapped(),old:req.body})
+
+            }
     },
     login: function (req, res) {
         // verificar si el correo está en la base de datos

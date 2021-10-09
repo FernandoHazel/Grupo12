@@ -56,5 +56,33 @@
     "password": "$2b$10$mceyXuQPy2G3jbQk6tLi9.SdCINC9GAlipaE8wTrP//I1HOzIRXNC",
     "img": "/images/usuarios/default.png",
     "id": 1632757738199
+  },
+  {
+    "name": "",
+    "apellido": "",
+    "release_date": "",
+    "email": "",
+    "password": "$2b$10$y1kAUWQmoIqLt7WoAlJlHefzoecjCiW4Y9PbYpMwHmcv8WpAB/SSm",
+    "img": "/images/usuarios/default.png",
+    "id": 1633298762227
+  },
+  {
+    "name": "",
+    "apellido": "",
+    "release_date": "",
+    "email": "",
+    "password": "$2b$10$6bjNtcr2Lu8NC9uxox5vSu7nPS6GJyCbCQ1v4mWfQa7Zel2Buv8re",
+    "img": "/images/usuarios/default.png",
+    "id": 1633298800896
+  },
+  {
+    "nameF": "Rodrigo",
+    "apellido": "Lopez",
+    "release_date": "1990-11-24",
+    "email": "skyblue722@hotmail.com",
+    "profile": "user",
+    "password": "$2b$10$VonZVX6pkttPnxfm.padSu89jqQwf2tQgm1UGAh5SfQ65t.A3EipS",
+    "img": "/images/usuarios/img-1633756121453.jpg",
+    "id": 1633756121631
   }
 ]

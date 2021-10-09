@@ -23,13 +23,15 @@ app.use("/", express.static(__dirname+'/../public'))
 //Configurar ejs como el template engine de la app
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs')
+//Express extended:false
 app.use(express.urlencoded({ extended: true }));
+
 app.use(express.json());
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-}))
+}))  
 app.use(cookieParser())   // uso de cookies
 app.use(loggedMidleware)   // verifica si existe una session iniciada
 
