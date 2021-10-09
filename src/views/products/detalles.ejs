@@ -34,36 +34,37 @@
         </div>
         <br>
         <div class="info_pago">
-            <div class="info_pago_izq">
-                <form>
-                    <select name="método_de_pago" id="">
-                        <option name="método_de_pago" value="tarjeta_débito">Tarjeta de débito</option>
-                        <option name="método_de_pago" value="tarjeta_crédito">Tarjeta de crédito</option>
-                        <option name="método_de_pago" value="tarjeta_puntos">Tarjeta de puntos</option>
-                        <option name="método_de_pago" value="tarjeta_PayPal">PayPal</option>
-                    </select>
-                    <br>
-                    <br>
-                    <Label for="cantidad">Cantidad de artículos</Label>
-                    <input type="number" name="cantidad" id="cantidad"> <!--cambiar a un selector de números-->
-                </form>
-            </div>
             <div class="info_pago_der">
                 <h1>$<%=toThousand( article.price)%> MXN</h1>
                 <div class="botones">
-                    <%if(locals.user && locals.user.profile == "user"){%>
-                        <form action="/users/AnadirCarrito/<%= article.id%>" method="POST">
-                        <button type="submit">Añadir al carrito</button>
+                  
+                        <!-- formulario de compra -->
+                        <form id="form-buy" action="/productos/buy-product/<%=article.id%>" method="POST">
+                            <input type="hidden" value="<%=article.price%>" disabled id="p-price">
+                            <input disabled type="hidden" value="<%=article.discount%>" id="p-d">
+                            <label for="método_de_pago" style="font-size: 1.45rem;font-weight: bold;">Medio: </label>
+                            <select name="metodo_de_pago" id="metodo_de_pago">
+                                <option name="método_de_pago" value="tarjeta_débito">Tarjeta de débito</option>
+                                <option name="método_de_pago" value="tarjeta_crédito">Tarjeta de crédito</option>
+                                <option name="método_de_pago" value="tarjeta_puntos">Tarjeta de puntos</option>
+                                <option name="método_de_pago" value="tarjeta_PayPal">PayPal</option>
+                            </select>
+                            <br>
+                            <Label for="cantidad" style="font-size: 1.45rem;font-weight: bold;">Cantidad: </Label>
+                            <input type="number" name="cantidad" id="cantidad" min="0" max="<%= article.stock%>"> <!--cambiar a un selector de números-->
+                            <br>
+                            <input type="submit" id="btn-buy" value="Comprar">
                         </form>
-                        <form action="/productos/Comprar" method="POST"></form>
-                        <button type="submit">Comprar</button>
+
+                        <form id="form-add-cart" action="/users/AnadirCarrito/<%= article.id%>" method="POST">    
+                            <button type="submit" id="btn-add-cart">Añadir al carrito</button>
                         </form>
-                    <%}else if(locals.user && locals.user.profile == "seller"){%>
+                  <% if(locals.user && locals.user.profile == "seller"){%>
                         <form action="/productos/borrar/<%= article.id %>?_method=DELETE" method="POST">
                             <button type="submit" class="btts" id="delete">ELIMINAR</button>
                             <a href="/productos/editar/<%= article.id%>">EDITAR</a>
                         </form>
-                    <%}%>
+                   <%}%>
                 </div>
             </div>
         </div>
@@ -90,6 +91,6 @@
 
     <!-- Vista parcial del footer -->
     <%- include('../partials/footer.ejs') %>
-    
+    <script src="/js/compra.js"></script>
 </body>
 </html>

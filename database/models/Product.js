@@ -56,11 +56,10 @@ module.exports = function(sequelize, DataTypes){
             timestamps: false
         }),
         //Un producto puede estar en muchos tickets (N:M) a traves de purchases
-        Product.belongsToMany(models.Ticket, {
+        Product.hasMany(models.Purchase, {
             as: 'product_tickets',
-            through: 'purchases',
             foreignKey: 'product_id',
-            otherKey: 'ticket_id',
+            sourceKey: 'id',
             timestamps: false
         }),
         //Un producto a vender pertenece a un vendedor

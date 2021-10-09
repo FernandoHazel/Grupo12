@@ -20,15 +20,14 @@
                 <p>Email</p>
                 <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
             </div>
-            <%if(locals.emailError){%>
-                <p class="errors"><%=emailError%></p>
-            <%}%>
+            
             <div class="password">
                 <p>Contraseña</p>
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
             </div>
-            <%if(locals.passwordError){%>
-                <p class="errors"><%=passwordError%></p>
+            <br>
+            <%if(locals.passwordError || locals.emailError){%>
+                <p class="errors">Correo o contraseña incorrectos</p>
             <%}%>
 
             <div class="remember">

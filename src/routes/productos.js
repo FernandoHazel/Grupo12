@@ -27,6 +27,9 @@ router.get("/offerts", productosController.offerts)
 router.get("/search-products", productosController.search)
 
 
+router.post("/buy-product/:id", productosController.buy)
+
+
 /* VENDEDOR: requiere un middleware de autenticación */
 //******* crear producto ********/
 router.get("/crear", productosController.crear)

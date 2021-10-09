@@ -340,7 +340,7 @@ let productosController = {
     getSellerProducts: (req, res)=>{
         /* Devuelve los productos de un determinado usuario vendedor */
        if(req.session.userLogged){
-            const sellerId = req.session.userLogged
+            const sellerId = req.session.userLogged.id
 
             db.Product.findAll({
                 where: {
@@ -362,6 +362,65 @@ let productosController = {
             })
     }else{
         res.status(303).send({"message": "No eres vendedor"})
+    }
+  },
+  buy: function(req, res){
+    if(req.session.userLogged){
+        let id = req.params.id
+        console.log(id)
+        console.log(req.body)
+         db.Product.findOne({
+            where: {
+                id: id,
+                active: true
+            }
+        })
+        .then(function(product){
+            if(product){
+                let productQuantity = parseFloat(req.body.cantidad)
+                let total = (product.price - (product.price * product.discount / 100)) * productQuantity
+                console.log(total)
+
+                db.Ticket.create({
+                    user_id: 3,
+                    total_price: total
+                })
+                .then(function(ticket){
+                    if(ticket){
+                        db.Purchase.create({
+                            ticket_id: ticket.id,
+                            product_id: product.id,
+                            individual_price: total,
+                            product_quantity: productQuantity
+                        })
+                        .then(function(purchase){
+                            if(purchase){
+                                console.log("COMPRA EXITOSA")
+                                res.redirect("/users/ticket/"+ticket.id)
+                            } else {
+                                res.status(400).send({"message": "No se pudo concretar la compra"})
+                            }
+                        })
+                        .catch(function(e){
+                            res.status(500).send({"message": "Hubo un error: "+e})
+                        })
+
+                    } else {
+                        res.status(400).send({"message": "No se pudo concretar la compra"})
+                    }
+                })
+                .catch(function(e){
+                    res.status(500).send({"message": "Hubo un error: "+e})
+                })
+            } else {
+                res.render("errors/404")
+            }
+        })
+        .catch(function(e){
+            res.status(500).send({"message": "Hubo un error: "+e})
+        })
+    } else {
+        res.status(303).render({"message": "Permiso denegado"})
     }
   }
 }
