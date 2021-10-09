@@ -29,6 +29,6 @@ router.get("/ticket/:id", usersController.getClientTicket)
 
 /* VENDEDOR: requiere autenticacion  */
 /* ventas del vendedor */
-router.get("/seller/sales/:sellerID", usersController.getAllSellerSales)
+router.get("/seller/sales", usersController.getAllSellerSales)
 
 module.exports = router

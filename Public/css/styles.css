@@ -1127,6 +1127,39 @@ main #products-section{
     border-radius: 10px;
     background-color: rgba(173, 173, 173, 0.932);
 }
+
+/* seller-ticket*/
+.all-tickets{
+    width: 40%;
+    margin: auto;
+    background-color: white;
+    margin-top: 50px;
+    padding: 50px;
+}
+.ticket-seller-conteiner{
+    border-bottom: 15px;
+    border-radius: 15px;
+
+}
+.ticket-seller-conteiner{
+    font-size: 0.9rem;
+  padding: 20px;
+}
+.all-tickets a{
+    text-decoration: none;
+    color: black;
+}
+.ticket-seller-conteiner .ticket-title{
+    color: #000000;
+    font-size: 1rem;
+    font-weight: bold;  
+    margin-bottom: 7px;  
+    margin-top: 7px;
+}
+.ticket-seller-conteiner .sub-title{
+    font-weight: bold;
+}
+
 /**********   Media queries            *********/
 /* Version de Tablet ó Smartphone acostado*/
 @media(min-width: 768px){

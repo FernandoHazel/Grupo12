@@ -12,7 +12,7 @@ const loggedMiddleware = (req, res, next) => {
     res.locals.isLogged = false
 
     /* Cookies */
-    if(req.cookies.tcnShop){
+    if(!req.session && req.cookies.tcnShop){
         /* Verificar si existe la cookie tcnShop en el cliente */
         //Encontramos al usuario cuyo email venga en la cookie
         console.log('esto es lo que viene en la cookie => ' + req.cookies.tcnShop)
@@ -45,10 +45,10 @@ const loggedMiddleware = (req, res, next) => {
                 //borramos el password para no meterlo en session
                 delete user.pass 
                 //creamos la session
-                req.session.userLogged = userLogged
-                //mandamos a toda la aplicación esta variable que trae el email, contraseña, rol del usuario etc.
-                res.locals.user = userLogged
+                req.session.userLogged = {...userLogged}
                 res.locals.isLogged = true
+                res.locals.user = req.session.userLogged
+                console.log("Session", req.session)
             }
         })
         .catch(function(e){

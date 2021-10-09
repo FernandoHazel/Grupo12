@@ -72,8 +72,6 @@ const userController = {
         }
     },
     login: function (req, res) {
-        console.log("SIP")
-        console.log(req.body)
         // verificar si el correo está en la base de datos
         db.User.findOne({
             where: {
@@ -92,8 +90,9 @@ const userController = {
                 if(bcrypt.compareSync(req.body.password, user.pass)){
                     /*Verifica si elijió la opcion de recordar*/
                     if(req.body.remember){
+                        console.log(user.email)
                         /* creamos la cookie para el usuario*/
-                        res.cookie("tcnShop", req.body.email, {maxAge: (1000 * 60 * 60 * 24)})  // 24 hr
+                        res.cookie("tcnShop", user.email, {maxAge: (1000 * 60 * 60 * 24)})  // 24 hr
                     }
                     let userLogged = {}
                     if (user.user_info){
@@ -136,11 +135,24 @@ const userController = {
         res.redirect("/")
     },
     getAllSellerSales: (req, res)=>{
-        /* Devuelve los productos de un determinado usuario vendedor */
-        const sellerId = req.params.sellerID
-        console.log("Get ALL SALES ")
-        res.json({"seller_id": sellerId})
-        /* Falta renderizar una vista con las ventas del vendedor*/
+        console.log("sdf")
+        if(req.session.userLogged){
+            console.log("no")
+            db.Purchase.findAll({
+                include: [
+                    {association: "ticket", include: [{association: "ticket_user"}]},
+                    {association: "product"},
+                ]
+            })
+            .then(function(data){
+                /* rendereizamos una vista*/
+                res.render("users/ticketlist", {tickets:data})
+            })
+            .catch(function(e){
+                console.log(e)
+            })
+        }
+        
     },
     getClientTicket: function(req, res){
         /*  el id de usuario debe ser el que le pasamos por session*/
