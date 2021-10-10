@@ -171,6 +171,7 @@ let productosController = {
         db.Product.findOne({
             where: {
                 id: idProduct,
+                seller_id: req.session.userLogged.id,
                 active: 1
             }
         })

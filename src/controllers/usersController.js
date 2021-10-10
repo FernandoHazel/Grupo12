@@ -194,6 +194,24 @@ const userController = {
             res.status(500).send({"message": "Hubo un error: "+e})
 
         })
+    },
+    getAllUsers: (req, res)=>{
+        let type = req.params.type
+        type = parseInt(type, 10)
+
+        db.User.findAll({
+            include: [{association: "role"}, {association: "user_info"}],
+            where: {
+                active: type,
+                '$role.user_role$': {[Op.ne]: "admin"}
+            }
+        })
+        .then(function(users){
+            res.status(200).render("users/userList", {users, type})
+        })
+        .catch(function(e){
+            console.log(e)
+        })
     }
 
 

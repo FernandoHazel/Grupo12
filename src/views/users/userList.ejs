@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Vista parcial del head -->
+<%- include('../partials/head.ejs') %>
+<body>
+    
+    <!-- Vista parcial del header -->
+    <%- include('../partials/header.ejs') %>
+
+    <!-- Mostrar listado de productos -->
+    <main>
+      
+            <section class="all-users">
+                <div>
+                    <%if(type == 1){%>
+                        <h1>Usurios Activos</h1>
+                    <%}else if(type==0){%>
+                        <h1>Usurios Bloqueados</h1>
+                    <%}%>
+                    
+                </div>           
+                <%users.forEach( user =>{%>
+                    <article class="user-conteiner"></article>
+                        <p class="name"><%=user.user_info.first_name%> <%=user.user_info.last_name%></p>
+                        <div class="user-status">
+                            <span class="email"><%=user.email%></span>
+                            <%if(user.active==1){%>
+                                <span class="active">ACTIVO</span>
+                            <%} else {%>
+                                <span class="inactive">ELIMINADO</span>
+                            <%}%>
+                        </div>
+                        <div>
+                            <span style="font-weight: bold;">Registrado el </span><%=user.user_info.createdAt%>
+                        </div>
+                        
+                        <div class="user-tag">
+                            <%if(user.role.user_role==="user"){%>
+                                  <p class="tag-style">CLIENTE</p>
+                            <%} else if(user.role.user_role=="seller"){%>
+                                 <p class="tag-style">VENDEDOR</p>
+                             <%}%>
+                             <button onclick="myFunction('<%=user.email%>', '<%=user.id%>')"><i class="fas fa-trash delete-user"></i></button>
+                        </div>
+
+                    </article>
+                    <hr>
+                <%})%>
+            </section>
+            
+        </section>
+        
+    </main>
+    <br>
+     <!-- Vista parcial del footer -->
+     <%- include('../partials/footer.ejs') %>
+
+     <script>
+         /* intercept el evento de eliminar*/
+         function myFunction(userEmail, userID){
+             console.log(userEmail)
+             console.log(userID)
+         }
+     </script>
+</body>
+</html>
