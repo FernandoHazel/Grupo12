@@ -37,7 +37,7 @@
             <div class="info_pago_der">
                 <h1>$<%=toThousand( article.price)%> MXN</h1>
                 <div class="botones">
-                  
+                  <% if(locals.user && locals.user.user_role === "user"){ %>
                         <!-- formulario de compra -->
                         <form id="form-buy" action="/productos/buy-product/<%=article.id%>" method="POST">
                             <input type="hidden" value="<%=article.price%>" disabled id="p-price">
@@ -59,7 +59,7 @@
                         <form id="form-add-cart" action="/users/AnadirCarrito/<%= article.id%>" method="POST">    
                             <button type="submit" id="btn-add-cart">Añadir al carrito</button>
                         </form>
-                  <% if(locals.user && locals.user.profile == "seller"){%>
+                <% } else if(locals.user && locals.user.user_role === "seller"){%>
                         <form action="/productos/borrar/<%= article.id %>?_method=DELETE" method="POST">
                             <button type="submit" class="btts" id="delete">ELIMINAR</button>
                             <a href="/productos/editar/<%= article.id%>">EDITAR</a>

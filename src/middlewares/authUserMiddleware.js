@@ -1,6 +1,6 @@
 /*
     Middleware de ruta que verifica si estas logueado
-    en la aplicacion. Puede ser usuario normal o vendedor
+    en la aplicacion. Puede ser usuario normal, vendedor o admin
 */
 
 function authUserMiddleware(req, res, next){
