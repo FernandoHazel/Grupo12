@@ -6,6 +6,9 @@ const path = require("path")
 const db= require('../../database/models')
 const guestMiddleware = require("../middlewares/guestMiddleware")
 const authUserMiddleware = require("../middlewares/authUserMiddleware")
+const sellerAuthMiddleware = require("../middlewares/sellerAuthMiddleware")
+const customerAuthMiddleware = require("../middlewares/customerAuthMiddleware")
+
 const carritoController = require("../controllers/carritoController")
 //const validateRegister =require("../middlewares/validateRegister")
 const {body}= require('express-validator')
@@ -110,11 +113,11 @@ body('password2')
 router.get('/signup', guestMiddleware, usersController.registroForm)
 //Debemos pasar validateRegister despues de multer para que no haya problemas
 //, multerUsuario.single('img')
-router.post('/signup',multerUsuario.single('img'),validateRegister,  usersController.add)
+router.post('/signup',guestMiddleware,multerUsuario.single('img'),validateRegister,  usersController.add)
 
 /* Login */
 router.get('/login', guestMiddleware,  usersController.loginForm)
-router.post('/login', usersController.login)
+router.post('/login', guestMiddleware, usersController.login)
 
 /* USERS AUTENTICADOS: requiere autenticacion */
 /* Perfil */
@@ -123,14 +126,15 @@ router.get('/perfil', authUserMiddleware,  usersController.perfil)
 router.get('/logout', authUserMiddleware, usersController.logout)
 
 /* USER CLIENTE: requiere autenticacion */
-router.get('/carrito', carritoController.carrito)
+router.get('/carrito', customerAuthMiddleware, carritoController.carrito)
+
 //******* Añadir a carrito ********/
-router.post("/AnadirCarrito/:id",carritoController.anadirCarrito)
-router.delete("borrarProductoCarrito/:id", carritoController.borrarProducto)
-router.get("/ticket/:id", usersController.getClientTicket)
+router.post("/AnadirCarrito/:id",customerAuthMiddleware, carritoController.anadirCarrito)
+router.delete("borrarProductoCarrito/:id", customerAuthMiddleware, carritoController.borrarProducto)
+router.get("/ticket/:id",customerAuthMiddleware, usersController.getClientTicket)
 
 /* VENDEDOR: requiere autenticacion  */
 /* ventas del vendedor */
-router.get("/seller/sales", usersController.getAllSellerSales)
+router.get("/seller/sales", sellerAuthMiddleware, usersController.getAllSellerSales)
 
 module.exports = router

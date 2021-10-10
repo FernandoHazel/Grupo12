@@ -50,7 +50,7 @@
     <menu class="menu-options">
 
         <!--en caso de ser usuario normal-->
-        <% if(!locals.isLogged || locals.isLogged && locals.user.user_role_id === 6){%>
+        <% if(!locals.isLogged || locals.isLogged && locals.user.user_role === "user"){%>
             <ul class="main-p">
                 <li><a href="/">Home <i class="fas fa-home"></i></a></li>
                 <li><a href="/productos/offerts">Ofertas <i class="fab fa-hotjar"></i></i></a></li>

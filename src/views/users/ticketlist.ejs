@@ -10,19 +10,32 @@
 
     <!-- Mostrar listado de productos -->
     <main>
+      
             <section class="all-tickets">
+                <div>
+                    <h1>Mis Ventas</h1>
+                </div>
                 <% tickets.forEach(ticket => { %>
                 <article class="ticket-seller-conteiner">
-                    <a href="/users/ticket/<%= ticket.ticket.id %>">
+                    
                         
                         <p class="ticket-title">Detalles</p>
                         <div class="ticket-des">
-                            <p class='client'><span class="sub-title">Cliente: </span><%=ticket.ticket.ticket_user.email%> </p>
-                            <p class="purchase-date"><span class="sub-title">Fecha compra: </span><%=ticket.ticket.purchase_date%></p> 
-                            <p class="total-price"><span class="sub-title">Total: </span><%=ticket.individual_price%></p>
-                             <p class="total-products"><span class="sub-title">Cantidad de productos: </span><%=ticket.product_quantity%></p>
+                            <p><span class="sub-title">Cliente: </span><span class="answer"><%=ticket.ticket.ticket_user.user_info.first_name%>  <%=ticket.ticket.ticket_user.user_info.last_name%> (<%=ticket.ticket.ticket_user.email%>)</span> </p>
+                            <p ></p><span class="sub-title">Fecha compra: </span><span class="answer"><%=ticket.ticket.purchase_date%></span></p> 
+                            <p ><span class="sub-title">Total: </span><span class="answer">$<%=ticket.individual_price%> MXN</span></p>
+                             <p ><span class="sub-title">Cantidad de productos: </span><span class="answer"><%=ticket.product_quantity%></span></p>
                         </div>
-                    </a>
+                        <p class="ticket-title">Producto</p>
+                        <%if(ticket.product.active == 0){%>
+                            <p> Producto eliminado.....</p>
+                        <%}else{%>
+                            <a href="/productos/detalles/<%= ticket.product.id %>">
+                        <div class="seller-product-description">
+                            <img src="<%=ticket.product.img%>" alt="" id="seller-p-img"> <span class="p-title"><%=ticket.product.title%></span>
+                        </div>
+                        </a>
+                        <%}%>
                     <hr>
                 </article>
                 <% }) %>

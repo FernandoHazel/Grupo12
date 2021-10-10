@@ -1154,12 +1154,33 @@ main #products-section{
     font-size: 1rem;
     font-weight: bold;  
     margin-bottom: 7px;  
-    margin-top: 7px;
+    margin-top: 10px;
 }
 .ticket-seller-conteiner .sub-title{
     font-weight: bold;
+    color: rgb(4, 136, 177);
+}
+.answer{
+    font-style: italic;
+    color: black;
+    font-weight: bold;
 }
 
+#seller-p-img{
+    width: 30px;
+    max-width: 30px;
+}
+.seller-product-description{
+    display: flex;
+    align-items: center;
+    margin: 15px;
+    background-color: #cecece;
+    border-radius: 5px;
+    padding: 5px;
+}
+.p-title {
+    margin-left: 20px;
+}
 /**********   Media queries            *********/
 /* Version de Tablet ó Smartphone acostado*/
 @media(min-width: 768px){

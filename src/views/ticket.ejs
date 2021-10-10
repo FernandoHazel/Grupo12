@@ -6,8 +6,6 @@
 <body>
     
 
-    
-
 
     <!-- Vista parcial del header -->
     <%- include('./partials/header.ejs') %>
@@ -16,6 +14,8 @@
         <div class="ticket-conteiner">
             <section class="ticket-info">
                 <h1 style="text-align: center;">Ticket de compra</h1>
+                <p style="text-align: right; font-weight: bold;margin-top: 30px;"><%=locals.user.first_name%> <%=locals.user.last_name%></p>
+                <p style="text-align: right; font-style: italic; font-weight: bold;margin-bottom: 30px;"> <%=locals.user.email%></p>
                 <p class="ticket-date"><strong>Fecha de compra:</strong> <span><%=ticket.purchase_date%></span></p>
             </section>
             <h3 style="padding-left: 0; margin-top: 25px;">Productos:</h3>
