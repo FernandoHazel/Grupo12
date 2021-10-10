@@ -25,6 +25,10 @@ const userController = {
         /*creamos un objeto con los datos recibidos del formulario y una dónde 
         guardar la imágen si es que se mandó una, sino dejamos una default*/
         let newUser = req.body
+
+        console.log('req.body')
+        console.log(newUser)
+
         let img = "/images/usuarios/default.png"
         if(req.file){
             img = "/images/usuarios/" +req.file.filename
@@ -56,20 +60,26 @@ const userController = {
                 roleId = 6
             }
 
+            console.log('antes de guardar en db newUser')
+            console.log(newUser)
+
             //guardar en el disco, creamos un registro para la tabla de users y otro para la de users_info
             db.User.create({
                 id: newUser.id,
                 email: newUser.email,
                 pass: newUser.password,
                 user_role_id: roleId, //5 seller, 6 user
-                active: true,
+                active: 1,
+                //active: true,
             })
             .then(function(user){
                 db.UserInfo.create({
-                    user_id: newUser.id,
-                    first_name: newUser.name,
+                    //user_id: newUser.id,
+                    user_id: 12,
+                    first_name: newUser.nameF,
                     last_name: newUser.apellido,
-                    age: newUser.edad,
+                    //age: newUser.edad,
+                    age: 18,
                     profile_img: newUser.img
                 })
             })
@@ -91,7 +101,7 @@ const userController = {
     },
     login: function (req, res) {
         // verificar si el correo está en la base de datos
-        db.User.findOne({
+        return db.User.findOne({
             where: {
                 email: req.body.email,
                 active: 1
@@ -129,18 +139,18 @@ const userController = {
                      res.redirect('/users/perfil')
                 }else{
                     // señalar al usuario que el correo o la contraseña es incorrecta
-                    res.render('users/ingreso', {passwordError: 'Correo o contraseña incorrectos'})
+                  return  res.render('users/ingreso', {passwordError: 'Correo o contraseña incorrectos'})
                 }
             }else{
                 // señalar al usuario que el correo o la contraseña es incorrecta
-                res.render('users/ingreso', {emailError: 'Correo o contraseña incorrectos'})
+            return    res.render('users/ingreso', {emailError: 'Correo o contraseña incorrectos'})
             }
 
         })
         .catch(function(e){
             res.status(500).send({"Message": "Hubo un error "+e})
         })
-
+           
     },
     perfil: function(req, res){
         res.render("users/perfil")
