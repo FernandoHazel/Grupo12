@@ -124,26 +124,12 @@ const userController = {
                     userLogged.user_role_id = user.user_role_id
                     userLogged.user_role = user.role.user_role
                     /* Si las credenciales son correctas, entonces crea la session*/
-<<<<<<< HEAD
-                    req.session.userLogged = {...user}  // hace una copia del objeto
-                    delete req.session.userLogged.pass //borramos su contraseña del session
-                    //activamos isLogged
-                    res.locals.isLogged = true
-                    //mandamos a toda la app esta variable con nombre, apellido, foto etc.
-                    res.locals.user = user 
-                    console.log('----------------USER INFO-----------------')
-                    console.log(user)
 
-                    /* Redirije al perfil*/
-                    //res.redirect('/users/perfil')
-                    //res.send(`Hola ${user.user_info.last_name}`)
-                    res.json({mensaje: 'logueado'})
-=======
                     req.session.userLogged = userLogged// hace una copia del objeto
                      //borramos su contraseña del session
                      console.log(req.session.userLogged)                    /* Redirije al perfil*/
                      res.redirect('/users/perfil')
->>>>>>> 8835e3ad992694118844b44c80d27d4fe8b9b112
+
                 }else{
                     // señalar al usuario que el correo o la contraseña es incorrecta
                     res.render('users/ingreso', {error: 'Correo o contraseña incorrectos'})
@@ -152,13 +138,6 @@ const userController = {
                 // señalar al usuario que el correo o la contraseña es incorrecta
                 res.render('users/ingreso', {error: 'Correo o contraseña incorrectos'})
             }
-<<<<<<< HEAD
-        })
-        .catch(function(error){
-            res.send(error)
-        })
-=======
->>>>>>> 8835e3ad992694118844b44c80d27d4fe8b9b112
 
         })
         .catch(function(e){
@@ -166,7 +145,7 @@ const userController = {
         })
 
     },
-    perfil: function(req, res){
+    perfil: (req, res) =>{
         res.render("users/perfil")
     }, 
     logout: (req, res)=>{
