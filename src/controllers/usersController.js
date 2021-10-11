@@ -111,48 +111,41 @@ const userController = {
         }
         newUser.img = img
 
-
-        //verificar que ambas contraseñas sean iguales
-        if(req.body.password === req.body.password2){
-            let password = req.body.password
-
-            //solo necesitamos una así que borramos la segunda que venía en el formulario
-            delete newUser.password2
-
-            //hasheamos la contraseña y la guardamos en nuestro objeto que se va a ir a la base de datos
-            newUser.password = bcrypt.hashSync(password, 10)
-
-            //estos son los ids que tenemos en nustra tabla de users_roles
-            let roleId
-            if(newUser.profile == "seller"){
-                roleId = 5
-            }else{
-                roleId = 6
-            }
-
-            //guardar en el disco, creamos un registro para la tabla de users y otro para la de users_info
-            db.User.modify({
-                email: newUser.email,
-                pass: newUser.password,
-                user_role_id: roleId, //5 seller, 6 user
-            })
-            .then(function(user){
-                db.UserInfo.create({
-                    first_name: newUser.name,
-                    last_name: newUser.apellido,
-                    age: newUser.release_date,
-                    profile_img: newUser.img
-                })
-            })
-            .catch(function(e){
-                res.status(500).send({"Message": "Hubo un error "+e})
-            })
-
-            /* Redirige al login */
-            res.redirect('/users/profile')
+        //estos son los ids que tenemos en nustra tabla de users_roles
+        let roleId
+        if(newUser.profile == "seller"){
+            roleId = 5
         }else{
-            res.render('users/edit', {passwordError: 'las contraseñas deben de ser iguales'})
+            roleId = 6
         }
+
+        //guardar en el disco, creamos un registro para la tabla de users y otro para la de users_info
+        db.User.update({
+            email: newUser.email,
+            user_role_id: roleId, //5 seller, 6 user
+        },{
+            where: {email: req.session.userLogged.email} 
+        })
+        .then(function(user){
+            db.UserInfo.update({
+                first_name: newUser.name,
+                last_name: newUser.apellido,
+                age: newUser.release_date,
+                profile_img: newUser.img
+            },{
+                where: {first_name: req.session.userLogged.first_name} 
+            })
+        })
+        .then(function(){
+            req.session.userLogged = newUser
+        })
+        .catch(function(e){
+            res.status(500).send({"Message": "Hubo un error "+e})
+        })
+
+        /* Redirige al login */
+        res.redirect('/users/profile')
+        
             } 
             else{
                 //Hay errores y regresamos al formulario con los errores
