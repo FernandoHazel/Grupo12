@@ -1,7 +1,9 @@
 const express = require("express")
 const productosController = require("../controllers/productosController")
-
 const multerIMG = require('../config/multerIMG')
+
+const sellerAuthMiddleware = require("../middlewares/sellerAuthMiddleware")
+const customerAuthMiddleware = require("../middlewares/customerAuthMiddleware")
 
 const router = express.Router()
 
@@ -10,39 +12,33 @@ router.get("/", (req, res)=>{
    res.redirect("/productos/all")
 })
 
-/* GUEST o USUARIOS CLIENTES */
+/********** ENDPOINT PUBLICOS *******/
 //******* detalles ********/
 router.get("/detalles/:id?", productosController.detalles)
-
 //******* productos por categoria ********/
 router.get("/categoria/:id?", productosController.categoria)
-
 //******* todos los productos ********/
 router.get("/all", productosController.all)
-
 //******* ofertas ********/
 router.get("/offerts", productosController.offerts)
-
 //******* buscar productos ********/
 router.get("/search-products", productosController.search)
 
 
-router.post("/buy-product/:id", productosController.buy)
+/******** REQUIERE AUTENTICACION DE CLIENTE ****************/
+router.post("/buy-product/:id", customerAuthMiddleware, productosController.buy)
 
 
-/* VENDEDOR: requiere un middleware de autenticación */
+/******** REQUIERE AUTENTICACION DE VENDEDOR ****************/
 //******* crear producto ********/
-router.get("/crear", productosController.crear)
-router.post("/crear", multerIMG.single('img'), productosController.store)
-
+router.get("/crear", sellerAuthMiddleware, productosController.crear)
+router.post("/crear",sellerAuthMiddleware, multerIMG.single('img'), productosController.store)
 //******* editar producto ********/
-router.get("/editar/:id", productosController.editForm)
-router.put("/editar/:id", multerIMG.single('img'), productosController.actualizar)
-
+router.get("/editar/:id", sellerAuthMiddleware, productosController.editForm)
+router.put("/editar/:id", sellerAuthMiddleware, multerIMG.single('img'), productosController.actualizar)
 //******* borrar producto ********/
-router.get("/borrar/:id", productosController.borrar)
-
+router.delete("/borrar/:id", sellerAuthMiddleware, productosController.borrar)
 /* productos del vendedor */
-router.get("/my-products/", productosController.getSellerProducts)
+router.get("/my-products/",sellerAuthMiddleware, productosController.getSellerProducts)
 
 module.exports = router

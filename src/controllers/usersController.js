@@ -156,12 +156,11 @@ const userController = {
         res.redirect("/")
     },
     getAllSellerSales: (req, res)=>{
-        console.log("sdf")
+        
         if(req.session.userLogged){
-            console.log("no")
             db.Purchase.findAll({
                 include: [
-                    {association: "ticket", include: [{association: "ticket_user"}]},
+                    {association: "ticket", include: [{association: "ticket_user", include: [{association: "user_info"}]}]},
                     {association: "product"},
                 ]
             })
@@ -177,13 +176,13 @@ const userController = {
     },
     getClientTicket: function(req, res){
         /*  el id de usuario debe ser el que le pasamos por session*/
-        let id = req.params.id
+        let ticket_id = req.params.id
 
         db.Ticket.findOne({
             include: [{association: "ticket_purchases", include: [{association: "product"}]}],
             where: {
-                id: id,
-                user_id: 3 //  el id de usuario debe ser el que le pasamos por session*
+                id: ticket_id,
+                user_id: req.session.userLogged.id //  el id de usuario debe ser el que le pasamos por session*
             }
         })
         .then(function(ticket){
@@ -197,6 +196,24 @@ const userController = {
         .catch(function(e){
             res.status(500).send({"message": "Hubo un error: "+e})
 
+        })
+    },
+    getAllUsers: (req, res)=>{
+        let type = req.params.type
+        type = parseInt(type, 10)
+
+        db.User.findAll({
+            include: [{association: "role"}, {association: "user_info"}],
+            where: {
+                active: type,
+                '$role.user_role$': {[Op.ne]: "admin"}
+            }
+        })
+        .then(function(users){
+            res.status(200).render("users/userList", {users, type})
+        })
+        .catch(function(e){
+            console.log(e)
         })
     }
 

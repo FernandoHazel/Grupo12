@@ -1154,11 +1154,112 @@ main #products-section{
     font-size: 1rem;
     font-weight: bold;  
     margin-bottom: 7px;  
-    margin-top: 7px;
+    margin-top: 10px;
 }
 .ticket-seller-conteiner .sub-title{
     font-weight: bold;
+    color: rgb(4, 136, 177);
 }
+.answer{
+    font-style: italic;
+    color: black;
+    font-weight: bold;
+}
+
+#seller-p-img{
+    width: 30px;
+    max-width: 30px;
+}
+.seller-product-description{
+    display: flex;
+    align-items: center;
+    margin: 15px;
+    background-color: #cecece;
+    border-radius: 5px;
+    padding: 5px;
+}
+.p-title {
+    margin-left: 20px;
+}
+
+/* usuarios */
+
+.all-users{
+    background-color: white;
+    margin: auto;
+    width: 60%;
+    margin-top: 50px;
+    padding: 40px;
+}
+
+.user-status{
+    display: flex;
+    justify-content: space-between;
+}
+.user-conteiner{
+    margin-bottom: 20px;
+}
+.user-tag{
+    display: flex;
+    justify-content: space-between;
+}
+
+.all-users .active{
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    background-color: #5CB85C;
+    color: white;
+    text-align: center;
+    width: 110px;
+    height: 25px;
+    font-weight: bold;
+}
+.all-users .inactive {
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    background-color: #D9534F;
+    color: white;
+    text-align: center;
+    width: 110px;
+    height: 25px;
+    font-weight: bold;
+}
+.all-users .tag-style {
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    background-color: #5bc0de;
+    color: white;
+    text-align: center;
+    width: 110px;
+    height: 25px;
+    font-weight: bold;
+}
+.all-users .name {
+    font-weight: bold;
+}
+
+.all-users .email {
+    font-style: italic;
+}
+.user-tag{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.delete-user{
+    font-size: 1rem;
+    width: 40px;
+
+    color: #D9534F;
+    font-weight: bold;
+}
+
+
+
+
 
 /**********   Media queries            *********/
 /* Version de Tablet ó Smartphone acostado*/
