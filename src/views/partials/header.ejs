@@ -70,6 +70,11 @@
                     <li><a href="/productos/my-products/">Mis productos <i class="fas fa-shopping-cart"></i></a></li>
                     <li><a href="/users/seller/sales/">Ventas <i class="fas fa-chart-bar"></i></a></li>
                 </ul>
+        <% } else if(locals.isLogged && locals.user.user_role === "admin") {%>
+            <ul>
+                <li><a href="/users/admin/active_users/1">Activos <i class="far fa-user"></i></a></li>
+                <li><a href="/users/admin/active_users/0">Bloqueados <i class="fas fa-user-alt-slash"></i></a></li>
+            </ul>
         <% } %>
         
     </menu>

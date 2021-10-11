@@ -8,6 +8,7 @@ const guestMiddleware = require("../middlewares/guestMiddleware")
 const authUserMiddleware = require("../middlewares/authUserMiddleware")
 const sellerAuthMiddleware = require("../middlewares/sellerAuthMiddleware")
 const customerAuthMiddleware = require("../middlewares/customerAuthMiddleware")
+const adminAuthMiddleware = require("../middlewares/adminAuthMiddleware")
 
 const carritoController = require("../controllers/carritoController")
 //const validateRegister =require("../middlewares/validateRegister")
@@ -136,5 +137,9 @@ router.get("/ticket/:id",customerAuthMiddleware, usersController.getClientTicket
 /* VENDEDOR: requiere autenticacion  */
 /* ventas del vendedor */
 router.get("/seller/sales", sellerAuthMiddleware, usersController.getAllSellerSales)
+
+
+/* ADMIN */
+router.get("/admin/active_users/:type", adminAuthMiddleware, usersController.getAllUsers)
 
 module.exports = router

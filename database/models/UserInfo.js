@@ -19,6 +19,9 @@ module.exports = function(sequelize, DataTypes){
         },
         profile_img: {
             type: DataTypes.STRING(500)
+        },
+        createdAt: {
+            type: DataTypes.DATE                        
         }
     }
     const config = {

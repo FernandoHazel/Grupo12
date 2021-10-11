@@ -37,7 +37,7 @@ router.post("/crear",sellerAuthMiddleware, multerIMG.single('img'), productosCon
 router.get("/editar/:id", sellerAuthMiddleware, productosController.editForm)
 router.put("/editar/:id", sellerAuthMiddleware, multerIMG.single('img'), productosController.actualizar)
 //******* borrar producto ********/
-router.get("/borrar/:id", sellerAuthMiddleware, productosController.borrar)
+router.delete("/borrar/:id", sellerAuthMiddleware, productosController.borrar)
 /* productos del vendedor */
 router.get("/my-products/",sellerAuthMiddleware, productosController.getSellerProducts)
 
