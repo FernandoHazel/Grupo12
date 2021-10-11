@@ -100,9 +100,7 @@
                      <% if(locals.errors && errors.password2){ %>
                         <div style="color:red"><%= errors.password2.msg %></div>
                     <% } %>
-                     <!-- <% if (locals.passwordError) { %> -->
-                        <!-- <p class="errors"><%= passwordError %></p> -->
-                    <!-- <% } %> -->
+                
                  </div>
             </div>
 
@@ -134,6 +132,7 @@
 
     <!-- Vista parcial del footer -->
     <%- include('../partials/footer.ejs') %>
-    <!-- <script src="/js/registro.js"></script> -->
+    <!-- Script para validar datos del registro desde el front-end -->
+    <script src="/js/registro.js"></script>
 </body>
 </html>

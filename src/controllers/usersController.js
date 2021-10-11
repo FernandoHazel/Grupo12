@@ -16,18 +16,14 @@ const userController = {
 
     add: function (req, res) {
         const errors=validationResult(req)
+
         //Si no hay errores creamos un nuevo usuario 
         //de lo contrario volvemos al formulario con los errores para el usuario
-
         if(errors.isEmpty()){
-            //res.send(req.body)
             
         /*creamos un objeto con los datos recibidos del formulario y una dónde 
         guardar la imágen si es que se mandó una, sino dejamos una default*/
         let newUser = req.body
-
-        console.log('req.body')
-        console.log(newUser)
 
         let img = "/images/usuarios/default.png"
         if(req.file){
@@ -37,13 +33,9 @@ const userController = {
  
         //creamos un id para el usuario
         newUser.id = Date.now()
-        console.log(newUser.id)
-        /////////////////////////////////////////////////
-        //añadir verificaciones de express validator//
-        /////////////////////////////////////////////////
+        //newUser.id=newUser.id/1000
 
-        //verificar que ambas contraseñas sean iguales
-        if(req.body.password === req.body.password2){
+        
             let password = req.body.password
 
             //solo necesitamos una así que borramos la segunda que venía en el formulario
@@ -52,7 +44,7 @@ const userController = {
             //hasheamos la contraseña y la guardamos en nuestro objeto que se va a ir a la base de datos
             newUser.password = bcrypt.hashSync(password, 10)
 
-            //estos son los ids que tenemos en nustra tabla de users_roles
+            //estos son los ids que tenemos en nuestra tabla de users_roles
             let roleId
             if(newUser.profile == "seller"){
                 roleId = 5
@@ -60,11 +52,12 @@ const userController = {
                 roleId = 6
             }
             //En el formulario ya no obtenemos la edad si no la fecha de nacimiento y hay
-            // que hacer el calculo de la edad
+            // que hacer el calculo de la edad para luego mandarlo a la base de datos
             let yearPresent= new Date()
             let year=newUser.release_date.slice(0,4)
             newUser.age=yearPresent.getFullYear()-Number(year)
            
+            
             //guardar en el disco, creamos un registro para la tabla de users y otro para la de users_info
             db.User.create({
                 id: newUser.id,
@@ -84,19 +77,18 @@ const userController = {
             })
             .then(()=>{
                return res.redirect('/users/login')
+               //res.send({newUser,roleId})
             })
-            //.catch() //falta definir que hacer en caso de error
-
-            /* Redirige al login */
+            .catch(function(e){
+                res.send({"Message": "Hubo un error "+e})
+            })
             
-        }else{
-            res.render('users/registro', {passwordError: 'las contraseñas deben de ser iguales'})
-        }
+            
+        
             } 
             else{
                 //Hay errores y regresamos al formulario con los errores
                // console.log(errors)
-                //console.log(req.body)
                 res.render('users/registro',{errors:errors.mapped(),old:req.body})
 
             }
