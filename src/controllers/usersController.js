@@ -34,10 +34,10 @@ const userController = {
             img = "/images/usuarios/" +req.file.filename
         }
         newUser.img = img
-
+ 
         //creamos un id para el usuario
         newUser.id = Date.now()
-
+        console.log(newUser.id)
         /////////////////////////////////////////////////
         //añadir verificaciones de express validator//
         /////////////////////////////////////////////////
@@ -59,34 +59,36 @@ const userController = {
             }else{
                 roleId = 6
             }
-
-            console.log('antes de guardar en db newUser')
-            console.log(newUser)
-
+            //En el formulario ya no obtenemos la edad si no la fecha de nacimiento y hay
+            // que hacer el calculo de la edad
+            let yearPresent= new Date()
+            let year=newUser.release_date.slice(0,4)
+            newUser.age=yearPresent.getFullYear()-Number(year)
+           
             //guardar en el disco, creamos un registro para la tabla de users y otro para la de users_info
             db.User.create({
                 id: newUser.id,
                 email: newUser.email,
                 pass: newUser.password,
                 user_role_id: roleId, //5 seller, 6 user
-                active: 1,
-                //active: true,
+                active: true,
             })
             .then(function(user){
                 db.UserInfo.create({
-                    //user_id: newUser.id,
-                    user_id: 12,
+                    user_id: newUser.id,
                     first_name: newUser.nameF,
                     last_name: newUser.apellido,
-                    //age: newUser.edad,
-                    age: 18,
+                    age: newUser.age,
                     profile_img: newUser.img
                 })
             })
-            .catch() //falta definir que hacer en caso de error
+            .then(()=>{
+               return res.redirect('/users/login')
+            })
+            //.catch() //falta definir que hacer en caso de error
 
             /* Redirige al login */
-            res.redirect('/users/login')
+            
         }else{
             res.render('users/registro', {passwordError: 'las contraseñas deben de ser iguales'})
         }
