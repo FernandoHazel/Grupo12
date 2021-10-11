@@ -69,12 +69,13 @@ const userController = {
                     user_id: newUser.id,
                     first_name: newUser.name,
                     last_name: newUser.apellido,
-                    age: newUser.edad,
+                    age: newUser.release_date,
                     profile_img: newUser.img
                 })
             })
-            .catch(function(){
-                res.redirect('/')}) //falta definir que hacer en caso de error
+            .catch(function(e){
+                res.status(500).send({"Message": "Hubo un error "+e})
+            })
 
             /* Redirige al login */
             res.redirect('/users/login')
@@ -87,6 +88,77 @@ const userController = {
                // console.log(errors)
                 //console.log(req.body)
                 res.render('users/registro',{errors:errors.mapped(),old:req.body})
+
+            }
+    },
+    edit: (req, res) => {
+        res.render('users/edit')
+    },
+    modify: (req, res) => {
+        const errors=validationResult(req)
+        //Si no hay errores creamos un nuevo usuario 
+        //de lo contrario volvemos al formulario con los errores para el usuario
+
+        if(errors.isEmpty()){
+            //res.send(req.body)
+            
+        /*creamos un objeto con los datos recibidos del formulario y una dónde 
+        guardar la imágen si es que se mandó una, sino dejamos una default*/
+        let newUser = req.body
+        let img = req.session.userLogged.img
+        if(req.file){
+            img = "/images/usuarios/" +req.file.filename
+        }
+        newUser.img = img
+
+
+        //verificar que ambas contraseñas sean iguales
+        if(req.body.password === req.body.password2){
+            let password = req.body.password
+
+            //solo necesitamos una así que borramos la segunda que venía en el formulario
+            delete newUser.password2
+
+            //hasheamos la contraseña y la guardamos en nuestro objeto que se va a ir a la base de datos
+            newUser.password = bcrypt.hashSync(password, 10)
+
+            //estos son los ids que tenemos en nustra tabla de users_roles
+            let roleId
+            if(newUser.profile == "seller"){
+                roleId = 5
+            }else{
+                roleId = 6
+            }
+
+            //guardar en el disco, creamos un registro para la tabla de users y otro para la de users_info
+            db.User.modify({
+                email: newUser.email,
+                pass: newUser.password,
+                user_role_id: roleId, //5 seller, 6 user
+            })
+            .then(function(user){
+                db.UserInfo.create({
+                    first_name: newUser.name,
+                    last_name: newUser.apellido,
+                    age: newUser.release_date,
+                    profile_img: newUser.img
+                })
+            })
+            .catch(function(e){
+                res.status(500).send({"Message": "Hubo un error "+e})
+            })
+
+            /* Redirige al login */
+            res.redirect('/users/profile')
+        }else{
+            res.render('users/edit', {passwordError: 'las contraseñas deben de ser iguales'})
+        }
+            } 
+            else{
+                //Hay errores y regresamos al formulario con los errores
+               // console.log(errors)
+                //console.log(req.body)
+                res.render('users/edit',{errors:errors.mapped(),old:req.body})
 
             }
     },
@@ -123,6 +195,7 @@ const userController = {
                     userLogged.id = user.id
                     userLogged.user_role_id = user.user_role_id
                     userLogged.user_role = user.role.user_role
+                    userLogged.release_date = user.user_info.age
                     /* Si las credenciales son correctas, entonces crea la session*/
 
                     req.session.userLogged = userLogged// hace una copia del objeto
