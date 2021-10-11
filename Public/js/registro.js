@@ -8,12 +8,15 @@ window.addEventListener('load',function(){
   let fechaNacimiento= document.querySelector('#date')
   let email= document.querySelector('#email')
 
+  
   let cuenta= document.querySelector('#profile')
   let password1= document.querySelector('#password1')
   let password2= document.querySelector('#password2')
   let fotoPerfil= document.querySelector('#fotoPerfil')
 
   let form=document.querySelector('#register-form')
+  let submit=document.querySelector('#submit')
+  
   let arregloDeErrores=document.querySelectorAll('#arregloDeErrores')
 
   let errores={}
@@ -21,6 +24,11 @@ window.addEventListener('load',function(){
  function noAlfanumerico(cadena) {
     let longitud=cadena.length
     let charC
+    //"ABC".charCodeAt(0) // returns 65
+    //Rangos de números y letras
+    // 0-9   48-57
+    // A-Z   65-90
+    // a-z   97-122
     for(let i=0;i<longitud;i++){
        charC=cadena.charCodeAt(i)
         if(charC<65 || charC>122 || (charC>90 && charC<97)){
@@ -305,9 +313,7 @@ password2.addEventListener('blur',function(){password2F()})
 fotoPerfil.addEventListener('blur',function(){fotoPerfilF()})
 
 form.addEventListener('submit',function(e){
-    e.preventDefault()
-console.log(fotoPerfilF())
-
+    
     let nameB=!nameF()
     let lastNameB=!lastNameF()
     let fechaNacimientoB=!fechaNacimientoF()
@@ -319,8 +325,10 @@ console.log(fotoPerfilF())
 
     if(nameB&&lastNameB&&fechaNacimientoB&&emailB&&cuentaB&&password1B&&password2B&&fotoPerfilB ){
         console.log(" submit exitoso")
+        //form.submit()
     }else{
         console.log("Hay errores por resolver")
+        e.preventDefault()
     }
 
 })

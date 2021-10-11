@@ -13,7 +13,6 @@ const cookieParser = require('cookie-parser')
 const loggedMidleware = require('./middlewares/loggedMiddleware')
 
 
-
 // Method override
 app.use(override("_method"))
 

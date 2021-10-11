@@ -20,7 +20,8 @@ const userController = {
         //Si no hay errores creamos un nuevo usuario 
         //de lo contrario volvemos al formulario con los errores para el usuario
         if(errors.isEmpty()){
-            
+            console.log('entre errores')
+            console.log(errors)
         /*creamos un objeto con los datos recibidos del formulario y una dónde 
         guardar la imágen si es que se mandó una, sino dejamos una default*/
         let newUser = req.body
@@ -33,7 +34,7 @@ const userController = {
  
         //creamos un id para el usuario
         newUser.id = Date.now()
-        //newUser.id=newUser.id/1000
+        newUser.id=newUser.id/1000
 
         
             let password = req.body.password
@@ -69,7 +70,7 @@ const userController = {
             .then(function(user){
                 db.UserInfo.create({
                     user_id: newUser.id,
-                    first_name: newUser.nameF,
+                    first_name: newUser.name,
                     last_name: newUser.apellido,
                     age: newUser.age,
                     profile_img: newUser.img

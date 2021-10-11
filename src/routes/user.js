@@ -2,8 +2,6 @@ const express = require("express")
 const usersController = require("../controllers/usersController")
 const multerUsuario = require('../config/multerUsuario')
 const router = express.Router()
-const path = require("path")
-const db= require('../../database/models')
 const guestMiddleware = require("../middlewares/guestMiddleware")
 const authUserMiddleware = require("../middlewares/authUserMiddleware")
 const sellerAuthMiddleware = require("../middlewares/sellerAuthMiddleware")
@@ -21,7 +19,8 @@ const validateRegister =require("../middlewares/validateRegister")
 router.get('/signup', guestMiddleware, usersController.registroForm)
 //Debemos pasar validateRegister despues de multer para que no haya problemas
 //, multerUsuario.single('img')
-router.post('/signup',guestMiddleware,multerUsuario.single('img'),validateRegister,  usersController.add)
+//,guestMiddleware
+router.post('/signup',multerUsuario.single('img'),validateRegister,  usersController.add)
 
 /* Login */
 router.get('/login', guestMiddleware,  usersController.loginForm)

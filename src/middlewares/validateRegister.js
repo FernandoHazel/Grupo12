@@ -1,8 +1,10 @@
 const {body}= require('express-validator')
+const path = require("path")
+const db= require('../../database/models')
 
 const validateRegister=[
 
-    body('nameF')
+    body('name')
      .notEmpty().withMessage('Debes completar el nombre').bail()
      .isLength({min:2}).withMessage('El nombre deberá tener al menos dos caracteres').bail()
      .isAlpha().withMessage('Solo debes ingresar letras'),
