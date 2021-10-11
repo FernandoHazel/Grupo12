@@ -30,6 +30,11 @@ router.post('/login', guestMiddleware, usersController.login)
 /* USERS AUTENTICADOS: requiere autenticacion */
 /* Perfil */
 router.get('/perfil', authUserMiddleware,  usersController.perfil)
+/* Editar perfil */
+router.get('/edit', authUserMiddleware, usersController.edit)
+router.post('/modify', authUserMiddleware, usersController.modify)
+/* Borrar perfil */
+router.get('/delete', authUserMiddleware, function(req, res){res.send('Aquí se borra el perfil')})
 /* Logout */
 router.get('/logout', authUserMiddleware, usersController.logout)
 

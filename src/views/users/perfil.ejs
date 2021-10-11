@@ -11,10 +11,16 @@
     <%if(locals.isLogged && locals.isLogged==true){%>
     <!--Perfil de usuario-->
     <main class='profile_container'>
-        <img src="<%= locals.user.profile_image %>" alt="imágen de usuario" class='profile_img'>
+        <img src="<%=locals.user.profile_img%>" alt="imágen de usuario" class='profile_img'>
         <section class='profile_info'>
             <p>Hola <%= locals.user.first_name%> <%= locals.user.last_name%>! </p>
         </section>
+        
+        
+        <div><a href="/users/edit">Editar perfil</a></div>
+        <div class="delete"><a href="/users/delete">borrar perfil</a></div>
+            
+       
         
     </main>
     <%}%>

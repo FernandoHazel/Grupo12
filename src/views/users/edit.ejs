@@ -10,15 +10,15 @@
 
     <main id="register-main">
                                                             <!-- enctype="multipart/form-data" -->
-        <form id="register-form" action="/users/modify" method="POST" enctype="multipart/form-data">
-            <p id="form-title">Registro</p>
+        <form id="register-form" action="/users/signup" method="POST" enctype="multipart/form-data">
+            <p id="form-title">Editar perfil</p>
 
             <div class="main">
 
                 <div class="first-name">
                     <p>Nombre</p>
                     <input type="text" id="name" name="nameF" placeholder="Nombre(s)"
-                    value = '<%= locals.old ? old.nameF : null %>'>
+                    value = '<%= locals.user.first_name%>'>
                     <!-- <%= locals.old ? old.nameF : null %> -->
                     <p id="arregloDeErrores"></p>
                     <% if(locals.errors && errors.nameF){ %>
@@ -31,7 +31,7 @@
                 <div class="last-name-pat">
                     <p>Apellido</p>
                     <input type="text" id="apellido" name="apellido" placeholder="Apellido"
-                    value = '<%= locals.old ? old.apellido : null %>'>
+                    value = '<%= locals.user.last_name%>'>
                     <p id="arregloDeErrores"></p>
                     <% if(locals.errors && errors.apellido){ %>
                         <div style="color:red"><%= errors.apellido.msg %></div>
@@ -42,7 +42,7 @@
                     <p>Fecha de nacimiento</p>
                     <!-- <input type="number" id="age" name="edad" placeholder="Tu edad"> -->
                     <input type="date" name="release_date" id="date" 
-                    value='<%= locals.old ? old.release_date : null %>'>
+                    value='<%= locals.user.release_date%>'>
                     <p id="arregloDeErrores"></p>
                     <% if(locals.errors && errors.release_date){ %>
                         <div style="color:red"><%= errors.release_date.msg %></div>
@@ -56,7 +56,7 @@
                 <div class="email">
                     <p>Email</p>
                     <input type="email" id="email" name="email" placeholder="Correo electrónico"
-                    value = '<%= locals.old ? old.email : null %>'>
+                    value = '<%= locals.user.email%>'>
                     <p id="arregloDeErrores"></p>
                     <% if(locals.errors && errors.email){ %>
                         <div style="color:red"><%= errors.email.msg %></div>
@@ -77,37 +77,10 @@
                 </div>
             </div>
 
-            <div class="main3">
-                <div class="password">
-                    <p>Contraseña</p>
-                     <div class="input-pass">
-                         <input type="password" id="password1" name="password" placeholder="Contraseña"
-                         value = '<%= locals.old ? old.password : null %>' >
-                     </div>
-                     <p id="arregloDeErrores"></p>
-                     <% if(locals.errors && errors.password){ %>
-                        <div style="color:red"><%= errors.password.msg %></div>
-                    <% } %>
-                 </div>
-
-                 <div class="password">
-                    <p>Confirma</p>
-                     <div class="input-pass">
-                         <input type="password" id="password2" name="password2" placeholder="Repite la contraseña"
-                         value = '<%= locals.old ? old.password2 : null %>'>
-                     </div>
-                     <p id="arregloDeErrores"></p>
-                     <% if(locals.errors && errors.password2){ %>
-                        <div style="color:red"><%= errors.password2.msg %></div>
-                    <% } %>
-                
-                 </div>
-            </div>
-
             <div class="profile-photo">
                 <p>Foto de perfil</p>
             <!-- <input type="file" placeholder="Selecciona una foto" name="img" accept=".jpg, .png, .PNG">  -->
-                <input type="file" id="fotoPerfil" placeholder="Selecciona una foto" name="img">
+                <input type="file" id="fotoPerfil" placeholder="Selecciona una foto" name="img" value="<%= locals.user.img%>">
                 <p id="arregloDeErrores"></p>
                 <% if(locals.errors && errors.img){ %>
                     <div style="color:red"><%= errors.img.msg %></div>
@@ -121,18 +94,11 @@
                 <input type="submit" value="Enviar" id="submit">
                 <input type="reset" value="Borrar" id="clear">
            </div>
-
-           <br>
-
-           <div id="redirect">
-               <p>Ya tienes una cuenta? <a href="/users/login">Ingresa</a></p>
-           </div>
         </form>
     </main>
 
     <!-- Vista parcial del footer -->
     <%- include('../partials/footer.ejs') %>
-    <!-- Script para validar datos del registro desde el front-end -->
-    <script src="/js/registro.js"></script>
+    <!-- <script src="/js/registro.js"></script> -->
 </body>
 </html>
