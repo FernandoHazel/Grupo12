@@ -280,7 +280,55 @@ const userController = {
             res.status(200).render("users/userList", {users, type})
         })
         .catch(function(e){
-            console.log(e)
+            res.status(500).send({"message": "Hubo un error: "+e})
+        })
+    },
+
+    deleteAccount: (req, res)=>{
+        
+        let user_id = req.params.id
+        user_id = parseInt(user_id, 10)
+
+        db.User.update({
+            active: 0
+        }, {
+        where: {
+            active: 1,
+            id: user_id
+        }
+        })
+        .then(function(user){
+            if(user){
+                res.status(200).json({status: "ok"})
+            } else {
+                res.status(500).json({status: "error"})
+            }
+        })
+        .catch(function(e){
+            res.status(500).send({"message": "Hubo un error: "+e})
+        })
+    },
+    activateAccount: (req, res)=>{
+        let user_id = req.params.id
+        user_id = parseInt(user_id, 10)
+
+        db.User.update({
+            active: 1
+        }, {
+        where: {
+            active: 0,
+            id: user_id
+        }
+        })
+        .then(function(user){
+            if(user){
+                res.status(200).json({status: "ok"})
+            } else {
+                res.status(500).json({status: "error"})
+            }
+        })
+        .catch(function(e){
+            res.status(500).send({"message": "Hubo un error: "+e})
         })
     }
 

@@ -52,5 +52,7 @@ router.get("/seller/sales", sellerAuthMiddleware, usersController.getAllSellerSa
 
 /* ADMIN */
 router.get("/admin/active_users/:type", adminAuthMiddleware, usersController.getAllUsers)
+router.delete("/delete/:id", adminAuthMiddleware, usersController.deleteAccount)
+router.delete("/activate/:id", adminAuthMiddleware, usersController.activateAccount)
 
 module.exports = router
