@@ -11,7 +11,7 @@ const userController = {
     },
 
     loginForm: (req, res)=>{
-        res.render("./users/ingreso")
+        res.render("./users/login")
     },
 
     add: function (req, res) {
@@ -22,21 +22,21 @@ const userController = {
         if(errors.isEmpty()){
             console.log('entre errores')
             console.log(errors)
-        /*creamos un objeto con los datos recibidos del formulario y una dónde 
-        guardar la imágen si es que se mandó una, sino dejamos una default*/
-        let newUser = req.body
+            /*creamos un objeto con los datos recibidos del formulario y una dónde 
+            guardar la imágen si es que se mandó una, sino dejamos una default*/
+            let newUser = req.body
 
-        let img = "/images/usuarios/default.png"
-        if(req.file){
-            img = "/images/usuarios/" +req.file.filename
-        }
-        newUser.img = img
- 
-        //creamos un id para el usuario
-        newUser.id = Date.now()
-        newUser.id=newUser.id/1000
+            let img = "/images/usuarios/default.png"
+            if(req.file){
+                img = "/images/usuarios/" +req.file.filename
+            }
+            newUser.img = img
+    
+            //creamos un id para el usuario
+            newUser.id = Date.now()
+            newUser.id=newUser.id/1000
 
-        
+            
             let password = req.body.password
 
             //solo necesitamos una así que borramos la segunda que venía en el formulario
@@ -55,9 +55,9 @@ const userController = {
             //En el formulario ya no obtenemos la edad si no la fecha de nacimiento y hay
             // que hacer el calculo de la edad para luego mandarlo a la base de datos
             let yearPresent= new Date()
-            let year=newUser.release_date.slice(0,4)
+            let year=newUser.age.slice(0,4)
             newUser.age=yearPresent.getFullYear()-Number(year)
-           
+        
             
             //guardar en el disco, creamos un registro para la tabla de users y otro para la de users_info
             db.User.create({
@@ -77,20 +77,19 @@ const userController = {
                 })
             })
             .then(()=>{
-               return res.redirect('/users/login')
-               //res.send({newUser,roleId})
+            return res.redirect('/users/login')
+            //res.send({newUser,roleId})
             })
             .catch(function(e){
                 res.send({"Message": "Hubo un error "+e})
             })
             
-            } 
-            else{
-                //Hay errores y regresamos al formulario con los errores
-               // console.log(errors)
-                res.render('users/registro',{errors:errors.mapped(),old:req.body})
+        }else{
+            //Hay errores y regresamos al formulario con los errores
+            // console.log(errors)
+            res.render('users/registro',{errors:errors.mapped(),old:req.body})
 
-            }
+        }
     },
     edit: (req, res) => {
         res.render('users/edit')
@@ -119,6 +118,11 @@ const userController = {
             }else{
                 roleId = 6
             }
+            //En el formulario ya no obtenemos la edad si no la fecha de nacimiento y hay
+            // que hacer el calculo de la edad para luego mandarlo a la base de datos
+            let yearPresent= new Date()
+            let year=newUser.release_date.slice(0,4)
+            newUser.age=yearPresent.getFullYear()-Number(year)
 
             //guardar en el disco, creamos un registro para la tabla de users y otro para la de users_info
             db.User.update({

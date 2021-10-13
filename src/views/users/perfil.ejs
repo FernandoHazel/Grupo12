@@ -14,14 +14,15 @@
         <img src="<%=locals.user.profile_img%>" alt="imágen de usuario" class='profile_img'>
         <section class='profile_info'>
             <p>Hola <%= locals.user.first_name%> <%= locals.user.last_name%>! </p>
+            <br>
+            <br>
+            <p><%= locals.user.email%></p>
         </section>
         
         
         <div><a href="/users/edit">Editar perfil</a></div>
         <div class="delete"><a href="/users/delete">borrar perfil</a></div>
             
-       
-        
     </main>
     <%}%>
 

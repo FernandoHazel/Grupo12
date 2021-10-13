@@ -53,16 +53,6 @@
 
             <div class="main2">
 
-                <div class="email">
-                    <p>Email</p>
-                    <input type="email" id="email" name="email" placeholder="Correo electrónico"
-                    value = '<%= locals.user.email%>'>
-                    <p id="arregloDeErrores"></p>
-                    <% if(locals.errors && errors.email){ %>
-                        <div style="color:red"><%= errors.email.msg %></div>
-                    <% } %>
-                </div>
-
                 <div class="profile">
                     <p>Tipo de cuenta</p>
                     <select name="profile" id="profile">
@@ -86,9 +76,6 @@
                     <div style="color:red"><%= errors.img.msg %></div>
                 <% } %>
             </div>
-
-
-
 
              <div class="btts">
                 <input type="submit" value="Enviar" id="submit">
