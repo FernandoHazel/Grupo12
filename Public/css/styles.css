@@ -686,6 +686,9 @@ h2,h3,h4{
 #register-form #arregloDeErrores{
     color: red
 }
+#crea-edit-product #arregloDeErrores{
+    color: red
+}
 
 /* Login form */
 .errors{
@@ -869,7 +872,7 @@ h2,h3,h4{
 }
 #crea-edit-product .discount input{
     width: 50%;
-    border: 2px green solid;
+    /* border: 2px green solid; */
 }
 #crea-edit-product .discount span{
     font-size: 18px;
