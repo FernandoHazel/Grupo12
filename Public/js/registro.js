@@ -1,5 +1,6 @@
 
 window.addEventListener('load',function(){
+    console.log('archivo de validación FE vinculado')
 
  // const db = require("../../database/models")
 
