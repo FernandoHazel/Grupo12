@@ -18,7 +18,7 @@
             
             <div class="email">
                 <p>Email</p>
-                <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
+                <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" value='<%= locals.old ? old.email : null %>' required>
             </div>
             
             <div class="password">
@@ -28,7 +28,10 @@
             <br>
             <%if(locals.error){%>
                 <p class="errors">Correo o contraseña incorrectos</p>
+            <%}if(locals.errors && errors.email){%>
+                <p class="errors"><%= errors.email.msg %></p>
             <%}%>
+            
 
             <div class="remember">
                 <input type="checkbox" name="remember" id="remember"> Recordarme
