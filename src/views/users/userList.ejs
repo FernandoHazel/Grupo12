@@ -19,9 +19,12 @@
                         <h1>Usurios Bloqueados</h1>
                     <%}%>
                     
-                </div>           
+                </div>          
+                <article class="user-conteiner">
+
+                </article> 
                 <%users.forEach( user =>{%>
-                    <article class="user-conteiner"></article>
+                    <article class="user-conteiner">
                         <p class="name"><%=user.user_info.first_name%> <%=user.user_info.last_name%></p>
                         <div class="user-status">
                             <span class="email"><%=user.email%></span>
@@ -41,12 +44,21 @@
                             <%} else if(user.role.user_role=="seller"){%>
                                  <p class="tag-style">VENDEDOR</p>
                              <%}%>
-                             <button onclick="myFunction('<%=user.email%>', '<%=user.id%>')"><i class="fas fa-trash delete-user"></i></button>
+                             <button onclick="myFunction(event, '<%=user.email%>', '<%=user.id%>', '<%=user.active%>')">
+                                <%if(user.active){%>
+                                    <i class="fas fa-trash delete-user"></i>
+                                <%}else{%>
+                                    <i class="fas fa-check-circle active-user"></i>
+                                <%}%>
+                            </button>
                         </div>
 
                     </article>
                     <hr>
                 <%})%>
+                <article class="user-conteiner">
+                    
+                </article> 
             </section>
             
         </section>
@@ -58,10 +70,47 @@
 
      <script>
          /* intercept el evento de eliminar*/
-         function myFunction(userEmail, userID){
-             console.log(userEmail)
-             console.log(userID)
-         }
+         async function myFunction(e, userEmail, userID, type){
+            //console.log(e)
+
+            if(type == "false"){
+                let ok = confirm("Estas seguro de ACTIVAR la cuenta '"+userEmail+"'")
+                if (ok){
+                    let result = await fetch("/users/activate/"+userID, {method: "DELETE"}).then(res => res.json())
+                    if(result.status=="ok"){
+                        removeChild(e)
+                    } else {
+                        console.log("Error", result)
+                    }
+                }
+
+            } else if(type == "true"){
+                let ok = confirm("Estas seguro de ELIMINAR la cuenta '"+userEmail+"'")
+                if (ok){
+                    let result = await fetch("/users/delete/"+userID, {method: "DELETE"}).then(res => res.json())
+                    if(result.status=="ok"){
+                        removeChild(e)
+                    } else {
+                        console.log("Error", result)
+                    }
+                }
+            }
+    }
+
+
+    async function activateRemoveAccount (type, userID){
+        return await fetch("/users/delete/"+userID, {
+            method: "DELETE"
+        })
+    }
+
+    function removeChild(e){
+        /* All users conteiner */
+        let all_users= document.querySelector(".all-users")
+        console.log(e.target.parentElement.parentElement)
+        console.log(e.target.parentElement.parentElement.parentElement)
+        all_users.removeChild(e.target.parentElement.parentElement.parentElement)
+    }
      </script>
 </body>
 </html>

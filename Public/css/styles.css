@@ -1276,6 +1276,13 @@ main #products-section{
     color: #D9534F;
     font-weight: bold;
 }
+.active-user{
+    font-size: 1rem;
+    width: 40px;
+
+    color: #5CB85C;
+    font-weight: bold;
+}
 
 
 
