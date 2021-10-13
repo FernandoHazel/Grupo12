@@ -159,9 +159,6 @@ window.addEventListener('load',function(){
    discount.addEventListener('blur',function(){discountF()})
    stock.addEventListener('blur',function(){stockF()})
    imgProduct.addEventListener('blur',function(){imgProductF()})
-
-   //cuenta.addEventListener('blur',function(){cuentaF()})
-   //fotoPerfil.addEventListener('blur',function(){fotoPerfilF()})
    
    form.addEventListener('submit',function(e){
        
