@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require("path");
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
+const {validationResult}=require('express-validator')
 /* Sequelize*/
 const db = require("../../database/models")
 const { Op } = require("sequelize");
@@ -59,7 +60,7 @@ let productosController = {
                 res.render("products/crear", {categories})
             }
             else{
-                console.log("No existen categorias")
+    
                 res.send({"message": "error"})
             }
         })
@@ -69,21 +70,23 @@ let productosController = {
         
     },
     store: (req, res)=>{
-
-        /* Imagen por defecto */
+        const errors=validationResult(req)
+        if(errors.isEmpty()){
+        
+         //Imagen por defecto 
         let img = "/images/productos/default.png"
-        /* Obtenemos los datos del body */
+        // Obtenemos los datos del body 
         let {title, description, price, stock, category, discount} = req.body
         
-        /* Si subio una imagen */
+        //Si subio una imagen 
         if(req.file){
             img = "/images/productos/"+req.file.filename
         }
-        /* creamos el ofjeto en la base de datos*/
+         //creamos el objeto en la base de datos
         db.Product.create(
             {
                 category_id: parseInt(category, 10),
-                seller_id: 2, // debe ser el id del vendedor
+                seller_id: 2, //debe ser el id del vendedor
                 title,
                 description,
                 price,
@@ -105,6 +108,17 @@ let productosController = {
         .catch(function(e){
             res.status(500).send({"message": "Hubo un error: "+e})
         })
+     
+    }else{
+        /* Primero busca las categorias de los productos*/
+        db.Category.findAll()
+        .then(function(categories){
+            if(categories.length){res.render("products/crear", {errors:errors.mapped(),old:req.body,categories})}
+            else{ res.send({"message": "error"})}  })
+        .catch(function(e){res.status(500).send({"message": "Hubo un error: "+e})})
+    }
+
+    
     },
     editForm: (req, res)=>{  
 
@@ -141,6 +155,10 @@ let productosController = {
 
     },
     actualizar: (req, res)=>{
+
+        const errors=validationResult(req)
+        if(errors.isEmpty()){
+
         /* Obtenemos el ID */
        let productID = parseInt(req.params.id, 10)
 
@@ -162,6 +180,41 @@ let productosController = {
        .catch(function(e){
             res.status(500).send({"message": "Hubo un error: "+e})
        })
+
+    }else{
+        /* Obtenemos el ID */
+        let productId = parseInt(req.params.id, 10);
+        
+        /* Busca el producto en la base de datos */
+        db.Product.findOne({
+            include: [{association: "category"}],
+            where: {
+                id: productId,
+                active: 1
+            }
+        })
+        .then(function(product){
+            if(product){
+                /* Buscamos las categorias */
+                db.Category.findAll()
+                .then(function(categories){
+                    res.render("products/editar", {product: product.dataValues, categories,errors:errors.mapped(),old:req.body})  
+                })
+                .catch(function(e){
+                    res.status(500).send({"message": "Hubo un error: "+e})
+                })
+            }
+            else{
+                console.log("No se encontró el producto")
+                res.render("errors/404")
+            }
+        })
+        .catch(function(e){
+            res.status(500).send({"message": "Hubo un error: "+e})
+        })
+
+    }
+
     },
     borrar: (req, res)=>{
         //Eliminamos la imágen
