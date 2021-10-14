@@ -11,7 +11,7 @@ const userController = {
     },
 
     loginForm: (req, res)=>{
-        res.render("./users/ingreso")
+        res.render("users/ingreso", {error: null})
     },
 
     add: function (req, res) {
@@ -156,12 +156,11 @@ const userController = {
 
             }
     },
-    login: function (req, res) {
+    login: (req, res) => {
         // verificar si el correo está en la base de datos
-        return db.User.findOne({
+         db.User.findOne({
             where: {
-                email: req.body.email,
-                active: 1
+                email: req.body.email
             },
             include: [
                 {association: 'user_info'},
@@ -169,10 +168,12 @@ const userController = {
             ]
         })
         .then(function(user){  //la variable "user" ya trae los campos de user y user_info
-            
-            if(user){
+            if(user && user.active==false){
+                res.render('users/ingreso', {error: 'Tu cuenta ha sido bloqueda, comunicate al correo "administracion@tecnoshop.com" para más información'})
+            }else if(user){
                 /* Si existe, entonces compara las contraseñas*/
                 if(bcrypt.compareSync(req.body.password, user.pass)){
+           
                     /*Verifica si elijió la opcion de recordar*/
                     if(req.body.remember){
                         console.log(user.email)
@@ -199,18 +200,17 @@ const userController = {
 
                 }else{
                     // señalar al usuario que el correo o la contraseña es incorrecta
-                    res.render('users/ingreso', {error: 'Correo o contraseña incorrectos'})
+                    res.render('users/ingreso', {error: 'Correo contraseña incorrectos'})
                 }
             }else{
                 // señalar al usuario que el correo o la contraseña es incorrecta
-                res.render('users/ingreso', {error: 'Correo o contraseña incorrectos'})
+                res.render('users/ingreso', {error: 'Correo contraseña incorrectos'})
             }
 
         })
         .catch(function(e){
             res.status(500).send({"Message": "Hubo un error "+e})
         })
-           
     },
     perfil: (req, res) =>{
         res.render("users/perfil")

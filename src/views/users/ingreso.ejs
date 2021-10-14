@@ -26,8 +26,11 @@
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
             </div>
             <br>
-            <%if(locals.error){%>
-                <p class="errors">Correo o contraseña incorrectos</p>
+
+
+
+            <%if(error){%>
+                <p class="errors"><%=error%></p>
             <%}%>
 
             <div class="remember">
