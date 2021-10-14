@@ -22,8 +22,20 @@
         
         <div><a href="/users/edit">Editar perfil</a></div>
         <div class="delete"><a href="/users/delete">borrar perfil</a></div>
-            
+
+
+       
     </main>
+    <section class="ticket-purchases">
+        <%tickets.forEach(ticket =>{%>
+            <div class="user-ticket-conteiner">
+                <p><strong>Fecha: </strong> <%=ticket.purchase_date%></p>
+                <p><strong>Precio total: </strong> <%=ticket.total_price%></p>
+                <p><strong>Cantidad de productos: </strong> <%=ticket.ticket_purchases.length%></p>
+            </div>
+            <hr>
+        <%})%>
+    </section>
     <%}%>
 
     <!-- Vista parcial del footer -->

@@ -11,7 +11,7 @@ const userController = {
     },
 
     loginForm: (req, res)=>{
-        res.render("users/ingreso", {error: null})
+        res.render("users/login", {error: null})
     },
     add: function (req, res) {
         const errors=validationResult(req)
@@ -171,7 +171,7 @@ const userController = {
         })
         .then(function(user){  //la variable "user" ya trae los campos de user y user_info
             if(user && user.active==false){
-                res.render('users/ingreso', {error: 'Tu cuenta ha sido bloqueda, comunicate al correo "administracion@tecnoshop.com" para más información'})
+                res.render('users/login', {error: 'Tu cuenta ha sido bloqueda, comunicate al correo "administracion@tecnoshop.com" para más información'})
             }else if(user){
                 /* Si existe, entonces compara las contraseñas*/
                 if(bcrypt.compareSync(req.body.password, user.pass)){
@@ -194,7 +194,13 @@ const userController = {
                     userLogged.user_role = user.role.user_role
                     userLogged.release_date = user.user_info.age
                     /* Si las credenciales son correctas, entonces crea la session*/
+                        req.session.userLogged = userLogged
+                        res.redirect("/users/perfil")
+                    } else{
+                        res.render('users/login', {error: 'Tu correo o contraseña estan incorrectos'})
                     }
+            } else {
+                res.render('users/login', {error: 'Tu cuenta ha sido bloqueda, comunicate al correo "administracion@tecnoshop.com" para más información'})
             }
         })
       .catch(function(e){
@@ -202,7 +208,21 @@ const userController = {
        })
      },
     perfil: (req, res) =>{
-        res.render("users/perfil")
+        console.log("EStoy aquí")
+        db.Ticket.findAll({
+            include: [{association: "ticket_purchases"}],
+            where: {
+                user_id: req.session.userLogged.id
+            }
+        })
+        .then(function(tickets){
+            console.log(tickets)
+            res.render("users/perfil", {tickets})
+        })
+        .catch(function(e){
+            console.log(e)
+        })
+        
     }, 
     logout: (req, res)=>{
         /* Elimina la cookie */
