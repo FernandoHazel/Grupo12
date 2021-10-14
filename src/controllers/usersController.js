@@ -11,13 +11,8 @@ const userController = {
     },
 
     loginForm: (req, res)=>{
-<<<<<<< HEAD
         res.render("users/ingreso", {error: null})
-=======
-        res.render("./users/login")
->>>>>>> e852320f15fc98ecea32279defcae96e1b8441d0
     },
-
     add: function (req, res) {
         const errors=validationResult(req)
 
