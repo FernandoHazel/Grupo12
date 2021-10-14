@@ -18,7 +18,7 @@
             
             <div class="email">
                 <p>Email</p>
-                <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
+                <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" value='<%= locals.old ? old.email : null %>' required>
             </div>
             
             <div class="password">
@@ -26,12 +26,27 @@
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
             </div>
             <br>
+<<<<<<< HEAD:src/views/users/ingreso.ejs
 
 
 
             <%if(error){%>
                 <p class="errors"><%=error%></p>
             <%}%>
+=======
+            <!--mensaje de error en caso de haber ingresado mal el correo o la contraseña-->
+            <%if(locals.error){%>
+                <p class="errors">Correo o contraseña incorrectos</p>
+            <% } %>
+            <!--mensaje de error del front end en caso de haber ingresado un formato de correo inválido-->
+            <p id="arregloDeErrores"></p>
+            <!--mensaje de error del back end en caso de haber ingresado un formato de correo inválido-->
+            <%if(locals.errors && errors.email){ %>
+                <div style="color:red"><%= errors.email.msg %></div>
+            <% } %>
+            
+            
+>>>>>>> e852320f15fc98ecea32279defcae96e1b8441d0:src/views/users/login.ejs
 
             <div class="remember">
                 <input type="checkbox" name="remember" id="remember"> Recordarme
@@ -54,5 +69,7 @@
     
     <!-- Vista parcial del footer -->
     <%- include('../partials/footer.ejs') %>
+    <!-- Script para validar datos del login desde el front-end -->
+    <script src="/js/login.js"></script>
 </body>
 </html>

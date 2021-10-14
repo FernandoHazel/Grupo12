@@ -11,7 +11,11 @@ const userController = {
     },
 
     loginForm: (req, res)=>{
+<<<<<<< HEAD
         res.render("users/ingreso", {error: null})
+=======
+        res.render("./users/login")
+>>>>>>> e852320f15fc98ecea32279defcae96e1b8441d0
     },
 
     add: function (req, res) {
@@ -22,21 +26,21 @@ const userController = {
         if(errors.isEmpty()){
             console.log('entre errores')
             console.log(errors)
-        /*creamos un objeto con los datos recibidos del formulario y una dónde 
-        guardar la imágen si es que se mandó una, sino dejamos una default*/
-        let newUser = req.body
+            /*creamos un objeto con los datos recibidos del formulario y una dónde 
+            guardar la imágen si es que se mandó una, sino dejamos una default*/
+            let newUser = req.body
 
-        let img = "/images/usuarios/default.png"
-        if(req.file){
-            img = "/images/usuarios/" +req.file.filename
-        }
-        newUser.img = img
- 
-        //creamos un id para el usuario
-        newUser.id = Date.now()
-        newUser.id=newUser.id/1000
+            let img = "/images/usuarios/default.png"
+            if(req.file){
+                img = "/images/usuarios/" +req.file.filename
+            }
+            newUser.img = img
+    
+            //creamos un id para el usuario
+            newUser.id = Date.now()
+            newUser.id=newUser.id/1000
 
-        
+            
             let password = req.body.password
 
             //solo necesitamos una así que borramos la segunda que venía en el formulario
@@ -55,9 +59,9 @@ const userController = {
             //En el formulario ya no obtenemos la edad si no la fecha de nacimiento y hay
             // que hacer el calculo de la edad para luego mandarlo a la base de datos
             let yearPresent= new Date()
-            let year=newUser.release_date.slice(0,4)
+            let year=newUser.age.slice(0,4)
             newUser.age=yearPresent.getFullYear()-Number(year)
-           
+        
             
             //guardar en el disco, creamos un registro para la tabla de users y otro para la de users_info
             db.User.create({
@@ -77,20 +81,19 @@ const userController = {
                 })
             })
             .then(()=>{
-               return res.redirect('/users/login')
-               //res.send({newUser,roleId})
+            return res.redirect('/users/login')
+            //res.send({newUser,roleId})
             })
             .catch(function(e){
                 res.send({"Message": "Hubo un error "+e})
             })
             
-            } 
-            else{
-                //Hay errores y regresamos al formulario con los errores
-               // console.log(errors)
-                res.render('users/registro',{errors:errors.mapped(),old:req.body})
+        }else{
+            //Hay errores y regresamos al formulario con los errores
+            // console.log(errors)
+            res.render('users/registro',{errors:errors.mapped(),old:req.body})
 
-            }
+        }
     },
     edit: (req, res) => {
         res.render('users/edit')
@@ -103,58 +106,62 @@ const userController = {
         if(errors.isEmpty()){
             //res.send(req.body)
             
-        /*creamos un objeto con los datos recibidos del formulario y una dónde 
-        guardar la imágen si es que se mandó una, sino dejamos una default*/
-        let newUser = req.body
-        let img = req.session.userLogged.img
-        if(req.file){
-            img = "/images/usuarios/" +req.file.filename
-        }
-        newUser.img = img
-
-        //estos son los ids que tenemos en nustra tabla de users_roles
-        let roleId
-        if(newUser.profile == "seller"){
-            roleId = 5
-        }else{
-            roleId = 6
-        }
-
-        //guardar en el disco, creamos un registro para la tabla de users y otro para la de users_info
-        db.User.update({
-            email: newUser.email,
-            user_role_id: roleId, //5 seller, 6 user
-        },{
-            where: {email: req.session.userLogged.email} 
-        })
-        .then(function(user){
-            db.UserInfo.update({
-                first_name: newUser.name,
-                last_name: newUser.apellido,
-                age: newUser.release_date,
-                profile_img: newUser.img
-            },{
-                where: {first_name: req.session.userLogged.first_name} 
-            })
-        })
-        .then(function(){
-            req.session.userLogged = newUser
-        })
-        .catch(function(e){
-            res.status(500).send({"Message": "Hubo un error "+e})
-        })
-
-        /* Redirige al login */
-        res.redirect('/users/profile')
-        
-            } 
-            else{
-                //Hay errores y regresamos al formulario con los errores
-               // console.log(errors)
-                //console.log(req.body)
-                res.render('users/edit',{errors:errors.mapped(),old:req.body})
-
+            /*creamos un objeto con los datos recibidos del formulario y una dónde 
+            guardar la imágen si es que se mandó una, sino dejamos una default*/
+            let newUser = req.body
+            let img = req.session.userLogged.img
+            if(req.file){
+                img = "/images/usuarios/" +req.file.filename
             }
+            newUser.img = img
+
+            //estos son los ids que tenemos en nustra tabla de users_roles
+            let roleId
+            if(newUser.profile == "seller"){
+                roleId = 5
+            }else{
+                roleId = 6
+            }
+            //En el formulario ya no obtenemos la edad si no la fecha de nacimiento y hay
+            // que hacer el calculo de la edad para luego mandarlo a la base de datos
+            let yearPresent= new Date()
+            let year=newUser.release_date.slice(0,4)
+            newUser.age=yearPresent.getFullYear()-Number(year)
+
+            //guardar en el disco, creamos un registro para la tabla de users y otro para la de users_info
+            db.User.update({
+                email: newUser.email,
+                user_role_id: roleId, //5 seller, 6 user
+            },{
+                where: {email: req.session.userLogged.email} 
+            })
+            .then(function(user){
+                db.UserInfo.update({
+                    first_name: newUser.name,
+                    last_name: newUser.apellido,
+                    age: newUser.release_date,
+                    profile_img: newUser.img
+                },{
+                    where: {first_name: req.session.userLogged.first_name} 
+                })
+            })
+            .then(function(){
+                req.session.userLogged = newUser
+            })
+            .catch(function(e){
+                res.status(500).send({"Message": "Hubo un error "+e})
+            })
+
+            /* Redirige al login */
+            res.redirect('/users/profile')
+        
+        } else{
+            //Hay errores y regresamos al formulario con los errores
+            // console.log(errors)
+            //console.log(req.body)
+            res.render('users/edit',{errors:errors.mapped(),old:req.body})
+
+        }
     },
     login: (req, res) => {
         // verificar si el correo está en la base de datos
@@ -192,26 +199,13 @@ const userController = {
                     userLogged.user_role = user.role.user_role
                     userLogged.release_date = user.user_info.age
                     /* Si las credenciales son correctas, entonces crea la session*/
-
-                    req.session.userLogged = userLogged// hace una copia del objeto
-                     //borramos su contraseña del session
-                     console.log(req.session.userLogged)                    /* Redirije al perfil*/
-                     res.redirect('/users/perfil')
-
-                }else{
-                    // señalar al usuario que el correo o la contraseña es incorrecta
-                    res.render('users/ingreso', {error: 'Correo contraseña incorrectos'})
-                }
-            }else{
-                // señalar al usuario que el correo o la contraseña es incorrecta
-                res.render('users/ingreso', {error: 'Correo contraseña incorrectos'})
+                    }
             }
-
         })
-        .catch(function(e){
-            res.status(500).send({"Message": "Hubo un error "+e})
-        })
-    },
+      .catch(function(e){
+           console.log(e)
+       })
+     },
     perfil: (req, res) =>{
         res.render("users/perfil")
     }, 

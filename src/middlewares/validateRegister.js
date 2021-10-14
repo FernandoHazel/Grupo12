@@ -33,13 +33,12 @@ const validateRegister=[
         }else if(edadF(year)<13){
             throw new Error('Debes tener mínimo 13 años')
         }
-        
         return true
     }),
     
     body('email')
      .notEmpty().withMessage('Debes completar el email').bail()
-     .isEmail().withMessage('Ingresa un email valido')
+     .isEmail().withMessage('Ingresa un email valido').bail()
      .custom((value,{req})=>{
     
             return db.User.findOne({
@@ -50,9 +49,7 @@ const validateRegister=[
                 return Promise.reject('Este email ya esta registrado, ingresa otro')
             }
           })
-        
     }),
-    
     
     body('profile')
      .notEmpty().withMessage('Debes seleccionar una opción'),
@@ -94,7 +91,5 @@ const validateRegister=[
          return true
      })
     
-    
     ]
-
 module.exports=validateRegister

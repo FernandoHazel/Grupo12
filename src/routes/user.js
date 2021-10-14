@@ -10,6 +10,7 @@ const adminAuthMiddleware = require("../middlewares/adminAuthMiddleware")
 
 const carritoController = require("../controllers/carritoController")
 const validateRegister =require("../middlewares/validateRegister")
+const validateLogin =require("../middlewares/validateLogin")
 
 
 
@@ -24,7 +25,7 @@ router.post('/signup',multerUsuario.single('img'),validateRegister,  usersContro
 
 /* Login */
 router.get('/login', guestMiddleware,  usersController.loginForm)
-router.post('/login', guestMiddleware, usersController.login)
+router.post('/login', guestMiddleware, validateLogin, usersController.login)
 
 /* USERS AUTENTICADOS: requiere autenticacion */
 /* Perfil */
