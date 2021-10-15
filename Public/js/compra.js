@@ -2,6 +2,9 @@ window.addEventListener("load", function(){
     const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
     let form = document.querySelector("form#form-buy")
+    let formCarrito = document.querySelector("form#form-add-cart")
+
+
     console.log(form)
     console.log("This funciotn")
     form.addEventListener("submit", function(e){
@@ -27,6 +30,25 @@ window.addEventListener("load", function(){
             console.log("Enviando")
         }
     })
+
+
+
+    formCarrito.addEventListener("submit", function(e){
+       let realValue = document.querySelector("input#cantidad")
+       let hidenValue = document.querySelector("input#cantidad-respaldo")
+
+       if(realValue.value==""){
+           e.preventDefault()
+           console.log("valor nulo")
+       } else {
+            hidenValue.value = realValue.value
+            console.log(hidenValue.value)
+       }
+    })
+
+
+
+
 
 
 })

@@ -56,7 +56,8 @@
                             <input type="submit" id="btn-buy" value="Comprar">
                         </form>
 
-                        <form id="form-add-cart" action="/users/AnadirCarrito/<%= article.id%>" method="POST">    
+                        <form id="form-add-cart" action="/users/add-carrito/<%= article.id%>" method="POST">  
+                            <input type="number" id="cantidad-respaldo" name="cart_quantity" hidden>  
                             <button type="submit" id="btn-add-cart">Añadir al carrito</button>
                         </form>
                 <% } else if(locals.user && locals.user.user_role === "seller"){%>
