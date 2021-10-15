@@ -94,8 +94,9 @@ let carritoController = {
                                 created = result[1]; // boolean stating if it was created or not
                                 if(!created){
                                     res.send({"message": "Ya lo tienes agregado!"})
-                                }
-                                res.redirect("/users/carrito")
+                                }else{
+                                    res.redirect("/users/carrito")
+                                }   
                             })
                             .catch(function(e){
                                 console.log(e)
