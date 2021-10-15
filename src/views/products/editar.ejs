@@ -12,13 +12,18 @@
             <div class="main">
                     <div class="name">
                         <p>Nombre</p>
-                        <input name="title" id="name" placeholder="Nombre del producto" value="<%= product.title %>"">
+                        <input name="title" id="title" placeholder="Nombre del producto" value="<%= product.title %>"">
                     </div>
-                
+                    <p id="arregloDeErrores"></p>
+                    <% if(locals.errors && errors.title){ %>
+                        <% console.log(errors) %>
+                        <% console.log(old) %>
+                        <div style="color:red"><%= errors.title.msg %></div>
+                    <% } %>
                     
                     <div class="category">
                         <p>Categoria</p>
-                    <select name="category">
+                    <select name="category" id="category">
                         <% categories.forEach(c =>{%>
                             <option value=<%=c.id%>  <%=product.category.id === c.id ? "selected": ""%> ><%= c.name %></option>
                         <% }) %>
@@ -32,31 +37,53 @@
                         <option value="tablets" <%=product.category === "tablets"? "selected": ""%>>Tablet</option>
                         <option value="computadoras" <%=product.category === "computadoras"? "selected": ""%>>Laptop / PC</option>-->
                     </select>
+                    <p id="arregloDeErrores"></p>
+                        <% if(locals.errors && errors.category){ %>
+                            <div style="color:red"><%= errors.category.msg %></div>
+                        <% } %>
                     </div>
             </div>
+
+            <div class="description">
+                <p>Detalles</p>
+                <textarea name="description" placeholder="Características del producto" id="description" ><%= product.description%></textarea>
+            </div>
+            <p id="arregloDeErrores"></p>
+                <% if(locals.errors && errors.description){ %>
+                    <div style="color:red"><%= errors.description.msg %></div>
+                <% } %>
+
+
 
             <div class="main2">
                 <div class="price">
                     <p>Precio Unitario</p>
-                    <input type="number" name="price" tep='0.01'  value="<%= product.price  %>"> <span>$ MXN</span>
+                    <input type="number" name="price" id="price" tep='0.01'  value="<%= product.price  %>"> <span>$ MXN</span>
                 </div>
-            
+                <p id="arregloDeErrores"></p>
+                    <% if(locals.errors && errors.price){ %>
+                        <div style="color:red"><%= errors.price.msg %></div>
+                    <% } %>
     
                 <div class="discount">
                     <p>Descuento</p>
-                    <input type="number" min="0" name="discount" max="100" value="<%= product.discount || 0 %>"> <span>%</span>
+                    <input type="number" id="discount" min="0" name="discount" max="100" value="<%= product.discount || 0 %>"> <span>%</span>
                 </div>
-              
+                <p id="arregloDeErrores"></p>
+                    <% if(locals.errors && errors.discount){ %>
+                        <div style="color:red"><%= errors.discount.msg %></div>
+                    <% } %>
     
                 <div class="quantity">
                     <p>Cantidad</p>
-                    <input type="number" min="1" name="stock" value="<%= product.stock %>">
+                    <input type="number" id="stock" min="1" name="stock" value="<%= product.stock %>">
                 </div>
+                <p id="arregloDeErrores"></p>
+                    <% if(locals.errors && errors.stock){ %>
+                        <div style="color:red"><%= errors.stock.msg %></div>
+                    <% } %>
             </div>
-            <div class="description">
-                <p>Detalles</p>
-                <textarea name="description" placeholder="Características del producto" ><%= product.description%></textarea>
-            </div>
+            
                 <% if(product.hasOwnProperty('img')) {%>
                     <div>
                         <p>Imagen Actual</p>
@@ -64,15 +91,24 @@
     
                     <div class="pro-img">
                         <p>Cambiar Imagen</p>
-                        <input name="img" type="file" accept=".jpg, .png, .PNG" >
+                        <input name="img" id="img" type="file" accept=".jpg, .png, .PNG" >
                     </div>
+                    <p id="arregloDeErrores"></p>
+                    <% if(locals.errors && errors.img){ %>
+                        <div style="color:red"><%= errors.img.msg %></div>
+                    <% } %>
+
                     </div>
                     
                 <% } else{ %>
                     <div class="pro-img">
                         <p>Imagen</p>
-                        <input name="img" type="file" accept=".jpg, .png, .PNG" >
+                        <input name="img" id="img" type="file" accept=".jpg, .png, .PNG" >
                     </div>
+                    <p id="arregloDeErrores"></p>
+                    <% if(locals.errors && errors.img){ %>
+                        <div style="color:red"><%= errors.img.msg %></div>
+                    <% } %>
                 <% } %>
     
                 <div class="btts">
@@ -84,5 +120,6 @@
     </main>
 
     <%- include("../partials/footer") %>
+    <script src="/js/crear.js"></script>
 </body>
 </html>
