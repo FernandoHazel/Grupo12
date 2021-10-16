@@ -48,7 +48,7 @@ window.addEventListener('load',function(){
            return true
        }else{
            delete errores.email
-           arregloDeErrores[3].innerHTML=''
+           arregloDeErrores.innerHTML=''
            email.style.borderColor='green'
            return false
        }

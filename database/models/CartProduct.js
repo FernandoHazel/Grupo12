@@ -34,6 +34,12 @@ module.exports = function(sequelize, DataTypes){
             foreignKey: 'product_id',
             targetKey: 'id'
         })
+
+        CartProduct.belongsTo(models.CartUser, {
+            as: 'cart_user',
+            foreignKey: 'cart_user_id',
+            targetKey: 'id'
+        })
        
     }
     return CartProduct

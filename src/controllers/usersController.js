@@ -158,7 +158,6 @@ const userController = {
 
         }
     },
-<<<<<<< HEAD
     login: function (req, res) {
         //traemos las validaciones del formulario
         let errors = validationResult(req)
@@ -176,8 +175,9 @@ const userController = {
                 ]
             })
             .then(function(user){  //la variable "user" ya trae los campos de user y user_info
-                
-                if(user){
+                if(user && user.active==false){
+                    res.render('users/login', {error: 'Tu cuenta ha sido bloqueda, comunicate al correo "administracion@tecnoshop.com" para más información'})
+                }else if(user){
                     /* Si existe, entonces compara las contraseñas*/
                     if(bcrypt.compareSync(req.body.password, user.pass)){
                         /*Verifica si elijió la opcion de recordar*/
@@ -208,14 +208,13 @@ const userController = {
                         // señalar al usuario que el correo o la contraseña es incorrecta
                         res.render('users/login', {error: 'Correo o contraseña incorrectos'})
                     }
-                }else{
-                    // señalar al usuario que el correo o la contraseña es incorrecta
-                    res.render('users/login', {error: 'Correo o contraseña incorrectos'})
+                } else { 
+                    res.render('users/login', {error: 'Tu cuenta ha sido bloqueda, comunicate al correo "administracion@tecnoshop.com" para más información'})
                 }
 
             })
             .catch(function(e){
-                res.status(500).send({"Message": "Hubo un error "+e})
+                console.log(e)
             })
         }else{
             //Hay errores y regresamos al formulario con los errores
@@ -224,57 +223,7 @@ const userController = {
             res.render('users/login',{errors:errors.mapped(),old:req.body})
         }
         
-=======
-    login: (req, res) => {
-        // verificar si el correo está en la base de datos
-         db.User.findOne({
-            where: {
-                email: req.body.email
-            },
-            include: [
-                {association: 'user_info'},
-                {association: 'role'}
-            ]
-        })
-        .then(function(user){  //la variable "user" ya trae los campos de user y user_info
-            if(user && user.active==false){
-                res.render('users/login', {error: 'Tu cuenta ha sido bloqueda, comunicate al correo "administracion@tecnoshop.com" para más información'})
-            }else if(user){
-                /* Si existe, entonces compara las contraseñas*/
-                if(bcrypt.compareSync(req.body.password, user.pass)){
->>>>>>> 8ebda8829dfafdc146dc9183f0eec67fea0a909e
-           
-                    /*Verifica si elijió la opcion de recordar*/
-                    if(req.body.remember){
-                        console.log(user.email)
-                        /* creamos la cookie para el usuario*/
-                        res.cookie("tcnShop", user.email, {maxAge: (1000 * 60 * 60 * 24)})  // 24 hr
-                    }
-                    let userLogged = {}
-                    if (user.user_info){
-                        user.user_info.first_name? userLogged.first_name = user.user_info.first_name:userLogged.first_name="Unnamed"
-                        user.user_info.last_name? userLogged.last_name = user.user_info.last_name:userLogged.last_name="Unnamed"
-                        user.user_info.profile_img? userLogged.profile_img = user.user_info.profile_img:  userLogged.img="None"
-                    }
-                    userLogged.email = user.email
-                    userLogged.id = user.id
-                    userLogged.user_role_id = user.user_role_id
-                    userLogged.user_role = user.role.user_role
-                    userLogged.release_date = user.user_info.age
-                    /* Si las credenciales son correctas, entonces crea la session*/
-                        req.session.userLogged = userLogged
-                        res.redirect("/users/perfil")
-                    } else{
-                        res.render('users/login', {error: 'Tu correo o contraseña estan incorrectos'})
-                    }
-            } else {
-                res.render('users/login', {error: 'Tu cuenta ha sido bloqueda, comunicate al correo "administracion@tecnoshop.com" para más información'})
-            }
-        })
-      .catch(function(e){
-           console.log(e)
-       })
-     },
+    },
     perfil: (req, res) =>{
         console.log("EStoy aquí")
         db.Ticket.findAll({
