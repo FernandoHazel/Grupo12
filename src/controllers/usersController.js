@@ -55,7 +55,7 @@ const userController = {
             //En el formulario ya no obtenemos la edad si no la fecha de nacimiento y hay
             // que hacer el calculo de la edad para luego mandarlo a la base de datos
             let yearPresent= new Date()
-            let year=newUser.age.slice(0,4)
+            let year=newUser.release_date.slice(0,4)
             newUser.age=yearPresent.getFullYear()-Number(year)
         
             
@@ -72,7 +72,7 @@ const userController = {
                     user_id: newUser.id,
                     first_name: newUser.name,
                     last_name: newUser.apellido,
-                    age: newUser.age,
+                    age: newUser.release_date,
                     profile_img: newUser.img
                 })
             })
@@ -206,11 +206,11 @@ const userController = {
 
                     }else{
                         // señalar al usuario que el correo o la contraseña es incorrecta
-                        res.render('users/ingreso', {error: 'Correo o contraseña incorrectos'})
+                        res.render('users/login', {error: 'Correo o contraseña incorrectos'})
                     }
                 }else{
                     // señalar al usuario que el correo o la contraseña es incorrecta
-                    res.render('users/ingreso', {error: 'Correo o contraseña incorrectos'})
+                    res.render('users/login', {error: 'Correo o contraseña incorrectos'})
                 }
 
             })

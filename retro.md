@@ -55,3 +55,15 @@ Sprint 6
 4.Hacer menos: Aplazar reuniones
 
 5.Dejar de hacer: atrazarnos con la retro
+
+Sprint 7
+
+1.Comenzar a hacer: Ponernos deadlines intermedios en el sprint, por ejemplo tareas que tienen que estar terminadas para dentro de pocos días. Planear la presentación
+
+2.Hacer más: Buscar más recursos aparte de los del curso
+
+3.Continuar haciendo: Comunicación, reuniones, trabajo en equipo, reportarnos problemas entre nosotros
+
+4.Hacer menos: Atrasar tareas de los sprints
+
+5.Dejar de hacer: no hacer git pull antes de empezar a trabajar 
