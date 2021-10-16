@@ -49,4 +49,4 @@ https://www.ebay.com/
 http://www.amazon.com.mx/
 
 link al trello: https://trello.com/b/CfXlOwNx/technoshop
-Link al drive del equipo https://drive.google.com/drive/folders/1v15utc03Pvo7124XhYSl5fYPcwYiS_8J?usp=sharing
+Link al drive del equipo https://drive.google.com/drive/folders/1FfWwx81uWGlsVa-Xy4fMrT7QzX6mWsgx?usp=sharing

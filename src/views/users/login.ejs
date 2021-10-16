@@ -19,6 +19,7 @@
             <div class="email">
                 <p>Email</p>
                 <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" value='<%= locals.old ? old.email : null %>' required>
+                <p class='errors' id="arregloDeErrores"></p>
             </div>
             
             <div class="password">
@@ -36,7 +37,6 @@
                 <p class="errors">Correo o contraseña incorrectos</p>
             <% } %>
             <!--mensaje de error del front end en caso de haber ingresado un formato de correo inválido-->
-            <p id="arregloDeErrores"></p>
             <!--mensaje de error del back end en caso de haber ingresado un formato de correo inválido-->
             <%if(locals.errors && errors.email){ %>
                 <div style="color:red"><%= errors.email.msg %></div>
