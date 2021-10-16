@@ -22,7 +22,8 @@
                 <article class="cart-conteiner">
                     <img src="<%=cp.product.img%>" width="200px" height="150px">
                     <span class="product-title"><%=cp.product.title%></span>
-                    <input type="number" min="1" max="<%=cp.product.stock%>" value="<%=cp.product_quantity%>" id="product-quantity"> 
+                    <span><%=cp.product.discount > 0?((cp.product.price - (cp.product.price*cp.product.discount/100)) * cp.product_quantity):cp.product.price*cp.product_quantity%></span>
+                    <span type="number" min="1" max="<%=cp.product.stock%>"  id="product-quantity"> <%=cp.product_quantity%> </span>
                 </article>
                <hr>
 
@@ -51,7 +52,7 @@
             </div>
 
             <div>
-                <button class="comprar" onclick="buyCart()">COMPRAR</button>
+                <a class="comprar" href="/users/buy-cart">COMPRAR</a>
             </div>
         </section>
 
@@ -81,6 +82,7 @@ function deleteCart(){
 }
 
 function buyCart(){
+    console.log("SIP")
     fetch("/users/buy-cart")
     .then(function(res){
         console.log(res)

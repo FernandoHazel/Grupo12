@@ -168,7 +168,7 @@ let carritoController = {
                 })
                 .then(function(cart_products){
                     if(cart_products && cart_products.length > 0){
-
+                        console.log(cart_products[0].product)
                         /*************************** */
                         /* calculamos los precios a */
                         let array_products = []
@@ -177,15 +177,18 @@ let carritoController = {
                         /* calculamos el precio de cada producto*/
                         cart_products.forEach( p=>{
                             // calcula el precio total con descuento si tiene 
-                            let temp_price = (p.product.price - (p.produt.price * p.product.discount>0?(p.product.discount / 100):0 )) * p.product_quantity
+                            let temp = 0.0
+                            p.product.discount>0 ? temp=(p.product.discount / 100):0.0
 
+                            let temp_price = (p.product.price - (p.product.price * temp )) * p.product_quantity
+                            console.log("p->", temp_price)
                             /* lo ñade al total */
-                            total += temp_price
+                           total += temp_price
 
                             /* lo añade al array de productos */
-                            array_products.push({product_id: p.product.id, individual_price: temp_price, product_quantity: p.product_quantity})
+                           array_products.push({product_id: p.product.id, individual_price: temp_price, product_quantity: p.product_quantity})
                         })
-
+                        
                         /* creamos el ticket con el total de la suma de productos */
                         db.Ticket.create({
                             user_id: req.session.userLogged.id,
@@ -193,16 +196,31 @@ let carritoController = {
                         })
                         .then(function(ticket){
                             if(ticket){
+                                console.log("PP", array_products)
                                 /* Ahora crea la llave foránea al ticket id */
-                                arrayProductos.forEach(p =>{
+                                array_products.forEach(p =>{
                                     return p.ticket_id = ticket.id
                                 })
 
                                 /* ahora insertmos todos los productos (van a estar asociados a este ticket) */
-                                db.Purchases.bulkCreate(arrayProductos).then(function(result){
+                                db.Purchase.bulkCreate(array_products).then(function(result){
                                     if(result){
                                         console.log("EXITO")
-                                        res.json({"Messge": "Compra exitosa!"})
+                                        db.CartProduct.destroy({
+                                            where: {
+                                                cart_user_id: cart.id
+                                            }
+                                        })
+                                        .then(function(result){
+                                            if(result){
+                                                console.log("carrito eliminado")
+                                            }
+                                        })
+                                        .catch(function(e){
+                                            res.status(500).json({"message": "Algo salo mal " +e})
+
+                                        })
+                                        res.redirect(`/users/ticket/${ticket.id}`)
                                     } else {
                                         res.json({"message": "NO pudimos concretar la compra"})
                                     }
