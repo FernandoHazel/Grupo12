@@ -43,6 +43,7 @@ router.get('/carrito', customerAuthMiddleware, carritoController.carrito)
 
 //******* Añadir a carrito ********/
 router.post("/add-carrito/:id",customerAuthMiddleware, carritoController.anadirCarrito)
+router.get("/buy-cart",customerAuthMiddleware, carritoController.buyCart)
 router.delete("/borrar-carrito", customerAuthMiddleware, carritoController.borrar)
 router.get("/ticket/:id",customerAuthMiddleware, usersController.getClientTicket)
 

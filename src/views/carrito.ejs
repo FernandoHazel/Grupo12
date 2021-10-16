@@ -51,7 +51,7 @@
             </div>
 
             <div>
-                <button class="comprar">COMPRAR</button>
+                <button class="comprar" onclick="buyCart()">COMPRAR</button>
             </div>
         </section>
 
@@ -74,6 +74,16 @@ function deleteCart(){
         } else {
             console.log("Algo salio mal "+res.status)
         }
+    })
+    .catch(function(e){
+        console.log(e)
+    })
+}
+
+function buyCart(){
+    fetch("/users/buy-cart")
+    .then(function(res){
+        console.log(res)
     })
     .catch(function(e){
         console.log(e)

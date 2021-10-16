@@ -145,11 +145,94 @@ let carritoController = {
                     res.status(500).render({"message": "Algo salió mal "+e})
                 })
             }else{
-                res.sttus(404).json({"message": "NO existe tu carrito!!"})
+                res.status(404).json({"message": "NO existe tu carrito!!"})
             }
         })
         .then(function(e){
             console.log(e)
+        })
+        
+    },
+    buyCart: (req, res) => {
+
+        db.CartUser.findOne({
+            where: {
+                user_id: req.session.userLogged.id
+            }
+        })
+        .then(function(cart){
+            if(cart){
+                db.CartProduct.findAll({
+                    include: [{association: "product"}],
+                    cart_user_id: cart.id
+                })
+                .then(function(cart_products){
+                    if(cart_products && cart_products.length > 0){
+
+                        /*************************** */
+                        /* calculamos los precios a */
+                        let array_products = []
+                        let total = 0.0
+
+                        /* calculamos el precio de cada producto*/
+                        cart_products.forEach( p=>{
+                            // calcula el precio total con descuento si tiene 
+                            let temp_price = (p.product.price - (p.produt.price * p.product.discount>0?(p.product.discount / 100):0 )) * p.product_quantity
+
+                            /* lo ñade al total */
+                            total += temp_price
+
+                            /* lo añade al array de productos */
+                            array_products.push({product_id: p.product.id, individual_price: temp_price, product_quantity: p.product_quantity})
+                        })
+
+                        /* creamos el ticket con el total de la suma de productos */
+                        db.Ticket.create({
+                            user_id: req.session.userLogged.id,
+                            total_price: total
+                        })
+                        .then(function(ticket){
+                            if(ticket){
+                                /* Ahora crea la llave foránea al ticket id */
+                                arrayProductos.forEach(p =>{
+                                    return p.ticket_id = ticket.id
+                                })
+
+                                /* ahora insertmos todos los productos (van a estar asociados a este ticket) */
+                                db.Purchases.bulkCreate(arrayProductos).then(function(result){
+                                    if(result){
+                                        console.log("EXITO")
+                                        res.json({"Messge": "Compra exitosa!"})
+                                    } else {
+                                        res.json({"message": "NO pudimos concretar la compra"})
+                                    }
+                                })
+                                .catch(function(e){
+                                    res.status(500).json({"message": "Algo salo mal " +e})
+                                })
+
+                            } else {
+                                res.status(300).json({"message": "No se pudo concretar la compra"})
+                            }
+                        })
+                        .catch(function(e){
+                            res.status(500).json({"message": "Algo salo mal " +e})
+                        })
+
+                        /*************************************/
+                    } else {
+                        res.status(300).json({"message": "NO tienes ningún producto en tu carrito"})
+                    }
+                })
+                .catch(function(e){
+                    res.status(500).json({"message": "Algo salo mal " +e})
+                })
+            } else{
+                res.sattus(404).json({"message": "NO existe tu carrito!!"})
+            }
+        })
+        .catch(function(e){
+            res.status(500).json({"message": "Algo salo mal " +e})
         })
         
     }
