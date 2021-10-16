@@ -54,7 +54,7 @@ const userController = {
             //En el formulario ya no obtenemos la edad si no la fecha de nacimiento y hay
             // que hacer el calculo de la edad para luego mandarlo a la base de datos
             let yearPresent= new Date()
-            let year=newUser.age.slice(0,4)
+            let year=newUser.release_date.slice(0,4)
             newUser.age=yearPresent.getFullYear()-Number(year)
         
             
@@ -71,7 +71,7 @@ const userController = {
                     user_id: newUser.id,
                     first_name: newUser.name,
                     last_name: newUser.apellido,
-                    age: newUser.age,
+                    age: newUser.release_date,
                     profile_img: newUser.img
                 })
             })
@@ -158,6 +158,73 @@ const userController = {
 
         }
     },
+<<<<<<< HEAD
+    login: function (req, res) {
+        //traemos las validaciones del formulario
+        let errors = validationResult(req)
+
+        if(errors.isEmpty()){
+            // verificar si el correo está en la base de datos
+            return db.User.findOne({
+                where: {
+                    email: req.body.email,
+                    active: 1
+                },
+                include: [
+                    {association: 'user_info'},
+                    {association: 'role'}
+                ]
+            })
+            .then(function(user){  //la variable "user" ya trae los campos de user y user_info
+                
+                if(user){
+                    /* Si existe, entonces compara las contraseñas*/
+                    if(bcrypt.compareSync(req.body.password, user.pass)){
+                        /*Verifica si elijió la opcion de recordar*/
+                        if(req.body.remember){
+                            console.log(user.email)
+                            /* creamos la cookie para el usuario*/
+                            res.cookie("tcnShop", user.email, {maxAge: (1000 * 60 * 60 * 24)})  // 24 hr
+                        }
+                        let userLogged = {}
+                        if (user.user_info){
+                            user.user_info.first_name? userLogged.first_name = user.user_info.first_name:userLogged.first_name="Unnamed"
+                            user.user_info.last_name? userLogged.last_name = user.user_info.last_name:userLogged.last_name="Unnamed"
+                            user.user_info.profile_img? userLogged.profile_img = user.user_info.profile_img:  userLogged.img="None"
+                        }
+                        userLogged.email = user.email
+                        userLogged.id = user.id
+                        userLogged.user_role_id = user.user_role_id
+                        userLogged.user_role = user.role.user_role
+                        userLogged.release_date = user.user_info.age
+                        /* Si las credenciales son correctas, entonces crea la session*/
+
+                        req.session.userLogged = userLogged// hace una copia del objeto
+                        //borramos su contraseña del session
+                        console.log(req.session.userLogged)                    /* Redirije al perfil*/
+                        res.redirect('/users/perfil')
+
+                    }else{
+                        // señalar al usuario que el correo o la contraseña es incorrecta
+                        res.render('users/login', {error: 'Correo o contraseña incorrectos'})
+                    }
+                }else{
+                    // señalar al usuario que el correo o la contraseña es incorrecta
+                    res.render('users/login', {error: 'Correo o contraseña incorrectos'})
+                }
+
+            })
+            .catch(function(e){
+                res.status(500).send({"Message": "Hubo un error "+e})
+            })
+        }else{
+            //Hay errores y regresamos al formulario con los errores
+            // console.log(errors)
+            //console.log(req.body)
+            res.render('users/login',{errors:errors.mapped(),old:req.body})
+        }
+        
+=======
     login: (req, res) => {
         // verificar si el correo está en la base de datos
          db.User.findOne({
@@ -175,6 +242,7 @@ const userController = {
             }else if(user){
                 /* Si existe, entonces compara las contraseñas*/
                 if(bcrypt.compareSync(req.body.password, user.pass)){
+>>>>>>> 8ebda8829dfafdc146dc9183f0eec67fea0a909e
            
                     /*Verifica si elijió la opcion de recordar*/
                     if(req.body.remember){

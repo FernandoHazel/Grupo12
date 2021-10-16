@@ -1,3 +1,5 @@
+console.log('archivo login')
+
 window.addEventListener('load',function(){
     console.log('archivo de validación FE vinculado')
 
@@ -7,7 +9,7 @@ window.addEventListener('load',function(){
      let form=document.querySelector('#login-form')
      let submit=document.querySelector('#ingresar')
      
-     let arregloDeErrores=document.querySelectorAll('#arregloDeErrores')
+     let arregloDeErrores=document.querySelector('#arregloDeErrores')
    
      let errores={}
    ////////////////////////////////////////////////////////////////////
@@ -34,7 +36,7 @@ window.addEventListener('load',function(){
     function emailF(){
        if(email.value==''){
            errores.email='El email no debe estar vacio'
-           arregloDeErrores[3].innerHTML=errores.email
+           arregloDeErrores.innerHTML=errores.email
            console.log('Email vacio')
            email.style.borderColor='red'
            return true
