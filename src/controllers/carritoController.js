@@ -48,7 +48,6 @@ let carritoController = {
     },
    
     anadirCarrito: function(req, res){
-        console.log("Aqui mero///////////////////////////////////////////////////////", req.body)
 
         /* datos necesatrios*/
         let productId = req.params.id
@@ -118,27 +117,40 @@ let carritoController = {
         .catch(function(e){
             console.log(e)
         })
-/*
-        console.log(req.session.userLogged)
-        console.log(req.session.userLogged.email)
-
-        const usuario = anadiendoProducto.find(elem =>  elem.correo == req.session.userLogged.email)
-
-        if(usuario ){
-            console.log('usuario encontrado')
-            usuario.array.push(req.params.id)
-        }else{
-            console.log('no encontrado'+req.params.id)
-           let  arrayC=[req.params.id];
-            anadiendoProducto.push({correo:req.session.userLogged.email,array:arrayC });
-        }
-
-        const carritoJSON = JSON.stringify(anadiendoProducto, null, 2)
-		fs.writeFileSync(anadirCarrito, carritoJSON)
-
-        res.redirect("/users/carrito")*/
     },
-    borrarProducto:function(req, res){
+    borrar: (req, res)=>{
+        console.log("Metodo para borrar")
+
+
+        db.CartUser.findOne({
+            where: {
+                user_id: req.session.userLogged.id
+            }
+        })
+        .then(function(cart){
+            if(cart){
+                db.CartProduct.destroy({
+                    where: {
+                        cart_user_id: cart.id
+                    }
+                })
+                .then(function(result){
+                    if(result){
+                        res.status(200).json({"message": "ok"})
+                    } else {
+                        res.status(300).json({"message": "null"})
+                    }
+                })
+                .catch(function(e){
+                    res.status(500).render({"message": "Algo salió mal "+e})
+                })
+            }else{
+                res.sttus(404).json({"message": "NO existe tu carrito!!"})
+            }
+        })
+        .then(function(e){
+            console.log(e)
+        })
         
     }
 }

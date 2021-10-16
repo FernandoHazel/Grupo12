@@ -47,7 +47,7 @@
             </div>
 
             <div >
-                <button class="eliminar">ELIMINAR TODO EL CARRITO</button>
+                <button class="eliminar" onclick="deleteCart()">ELIMINAR TODO EL CARRITO</button>
             </div>
 
             <div>
@@ -61,4 +61,23 @@
      <!-- Vista parcial del footer -->
      <%- include('./partials/footer.ejs') %>
 </body>
+<script>
+function deleteCart(){
+    console.log("Quiero eliminr mi carrito")
+    fetch("/users/borrar-carrito",{
+        method: "DELETE"
+    })
+    .then(function(res){
+        if(res.status==200){
+            alert("Carrito eliminado con éxito!!")
+            location.reload()
+        } else {
+            console.log("Algo salio mal "+res.status)
+        }
+    })
+    .catch(function(e){
+        console.log(e)
+    })
+}
+</script>
 </html>
