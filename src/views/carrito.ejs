@@ -17,26 +17,17 @@
             
         </section>
 
-        <section class="productoDeCarrito"></section>
-        <% for (let i=0 ; i < array.length ; i++ ) { %>
-            <article>
-                <div class="carritoImagen">
-                    <img src="<%= array[i].img %>" id="logo">
-                </div>
-        
-                    <div class="carritoDetalles">
-                        <p class="nombreProducto"> <%= array[i].title %> </p>
-                        <P class="detallesProducto"> <%= array[i].description %> </P>
-                        <p class="cantidadProducto">CANTIDAD</p>
-                    </div>
-        
-                    <div class="carritoPrecio">
-                        <p class="precioProducto"> $<%= array[i].price %> MXN</p>
-                        <span class="eliminarProducto"><a href="/users/borrarProductoCarrito/<%= array[i].id %>">Eliminar</a></span> 
-                    </div>
-            </article>
-        <% }  %>
-    </section>
+        <section class="producto-carrito">
+            <%cart_products.forEach(cp=>{%>
+                <article class="cart-conteiner">
+                    <img src="<%=cp.product.img%>" width="200px" height="150px">
+                    <span class="product-title"><%=cp.product.title%></span>
+                    <input type="number" min="1" max="<%=cp.product.stock%>" value="<%=cp.product_quantity%>" id="product-quantity"> 
+                </article>
+               <hr>
+
+            <%})%>  
+        </section>
 
         <section class="comprarCarrito">
             <div>

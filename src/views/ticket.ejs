@@ -31,11 +31,12 @@
                 
                 <%purchases.forEach(purc =>{%>
                     <div class="product-purchase">
-                        <img src="<%=purc.product.img%>" alt="purc.product.name">
+                        <img src="<%=purc.product.img%>" alt="purc.product.name" width="200px" height="150px">
                         <span><%= purc.product.title %></span>
                         <span><%= purc.product_quantity %></span>
                         <span>$<%= purc.individual_price %></span>
                     </div>
+                    <br>
                     
                 <%})%>
 

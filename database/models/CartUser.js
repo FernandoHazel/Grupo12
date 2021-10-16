@@ -26,12 +26,10 @@ module.exports = function(sequelize, DataTypes){
             targetKey: 'id'
         }),
         //Un carrito puede tener muchos productos (N:M) a travez de cart_product
-        CartUser.belongsToMany(models.Product, {
-            as: 'added_products',
-            through: 'cart_product',
+        CartUser.hasMany(models.CartProduct, {
+            as: 'cart_products',
             foreignKey: 'cart_user_id',
-            otherKey: 'product_id',
-            timestamps: false
+            sourceKey: "id"
         })
     }
 

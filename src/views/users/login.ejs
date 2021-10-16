@@ -26,6 +26,11 @@
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
             </div>
             <br>
+
+            <%if(error){%>
+                <p class="errors"><%=error%></p>
+            <%}%>
+
             <!--mensaje de error en caso de haber ingresado mal el correo o la contraseña-->
             <%if(locals.error){%>
                 <p class="errors">Correo o contraseña incorrectos</p>
@@ -37,7 +42,7 @@
                 <div style="color:red"><%= errors.email.msg %></div>
             <% } %>
             
-            
+        
 
             <div class="remember">
                 <input type="checkbox" name="remember" id="remember"> Recordarme

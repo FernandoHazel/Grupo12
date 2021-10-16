@@ -18,13 +18,13 @@
                 <div class="first-name">
                     <p>Nombre</p>
                     <input type="text" id="name" name="name" placeholder="Nombre(s)"
-                    value = '<%= locals.old ? old.nameF : null %>'>
+                    value = '<%= locals.old ? old.name : null %>'>
                     <!-- <%= locals.old ? old.nameF : null %> -->
                     <p id="arregloDeErrores"></p>
-                    <% if(locals.errors && errors.nameF){ %>
+                    <% if(locals.errors && errors.name){ %>
                         <% console.log(errors) %>
                         <% console.log(old) %>
-                        <div style="color:red"><%= errors.nameF.msg %></div>
+                        <div style="color:red"><%= errors.name.msg %></div>
                     <% } %>
                 </div>
                 

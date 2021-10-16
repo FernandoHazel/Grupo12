@@ -6,6 +6,7 @@ const sellerAuthMiddleware = require("../middlewares/sellerAuthMiddleware")
 const customerAuthMiddleware = require("../middlewares/customerAuthMiddleware")
 
 const router = express.Router()
+const validateProduct =require("../middlewares/validateProduct")
 
 //******* redirecciona a todos los productos ********/
 router.get("/", (req, res)=>{
@@ -32,10 +33,10 @@ router.post("/buy-product/:id", customerAuthMiddleware, productosController.buy)
 /******** REQUIERE AUTENTICACION DE VENDEDOR ****************/
 //******* crear producto ********/
 router.get("/crear", sellerAuthMiddleware, productosController.crear)
-router.post("/crear",sellerAuthMiddleware, multerIMG.single('img'), productosController.store)
+router.post("/crear",sellerAuthMiddleware, multerIMG.single('img'),validateProduct, productosController.store)
 //******* editar producto ********/
 router.get("/editar/:id", sellerAuthMiddleware, productosController.editForm)
-router.put("/editar/:id", sellerAuthMiddleware, multerIMG.single('img'), productosController.actualizar)
+router.put("/editar/:id", sellerAuthMiddleware, multerIMG.single('img'),validateProduct, productosController.actualizar)
 //******* borrar producto ********/
 router.delete("/borrar/:id", sellerAuthMiddleware, productosController.borrar)
 /* productos del vendedor */

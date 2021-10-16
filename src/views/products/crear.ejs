@@ -10,16 +10,23 @@
             <div class="main">
                 <div class="name">
                     <p>Nombre</p>
-                    <input name="title" id="title" placeholder="Nombre del producto" required>
+                    <input name="title" id="title" placeholder="Nombre del producto" 
+                    value = '<%= locals.old ? old.title : null %>'>
                 </div>
+                <p id="arregloDeErrores"></p>
+                <% if(locals.errors && errors.title){ %>
+                    <% console.log(errors) %>
+                    <% console.log(old) %>
+                    <div style="color:red"><%= errors.title.msg %></div>
+                <% } %>
                 <br>
     
                 <div class="category">
                     <p>Categoria</p>
-                <select name="category">
+                <select name="category" id="category">
                     <option value="" disabled selected>Selecciona una</option>
                     <% categories.forEach(c =>{%>
-                        <option value=<%=c.id%> ><%= c.name %></option>
+                        <option value= <%=c.id%>  <%= locals.old && (c.id == old.category) ? 'selected' : null %>> <%= c.name %></option>
                     <% }) %>
                     <!-- 
                     <option value="tv">Tv</option>
@@ -32,36 +39,66 @@
                     OLD version
                 -->
                 </select>
+                <p id="arregloDeErrores"></p>
+            <% if(locals.errors && errors.category){ %>
+                <div style="color:red"><%= errors.category.msg %></div>
+            <% } %>
                 </div>
+                
             </div>
     
             
                 <div class="description">
                     <p>Detalles</p>
-                    <textarea placeholder="Menciona los detalles y/o características que consideres relevantes de cara a la venta al público" name="description" required></textarea>
+                    <textarea placeholder="Menciona los detalles y/o características que consideres relevantes de cara a la venta al público" name="description" id="description"><%= locals.old ? old.description : null %></textarea>
                 </div>
+                <p id="arregloDeErrores"></p>
+                <% if(locals.errors && errors.description){ %>
+                    <div style="color:red"><%= errors.description.msg %></div>
+                <% } %>
 
                 <div class="main2">
                     <div class="price">
                         <p>Precio Unitario</p>
-                        <input type="number" min="0" name="price" required> <span>$MXN</span>
+                        <input type="number"  name="price" id="price"
+                        value = '<%= locals.old ? old.price : null %>'> <span>$MXN</span>
                     </div>
+                    <p id="arregloDeErrores"></p>
+                    <% if(locals.errors && errors.price){ %>
+                        <div style="color:red"><%= errors.price.msg %></div>
+                    <% } %>
                   
                     <div class="discount">
                         <p>Descuento</p>
-                        <input type="number" min="0" name="discount" max="100" value="0" required> <span>%</span>
+                        <input type="number" min="0" name="discount" max="100" value="0" id="discount"
+                        value = '<%= locals.old ? old.discount : null %>' > <span>%</span>
                     </div>
+                    <p id="arregloDeErrores"></p>
+                    <% if(locals.errors && errors.discount){ %>
+                        <div style="color:red"><%= errors.discount.msg %></div>
+                    <% } %>
         
                     <div class="quantity">
                         <p>Cantidad</p>
-                        <input type="number" min="1" name="stock" required>
+                        <input type="number" min="1" name="stock" id="stock"
+                        value = '<%= locals.old ? old.stock : null %>'>
                     </div>
+                    <p id="arregloDeErrores"></p>
+                    <% if(locals.errors && errors.stock){ %>
+                        <div style="color:red"><%= errors.stock.msg %></div>
+                    <% } %>
                 </div>
     
                 <div class="pro-img">
                     <p>Sube una imagen de tu producto </p>
-                    <input type="file" accept=".jpg, .png, .PNG" name="img">
+                    <input type="file" accept=".jpg, .png, .PNG" name="img" id="img"
+                    value = '<%= locals.old ? old.img : null %>'>
                 </div>
+                <p id="arregloDeErrores"></p>
+
+                <% if(locals.errors && errors.img){ %>
+                    <div style="color:red"><%= errors.img.msg %></div>
+                <% } %>
                 <br>
     
                 
@@ -77,5 +114,6 @@
     </main>
 
     <%- include("../partials/footer") %>
+    <script src="/js/crear.js"></script>
 </body>
 </html>
