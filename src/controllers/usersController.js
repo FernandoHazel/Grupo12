@@ -356,6 +356,23 @@ const userController = {
         .catch(function(e){
             res.status(500).send({"message": "Hubo un error: "+e})
         })
+    },
+
+    listEmail: (req, res)=>{
+        db.User
+            .findAll({
+                attributes: [
+                    'email'
+                ]
+            })
+            .then(email => {
+                console.log(email)
+                return res.status(200).json({
+                    total: email.length,
+                    data:email,
+                    status: 200
+                })
+            })
     }
 
 
