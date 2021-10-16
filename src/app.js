@@ -11,7 +11,7 @@ const override = require("method-override")
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const loggedMidleware = require('./middlewares/loggedMiddleware')
-
+const api = require("./routes/api")
 
 // Method override
 app.use(override("_method"))
@@ -38,7 +38,7 @@ app.use(loggedMidleware)   // verifica si existe una session iniciada
 app.use('/',rutaMain);
 app.use("/productos", rutaProductos);
 app.use('/users', rutaUsers)
-
+app.use("/api", api)
 
 // Error 404
 app.use(function(req, res, next) {
