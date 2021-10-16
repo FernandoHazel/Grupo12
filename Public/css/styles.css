@@ -1317,25 +1317,27 @@ main #products-section{
     width: 100px;
     max-width: 150px;
     height: 60px;
-   
+
 }
+
 .cart-conteiner{
-    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .cart-conteiner .product-title{
-    position: absolute;
-    top: 35%;
-    left: 190px;
     font-weight: bold;
     font-size: 1rem;
 }
+.cart-conteiner .product-price{
+    font-weight: bold;
+}
+
 #product-quantity{
-    position: absolute;
-    top: 25%;
+    font-weight: bold;
     width: 80px;
     padding: 7px;
-    right: 25px;
 }
 
 /**********   Media queries            *********/

@@ -24,27 +24,21 @@ let carritoController = {
             }
         })
         .then(function(cart){
-            res.render("carrito", {cart_products: cart.cart_products})
+            let total = 0.0
+            cart.cart_products.forEach(cp => {
+                let tempPrice = cp.product.discount > 0?((cp.product.price - (cp.product.price*cp.product.discount/100)) * cp.product_quantity):cp.product.price*cp.product_quantity
+                tempPrice = tempPrice.toFixed(2)
+                tempPrice = parseFloat(tempPrice)
+                total += tempPrice
+                cp.subtotal = tempPrice
+            })
+    
+            res.render("carrito", {cart_products: cart.cart_products, total})
         })
         .catch(function(e){
             console.log(e)
             res.status(500).send({"message": "Hubo un error "+e})
         })
-        
-        
-        //Obteniendo array del usuario de el carrito.json
-       // const usuario = anadiendoProducto.find(elem =>  elem.correo == req.session.userLogged.email)
-        //let productosUsuario=usuario.array;
-        //
-        //let array=[];
-     
-        //for(let i=0;i<productosUsuario.length;i++){
-            //const objecto = arrayProductos.find(elem =>  elem.id == productosUsuario[i])
-            //array.push(objecto)
-            //console.log(array)
-        //}
-
-        //res.render('carrito', {user: req.session.userLogged, array: array});
     },
    
     anadirCarrito: function(req, res){
@@ -214,13 +208,15 @@ let carritoController = {
                                         .then(function(result){
                                             if(result){
                                                 console.log("carrito eliminado")
+                                                res.redirect(`/users/ticket/${ticket.id}`)
+                                            } else {
+                                                res.redirect(`/users/ticket/${ticket.id}`)
                                             }
                                         })
                                         .catch(function(e){
                                             res.status(500).json({"message": "Algo salo mal " +e})
 
                                         })
-                                        res.redirect(`/users/ticket/${ticket.id}`)
                                     } else {
                                         res.json({"message": "NO pudimos concretar la compra"})
                                     }
