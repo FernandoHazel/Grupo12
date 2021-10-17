@@ -48,6 +48,8 @@
                         <div style="color:red"><%= errors.release_date.msg %></div>
                     <% } %>
                 </div>
+            </div>
+
 
             </div>
 
@@ -70,7 +72,7 @@
             <div class="profile-photo">
                 <p>Foto de perfil</p>
             <!-- <input type="file" placeholder="Selecciona una foto" name="img" accept=".jpg, .png, .PNG">  -->
-                <input type="file" id="fotoPerfil" placeholder="Selecciona una foto" name="img" value="<%= locals.user.img%>">
+                <input type="file" id="fotoPerfil" placeholder="Selecciona una foto" name="img" value="<%= locals.user.profile_img%>">
                 <p id="arregloDeErrores"></p>
                 <% if(locals.errors && errors.img){ %>
                     <div style="color:red"><%= errors.img.msg %></div>
