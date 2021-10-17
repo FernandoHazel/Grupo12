@@ -35,7 +35,7 @@ function allProducts(req, res){
             p.product_tickets.forEach(tc =>{
                purchases.push({
                    sale_price: tc.individual_price,
-                   unit_price: tc.individual_price/tc.product_quantity,
+                   unit_price: parseFloat((tc.individual_price/tc.product_quantity).toFixed(2)),
                    quantity: tc.product_quantity,
                    date: tc.ticket.purchase_date
                })
@@ -80,28 +80,49 @@ function detail(req, res){
 
     }).then(function(product){
         if(product){
+
+            db.Purchase.findAll({
+                include: [{association: "ticket"}],
+                where: {
+                    product_id: product.id
+                }
+            }).then(function(p_purchases){
+                let purchases = []
             
-            let real_price = product.discount > 0? (product.price - (product.price * product.discount / 100)):product.price
+                /* product sales */
+                p_purchases.forEach(tc =>{
+                   purchases.push({
+                       sale_price: tc.individual_price,
+                       unit_price: parseFloat((tc.individual_price/tc.product_quantity).toFixed(2)),
+                       quantity: tc.product_quantity,
+                       date: tc.ticket.purchase_date
+                   })
+                })
 
-            let newProduct = {
-                name: product.title,
-                description: product.description,
-                price: product.price,
-                discount: product.discount,
-                real_price: real_price,
-                stock: product.stock,
-                active: product.active,
-                sold_units: product.sold_units,
-                category: product.category.name,
-                seller: {
-                    name: product.seller.user_info.first_name,
-                    last_name: product.seller.user_info.last_name,
-                    email: product.seller.email
-                },
-                image: `http://localhost:3031${product.img}`,
+                let real_price = product.discount > 0? (product.price - (product.price * product.discount / 100)):product.price
 
-            }
-            res.status(200).json(newProduct)
+                let newProduct = {
+                    name: product.title,
+                    description: product.description,
+                    price: product.price,
+                    discount: product.discount,
+                    real_price: real_price,
+                    stock: product.stock,
+                    active: product.active,
+                    sold_units: product.sold_units,
+                    category: product.category.name,
+                    seller: {
+                        name: product.seller.user_info.first_name,
+                        last_name: product.seller.user_info.last_name,
+                        email: product.seller.email
+                    },
+                    image: `http://localhost:3031${product.img}`,
+                    sales: purchases
+                }
+                res.status(200).json(newProduct)
+            }).catch(function(e){
+                res.status(500).json({"message": "Something went wrong "+e})
+            })
         }else{
             res.status(404).json({"message": "Product NOT found"})
         }
