@@ -366,7 +366,7 @@ const userController = {
                 ]
             })
             .then(email => {
-                console.log(email)
+               // console.log(email)
                 return res.status(200).json({
                     total: email.length,
                     data:email,
