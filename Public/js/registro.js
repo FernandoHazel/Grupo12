@@ -2,8 +2,6 @@
 window.addEventListener('load',function(){
     console.log('archivo de validación FE vinculado')
 
- // const db = require("../../database/models")
-
   let name= document.querySelector('#name')
   let lastName= document.querySelector('#apellido')
   let fechaNacimiento= document.querySelector('#date')
@@ -21,6 +19,7 @@ window.addEventListener('load',function(){
   let arregloDeErrores=document.querySelectorAll('#arregloDeErrores')
 
   let errores={}
+  var emails= {}
 ////////////////////////////////////////////////////////////////////
  function noAlfanumerico(cadena) {
     let longitud=cadena.length
@@ -155,13 +154,27 @@ edad=year-yearBirth-1
     }
     return false
  }
- function emailEstaEnBD(){
-    db.User.findAll()
-    .then((resultados) =>{
-        console.log(resultados)
-    })
-    return true
+
+ async function solicitarEmails() {
+    let boolean= await fetch('http://localhost:3031/users/signup/emails')
+     emails= await  boolean.json()
+     console.log('x='+emails)
+}
+
+  function emailEstaEnBD(){
+       solicitarEmails()
+        let numEmails=emails.total
+        for(let i=0;i<numEmails;i++){
+            console.log(emails.data[i].email)
+            console.log(emails.data[i].email==email.value)
+            if(emails.data[i].email==email.value){
+                return true
+            }
+        }
+        return false
+   
  }
+
  function emailF(){
     if(email.value==''){
         errores.email='El email no debe estar vacio'
@@ -175,17 +188,22 @@ edad=year-yearBirth-1
         console.log('Email no valido')
         email.style.borderColor='red'
         return true
-    }/*else if(emailEstaEnBD()){
+    }else{
+    let emailBD=emailEstaEnBD()
+    if( emailBD){
         errores.email='Email ya existe, usa otro'
         arregloDeErrores[3].innerHTML=errores.email
+        email.style.borderColor='red'
         console.log('Email ya existe')
         return true
-    }*/else{
+    }
+    }
+
     delete errores.email
     arregloDeErrores[3].innerHTML=''
     email.style.borderColor='green'
     return false
-    }
+    
  }
  function cuentaF(){
      let valor=cuenta.value

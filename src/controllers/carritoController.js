@@ -24,27 +24,21 @@ let carritoController = {
             }
         })
         .then(function(cart){
-            res.render("carrito", {cart_products: cart.cart_products})
+            let total = 0.0
+            cart.cart_products.forEach(cp => {
+                let tempPrice = cp.product.discount > 0?((cp.product.price - (cp.product.price*cp.product.discount/100)) * cp.product_quantity):cp.product.price*cp.product_quantity
+                tempPrice = tempPrice.toFixed(2)
+                tempPrice = parseFloat(tempPrice)
+                total += tempPrice
+                cp.subtotal = tempPrice
+            })
+    
+            res.render("carrito", {cart_products: cart.cart_products, total})
         })
         .catch(function(e){
             console.log(e)
             res.status(500).send({"message": "Hubo un error "+e})
         })
-        
-        
-        //Obteniendo array del usuario de el carrito.json
-       // const usuario = anadiendoProducto.find(elem =>  elem.correo == req.session.userLogged.email)
-        //let productosUsuario=usuario.array;
-        //
-        //let array=[];
-     
-        //for(let i=0;i<productosUsuario.length;i++){
-            //const objecto = arrayProductos.find(elem =>  elem.id == productosUsuario[i])
-            //array.push(objecto)
-            //console.log(array)
-        //}
-
-        //res.render('carrito', {user: req.session.userLogged, array: array});
     },
    
     anadirCarrito: function(req, res){
@@ -145,11 +139,114 @@ let carritoController = {
                     res.status(500).render({"message": "Algo salió mal "+e})
                 })
             }else{
-                res.sttus(404).json({"message": "NO existe tu carrito!!"})
+                res.status(404).json({"message": "NO existe tu carrito!!"})
             }
         })
         .then(function(e){
             console.log(e)
+        })
+        
+    },
+    buyCart: (req, res) => {
+
+        db.CartUser.findOne({
+            where: {
+                user_id: req.session.userLogged.id
+            }
+        })
+        .then(function(cart){
+            if(cart){
+                db.CartProduct.findAll({
+                    include: [{association: "product"}],
+                    cart_user_id: cart.id
+                })
+                .then(function(cart_products){
+                    if(cart_products && cart_products.length > 0){
+                        console.log(cart_products[0].product)
+                        /*************************** */
+                        /* calculamos los precios a */
+                        let array_products = []
+                        let total = 0.0
+
+                        /* calculamos el precio de cada producto*/
+                        cart_products.forEach( p=>{
+                            // calcula el precio total con descuento si tiene 
+                            let temp = 0.0
+                            p.product.discount>0 ? temp=(p.product.discount / 100):0.0
+
+                            let temp_price = (p.product.price - (p.product.price * temp )) * p.product_quantity
+                            console.log("p->", temp_price)
+                            /* lo ñade al total */
+                           total += temp_price
+
+                            /* lo añade al array de productos */
+                           array_products.push({product_id: p.product.id, individual_price: temp_price, product_quantity: p.product_quantity})
+                        })
+                        
+                        /* creamos el ticket con el total de la suma de productos */
+                        db.Ticket.create({
+                            user_id: req.session.userLogged.id,
+                            total_price: total
+                        })
+                        .then(function(ticket){
+                            if(ticket){
+                                console.log("PP", array_products)
+                                /* Ahora crea la llave foránea al ticket id */
+                                array_products.forEach(p =>{
+                                    return p.ticket_id = ticket.id
+                                })
+
+                                /* ahora insertmos todos los productos (van a estar asociados a este ticket) */
+                                db.Purchase.bulkCreate(array_products).then(function(result){
+                                    if(result){
+                                        console.log("EXITO")
+                                        db.CartProduct.destroy({
+                                            where: {
+                                                cart_user_id: cart.id
+                                            }
+                                        })
+                                        .then(function(result){
+                                            if(result){
+                                                console.log("carrito eliminado")
+                                                res.redirect(`/users/ticket/${ticket.id}`)
+                                            } else {
+                                                res.redirect(`/users/ticket/${ticket.id}`)
+                                            }
+                                        })
+                                        .catch(function(e){
+                                            res.status(500).json({"message": "Algo salo mal " +e})
+
+                                        })
+                                    } else {
+                                        res.json({"message": "NO pudimos concretar la compra"})
+                                    }
+                                })
+                                .catch(function(e){
+                                    res.status(500).json({"message": "Algo salo mal " +e})
+                                })
+
+                            } else {
+                                res.status(300).json({"message": "No se pudo concretar la compra"})
+                            }
+                        })
+                        .catch(function(e){
+                            res.status(500).json({"message": "Algo salo mal " +e})
+                        })
+
+                        /*************************************/
+                    } else {
+                        res.status(300).json({"message": "NO tienes ningún producto en tu carrito"})
+                    }
+                })
+                .catch(function(e){
+                    res.status(500).json({"message": "Algo salo mal " +e})
+                })
+            } else{
+                res.sattus(404).json({"message": "NO existe tu carrito!!"})
+            }
+        })
+        .catch(function(e){
+            res.status(500).json({"message": "Algo salo mal " +e})
         })
         
     }

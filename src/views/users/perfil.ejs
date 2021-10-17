@@ -26,6 +26,7 @@
 
        
     </main>
+    <%if(locals.isLogged && locals.user.user_role === "user"){%>
     <section class="ticket-purchases-list">
         <h2 class="purchases-title" style="margin-bottom: 40px;">Mis compras</h2>
         <%tickets.forEach(ticket =>{%>
@@ -41,6 +42,8 @@
         <%})%>
     </section>
     <%}%>
+    <%}%>
+
 
     <!-- Vista parcial del footer -->
     <%- include('../partials/footer.ejs') %>

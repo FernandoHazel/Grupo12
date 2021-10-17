@@ -23,6 +23,9 @@ router.get('/signup', guestMiddleware, usersController.registroForm)
 //,guestMiddleware
 router.post('/signup',multerUsuario.single('img'),validateRegister,  usersController.add)
 
+//Emails en bd
+router.get("/signup/emails",guestMiddleware, usersController.listEmail)
+
 /* Login */
 router.get('/login', guestMiddleware,  usersController.loginForm)
 router.post('/login', guestMiddleware, validateLogin, usersController.login)
@@ -43,12 +46,14 @@ router.get('/carrito', customerAuthMiddleware, carritoController.carrito)
 
 //******* Añadir a carrito ********/
 router.post("/add-carrito/:id",customerAuthMiddleware, carritoController.anadirCarrito)
+router.get("/buy-cart",customerAuthMiddleware, carritoController.buyCart)
 router.delete("/borrar-carrito", customerAuthMiddleware, carritoController.borrar)
 router.get("/ticket/:id",customerAuthMiddleware, usersController.getClientTicket)
 
 /* VENDEDOR: requiere autenticacion  */
 /* ventas del vendedor */
 router.get("/seller/sales", sellerAuthMiddleware, usersController.getAllSellerSales)
+
 
 
 /* ADMIN */

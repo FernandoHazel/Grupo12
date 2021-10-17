@@ -22,7 +22,8 @@
                 <article class="cart-conteiner">
                     <img src="<%=cp.product.img%>" width="200px" height="150px">
                     <span class="product-title"><%=cp.product.title%></span>
-                    <input type="number" min="1" max="<%=cp.product.stock%>" value="<%=cp.product_quantity%>" id="product-quantity"> 
+                    <span class="product-price">Precio $<%=cp.product.discount > 0?((cp.product.price - (cp.product.price*cp.product.discount/100)) * cp.product_quantity):cp.product.price*cp.product_quantity%></span>
+                    <span type="number" min="1" max="<%=cp.product.stock%>"  id="product-quantity">Cantidad: <%=cp.product_quantity%> </span>
                 </article>
                <hr>
 
@@ -30,6 +31,7 @@
         </section>
 
         <section class="comprarCarrito">
+            
             <div>
                 <form action="">
                     <label for="opciones">Método de pago</label>
@@ -42,16 +44,18 @@
                     </select>
                 </form>
             </div>
+            <br>
+            <br><br>
             <div>
-                TOTAL: $9,460 MXN
+                <span style="font-weight: bold; margin-left: 25px;margin-right: 25px;">TOTAL A PAGAR: $<%=total%></span>
             </div>
-
+<br>
             <div >
                 <button class="eliminar" onclick="deleteCart()">ELIMINAR TODO EL CARRITO</button>
             </div>
 
             <div>
-                <button class="comprar">COMPRAR</button>
+                <button class="comprar" onclick="buy('<%=total%>')">COMPRAR</button>
             </div>
         </section>
 
@@ -63,7 +67,7 @@
 </body>
 <script>
 function deleteCart(){
-    console.log("Quiero eliminr mi carrito")
+    console.log("Quiero eliminar mi carrito")
     fetch("/users/borrar-carrito",{
         method: "DELETE"
     })
@@ -78,6 +82,21 @@ function deleteCart(){
     .catch(function(e){
         console.log(e)
     })
+}
+
+function buy(total){
+    let ok = confirm("¿Estas seguro de compar todos los productos?\nTotal: $"+total)
+    console.log("SIP")
+    if (ok){
+        fetch("/users/buy-cart")
+        .then(function(res){
+            location.reload()
+        })
+    .catch(function(e){
+        console.log(e)
+    })
+    }
+   
 }
 </script>
 </html>
