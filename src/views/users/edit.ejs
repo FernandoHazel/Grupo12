@@ -10,7 +10,7 @@
 
     <main id="register-main">
                                                             <!-- enctype="multipart/form-data" -->
-        <form id="register-form" action="/users/modify" method="POST" enctype="multipart/form-data">
+        <form id="register-form" action="/users/modify?_method=PUT" method="POST" enctype="multipart/form-data">
             <p id="form-title">Editar perfil</p>
 
             <div class="main">
@@ -41,8 +41,7 @@
                 <div class="age">
                     <p>Fecha de nacimiento</p>
                     <!-- <input type="number" id="age" name="edad" placeholder="Tu edad"> -->
-                    <input type="date" name="release_date" id="date" 
-                    value='<%= locals.user.release_date%>'>
+                    <input type="date" name="release_date" id="date">
                     <p id="arregloDeErrores"></p>
                     <% if(locals.errors && errors.release_date){ %>
                         <div style="color:red"><%= errors.release_date.msg %></div>
@@ -72,7 +71,7 @@
             <div class="profile-photo">
                 <p>Foto de perfil</p>
             <!-- <input type="file" placeholder="Selecciona una foto" name="img" accept=".jpg, .png, .PNG">  -->
-                <input type="file" id="fotoPerfil" placeholder="Selecciona una foto" name="img" value="<%= locals.user.profile_img%>">
+                <input type="file" id="fotoPerfil" placeholder="Selecciona una foto" name="img">
                 <p id="arregloDeErrores"></p>
                 <% if(locals.errors && errors.img){ %>
                     <div style="color:red"><%= errors.img.msg %></div>

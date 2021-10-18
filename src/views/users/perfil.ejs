@@ -18,13 +18,12 @@
             <br>
             <p><%= locals.user.email%></p>
         </section>
+        <article id='profile-buttons'>
+            <div><a style="text-decoration: none;" href="/users/edit">Editar perfil</a></div>
+            <div><a style="text-decoration: none;" href="/users/changePassword">Cambiar contraseña</a></div>
+            <div id="delete"><a style="text-decoration: none;" href="/users/delete">Borrar perfil</a></div>
+        </article>
         
-        
-        <div><a href="/users/edit">Editar perfil</a></div>
-        <div class="delete"><a href="/users/delete">borrar perfil</a></div>
-
-
-       
     </main>
     <%if(locals.isLogged && locals.user.user_role === "user"){%>
     <section class="ticket-purchases-list">

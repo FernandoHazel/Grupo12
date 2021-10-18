@@ -35,7 +35,7 @@ router.post('/login', guestMiddleware, validateLogin, usersController.login)
 router.get('/perfil', authUserMiddleware,  usersController.perfil)
 /* Editar perfil */
 router.get('/edit', authUserMiddleware, usersController.edit)
-router.post('/modify', authUserMiddleware, usersController.modify)
+router.put('/modify', multerUsuario.single('img'), usersController.modify)
 /* Borrar perfil */
 router.get('/delete', authUserMiddleware, function(req, res){res.send('Aquí se borra el perfil')})
 /* Logout */
@@ -59,6 +59,7 @@ router.get("/seller/sales", sellerAuthMiddleware, usersController.getAllSellerSa
 /* ADMIN */
 router.get("/admin/active_users/:type", adminAuthMiddleware, usersController.getAllUsers)
 router.delete("/delete/:id", adminAuthMiddleware, usersController.deleteAccount)
+router.delete("/delete/user", usersController.deleteAccountUser)
 router.delete("/activate/:id", adminAuthMiddleware, usersController.activateAccount)
 
 module.exports = router

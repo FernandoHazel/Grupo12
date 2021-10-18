@@ -37,6 +37,7 @@ const loggedMiddleware =  async (req, res, next) => {
                     userLogged.email = user.email
                     userLogged.id = user.id
                     userLogged.user_role_id = user.user_role_id
+                    userLogged.release_date = user.user_info.age
 
                     userLogged.user_role = user.role?user.role.user_role:"Undefined"
                 //creamos la session
@@ -48,6 +49,8 @@ const loggedMiddleware =  async (req, res, next) => {
     if(req.session && req.session.userLogged){
         res.locals.isLogged = true
         res.locals.user = req.session.userLogged
+        console.log('esto viene en locals user ')
+        console.log(res.locals.user)
     }
     /* Avanzamos en la cadena de peticiones  */
     next();

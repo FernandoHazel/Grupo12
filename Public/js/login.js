@@ -42,7 +42,7 @@ window.addEventListener('load',function(){
            return true
        }else if(emailValido()){
            errores.email='Debes ingresar un email valido'
-           arregloDeErrores[3].innerHTML=errores.email
+           arregloDeErrores.innerHTML=errores.email
            console.log('Email no valido')
            email.style.borderColor='red'
            return true

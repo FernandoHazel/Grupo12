@@ -71,7 +71,7 @@ const userController = {
                     user_id: newUser.id,
                     first_name: newUser.name,
                     last_name: newUser.apellido,
-                    age: newUser.release_date,
+                    age: newUser.age, //de momento si estamos guardando la edad en lugar e la fecha de nacimiento para no hacer tanto cambio en la base de datos
                     profile_img: newUser.img
                 })
             })
@@ -94,21 +94,33 @@ const userController = {
         res.render('users/edit')
     },
     modify: (req, res) => {
+        //res.send(req.body)
+        let newUser = req.body
         const errors=validationResult(req)
         //Si no hay errores creamos un nuevo usuario 
         //de lo contrario volvemos al formulario con los errores para el usuario
 
         if(errors.isEmpty()){
-            //res.send(req.body)
+            
             
             /*creamos un objeto con los datos recibidos del formulario y una dónde 
             guardar la imágen si es que se mandó una, sino dejamos una default*/
-            let newUser = req.body
+            
+    
             let img = req.session.userLogged.img
             if(req.file){
                 img = "/images/usuarios/" +req.file.filename
             }
             newUser.img = img
+
+            let releaseDate = req.session.userLogged.release_date
+            if (req.body.release_date != ""){
+                let yearPresent= new Date()
+                let year=newUser.release_date.slice(0,4)
+                let age = yearPresent.getFullYear()-Number(year)
+                releaseDate = age
+            }
+            newUser.release_date = releaseDate
 
             //estos son los ids que tenemos en nustra tabla de users_roles
             let roleId
@@ -119,46 +131,48 @@ const userController = {
             }
             //En el formulario ya no obtenemos la edad si no la fecha de nacimiento y hay
             // que hacer el calculo de la edad para luego mandarlo a la base de datos
-            let yearPresent= new Date()
-            let year=newUser.release_date.slice(0,4)
-            newUser.age=yearPresent.getFullYear()-Number(year)
 
-            //guardar en el disco, creamos un registro para la tabla de users y otro para la de users_info
+            
+
+            //actualizamos la información del usuario
             db.User.update({
-                email: newUser.email,
                 user_role_id: roleId, //5 seller, 6 user
             },{
-                where: {email: req.session.userLogged.email} 
+                where: {id: req.session.userLogged.id} 
             })
             .then(function(user){
+                console.log('este es el usuario a modificar ' + user)
                 db.UserInfo.update({
                     first_name: newUser.name,
                     last_name: newUser.apellido,
-                    age: newUser.release_date,
+                    age: newUser.release_date, //de momento si estamos guardando la edad en lugar e la fecha de nacimiento para no hacer tanto cambio en la base de datos
                     profile_img: newUser.img
                 },{
-                    where: {first_name: req.session.userLogged.first_name} 
+                    where: {user_id: req.session.userLogged.id} 
                 })
             })
             .then(function(){
-                req.session.userLogged = newUser
+                console.log('Esto viene en el body de edit')
+                console.log(req.body)
+                /* Elimina la cookie */
+                res.clearCookie("tcnShop")
+                /* Elimina la sesion */
+                req.session.destroy()
+                /* Redirige al login */
+                res.redirect('/users/login')
             })
             .catch(function(e){
                 res.status(500).send({"Message": "Hubo un error "+e})
             })
 
-            /* Redirige al login */
-            res.redirect('/users/profile')
-        
         } else{
             //Hay errores y regresamos al formulario con los errores
             // console.log(errors)
             //console.log(req.body)
             res.render('users/edit',{errors:errors.mapped(),old:req.body})
-
         }
     },
-    login: function (req, res) {
+    login: (req, res) => {
         //traemos las validaciones del formulario
         let errors = validationResult(req)
 
@@ -201,7 +215,7 @@ const userController = {
 
                         req.session.userLogged = userLogged// hace una copia del objeto
                         //borramos su contraseña del session
-                        console.log(req.session.userLogged)                    /* Redirije al perfil*/
+                        console.log('esto viene en session = '+req.session.userLogged)                    /* Redirije al perfil*/
                         res.redirect('/users/perfil')
 
                     }else{
@@ -225,7 +239,7 @@ const userController = {
         
     },
     perfil: (req, res) =>{
-        console.log("EStoy aquí")
+        console.log("Estoy aquí")
         db.Ticket.findAll({
             include: [{association: "ticket_purchases"}],
             where: {
@@ -233,7 +247,7 @@ const userController = {
             }
         })
         .then(function(tickets){
-            console.log(tickets)
+            console.log('tickets = ' + tickets)
             res.render("users/perfil", {tickets})
         })
         .catch(function(e){
@@ -329,6 +343,31 @@ const userController = {
             } else {
                 res.status(500).json({status: "error"})
             }
+        })
+        .catch(function(e){
+            res.status(500).send({"message": "Hubo un error: "+e})
+        })
+    },
+    deleteAccountUser: (req, res)=>{
+        
+        let user_id = req.session.userLogged.id
+        user_id = parseInt(user_id, 10)
+
+        db.User.update({
+            active: 0
+        }, {
+        where: {
+            active: 1,
+            id: user_id
+        }
+        })
+        .then(function(user){
+            if(user){
+                res.status(200).json({status: "ok"})
+            } else {
+                res.status(500).json({status: "error"})
+            }
+            res.redirect('/users/perfil')
         })
         .catch(function(e){
             res.status(500).send({"message": "Hubo un error: "+e})
