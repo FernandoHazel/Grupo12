@@ -28,14 +28,10 @@
             </div>
             <br>
 
+            <!--mensaje de error en caso de haber ingresado mal el correo o la contraseña-->
             <%if(error){%>
                 <p class="errors"><%=error%></p>
             <%}%>
-
-            <!--mensaje de error en caso de haber ingresado mal el correo o la contraseña-->
-            <%if(locals.error){%>
-                <p class="errors">Correo o contraseña incorrectos</p>
-            <% } %>
             <!--mensaje de error del front end en caso de haber ingresado un formato de correo inválido-->
             <!--mensaje de error del back end en caso de haber ingresado un formato de correo inválido-->
             <%if(locals.errors && errors.email){ %>

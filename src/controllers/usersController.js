@@ -172,6 +172,32 @@ const userController = {
             res.render('users/edit',{errors:errors.mapped(),old:req.body})
         }
     },
+    changePasswordForm: (req, res) =>{
+        res.render('users/changePasswordForm')
+    },
+    changePassword: (req, res) =>{
+        //res.send(req.session.userLogged)
+        if (req.body.password == req.body.password2){
+            //hasheamos la contraseña y la guardamos en nuestro objeto que se va a ir a la base de datos
+            let newPassword = bcrypt.hashSync(req.body.password, 10)
+            //res.send('aquí se cambiaría la contraseña')
+            db.User.update({
+                pass: newPassword, //5 seller, 6 user
+            },{
+                where: {id: req.session.userLogged.id} 
+            })
+            .then(function(){
+                res.redirect('/users/login')
+            })
+            .catch(function(e){
+                res.status(500).send({"Message": "Hubo un error "+e})
+            })
+
+        } else {
+            res.render('users/changePasswordForm', {error: 'Las contraseñas no coinciden'})
+        }
+        
+    },
     login: (req, res) => {
         //traemos las validaciones del formulario
         let errors = validationResult(req)

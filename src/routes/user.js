@@ -36,6 +36,9 @@ router.get('/perfil', authUserMiddleware,  usersController.perfil)
 /* Editar perfil */
 router.get('/edit', authUserMiddleware, usersController.edit)
 router.put('/modify', multerUsuario.single('img'), usersController.modify)
+/* Cambiar contraseña */
+router.get('/changePasswordForm', authUserMiddleware, usersController.changePasswordForm)
+router.put('/changePassword', usersController.changePassword)
 /* Borrar perfil */
 router.get('/delete', authUserMiddleware, function(req, res){res.send('Aquí se borra el perfil')})
 /* Logout */
