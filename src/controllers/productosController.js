@@ -36,7 +36,6 @@ let productosController = {
                     limit: 10
                 })
                 .then(function(data){
-    
                     res.render("products/detalles", {article:product, category: data, toThousand})
                 })
                 .catch(function(e){

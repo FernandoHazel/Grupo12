@@ -38,6 +38,11 @@ header{
     padding: 2px;
     width: 220px
 }
+/* Detalles del producto */
+.product-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
 /*Menu para smartphones*/
 #menu{
