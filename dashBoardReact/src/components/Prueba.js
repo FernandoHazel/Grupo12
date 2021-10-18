@@ -8,6 +8,7 @@ import NotFound from './NotFound';
 import {Link, Route, Switch} from 'react-router-dom';
 
 let x= 'fruta'
+/*
 fetch('api/genres')
         .then(respuesta =>{
             return respuesta.json()
@@ -17,7 +18,7 @@ fetch('api/genres')
            // this.setState({genresList:genres.data})
         })
         .catch(error => console.log(error))
-
+*/
 
 fetch('api/products/all/')
 .then((res)=>{
