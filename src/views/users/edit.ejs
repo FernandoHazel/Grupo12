@@ -71,7 +71,7 @@
             <div class="profile-photo">
                 <p>Foto de perfil</p>
             <!-- <input type="file" placeholder="Selecciona una foto" name="img" accept=".jpg, .png, .PNG">  -->
-                <input type="file" id="fotoPerfil" placeholder="Selecciona una foto" name="img">
+                <input type="file" id="fotoPerfil" placeholder="Selecciona una foto" name="img" value='<%= locals.user.profile_img%>'>
                 <p id="arregloDeErrores"></p>
                 <% if(locals.errors && errors.img){ %>
                     <div style="color:red"><%= errors.img.msg %></div>
@@ -87,6 +87,6 @@
 
     <!-- Vista parcial del footer -->
     <%- include('../partials/footer.ejs') %>
-    <!-- <script src="/js/registro.js"></script> -->
+    <script src="/js/editProfile.js"></script>
 </body>
 </html>

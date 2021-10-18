@@ -1,6 +1,6 @@
 const {body}= require('express-validator')
 
-const validateRegister=[
+const validateLogin=[
 
     body('email')
      .notEmpty().withMessage('Debes completar el email').bail()
@@ -11,4 +11,4 @@ const validateRegister=[
      .notEmpty().withMessage('Debes completar el password').bail(),
     ]
 
-module.exports=validateRegister
+module.exports=validateLogin

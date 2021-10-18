@@ -11,6 +11,9 @@ const adminAuthMiddleware = require("../middlewares/adminAuthMiddleware")
 const carritoController = require("../controllers/carritoController")
 const validateRegister =require("../middlewares/validateRegister")
 const validateLogin =require("../middlewares/validateLogin")
+const validateChangePassword =require("../middlewares/validateChangePassword")
+const validateEditProfile =require("../middlewares/validateEditProfile")
+
 
 
 
@@ -34,11 +37,11 @@ router.post('/login', guestMiddleware, validateLogin, usersController.login)
 /* Perfil */
 router.get('/perfil', authUserMiddleware,  usersController.perfil)
 /* Editar perfil */
-router.get('/edit', authUserMiddleware, usersController.edit)
-router.put('/modify', multerUsuario.single('img'), usersController.modify)
+router.get('/edit', authUserMiddleware,  usersController.edit)
+router.put('/modify', multerUsuario.single('img'), validateEditProfile, usersController.modify)
 /* Cambiar contraseña */
 router.get('/changePasswordForm', authUserMiddleware, usersController.changePasswordForm)
-router.put('/changePassword', usersController.changePassword)
+router.put('/changePassword', validateChangePassword, usersController.changePassword)
 /* Borrar perfil */
 router.get('/delete', authUserMiddleware,usersController.deleteAccountUser)
 /* Logout */

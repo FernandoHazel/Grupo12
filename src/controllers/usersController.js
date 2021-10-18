@@ -101,8 +101,6 @@ const userController = {
         //de lo contrario volvemos al formulario con los errores para el usuario
 
         if(errors.isEmpty()){
-            
-            
             /*creamos un objeto con los datos recibidos del formulario y una dónde 
             guardar la imágen si es que se mandó una, sino dejamos una default*/
             
@@ -169,33 +167,40 @@ const userController = {
             //Hay errores y regresamos al formulario con los errores
             // console.log(errors)
             //console.log(req.body)
-            res.render('users/edit',{errors:errors.mapped(),old:req.body})
+            res.render('users/edit',{errors:errors.mapped(), old:req.body})
         }
     },
     changePasswordForm: (req, res) =>{
         res.render('users/changePasswordForm')
     },
     changePassword: (req, res) =>{
-        //res.send(req.session.userLogged)
-        if (req.body.password == req.body.password2){
-            //hasheamos la contraseña y la guardamos en nuestro objeto que se va a ir a la base de datos
-            let newPassword = bcrypt.hashSync(req.body.password, 10)
-            //res.send('aquí se cambiaría la contraseña')
-            db.User.update({
-                pass: newPassword, //5 seller, 6 user
-            },{
-                where: {id: req.session.userLogged.id} 
-            })
-            .then(function(){
-                res.redirect('/users/login')
-            })
-            .catch(function(e){
-                res.status(500).send({"Message": "Hubo un error "+e})
-            })
+        let errors = validationResult(req)
 
+        if (errors.isEmpty()){
+            //res.send(req.session.userLogged)
+            if (req.body.password == req.body.password2){
+                //hasheamos la contraseña y la guardamos en nuestro objeto que se va a ir a la base de datos
+                let newPassword = bcrypt.hashSync(req.body.password, 10)
+                //res.send('aquí se cambiaría la contraseña')
+                db.User.update({
+                    pass: newPassword, //5 seller, 6 user
+                },{
+                    where: {id: req.session.userLogged.id} 
+                })
+                .then(function(){
+                    res.redirect('/users/login')
+                })
+                .catch(function(e){
+                    res.status(500).send({"Message": "Hubo un error "+e})
+                })
+
+            } else {
+                res.render('users/changePasswordForm', {error: 'Las contraseñas no coinciden'})
+            }
         } else {
-            res.render('users/changePasswordForm', {error: 'Las contraseñas no coinciden'})
+            res.render('users/changePasswordForm', {errors: errors.mapped(), old:req.body})
         }
+        
         
     },
     login: (req, res) => {
@@ -246,10 +251,10 @@ const userController = {
 
                     }else{
                         // señalar al usuario que el correo o la contraseña es incorrecta
-                        res.render('users/login', {error: 'Correo o contraseña incorrectos'})
+                        res.render('users/login', {error: 'Correo o contraseña incorrectos', old:req.body})
                     }
                 } else { 
-                    res.render('users/login', {error: 'Tu cuenta ha sido bloqueda, comunicate al correo "administracion@tecnoshop.com" para más información'})
+                    res.render('users/login', {error: 'Tu cuenta ha sido bloqueda, comunicate al correo "administracion@tecnoshop.com" para más información', old:req.body})
                 }
 
             })
