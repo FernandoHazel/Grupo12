@@ -40,7 +40,7 @@ router.put('/modify', multerUsuario.single('img'), usersController.modify)
 router.get('/changePasswordForm', authUserMiddleware, usersController.changePasswordForm)
 router.put('/changePassword', usersController.changePassword)
 /* Borrar perfil */
-router.get('/delete', authUserMiddleware, function(req, res){res.send('Aquí se borra el perfil')})
+router.get('/delete', authUserMiddleware,usersController.deleteAccountUser)
 /* Logout */
 router.get('/logout', authUserMiddleware, usersController.logout)
 

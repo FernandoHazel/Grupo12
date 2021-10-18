@@ -377,7 +377,6 @@ const userController = {
     deleteAccountUser: (req, res)=>{
         
         let user_id = req.session.userLogged.id
-        user_id = parseInt(user_id, 10)
 
         db.User.update({
             active: 0
@@ -388,12 +387,13 @@ const userController = {
         }
         })
         .then(function(user){
+            req.session.destroy()
             if(user){
                 res.status(200).json({status: "ok"})
             } else {
                 res.status(500).json({status: "error"})
             }
-            res.redirect('/users/perfil')
+            res.redirect('/users/login')
         })
         .catch(function(e){
             res.status(500).send({"message": "Hubo un error: "+e})
