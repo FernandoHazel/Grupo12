@@ -8,25 +8,19 @@ import NotFound from './NotFound';
 import {Link, Route, Switch} from 'react-router-dom';
 
 let x= 'fruta'
-/*
-fetch('api/genres')
+
+fetch('api/products/detail/1')
         .then(respuesta =>{
             return respuesta.json()
         })
-        .then(genres =>{
-            console.log(genres)
+        .then(gen =>{
+            console.log(gen)
            // this.setState({genresList:genres.data})
         })
         .catch(error => console.log(error))
-*/
 
-fetch('api/products/all/')
-.then((res)=>{
-    res.json()
-})
-.then((result)=>{
-    console.log(result)
-})
+//fetch('api/products/all/')
+
 
 
 

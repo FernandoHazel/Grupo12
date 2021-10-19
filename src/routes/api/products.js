@@ -7,6 +7,7 @@ const db = require("../../../database/models")
 router.get("/all", allProducts)
 router.get("/detail/:id",detail)
 
+
 function allProducts(req, res){
     db.Product.findAll({
         include: [{association: "product_tickets", include: [{association: "ticket"}]}]

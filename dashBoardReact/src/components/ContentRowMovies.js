@@ -1,38 +1,48 @@
 import React from 'react';
 import SmallCard from './SmallCard';
-
-/*  Cada set de datos es un objeto literal */
-
-/* <!-- Movies in DB --> */
-
-let moviesInDB = {
-    title: 'Movies in Data Base',
-    color: 'primary', 
-    cuantity: 21,
-    icon: 'fa-clipboard-list'
-}
-
-/* <!-- Total awards --> */
-
-let totalAwards = {
-    title:' Total awards', 
-    color:'success', 
-    cuantity: '79',
-    icon:'fa-award'
-}
-
-/* <!-- Actors quantity --> */
-
-let actorsQuantity = {
-    title:'Actors quantity' ,
-    color:'warning',
-    cuantity:'49',
-    icon:'fa-user-check'
-}
-
-let cartProps = [moviesInDB, totalAwards, actorsQuantity];
+import {useEffect,useState} from 'react'
 
 function ContentRowMovies(){
+
+    const [cartProps,setCartProps]=useState([])
+
+
+useEffect(()=>{
+    fetch('api/products/all')
+        .then(respuesta =>{
+            return respuesta.json()
+        })
+        .then(gen =>{
+            console.log(gen)
+             /* <!-- Movies in DB --> */
+                let moviesInDB = {
+                    title: 'Total de productos',
+                    color: 'primary', 
+                    cuantity: gen.count,
+                    icon: 'fa-clipboard-list'
+                }
+                /* <!-- Total awards --> */
+                let longitud=gen.countByCategory
+                let totalAwards = {
+                    title:'Total de categorías', 
+                    color:'success', 
+                    cuantity:Object.keys(gen.countByCategory).length,
+                    icon:'fa-award'
+                }
+                /* <!-- Actors quantity --> */
+                let actorsQuantity = {
+                    title:' Total de usuarios',
+                    color:'warning',
+                    cuantity:'',
+                    icon:'fa-user-check'
+                }
+                 setCartProps([moviesInDB, totalAwards, actorsQuantity])
+           // this.setState({genresList:genres.data})
+        })
+        .catch(error => console.log(error))
+},[])
+
+
     return (
     
         <div className="row">
