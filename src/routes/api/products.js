@@ -1,7 +1,6 @@
 const express = require("express")
 router = express.Router()
 const sequelize = require("sequelize")
-
 const db = require("../../../database/models")
 
 router.get("/all", allProducts)
