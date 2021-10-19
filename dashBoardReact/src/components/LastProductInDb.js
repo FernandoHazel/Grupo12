@@ -4,7 +4,7 @@ import {useEffect,useState} from 'react'
 
 
 
-function LastMovieInDb(){
+function LastProductInDb(){
 
     const [lastProduct, setLastProduct]=useState([])
      
@@ -45,6 +45,7 @@ function LastMovieInDb(){
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
                     <h5 className="m-0 font-weight-bold text-gray-800">Last product in Data Base</h5>
+                    <p  className={`text-xs font-weight-bold text-primary text-uppercase mb-1`}>{lastProduct[0]} </p>
                 </div>
                 <div className="card-body">
                     <div className="text-center">
@@ -58,4 +59,4 @@ function LastMovieInDb(){
     )
 }
 
-export default LastMovieInDb;
+export default LastProductInDb;

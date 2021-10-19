@@ -2,7 +2,7 @@ import React from 'react';
 import SmallCard from './SmallCard';
 import {useEffect,useState} from 'react'
 
-function ContentRowMovies(){
+function SimplePanels(){
 
     const [cartProps,setCartProps]=useState([])
 
@@ -57,4 +57,4 @@ useEffect(()=>{
     )
 }
 
-export default ContentRowMovies;
+export default SimplePanels;
