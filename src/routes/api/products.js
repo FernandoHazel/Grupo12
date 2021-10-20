@@ -46,7 +46,7 @@ function allProducts(req, res){
                 id: p.id,
                 name: p.title,
                 description: p.description,
-                detail: `http:localhost:3031/api/products/${p.id}`,
+                detail: `http:localhost:3031/api/products/detail/${p.id}`, //faltaba escribir "/detail/"
                 sales: purchases
                 })
             });
@@ -116,7 +116,7 @@ function detail(req, res){
                         last_name: product.seller.user_info.last_name,
                         email: product.seller.email
                     },
-                    image: `http://localhost:3031${product.img}`,
+                    image: product.img?`http://localhost:3031${product.img}`:'',
                     sales: purchases
                 }
                 res.status(200).json(newProduct)
