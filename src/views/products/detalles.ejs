@@ -9,62 +9,48 @@
 
 <!-- Vista parcial del header -->
 <%- include('../partials/header.ejs') %>
+<link rel="stylesheet" href="/css/productDetail.css">
 <!--harcodié bastantes cosas para añadir los estilos-->
     <main>
         <section class='product-section'>
-            <!--<img src="<%= article.img %>" alt="Producto">-->
-            
-            <img src='/images/productos/audio/Audífonos Para Jugador Gamer Diadema Tedge.PNG' alt="Producto">
-
-
+            <img src="<%= article.img %>" alt="Producto">
             <div class="info_compra">
                 <div class="info_compra_header">
                     <h2><%= article.title %></h2>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    
+                    <h2>$<%=toThousand( article.price)%> MXN</h2>               
                 </div>
-                <div class="info_pago">
-                    <div class="info_pago_izq">         
-                        <div class="botones">
-                          <% if(locals.user && locals.user.user_role === "user"){ %>
-                                <!-- formulario de compra -->
-                                <form id="form-buy" action="/productos/buy-product/<%=article.id%>" method="POST">
-                                    <input type="hidden" value="<%=article.price%>" disabled id="p-price">
-                                    <input disabled type="hidden" value="<%=article.discount%>" id="p-d">
-                                    <label for="método_de_pago" style="font-size: 1.45rem;font-weight: bold;">Medio: </label>
-                                    <select name="metodo_de_pago" id="metodo_de_pago">
-                                        <option name="método_de_pago" value="tarjeta_débito">Tarjeta de débito</option>
-                                        <option name="método_de_pago" value="tarjeta_crédito">Tarjeta de crédito</option>
-                                        <option name="método_de_pago" value="tarjeta_puntos">Tarjeta de puntos</option>
-                                        <option name="método_de_pago" value="tarjeta_PayPal">PayPal</option>
-                                    </select>
-                                    <br>
-                                    <Label for="cantidad" style="font-size: 1.45rem;font-weight: bold;">Cantidad: </Label>
-                                    <input type="number" name="cantidad" id="cantidad" min="0" max="<%= article.stock%>"> <!--cambiar a un selector de números-->
-                                    <br>
-                                    <input type="submit" id="btn-buy" value="Comprar">
-                                </form>
-        
-                                <form id="form-add-cart" action="/users/add-carrito/<%= article.id%>" method="POST">  
-                                    <input type="number" id="cantidad-respaldo" name="cart_quantity" hidden>  
-                                    <button type="submit" id="btn-add-cart">Añadir al carrito</button>
-                                </form>
-                            <% } else if(locals.user && locals.user.user_role === "seller"){%>
-                                <form action="/productos/borrar/<%= article.id %>?_method=DELETE" method="POST">
-                                    <button type="submit" class="btts" id="delete">ELIMINAR</button>
-                                    <a href="/productos/editar/<%= article.id%>">EDITAR</a>
-                                </form>
-                           <%}%>
-                        </div>
-                    </div>
-                    <div class="info_pago_der">
-                        <h1>$<%=toThousand( article.price)%> MXN</h1>
+                <div class="info_pago">         
+                    <div class="botones">
+                        <% if(locals.user && locals.user.user_role === "user"){ %>
+                            <!-- formulario de compra -->
+                            <form id="form-buy" action="/productos/buy-product/<%=article.id%>" method="POST">
+                                <input type="hidden" value="<%=article.price%>" disabled id="p-price">
+                                <input disabled type="hidden" value="<%=article.discount%>" id="p-d">
+                                <label for="método_de_pago" style="font-size: 1.45rem;font-weight: bold;">Medio: </label>
+                                <select name="metodo_de_pago" id="metodo_de_pago">
+                                    <option name="método_de_pago" value="tarjeta_débito">Tarjeta de débito</option>
+                                    <option name="método_de_pago" value="tarjeta_crédito">Tarjeta de crédito</option>
+                                    <option name="método_de_pago" value="tarjeta_puntos">Tarjeta de puntos</option>
+                                    <option name="método_de_pago" value="tarjeta_PayPal">PayPal</option>
+                                </select>
+                                <br>
+                                <Label for="cantidad" style="font-size: 1.45rem;font-weight: bold;">Cantidad: </Label>
+                                <input type="number" name="cantidad" id="cantidad" min="0" max="<%= article.stock%>"> <!--cambiar a un selector de números -->
+                                <br>
+                                <input type="submit" id="btn-buy" value="Comprar">
+                            </form>
+    
+                            <form id="form-add-cart" action="/users/add-carrito/<%= article.id%>" method="POST">  
+                                <input type="number" id="cantidad-respaldo" name="cart_quantity" hidden>  
+                                <button type="submit" id="btn-add-cart">Añadir al carrito</button>
+                            </form>
+                        <% } else if(locals.user && locals.user.user_role === "seller"){%>
+                            <form action="/productos/borrar/<%= article.id %>?_method=DELETE" method="POST">
+                            <button type="submit" id="btn-buy" id="delete">ELIMINAR</button>
+                            <div id="btn-add-cart"><a href="/productos/editar/<%= article.id%>">EDITAR</a></div>
+                        </form>
+                        <%}%>
+                        
                     </div>
                 </div>
             </div>
@@ -72,29 +58,19 @@
         </section>
         <section>
             <div class="relacionados">
-                <!--<%category.forEach(c=>{4%>
+                <%category.forEach(c=>{4%>
                     <article>
                         <img src="<%= c.img %>" alt="c.title">
                         <h3><%= c.title %></h3>
                         <h4>$<%= c.price %> MXN</h4>
                     </article>
-                <%})%>-->
-                <%for(let i of [1,2,3,4]){%>
-                    <article>
-                        <img src='/images/productos/audio/Audífonos Para Jugador Gamer Diadema Tedge.PNG' alt="Producto">
-                        <h3>Título del producto</h3>
-                        <h4>$5000</h4>
-                    </article>
-                <%}%>
+                <%})%>
             </div>
         </section>
         <section class="descripción">
             <div class="desc_derecha">
                 <h2 class="subt_detalles_del_producto">DETALLES DEL PRODUCTO</h2>
                 <h4><%= article.detailedDescription %></h4>
-                <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore aliquid consectetur eum doloribus veniam, maxime nulla ipsum! Delectus minima, autem perferendis praesentium quos quasi itaque sequi aperiam facere culpa hic?</h4>
-                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, laboriosam provident ducimus perspiciatis modi nisi vitae a, molestias dicta, consequuntur maxime veniam numquam. Exercitationem laborum minus fuga earum aliquid alias!</h4>
-                <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia obcaecati ipsum, aut distinctio, dolorum qui tempore, temporibus similique facilis itaque consequatur. Inventore culpa consequatur id temporibus iste numquam in deleniti!</h4>
             </div>
         </section>
     </main>

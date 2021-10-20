@@ -1,0 +1,109 @@
+/* Detalles del producto */
+.product-section{
+    display: grid;
+    grid-template-columns: .5fr 1fr;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.product-section img{
+    border-radius: 5px;
+    margin-left: 80px;
+    width: 70%;
+    box-shadow: 7px 7px 10px rgb(94, 93, 93);
+}
+.info_compra{
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+.info_compra_header{
+    text-transform: uppercase;
+    padding: 10px;
+}
+.info_compra_header h2{
+    padding: 0;
+    text-align: center;
+    font-size: 2em;
+}
+.info_pago {
+    padding: 10px;
+    width: 100%;
+}
+#metodo_de_pago{
+    width: 150px;
+    height: 30px;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+#cantidad {
+    width: 150px;
+    height: 30px;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+/*productos relacionados*/
+.relacionados{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 50vh;
+    background-color: #3A5683;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.relacionados article{
+    width: 20vw;
+    padding: 2%;
+    background-color: #2e4a75;
+    border-radius: 20px;
+}
+.relacionados img{
+    margin-left: 16%;
+    border-radius: 10px;
+    width: 70%;
+    box-shadow: 2px 2px 7px rgb(49, 49, 49);;
+}
+.relacionados article h3{
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+}
+.relacionados article h4{
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    
+}
+.descripción{
+    margin-top: 10px;
+}
+.descripción h2{
+    margin-bottom: 10px;
+}
+.descripción h4{
+    margin-bottom: 50px;
+}
+/*botones*/
+.botones {
+    margin-right: 10%;
+}
+#btn-buy {
+    width: 300px;
+    height: 40px;
+    border-radius: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #24a0ed;
+}
+#btn-add-cart{
+    width: 300px;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #ed6e24;
+}
+#btn-add-cart a{
+    text-decoration: none;
+}

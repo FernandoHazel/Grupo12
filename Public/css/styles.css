@@ -38,11 +38,6 @@ header{
     padding: 2px;
     width: 220px
 }
-/* Detalles del producto */
-.product-section{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
 
 /*Menu para smartphones*/
 #menu{
@@ -514,103 +509,6 @@ h2,h3,h4{
 }
 .stars i{
     margin-left: -5px;
-}
-.info_compra{
-    display: flex;
-    flex-direction: column;
-}
-.info_compra_header{
-    justify-content: start;
-}
-.info_compra_header h2{
-    padding: 0;
-    text-align: left;
-    font-size: 10px;
-}
-.info_compra_header img{
-    width: 90px;
-    height: 4vh;
-}
-
-.info_pago_der{
-    width: 100%;
-}
-.info_pago_der h1{
-    text-align: center;
-}
-
-.info_pago {
-    width: 100%;
-}
-
-.info_pago_der {
-    text-align: right;
-}
-
-#btn-buy {
-    width: 300px;
-    height: 40px;
-    border-radius: 15px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    background-color: #24a0ed;
-}
-#btn-add-cart{
-    width: 300px;
-    height: 40px;
-    border-radius: 15px;
-    background-color: #ed6e24;
-}
-
-#cantidad {
-    width: 150px;
-    height: 30px;
-    margin-left: 5px;
-}
-#metodo_de_pago{
-    width: 150px;
-    height: 30px;
-    margin-left: 5px;
-}
-.botones {
-    margin-right: 10%;
-}
-
-.Subt_relacionados{
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-.relacionados{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    width: 100vw;
-    height: 200px;
-    justify-content: space-around;
-}
-.relacionados article{
-    box-sizing: border-box;
-    width: 25%;
-    background-color: #3A5683;
-}
-.relacionados article h3{
-    padding: 0;
-    font-size: 11px;
-    text-align: left;
-}
-.relacionados article img{
-    height: 50%;
-    padding: 1px;
-}
-.relacionados article h4{
-    color: red;
-    font-size: 20px;
-    text-align: right;
-    margin-top: 17%;
-}
-.descripción{
-    display: flex;
 }
 
 /*** Formulario de registro **/
