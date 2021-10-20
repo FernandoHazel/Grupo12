@@ -4,11 +4,32 @@ import {useEffect,useState} from 'react'
 
 function SimplePanels(){
 
-    const [cartProps,setCartProps]=useState([])
+    let [cartProps,setCartProps]=useState([])
+
+
 
 
 useEffect(()=>{
-    fetch('api/products/all')
+    fetch('api/users/all')
+        .then(respuesta =>{
+            return respuesta.json()
+        })
+        .then(gen =>{
+     console.log('2do then')
+     console.log(gen.count)
+      /* <!-- Actors quantity --> */
+      let actorsQuantity = {
+        title:' Total de usuarios',
+        color:'warning',
+        cuantity: gen.count,
+        icon:'fa-user-check'
+    }
+     return actorsQuantity
+        })
+        .then(usersQuantity=>{
+
+        
+        fetch('api/products/all')
         .then(respuesta =>{
             return respuesta.json()
         })
@@ -29,18 +50,18 @@ useEffect(()=>{
                     cuantity:Object.keys(gen.countByCategory).length,
                     icon:'fa-award'
                 }
-                /* <!-- Actors quantity --> */
-                let actorsQuantity = {
-                    title:' Total de usuarios',
-                    color:'warning',
-                    cuantity:'',
-                    icon:'fa-user-check'
-                }
-                 setCartProps([moviesInDB, totalAwards, actorsQuantity])
+                
+                 setCartProps([moviesInDB, totalAwards,usersQuantity])
            // this.setState({genresList:genres.data})
         })
         .catch(error => console.log(error))
+        })
+
+
+        .catch(error => console.log(error))
 },[])
+
+
 
 
     return (
