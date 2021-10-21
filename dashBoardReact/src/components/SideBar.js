@@ -6,6 +6,7 @@ import LastProductInDb from './LastProductInDb';
 import SimplePanels from './SimplePanels';
 import NotFound from './NotFound';
 import {Link, Route, Switch} from 'react-router-dom';
+import ChartListProducts from './ChartListProducts';
 
 function SideBar(){
     return(
@@ -58,6 +59,12 @@ function SideBar(){
                         <span>Tables</span></Link>
                 </li>
 
+                <li className="nav-item nav-link">
+                <Link className="nav-link" to="/productList">
+                        <i className="fas fa-fw fa-table"></i>
+                        <span>Lista de productos</span></Link>
+                </li>
+
                 {/*<!-- Divider -->*/}
                 <hr className="sidebar-divider d-none d-md-block"/>
             </ul>
@@ -91,6 +98,9 @@ function SideBar(){
                 </Route>
                 <Route path="/SimplePanels">
                     <SimplePanels />
+                </Route>
+                <Route exact path="/productList">
+                    <ChartListProducts/>
                 </Route>
                 <Route component={NotFound} />
             </Switch>
