@@ -46,7 +46,7 @@ function allProducts(req, res){
                 id: p.id,
                 name: p.title,
                 description: p.description,
-                detail: `http:localhost:3031/api/products/detail/${p.id}`, //faltaba escribir "/detail/"
+                detail: `http://localhost:3031/api/products/detail/${p.id}`, //faltaba escribir "/detail/"
                 sales: purchases
                 })
             });

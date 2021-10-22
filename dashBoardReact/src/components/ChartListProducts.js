@@ -1,5 +1,7 @@
 import React from 'react';
 import ChartRow from './ChartRow';
+import {useEffect, useState} from 'react' 
+import ProductItem from './ProductItem'
 
 let tableRowsData = [
     {
@@ -19,6 +21,67 @@ let tableRowsData = [
     
 ]
 
+
+function ChartListProducts(){
+
+    //  state
+    const [products, setProducts] = useState([])
+        // initital content
+        useEffect(()=>{
+            fetch("/api/products/all",{
+                'mode': 'cors',
+                'headers': {
+                    'Access-Control-Allow-Origin': '*',
+                }
+            })
+            .then(result => result.json())
+            .then(data => {
+                setProducts(data.products)
+            })
+            .catch(e => console.log(e))
+        }, [])
+
+
+    return (
+        /* <!-- DataTales Example --> */
+        <div className="card shadow mb-4">
+            <div className="card-body">
+                <div className="table-responsive">
+                    <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Título</th>
+                                <th>Descripcion</th>
+                                <th>Total Ventas</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                 <th>Id</th>
+                                <th>Título</th>
+                                <th>Descripcion</th>
+                                <th>Ventas</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            {
+                            products.map( ( row , i) => {
+
+                                return <ProductItem {...row} key={i}/>
+                                //return <ChartRow { ...row} key={i}/>
+                            })
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    )
+}
 
 function Chart (){
     return (
@@ -61,4 +124,4 @@ function Chart (){
     )
 }
 
-export default Chart;
+export default ChartListProducts;

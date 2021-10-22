@@ -8,6 +8,7 @@ import ChartListProducts from './ChartListProducts';
 import ChartListUsers from './ChartListUsers';
 import NotFound from './NotFound';
 import {Link, Route, Switch} from 'react-router-dom';
+import ProductDetail from './ProductDetail';
 
 function SideBar(){
     return(
@@ -60,7 +61,7 @@ function SideBar(){
                         <span>Estadísticas</span></Link>
                 </li>
 
-                {/*<!-- Nav Item - Tabla de Productos -->*/}
+                {/*<!-- Nav Item - Tabla de Productos -->
                 <li className="nav-item nav-link">
                 <Link className="nav-link" to="/ChartListProducts">
                         <i className="fas fa-fw fa-table"></i>
@@ -72,6 +73,12 @@ function SideBar(){
                 <Link className="nav-link" to="/ChartListUsers">
                         <i className="fas fa-fw fa-table"></i>
                         <span>Tabla de Usuarios</span></Link>
+                </li>
+
+                <li className="nav-item nav-link">
+                <Link className="nav-link" to="/productList">
+                        <i className="fas fa-fw fa-table"></i>
+                        <span>Lista de productos</span></Link>
                 </li>
 
                 {/*<!-- Divider -->*/}
@@ -108,12 +115,14 @@ function SideBar(){
                 <Route path="/SimplePanels">
                     <SimplePanels />
                 </Route>
-                <Route path="/ChartListProducts">
-                    <ChartListProducts />
+                <Route exact path="/productList">
+                    <ChartListProducts/>
                 </Route>
+                <Route path="/product/detail/:id" component={ProductDetail}/>
                 <Route path="/ChartListUsers">
                     <ChartListUsers />
                 </Route>
+                
                 <Route component={NotFound} />
             </Switch>
             {/*<!-- End Microdesafio 2 -->*/}

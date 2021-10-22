@@ -3,56 +3,7 @@ import ChartUsersRow from './ChartUsersRow';
 import {useEffect,useState} from 'react'
 
 //Respuesta harcodeada de prueba
-let apiResponseHc = [
-    {
-    "id": 4,
-    "name": " ",
-    "email": "fernando@gmail.com",
-    "detail": "http://localhost:3031/api/users/detail/4"
-    },
-    {
-    "id": 4,
-    "name": " ",
-    "email": "fernando@gmail.com",
-    "detail": "http://localhost:3031/api/users/detail/4"
-    },
-    {
-    "id": 4,
-    "name": "Fernando Ascencio",
-    "email": "fernando@gmail.com",
-    "detail": "http://localhost:3031/api/users/detail/4"
-    },
-    {
-    "id": 4294967295,
-    "name": "Juana Chong",
-    "email": "jchong@gmail.com",
-    "detail": "http://localhost:3031/api/users/detail/4294967295"
-    },
-    {
-    "id": 1634173488,
-    "name": "Fernando Ascencio",
-    "email": "A01229544@itesm.mx",
-    "detail": "http://localhost:3031/api/users/detail/1634173488"
-    },
-    {
-    "id": 1,
-    "name": " ",
-    "email": "geastment0@soup.io",
-    "detail": "http://localhost:3031/api/users/detail/1"
-    },
-    {
-    "id": 2,
-    "name": " ",
-    "email": "acarneck1@wikispaces.com",
-    "detail": "http://localhost:3031/api/users/detail/2"
-    },
-    {
-    "id": 3,
-    "name": " ",
-    "email": "ccastelin2@posterous.com",
-    "detail": "http://localhost:3031/api/users/detail/3"
-    }
-]
+
 
 function UsersChart (){
     let [apiResponse, setResponse] = useState ([]);
@@ -91,7 +42,7 @@ function UsersChart (){
                         </tfoot>
                         <tbody>
                             {
-                            apiResponse[0].map( ( row , i) => {
+                            apiResponse.map( ( row , i) => {
                                 return <ChartUsersRow { ...row} key={i}/>
                             })
                             }
