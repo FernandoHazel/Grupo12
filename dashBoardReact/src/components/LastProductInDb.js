@@ -20,25 +20,34 @@ function LastProductInDb(){
                 console.log('last='+lastP.id)
                 //Agregamos el name del último producto
                 //a lastProduct
-                setLastProduct([lastP.name,lastP.description])
-                return lastP.id
+                //setLastProduct([lastP.name,lastP.description])
+                //return lastP.id
+                return lastP
             })
-            .then(idProduct =>{
-                console.log(idProduct)
-                fetch(`api/products/detail/${idProduct}`)
+            .then(lastP =>{
+                console.log(lastP)
+                fetch(`api/products/detail/${lastP.id}`)
                     .then(respuesta =>{
                         return respuesta.json()
                     })
                     .then(detail=>{
-                        console.log(detail)
+                        console.log('ImagenQ')
+                        console.log(detail.image)
+                        lastP.image=detail.image
+                        console.log('añadirImageb')
+                         console.log(lastP)
+                         setLastProduct([lastP.name,lastP.description,lastP.image])
+                        return lastP
                     })
                     .catch(error=> console.log('HAY un'+error))
+                    console.log('añadirImage2')
+                    console.log(lastP)
+                    return lastP
             })
-
             .catch(error => console.log(error))
     },[])
-
-    console.log(lastProduct)
+    console.log('verImagen')
+    console.log(lastProduct[2])
     return(
         
         <div className="col-lg-6 mb-4">
@@ -49,7 +58,7 @@ function LastProductInDb(){
                 </div>
                 <div className="card-body">
                     <div className="text-center">
-                        <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: 40 +'rem'}} src={imagenFondo} alt=" Star Wars - Mandalorian "/>
+                        <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: 40 +'rem'}} src={lastProduct[2]} alt=" Star Wars - Mandalorian "/>
                     </div>
                     <p> {lastProduct[1]}  </p>
                     <a className="btn btn-danger" target="_blank" rel="nofollow" href="/">View product detail</a>
