@@ -1,6 +1,7 @@
 import React from 'react';
 import ContentRowCenter from './ContentRowCenter';
 import ChartListProducts from './ChartListProducts';
+import ChartListUsers from './ChartListUsers';
 import SimplePanels from './SimplePanels';
 
 function ContentRowTop(){
@@ -16,6 +17,7 @@ function ContentRowTop(){
 					<SimplePanels />
 					<ContentRowCenter />
 					<ChartListProducts />
+					<ChartListUsers/>
 	
 				</div>
 				{/*<!--End Content Row Top-->*/}

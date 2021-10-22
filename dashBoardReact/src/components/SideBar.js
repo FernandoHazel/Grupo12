@@ -4,9 +4,10 @@ import ContentWrapper from './ContentWrapper';
 import CategoriesInDb from './CategoriesInDb';
 import LastProductInDb from './LastProductInDb';
 import SimplePanels from './SimplePanels';
+import ChartListProducts from './ChartListProducts';
+import ChartListUsers from './ChartListUsers';
 import NotFound from './NotFound';
 import {Link, Route, Switch} from 'react-router-dom';
-import ChartListProducts from './ChartListProducts';
 import ProductDetail from './ProductDetail';
 
 function SideBar(){
@@ -29,7 +30,7 @@ function SideBar(){
                 <li className="nav-item active">
                     <Link className="nav-link" to="/">
                         <i className="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard - DH movies</span></Link>
+                        <span>Tablero - Tecnoshop</span></Link>
                 </li>
 
                 {/*<!-- Divider -->*/}
@@ -38,26 +39,40 @@ function SideBar(){
                 {/*<!-- Heading -->*/}
                 <div className="sidebar-heading">Actions</div>
 
-                {/*<!-- Nav Item - Pages -->*/}
+                {/*<!-- Nav Item - Categorias -->*/}
                 <li className="nav-item">
                 <Link className="nav-link" to="/CategoriesInDb">
                         <i className="fas fa-fw fa-folder"></i>
-                        <span>Pages</span>
+                        <span>Categorias</span>
                     </Link>
                 </li>
 
-                {/*<!-- Nav Item - Charts -->*/}
+                {/*<!-- Nav Item - Último producto agregado -->*/}
                 <li className="nav-item">
                     <Link className="nav-link" to="/LastProductInDb">
                         <i className="fas fa-fw fa-chart-area"></i>
-                        <span>Charts</span></Link>
+                        <span>Último producto agregado</span></Link>
                 </li>
 
-                {/*<!-- Nav Item - Tables -->*/}
+                {/*<!-- Nav Item - Estadísticas -->*/}
                 <li className="nav-item nav-link">
                 <Link className="nav-link" to="/SimplePanels">
                         <i className="fas fa-fw fa-table"></i>
-                        <span>Tables</span></Link>
+                        <span>Estadísticas</span></Link>
+                </li>
+
+                {/*<!-- Nav Item - Tabla de Productos -->
+                <li className="nav-item nav-link">
+                <Link className="nav-link" to="/ChartListProducts">
+                        <i className="fas fa-fw fa-table"></i>
+                        <span>Tabla de Productos</span></Link>
+                </li>
+
+                {/*<!-- Nav Item - Tabla de Usuarios -->*/}
+                <li className="nav-item nav-link">
+                <Link className="nav-link" to="/ChartListUsers">
+                        <i className="fas fa-fw fa-table"></i>
+                        <span>Tabla de Usuarios</span></Link>
                 </li>
 
                 <li className="nav-item nav-link">
@@ -103,8 +118,10 @@ function SideBar(){
                 <Route exact path="/productList">
                     <ChartListProducts/>
                 </Route>
-
                 <Route path="/product/detail/:id" component={ProductDetail}/>
+                <Route path="/ChartListUsers">
+                    <ChartListUsers />
+                </Route>
                 
                 <Route component={NotFound} />
             </Switch>
