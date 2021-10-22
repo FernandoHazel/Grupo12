@@ -54,7 +54,7 @@ function ChartListProducts(){
                                 <th>Título</th>
                                 <th>Descripcion</th>
                                 <th>Total Ventas</th>
-                 
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -63,6 +63,7 @@ function ChartListProducts(){
                                 <th>Título</th>
                                 <th>Descripcion</th>
                                 <th>Ventas</th>
+                                <th>Acciones</th>
                             </tr>
                         </tfoot>
                         <tbody>

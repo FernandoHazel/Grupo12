@@ -1,5 +1,6 @@
 import {React} from 'react'
-
+import ProductDetail from './ProductDetail';
+import {Link} from 'react-router-dom'
 
 function ProductItem(props){
     let total = 0
@@ -7,8 +8,15 @@ function ProductItem(props){
     props.sales.forEach(sale => {
         total += sale.quantity
     })
+   
+    let route = "/product/detail/"+props.id
+    console.log(route)
+    
+    let toggle= ()=>{
+        return 
+    }
     return (
-            <tr>
+            <tr >
                 <td>
                     {props.id}
                 </td>
@@ -22,7 +30,11 @@ function ProductItem(props){
 
                 <td>
                     {total}
-                </td>     
+                </td> 
+                <td>
+                    <Link to={route}>Ver</Link>  
+                </td>
+                  
             </tr>
     )
 }

@@ -7,6 +7,7 @@ import SimplePanels from './SimplePanels';
 import NotFound from './NotFound';
 import {Link, Route, Switch} from 'react-router-dom';
 import ChartListProducts from './ChartListProducts';
+import ProductDetail from './ProductDetail';
 
 function SideBar(){
     return(
@@ -102,6 +103,9 @@ function SideBar(){
                 <Route exact path="/productList">
                     <ChartListProducts/>
                 </Route>
+
+                <Route path="/product/detail/:id" component={ProductDetail}/>
+                
                 <Route component={NotFound} />
             </Switch>
             {/*<!-- End Microdesafio 2 -->*/}
