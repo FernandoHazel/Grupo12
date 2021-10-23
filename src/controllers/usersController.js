@@ -61,7 +61,7 @@ const userController = {
                         active: true,
                     })
                     .then(function(userCreated){
-                        console.log("/*    User CReated", userCreated)
+                        
                         if(userCreated){
                             db.UserInfo.create({
                                 user_id: userCreated.id,
@@ -219,7 +219,6 @@ const userController = {
             return db.User.findOne({
                 where: {
                     email: req.body.email,
-                    active: 1
                 },
                 include: [
                     {association: 'user_info'},
@@ -227,7 +226,9 @@ const userController = {
                 ]
             })
             .then(function(user){  //la variable "user" ya trae los campos de user y user_info
+                console.log("Pero que: ", user)
                 if(user && user.active==false){
+
                     res.render('users/login', {error: 'Tu cuenta ha sido bloqueda, comunicate al correo "administracion@tecnoshop.com" para más información'})
                 }else if(user){
                     /* Si existe, entonces compara las contraseñas*/
@@ -260,8 +261,8 @@ const userController = {
                         // señalar al usuario que el correo o la contraseña es incorrecta
                         res.render('users/login', {error: 'Correo o contraseña incorrectos', old:req.body})
                     }
-                } else { 
-                    res.render('users/login', {error: 'Tu cuenta ha sido bloqueda, comunicate al correo "administracion@tecnoshop.com" para más información', old:req.body})
+                } else {  // NO SE ENCUENTRA EL USURIO
+                        res.render('users/login', {error: 'Correo o contraseña incorrectos', old:req.body})     
                 }
 
             })

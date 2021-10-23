@@ -25,7 +25,12 @@
                 </article> 
                 <%users.forEach( user =>{%>
                     <article class="user-conteiner">
-                        <p class="name"><%=user.user_info.first_name%> <%=user.user_info.last_name%></p>
+                        <%if(user.user_info){%>
+                            <p class="name"><%=user.user_info.first_name?user.user_info.first_name:Unnamed%> <%=user.user_info.last_name?user.user_info.last_name:Unnamed%></p>
+                        <%}else{%>
+                            <p class="name">Unnamed</p>
+                        <%}%>
+                        
                         <div class="user-status">
                             <span class="email"><%=user.email%></span>
                             <%if(user.active==1){%>
@@ -35,7 +40,7 @@
                             <%}%>
                         </div>
                         <div>
-                            <span style="font-weight: bold;">Registrado el </span><%=user.user_info.createdAt%>
+                            <span style="font-weight: bold;">Registrado el </span><%=(user.user_info && user.user_info.createdAt)?user.user_info.createdAt:"No date provided"%>
                         </div>
                         
                         <div class="user-tag">
