@@ -1,11 +1,10 @@
 import React from "react";
-
 import { useEffect,useState } from "react";
 import { Link } from "react-router-dom";                
 
 function LastUserInDb() {
-    const [lastUser, setLastUser]=useState(['a','b','c','/'])
-    
+
+    const [lastUser, setLastUser]=useState([])
     
     useEffect(()=>{
         fetch('api/users/all')
@@ -13,7 +12,7 @@ function LastUserInDb() {
             return respuesta.json()
         })
         .then(user =>{
-            console.log('userInfomraaaa')
+            console.log('userInfo')
             console.log(user)
             let longitud= user.count
             let lastU=user.users[longitud-1]
@@ -27,20 +26,13 @@ function LastUserInDb() {
                     return respuesta.json()
                 })
                 .then(detail =>{
-                    console.log('imagen de Usuario')
-                    console.log(detail.profile_img)
-                    setLastUser([lastU.name,lastU.email,detail.profile_img,'/user/detail'+lastU.id])
+                    setLastUser([lastU.name,lastU.email,detail.profile_img,'/users/detail/'+lastU.id])
                 })
                 .catch(error=> console.log('HAY un'+error)) 
         })
         .catch(error => console.log(error))
-
-
-
     },[])
     
-
-
 return(
         
     <div className="col-lg-6 mb-4">
