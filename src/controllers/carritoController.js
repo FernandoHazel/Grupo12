@@ -178,6 +178,8 @@ let carritoController = {
                             console.log("p->", temp_price)
                             /* lo ñade al total */
                            total += temp_price
+                           /* Increment it's sold units */ 
+                           db.Product.increment({sold_units: p.product_quantity}, { where: { id: p.product.id } })
 
                             /* lo añade al array de productos */
                            array_products.push({product_id: p.product.id, individual_price: temp_price, product_quantity: p.product_quantity})

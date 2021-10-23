@@ -88,8 +88,8 @@ window.addEventListener('load',function(){
            arregloDeErrores[4].innerHTML=errores.discount
            discount.style.borderColor='red'
            return true
-       }else if(discount.value<=0||discount.value>=100){
-           errores.discount='El descuento debe ser mayor a cero y menor a 100'
+       }else if(discount.value<0||discount.value>=100){
+           errores.discount='El descuento debe ser mayor o igual a cero y menor a 100'
            arregloDeErrores[4].innerHTML=errores.discount
            discount.style.borderColor='red'
            return true

@@ -420,8 +420,7 @@ let productosController = {
   buy: function(req, res){
     if(req.session.userLogged){
         let id = req.params.id
-        console.log(id)
-        console.log(req.body)
+       
          db.Product.findOne({
             where: {
                 id: id,
@@ -432,7 +431,6 @@ let productosController = {
             if(product){
                 let productQuantity = parseFloat(req.body.cantidad)
                 let total = (product.price - (product.price * product.discount / 100)) * productQuantity
-                console.log(total)
 
                 db.Ticket.create({
                     user_id: 3,
@@ -448,8 +446,16 @@ let productosController = {
                         })
                         .then(function(purchase){
                             if(purchase){
-                                console.log("COMPRA EXITOSA")
-                                res.redirect("/users/ticket/"+ticket.id)
+                                /*actualiz la cantidad de unidades compradas*/ 
+                                product.sold_units += productQuantity
+                                product.save()
+                                .then(product=>{
+                                    console.log("COMPRA EXITOSA")
+                                    res.redirect("/users/ticket/"+ticket.id)
+                                })
+                                .catch(e => {
+                                    res.status(500).send({"message": "Hubo un error: "+e})
+                                })
                             } else {
                                 res.status(400).send({"message": "No se pudo concretar la compra"})
                             }
