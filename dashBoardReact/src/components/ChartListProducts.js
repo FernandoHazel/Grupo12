@@ -57,15 +57,7 @@ function ChartListProducts(){
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                 <th>Id</th>
-                                <th>Título</th>
-                                <th>Descripcion</th>
-                                <th>Ventas</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </tfoot>
+    
                         <tbody>
                             {
                             products.map( ( row , i) => {
