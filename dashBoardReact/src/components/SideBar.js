@@ -9,6 +9,7 @@ import ChartListUsers from './ChartListUsers';
 import NotFound from './NotFound';
 import {Link, Route, Switch} from 'react-router-dom';
 import ProductDetail from './ProductDetail';
+import UserDetail from './UserDetail';
 
 function SideBar(){
     return(
@@ -72,7 +73,7 @@ function SideBar(){
                 <li className="nav-item nav-link">
                 <Link className="nav-link" to="/ChartListUsers">
                         <i className="fas fa-fw fa-table"></i>
-                        <span>Tabla de Usuarios</span></Link>
+                        <span>Lista de usuarios</span></Link>
                 </li>
 
                 <li className="nav-item nav-link">
@@ -119,6 +120,7 @@ function SideBar(){
                     <ChartListProducts/>
                 </Route>
                 <Route path="/product/detail/:id" component={ProductDetail}/>
+                <Route path="/users/detail/:id" component={UserDetail}/>
                 <Route path="/ChartListUsers">
                     <ChartListUsers />
                 </Route>

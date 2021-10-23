@@ -1,7 +1,7 @@
 import React from 'react';
 import imagenFondo from '../assets/images/mandalorian.jpg';
 import {useEffect,useState} from 'react'
-
+import {Link} from 'react-router-dom'
 
 
 function LastProductInDb(){
@@ -14,14 +14,11 @@ function LastProductInDb(){
                 return respuesta.json()
             })
             .then(product =>{
+                //Calculo de cuantos productos hay en products
                let  len=Object.keys(product.products).length
-                console.log('len='+len)
+                //Obtenemos el último producto de la base
               let  lastP=product.products[len-1]
-                console.log('last='+lastP.id)
-                //Agregamos el name del último producto
-                //a lastProduct
-                //setLastProduct([lastP.name,lastP.description])
-                //return lastP.id
+               // console.log('last='+lastP.id)
                 return lastP
             })
             .then(lastP =>{
@@ -31,23 +28,16 @@ function LastProductInDb(){
                         return respuesta.json()
                     })
                     .then(detail=>{
-                        console.log('ImagenQ')
-                        console.log(detail.image)
-                        lastP.image=detail.image
-                        console.log('añadirImageb')
-                         console.log(lastP)
-                         setLastProduct([lastP.name,lastP.description,lastP.image])
-                        return lastP
+                         setLastProduct([lastP.name,lastP.description,detail.image,'/product/detail/'+lastP.id])
+                     
                     })
-                    .catch(error=> console.log('HAY un'+error))
-                    console.log('añadirImage2')
-                    console.log(lastP)
-                    return lastP
+                    .catch(error=> console.log('HAY un'+error))  
             })
             .catch(error => console.log(error))
     },[])
-    console.log('verImagen')
-    console.log(lastProduct[2])
+    //console.log(lastProduct[2])
+
+
     return(
         
         <div className="col-lg-6 mb-4">
@@ -61,7 +51,7 @@ function LastProductInDb(){
                         <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: 40 +'rem'}} src={lastProduct[2]} alt=" Star Wars - Mandalorian "/>
                     </div>
                     <p> {lastProduct[1]}  </p>
-                    <a className="btn btn-danger" target="_blank" rel="nofollow" href="/">View product detail</a>
+                    <Link className="btn btn-danger"  rel="nofollow" to={lastProduct[3]} >View product detail</Link>
                 </div>
             </div>
         </div>

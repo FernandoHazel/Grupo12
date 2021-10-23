@@ -1,5 +1,6 @@
 import React from 'react';
 import ChartUsersRow from './ChartUsersRow';
+import UserItem from './UserItem';
 import {useEffect,useState} from 'react'
 
 //Respuesta harcodeada de prueba
@@ -43,7 +44,8 @@ function UsersChart (){
                         <tbody>
                             {
                             apiResponse.map( ( row , i) => {
-                                return <ChartUsersRow { ...row} key={i}/>
+                                return <UserItem {...row} key={i}/>
+                                //return <ChartUsersRow { ...row} key={i}/>
                             })
                             }
 
