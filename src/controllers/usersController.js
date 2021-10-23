@@ -14,6 +14,7 @@ const userController = {
         res.render("users/login", {error: null})
     },
     add: function (req, res) {
+
         const errors=validationResult(req)
 
         //Si no hay errores creamos un nuevo usuario 
@@ -31,11 +32,6 @@ const userController = {
             }
             newUser.img = img
     
-            //creamos un id para el usuario
-            newUser.id = Date.now()
-            newUser.id=newUser.id/1000
-
-            
             let password = req.body.password
 
             //solo necesitamos una así que borramos la segunda que venía en el formulario
@@ -44,51 +40,62 @@ const userController = {
             //hasheamos la contraseña y la guardamos en nuestro objeto que se va a ir a la base de datos
             newUser.password = bcrypt.hashSync(password, 10)
 
-            //estos son los ids que tenemos en nuestra tabla de users_roles
-            let roleId
-            if(newUser.profile == "seller"){
-                roleId = 5
-            }else{
-                roleId = 6
-            }
             //En el formulario ya no obtenemos la edad si no la fecha de nacimiento y hay
             // que hacer el calculo de la edad para luego mandarlo a la base de datos
             let yearPresent= new Date()
             let year=newUser.release_date.slice(0,4)
             newUser.age=yearPresent.getFullYear()-Number(year)
-        
             
-            //guardar en el disco, creamos un registro para la tabla de users y otro para la de users_info
-            db.User.create({
-                id: newUser.id,
-                email: newUser.email,
-                pass: newUser.password,
-                user_role_id: roleId, //5 seller, 6 user
-                active: true,
-            })
-            .then(function(user){
-                db.UserInfo.create({
-                    user_id: newUser.id,
-                    first_name: newUser.name,
-                    last_name: newUser.apellido,
-                    age: newUser.age, //de momento si estamos guardando la edad en lugar e la fecha de nacimiento para no hacer tanto cambio en la base de datos
-                    profile_img: newUser.img
+            db.UserRole.findOne({
+                where: {
+                    user_role: newUser.profile
+                }
+            }).then(userRole=>{
+                console.log("Pero que", userRole)
+                if(userRole){
+                    //guardar en el disco, creamos un registro para la tabla de users y otro para la de users_info
+                    db.User.create({
+                        email: newUser.email,
+                        pass: newUser.password,
+                        user_role_id: userRole.id, 
+                        active: true,
+                    })
+                    .then(function(userCreated){
+                        console.log("/*    User CReated", userCreated)
+                        if(userCreated){
+                            db.UserInfo.create({
+                                user_id: userCreated.id,
+                                first_name: newUser.name,
+                                last_name: newUser.apellido,
+                                age: newUser.age, //de momento si estamos guardando la edad en lugar e la fecha de nacimiento para no hacer tanto cambio en la base de datos
+                                profile_img: newUser.img
+                            })
+                            /* le asigna su carrito*/
+                            db.CartUser.create({
+                                user_id: userCreated.id
+                            })
+                        }
+                    })
+                .then(()=>{
+                        return res.redirect('/users/login')
+                        //res.send({newUser,roleId})
                 })
-            })
-            .then(()=>{
-            return res.redirect('/users/login')
-            //res.send({newUser,roleId})
-            })
-            .catch(function(e){
-                res.send({"Message": "Hubo un error "+e})
-            })
-            
+                .catch(function(e){
+                    res.send({"Message": "Hubo un error "+e})
+                })
+            }else{
+                res.status(404).json({"message": "No encontramos el user role"})
+            }
+        })
+        .catch(e => {
+            res.status(500).json({"message": "algo salio mal "+e})
+        })
+
         }else{
             //Hay errores y regresamos al formulario con los errores
             // console.log(errors)
             res.render('users/registro',{errors:errors.mapped(),old:req.body})
-
-        }
+    }
     },
     edit: (req, res) => {
         res.render('users/edit')
