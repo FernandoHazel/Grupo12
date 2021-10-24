@@ -3,6 +3,7 @@ import image from '../assets/images/logo-DH.png';
 import ContentWrapper from './ContentWrapper';
 import CategoriesInDb from './CategoriesInDb';
 import LastProductInDb from './LastProductInDb';
+import LastUserInDb from './LastUserInDb';
 import SimplePanels from './SimplePanels';
 import ChartListProducts from './ChartListProducts';
 import ChartListUsers from './ChartListUsers';
@@ -53,6 +54,12 @@ function SideBar(){
                     <Link className="nav-link" to="/LastProductInDb">
                         <i className="fas fa-fw fa-chart-area"></i>
                         <span>Último producto agregado</span></Link>
+                </li>
+                {/*<!-- Nav Item - Último usuario agregado -->*/}
+                <li className="nav-item">
+                    <Link className="nav-link" to="/LastUserInDb">
+                        <i className="fas fa-fw fa-chart-area"></i>
+                        <span>Último usuario agregado</span></Link>
                 </li>
 
                 {/*<!-- Nav Item - Estadísticas -->*/}
@@ -112,6 +119,9 @@ function SideBar(){
                 </Route>
                 <Route path="/LastProductInDb">
                     <LastProductInDb />
+                </Route>
+                <Route path="/LastUserInDb">
+                    <LastUserInDb />
                 </Route>
                 <Route path="/SimplePanels">
                     <SimplePanels />

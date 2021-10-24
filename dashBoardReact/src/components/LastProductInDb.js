@@ -3,7 +3,6 @@ import imagenFondo from '../assets/images/mandalorian.jpg';
 import {useEffect,useState} from 'react'
 import {Link} from 'react-router-dom'
 
-
 function LastProductInDb(){
 
     const [lastProduct, setLastProduct]=useState([])
@@ -18,7 +17,6 @@ function LastProductInDb(){
                let  len=Object.keys(product.products).length
                 //Obtenemos el último producto de la base
               let  lastP=product.products[len-1]
-               // console.log('last='+lastP.id)
                 return lastP
             })
             .then(lastP =>{
@@ -29,13 +27,11 @@ function LastProductInDb(){
                     })
                     .then(detail=>{
                          setLastProduct([lastP.name,lastP.description,detail.image,'/product/detail/'+lastP.id])
-                     
                     })
                     .catch(error=> console.log('HAY un'+error))  
             })
             .catch(error => console.log(error))
     },[])
-    //console.log(lastProduct[2])
 
 
     return(
@@ -43,7 +39,7 @@ function LastProductInDb(){
         <div className="col-lg-6 mb-4">
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
-                    <h5 className="m-0 font-weight-bold text-gray-800">Último producto agrgado</h5>
+                    <h5 className="m-0 font-weight-bold text-gray-800">Último producto agregado</h5>
                     <p  className={`text-xs font-weight-bold text-primary text-uppercase mb-1`}>{lastProduct[0]} </p>
                 </div>
                 <div className="card-body">
