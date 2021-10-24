@@ -125,10 +125,9 @@ window.addEventListener('load',function(){
     function verificarImage(){         
        let longitud=imgProduct.value.length
        let cadena=imgProduct.value
-       let subcadena=cadena.slice(longitud-4)
+       let subcadena=cadena.split(".")[1]
        
        if(subcadena=='JPEG'||subcadena=='jpeg'){return false}
-       subcadena=subcadena.slice(1)
        if(subcadena=='JPG'||subcadena=='jpg'){return false}
        if(subcadena=='PNG'||subcadena=='png'){return false}
        if(subcadena=='GIF'||subcadena=='gif'){return false}

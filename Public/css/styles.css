@@ -1478,7 +1478,28 @@ main #products-section{
     
 
 }
-
+.mine-list{
+    background-color: #24a0ed;
+    padding: 3px;
+    margin-bottom: 5px;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-left: 100px;
+    position: absolute;
+    bottom: 15px;
+    left: 200px;
+}
+.mine{
+    background-color: #24a0ed;
+    padding: 3px;
+    margin-bottom: 5px;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 30px;
+    font-size: 10px;
+}
 
 /***** Desktop ****/
 @media(min-width: 998px){

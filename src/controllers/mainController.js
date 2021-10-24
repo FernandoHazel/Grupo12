@@ -1,34 +1,48 @@
 const fs = require('fs');
-const path = require("path")
-
+const path = require("path");
+const db = require('../../database/models');
+const {Op} = require("sequelize")
 /* Obtenemos los datos de productos*/
-let dataDirection= path.join(__dirname + "../../../public/data/products.json")
-let rawdata = fs.readFileSync(dataDirection);
-const products = JSON.parse(rawdata);
+
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 const mainController={
 
   home: function(req, res){  
-    
-    /* Obtenemos todos los productos con descuento*/ 
-    let offerts = products.filter(product => product.discount > 0)
-    offerts = offerts.slice(0, 7)
 
-    // agregamos el atributo "precio final" porque tienen descuento
-    offerts.forEach(element => {
-      element.final_price = element.price - (element.price * element.discount / 100)
-    });
 
-    /*Ordenamos por más vendidos*/
-    let mostSales = products.sort(function(a, b){
-       /* Prdenamos de forma descendente */
-      return b.sold - a.sold;
-    });
-    let mostSalesFew = [...mostSales]
-    mostSalesFew = mostSalesFew.slice(0, 7)
-  
-    /* Renderizamos la vista */    
-    res.render('home', {offerts: offerts, mostSales: mostSalesFew, toThousand});
+    db.Product.findAll({
+      limit: 11,
+      where: {
+        active: 1,
+        discount: {[Op.gt]: 0}
+      }
+    })
+    .then(offertProducts => {
+        if(offertProducts){
+          db.Product.findAll({
+            limit: 11,
+            order: [
+              ['sold_units', 'DESC'],
+          ]
+          }).then(mostSales => {
+                if(mostSales){
+                  /* Renderizamos la vista */    
+                  res.render('home', {offerts: offertProducts, mostSales: mostSales, toThousand});
+                }else {
+                  res.status(404).json({"message": "No se encontraron productos "})
+                }
+          }) 
+          .catch(e => {
+            res.status(500).json({"message": "Something went wrong "+e})
+          })
+        }
+        else {
+          res.status(404).json({"message": "No se encontraron productos "})
+        }
+    })
+    .catch(e => {
+      res.status(500).json({"message": "Something went wrong "+e})
+    })
   }
 }
 

@@ -29,7 +29,7 @@ const validateProduct=[
      body('img')
      .custom((value,{req})=>{
          let fileImg=req.file
-         let extensions= ['.jpg','.jpeg','.png','.gif']
+         let extensions= ['.jpg','.jpeg','.png','.gif','.PNG', '.JPG', '.JPEG', 'GIF']
          if(!fileImg){
             throw new Error('Tienes que subir una imagen')
          }else{

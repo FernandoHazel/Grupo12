@@ -85,7 +85,7 @@ let productosController = {
         db.Product.create(
             {
                 category_id: parseInt(category, 10),
-                seller_id: 2, //debe ser el id del vendedor
+                seller_id: req.session.userLogged.id, //debe ser el id del vendedor
                 title,
                 description,
                 price,
@@ -330,9 +330,6 @@ let productosController = {
     },
     offerts: (req, res)=>{
         
-        /* Filtramos los productos que tienen ofertas  */
-        let offerts = products.filter(p => p.discount > 0)
-
         db.Product.findAll({
             where: {
                 active: true,
@@ -340,11 +337,6 @@ let productosController = {
             }
         })
         .then(function(offerts){
-            /* Calculamos el precio final */
-            offerts.forEach(e =>{
-                e.final_price = e.price - (e.price * e.discount / 100)
-            })
-
             /* Obtien los datos relacionados con la paginacion */
             let paggination = getPaggination(req, offerts)
 

@@ -12,7 +12,9 @@
     <main>
         <section id="options-header">
             <div>
-                <a href="/productos/all">Mostar Todos</a>
+                <%if(!locals.isLogged || locals.isLogged && locals.user.user_role === "user"){%>
+                    <a href="/productos/all">Mostar Todos</a>
+                <%}%>
             </div>
         </section>
 
@@ -59,7 +61,7 @@
                         <img src="<%= product.img %>" alt="<%= product.title %>">
                         <!-- Vendidos -->
                         <p class="products-sold">
-                            <%= product.sold %> Vendidos
+                            <%= product.sold_units %> Vendidos
                         </p>
                         <!--Titulo-->
                         <% if( product.title.length > 50 ){%>
@@ -74,16 +76,23 @@
                         <%}else{%>
                             <p class="description"><%= product.description %></p>
                         <% }%>
+                        <%if(locals.isLogged && locals.user.user_role === "seller" && product.seller_id == locals.user.id){%>
+                            <span class="mine-list">
+                                Su producto
+                            </span>
+                        <%}%>
                         
                         <!--Descuento-->
                         <% if(product.discount > 0){%>
                             <p class="discount"> -<%= product.discount %>% OFF</p>
                         <% } %>
+
+                        
                         <!--Calculo de precio fial dependiendo del descuento-->
                         <% if(product.discount > 0){%>
                             <p class="price">
-                                <% if(product.price && product.final_price) {%>
-                                    <span class="old-price">$<%= toThousand(product.price)%></span> <span class="final-price">$<%=toThousand(product.final_price) %></span>  
+                                <% if(product.price ) {%>
+                                    <span class="old-price">$<%= toThousand(product.price)%></span> <span class="final-price">$<%=toThousand((product.price - (product.price*product.discount/100))) %></span>  
                                 <% } %>
                                
                             </p>

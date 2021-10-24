@@ -48,7 +48,6 @@ app.use(function(req, res, next) {
 // Puerto
 const PORT = 3031
 
-
 // levantar servidor
 app.listen(PORT, ()=>{
     console.log(`server running on http://localhost:${PORT}`)

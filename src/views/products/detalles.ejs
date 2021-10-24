@@ -44,7 +44,7 @@
                                 <input type="number" id="cantidad-respaldo" name="cart_quantity" hidden>  
                                 <button type="submit" id="btn-add-cart">Añadir al carrito</button>
                             </form>
-                        <% } else if(locals.user && locals.user.user_role === "seller"){%>
+                        <% } else if(locals.user && locals.user.user_role === "seller" && article.seller_id===locals.user.id){%>
                             <form action="/productos/borrar/<%= article.id %>?_method=DELETE" method="POST">
                             <button type="submit" id="btn-buy" id="delete">ELIMINAR</button>
                             <div id="btn-add-cart"><a href="/productos/editar/<%= article.id%>">EDITAR</a></div>
@@ -70,7 +70,7 @@
         <section class="descripción">
             <div class="desc_derecha">
                 <h2 class="subt_detalles_del_producto">DETALLES DEL PRODUCTO</h2>
-                <h4><%= article.detailedDescription %></h4>
+                <h4><%= article.description %></h4>
             </div>
         </section>
     </main>

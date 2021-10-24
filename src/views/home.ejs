@@ -13,7 +13,7 @@
     <!-- Contenido principal -->
     <main>
         <br>
-        <h2>Ofertas</h2>
+        <h2>Ofertas en la plataforma <i class="fab fa-hotjar"></i></h2>
         <section id="section-offers">
             <% offerts.forEach(offert =>{ %>
                 <article class="content-offers">
@@ -36,9 +36,15 @@
                     </div>
                     <!-- Precio original y final-->
                     <div class="price">
-                        <% if(offert.price && offert.final_price) {%>
-                            <span class="old-price">$<%= toThousand(offert.price) %></span><span class="new-price">$<%= toThousand(offert.final_price) %></span>
+                        <% if(offert.price) {%>
+                            <span class="old-price">$<%= toThousand(offert.price) %></span><span class="new-price">$<%= toThousand((offert.price - (offert.price * offert.discount / 100))) %></span>
                         <% } %>
+                        <%if(locals.isLogged && locals.user.user_role === "seller" && offert.seller_id == locals.user.id){%>
+                        
+                            <span class="mine">
+                                Su producto
+                            </span>
+                        <%}%>
                     </div>
                 </a>
             </article>
@@ -55,7 +61,7 @@
         </section>
         <br>
         <!-- Lo más productos más vendidos -->
-        <h2>Lo más vendido</h2>
+        <h2>Lo más aclamado <i class="fas fa-fire-alt"></i></h2>
         <section id="section-products">
 
             <% mostSales.forEach(sale => { %>
@@ -75,14 +81,21 @@
                     <%  } %>
                     <!-- Vendidos -->
                     <div class="sales">
-                        <%= sale.sold %>
+                        <%= sale.sold_units %>
                     </div> <apan class="vendidos">Vendidos</apan>
                     <!-- Precio-->
                     <div class="price">
                         <% if(sale.price){%>
-                            <span class="new-price">$<%= toThousand(sale.price) %></span>
+                            <span class="new-price">$<%= toThousand(sale.price) %></span> 
                         <% } %>
+                        <%if(locals.isLogged && locals.user.user_role === "seller" && sale.seller_id == locals.user.id){%>
+                        
+                            <span class="mine">
+                                Su producto
+                            </span>
+                        <%}%>
                     </div>
+                    
                 </a>
                 </article>
             <% }) %>
