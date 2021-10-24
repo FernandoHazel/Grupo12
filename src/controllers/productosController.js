@@ -425,7 +425,7 @@ let productosController = {
                 let total = (product.price - (product.price * product.discount / 100)) * productQuantity
 
                 db.Ticket.create({
-                    user_id: 3,
+                    user_id: req.session.userLogged.id,
                     total_price: total
                 })
                 .then(function(ticket){

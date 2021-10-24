@@ -308,7 +308,10 @@ const userController = {
                 include: [
                     {association: "ticket", include: [{association: "ticket_user", include: [{association: "user_info"}]}]},
                     {association: "product"},
-                ]
+                ],
+                where: {
+                    "$product.seller_id$": req.session.userLogged.id
+                }
             })
             .then(function(data){
                 /* rendereizamos una vista*/
