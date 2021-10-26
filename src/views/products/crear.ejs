@@ -12,13 +12,14 @@
                     <p>Nombre</p>
                     <input name="title" id="title" placeholder="Nombre del producto" 
                     value = '<%= locals.old ? old.title : null %>'>
+                    <p id="arregloDeErrores"></p>
+                    <% if(locals.errors && errors.title){ %>
+                        <% console.log(errors) %>
+                        <% console.log(old) %>
+                        <div style="color:red"><%= errors.title.msg %></div>
+                    <% } %>
                 </div>
-                <p id="arregloDeErrores"></p>
-                <% if(locals.errors && errors.title){ %>
-                    <% console.log(errors) %>
-                    <% console.log(old) %>
-                    <div style="color:red"><%= errors.title.msg %></div>
-                <% } %>
+                
                 <br>
     
                 <div class="category">
@@ -51,42 +52,46 @@
                 <div class="description">
                     <p>Detalles</p>
                     <textarea placeholder="Menciona los detalles y/o características que consideres relevantes de cara a la venta al público" name="description" id="description"><%= locals.old ? old.description : null %></textarea>
+                    <p id="arregloDeErrores"></p>
+                    <% if(locals.errors && errors.description){ %>
+                        <div style="color:red"><%= errors.description.msg %></div>
+                    <% } %>
                 </div>
-                <p id="arregloDeErrores"></p>
-                <% if(locals.errors && errors.description){ %>
-                    <div style="color:red"><%= errors.description.msg %></div>
-                <% } %>
+               
 
                 <div class="main2">
                     <div class="price">
                         <p>Precio Unitario</p>
                         <input type="number"  name="price" id="price"
                         value = '<%= locals.old ? old.price : null %>'> <span>$MXN</span>
+                        <p id="arregloDeErrores"></p>
+                        <% if(locals.errors && errors.price){ %>
+                            <div style="color:red"><%= errors.price.msg %></div>
+                        <% } %>
                     </div>
-                    <p id="arregloDeErrores"></p>
-                    <% if(locals.errors && errors.price){ %>
-                        <div style="color:red"><%= errors.price.msg %></div>
-                    <% } %>
+                    
                   
                     <div class="discount">
                         <p>Descuento</p>
                         <input type="number" min="0" name="discount" max="100" value="0" id="discount"
                         value = '<%= locals.old ? old.discount : null %>' > <span>%</span>
+                        <p id="arregloDeErrores"></p>
+                        <% if(locals.errors && errors.discount){ %>
+                            <div style="color:red"><%= errors.discount.msg %></div>
+                        <% } %>
                     </div>
-                    <p id="arregloDeErrores"></p>
-                    <% if(locals.errors && errors.discount){ %>
-                        <div style="color:red"><%= errors.discount.msg %></div>
-                    <% } %>
+                    
         
                     <div class="quantity">
                         <p>Cantidad</p>
                         <input type="number" min="1" name="stock" id="stock"
                         value = '<%= locals.old ? old.stock : null %>'>
+                        <p id="arregloDeErrores"></p>
+                        <% if(locals.errors && errors.stock){ %>
+                            <div style="color:red"><%= errors.stock.msg %></div>
+                        <% } %>
                     </div>
-                    <p id="arregloDeErrores"></p>
-                    <% if(locals.errors && errors.stock){ %>
-                        <div style="color:red"><%= errors.stock.msg %></div>
-                    <% } %>
+                    
                 </div>
     
                 <div class="pro-img">
@@ -95,7 +100,6 @@
                     value = '<%= locals.old ? old.img : null %>'>
                 </div>
                 <p id="arregloDeErrores"></p>
-
                 <% if(locals.errors && errors.img){ %>
                     <div style="color:red"><%= errors.img.msg %></div>
                 <% } %>
