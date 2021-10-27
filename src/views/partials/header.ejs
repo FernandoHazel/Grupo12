@@ -7,9 +7,9 @@
     <menu class="upper-objects">
         <!-- si el usuario está loggeado y es usuario  -->
         <% if(locals.isLogged || locals.isLogged && locals.user.user_role === "user") {%>
-            <a href="/"><img src="/images/Logo_5.svg" id="company-logo"> </a>
+            <a href="/"><img src="/images/Logo_6.svg" id="company-logo"> </a>
         <% } else {%>
-            <img src="/images/Logo_5.svg" id="company-logo">
+            <img src="/images/Logo_6.svg" id="company-logo">
         <% } %>
         
         <form class="search-p-bar" action="/productos/search-products" method="GET">

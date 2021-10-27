@@ -20,13 +20,13 @@
 	.st14{font-family:'Turnpike';}
 	.st15{font-family:'DotGothic16-Regular';}
 	.st16{fill:#9E9292;}
-	.st17{fill:#2774A0;}
+	.st17{fill:#2774A0;stroke:#1D1D1B;stroke-width:5;stroke-miterlimit:10;}
 	.st18{display:none;fill:#CA0000;}
 	.st19{display:none;fill:#00215F;}
 	.st20{fill:none;}
 	.st21{display:none;fill:#FFFFFF;}
 	.st22{font-size:500px;}
-	.st23{fill:#312783;}
+	.st23{fill:#312783;stroke:#1D1D1B;stroke-width:7;stroke-miterlimit:10;}
 	.st24{display:inline;fill:#CA0000;}
 	.st25{font-size:60.7691px;}
 	.st26{font-size:85.0633px;}
@@ -150,8 +150,8 @@
 	<rect x="148.31" y="188.91" class="st20" width="323.88" height="429.85"/>
 	<text transform="matrix(1 0 0 1 148.3133 530.9057)" class="st21 st13 st22">T</text>
 	<g>
-		<path class="st23" d="M248.5,667.36C246.2,438.35,89.98,445.92,89.98,445.92s19.16,145.41,124.57,207.63"/>
-		<path class="st23" d="M336.53,670.03c2.32-229.01,159.49-213.18,159.49-213.18s-11.75,136.17-117.9,198.39"/>
+		<path class="st23" d="M248.5,667.36C246.2,438.35,89.98,445.92,89.98,445.92S127.84,646.76,248.5,667.36"/>
+		<path class="st23" d="M336.53,670.03c2.32-229.01,159.49-213.18,159.49-213.18S459.07,658.99,336.53,670.03"/>
 	</g>
 	<g class="st0">
 		<path class="st24" d="M249.34,666.03c-2.3-229.01-158.52-221.44-158.52-221.44S109.98,590,215.39,652.22"/>
