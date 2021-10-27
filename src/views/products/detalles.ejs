@@ -59,11 +59,13 @@
         <section>
             <div class="relacionados">
                 <%category.forEach(c=>{4%>
-                    <article>
-                        <img src="<%= c.img %>" alt="c.title">
-                        <h3><%= c.title %></h3>
-                        <h4>$<%= c.price %> MXN</h4>
-                    </article>
+                    <a href="/productos/detalles/<%= c.id%>" style='text-decoration: none;'>
+                        <article>
+                            <img src="<%= c.img %>" alt="c.title">
+                            <h3><%= c.title %></h3>
+                            <h4>$<%= c.price %> MXN</h4>
+                        </article>
+                    </a>
                 <%})%>
             </div>
         </section>

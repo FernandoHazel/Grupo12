@@ -46,7 +46,6 @@
 .relacionados{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 50vh;
     background-color: #3A5683;
     padding-top: 5px;
     padding-bottom: 5px;
