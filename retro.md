@@ -66,4 +66,16 @@ Sprint 7
 
 4.Hacer menos: Atrasar tareas de los sprints
 
-5.Dejar de hacer: no hacer git pull antes de empezar a trabajar 
+5.Dejar de hacer: no hacer git pull antes de empezar a trabajar
+
+Sprint 8
+
+1.Comenzar a hacer: reportarnos los errores de los testeos
+
+2.Hacer más: Testear más
+
+3.Continuar haciendo: reuniones en equipo
+
+4.Hacer menos: 
+
+5.Dejar de hacer: subir archivos al repo que cambien la configuración del proyecto, no subir las imágenes al repo del proyecto

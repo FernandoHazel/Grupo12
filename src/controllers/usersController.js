@@ -405,7 +405,8 @@ const userController = {
         .then(function(user){
             req.session.destroy()
             if(user){
-                res.status(200).json({status: "ok"})
+                //res.status(200).json({status: "ok"})
+                res.redirect('/users/login')
             } else {
                 res.status(500).json({status: "error"})
             }
